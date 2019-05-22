@@ -7,7 +7,7 @@ public class Sailor {
     private String name;
     private long id;
     private long rating;
-    private long ages;
+    private long age;
 
     public Sailor() {
 
