@@ -82,22 +82,6 @@ You can combine different maven goals in the same command. For example, to local
 
 `$ mvn clean test jacoco:report org.pitest:pitest-maven:mutationCoverage`
 
-# Oracle repository
-
-If you get the following error:
-
-```
-[ERROR] Failed to execute goal on project 
-bike-sharing: Could not resolve dependencies for project 
-lapr3:bike-sharing:jar:1.0-SNAPSHOT: 
-Failed to collect dependencies at 
-com.oracle.jdbc:ojdbc7:jar:12.1.0.2: 
-Failed to read artifact descriptor for 
-com.oracle.jdbc:ojdbc7:jar:12.1.0.2: 
-Could not transfer artifact 
-com.oracle.jdbc:ojdbc7:pom:12.1.0.2 
-from/to maven.oracle.com (https://maven.oracle.com): 
-Not authorized , ReasonPhrase:Authorization Required. 
 -> [Help 1]
 ```
 
