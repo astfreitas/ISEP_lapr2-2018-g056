@@ -21,7 +21,6 @@ public class Main
             MenuUI uiMenu = new MenuUI();
 
             uiMenu.run();
-          
         }
         catch( Exception e )
         {
