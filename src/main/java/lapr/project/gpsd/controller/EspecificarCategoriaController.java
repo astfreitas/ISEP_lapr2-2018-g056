@@ -7,9 +7,9 @@ package lapr.project.gpsd.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lapr.project.gpsd.model.Categoria;
-import lapr.project.gpsd.model.Constantes;
-import lapr.project.gpsd.model.Empresa;
+import lapr.project.gpsd.model.Category;
+import lapr.project.gpsd.model.Constants;
+import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.ui.console.utils.Utils;
 
 /**
@@ -18,11 +18,11 @@ import lapr.project.gpsd.ui.console.utils.Utils;
  */
 public class EspecificarCategoriaController
 {
-    private Empresa m_oEmpresa;
-    private Categoria m_oCategoria;
+    private Company m_oEmpresa;
+    private Category m_oCategoria;
     public EspecificarCategoriaController()
     {
-        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constantes.PAPEL_ADMINISTRATIVO))
+        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constants.PAPEL_ADMINISTRATIVO))
             throw new IllegalStateException("Utilizador não Autorizado");
         this.m_oEmpresa = AplicacaoGPSD.getInstance().getEmpresa();
     }

@@ -8,10 +8,10 @@ package lapr.project.gpsd.controller;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lapr.project.gpsd.model.Categoria;
-import lapr.project.gpsd.model.Constantes;
-import lapr.project.gpsd.model.Empresa;
-import lapr.project.gpsd.model.Servico;
+import lapr.project.gpsd.model.Category;
+import lapr.project.gpsd.model.Constants;
+import lapr.project.gpsd.model.Company;
+import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.ui.console.utils.Utils;
 
 /**
@@ -20,16 +20,16 @@ import lapr.project.gpsd.ui.console.utils.Utils;
  */
 public class EspecificarServicoController
 {
-    private Empresa m_oEmpresa;
-    private Servico m_oServico;
+    private Company m_oEmpresa;
+    private Service m_oServico;
     public EspecificarServicoController()
     {
-        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constantes.PAPEL_ADMINISTRATIVO))
+        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constants.PAPEL_ADMINISTRATIVO))
             throw new IllegalStateException("Utilizador não Autorizado");
         this.m_oEmpresa = AplicacaoGPSD.getInstance().getEmpresa();
     }
     
-    public List<Categoria> getCategorias()
+    public List<Category> getCategorias()
     {
         return this.m_oEmpresa.getCategorias();
     }
@@ -38,7 +38,7 @@ public class EspecificarServicoController
     {
         try
         {
-            Categoria cat = this.m_oEmpresa.getCategoriaById(categoriaId);
+            Category cat = this.m_oEmpresa.getCategoriaById(categoriaId);
             this.m_oServico = this.m_oEmpresa.novoServico(strId, strDescricaoBreve,strDescricaoCompleta,dCustoHora,cat);
             return this.m_oEmpresa.validaServico(this.m_oServico);
         }

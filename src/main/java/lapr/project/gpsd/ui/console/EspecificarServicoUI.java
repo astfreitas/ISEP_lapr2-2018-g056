@@ -7,7 +7,7 @@ package lapr.project.gpsd.ui.console;
 
 import java.util.List;
 import lapr.project.gpsd.controller.EspecificarServicoController;
-import lapr.project.gpsd.model.Categoria;
+import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.ui.console.utils.Utils;
 
 /**
@@ -50,10 +50,10 @@ public class EspecificarServicoUI
         String strDescricaoCompleta = Utils.readLineFromConsole("Descrição Completa: ");
         double dCusto = Utils.readDoubleFromConsole("Custo Hora: ");
         
-        List<Categoria> lc = m_controller.getCategorias();
+        List<Category> lc = m_controller.getCategorias();
         
         String catId = "";
-        Categoria c = (Categoria)Utils.apresentaESeleciona(lc, "Selecione a categoria a que o serviço pertence:");
+        Category c = (Category)Utils.apresentaESeleciona(lc, "Selecione a categoria a que o serviço pertence:");
         if (c != null)
             catId = c.getCodigo();
         

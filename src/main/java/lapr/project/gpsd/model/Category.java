@@ -11,13 +11,13 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class Categoria
+public class Category
 {
     private String m_strCodigo;
     private String m_strDescricao;
             
     
-    public Categoria(String strCodigo, String strDescricao)
+    public Category(String strCodigo, String strDescricao)
     {
         if ( (strCodigo == null) || (strDescricao == null) ||
                 (strCodigo.isEmpty())|| (strDescricao.isEmpty()))
@@ -60,7 +60,7 @@ public class Categoria
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        Categoria obj = (Categoria) o;
+        Category obj = (Category) o;
         return (Objects.equals(m_strCodigo, obj.m_strCodigo));
     }
     

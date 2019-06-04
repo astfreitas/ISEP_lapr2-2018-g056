@@ -13,16 +13,16 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class Cliente
+public class Client
 {
     private String m_strNome;
     private String m_strNIF;
     private String m_strTelefone;
     private String m_strEmail;
-    private List<EnderecoPostal> m_lstMoradas = new ArrayList<EnderecoPostal>();
+    private List<Address> m_lstMoradas = new ArrayList<Address>();
             
     
-    public Cliente(String strNome, String strNIF, String strTelefone, String strEmail, EnderecoPostal oMorada)
+    public Client(String strNome, String strNIF, String strTelefone, String strEmail, Address oMorada)
     {
         if ( (strNome == null) || (strNIF == null) || (strTelefone == null) ||
                 (strEmail == null) || (oMorada == null) ||
@@ -52,12 +52,12 @@ public class Cliente
         return this.m_strEmail.equalsIgnoreCase(strEmail);
     }
    
-    public boolean addEnderecoPostal(EnderecoPostal oMorada)
+    public boolean addEnderecoPostal(Address oMorada)
     {
         return this.m_lstMoradas.add(oMorada);
     }
     
-    public boolean removeEnderecoPostal(EnderecoPostal oMorada)
+    public boolean removeEnderecoPostal(Address oMorada)
     {
         return this.m_lstMoradas.remove(oMorada);
     }
@@ -84,7 +84,7 @@ public class Cliente
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        Cliente obj = (Cliente) o;
+        Client obj = (Client) o;
         return (Objects.equals(m_strEmail, obj.m_strEmail) || Objects.equals(m_strNIF, obj.m_strNIF));
     }
     
@@ -92,14 +92,14 @@ public class Cliente
     public String toString()
     {
         String str = String.format("%s - %s - %s - %s", this.m_strNome, this.m_strNIF, this.m_strTelefone, this.m_strEmail);
-        for(EnderecoPostal morada:this.m_lstMoradas)
+        for(Address morada:this.m_lstMoradas)
             str += "\nMorada:\n" + morada.toString();
         return str;
     }
     
-    public static EnderecoPostal novoEnderecoPostal(String strLocal, String strCodPostal, String strLocalidade)
+    public static Address novoEnderecoPostal(String strLocal, String strCodPostal, String strLocalidade)
     {
-        return new EnderecoPostal(strLocal,strCodPostal,strLocalidade);
+        return new Address(strLocal,strCodPostal,strLocalidade);
     }
 
     

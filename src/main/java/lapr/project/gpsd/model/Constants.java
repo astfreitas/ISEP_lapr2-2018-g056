@@ -9,7 +9,7 @@ package lapr.project.gpsd.model;
  *
  * @author paulomaio
  */
-public class Constantes
+public class Constants
 {
     public static final String PAPEL_ADMINISTRATIVO = "ADMINISTRATIVO";
     public static final String PAPEL_CLIENTE = "CLIENTE";

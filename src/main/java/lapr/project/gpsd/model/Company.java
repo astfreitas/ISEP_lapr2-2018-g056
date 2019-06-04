@@ -16,17 +16,17 @@ import lapr.project.autorizacao.AutorizacaoFacade;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Empresa
+public class Company
 {
     private String m_strDesignacao;
     private String m_strNIF;
     private final AutorizacaoFacade m_oAutorizacao;
-    private final Set<Cliente> m_lstClientes;
-    private final Set<Categoria> m_lstCategorias;
-    private final Set<Servico> m_lstServicos;
+    private final Set<Client> m_lstClientes;
+    private final Set<Category> m_lstCategorias;
+    private final Set<Service> m_lstServicos;
     
 
-    public Empresa(String strDesignacao, String strNIF)
+    public Company(String strDesignacao, String strNIF)
     {
         if ( (strDesignacao == null) || (strNIF == null) ||
                 (strDesignacao.isEmpty())|| (strNIF.isEmpty()))
@@ -50,9 +50,9 @@ public class Empresa
     // Clientes
     
     // <editor-fold defaultstate="collapsed">
-    public Cliente getClienteByEmail(String strEMail)
+    public Client getClienteByEmail(String strEMail)
     {
-        for(Cliente cliente : this.m_lstClientes)
+        for(Client cliente : this.m_lstClientes)
         {
             if (cliente.hasEmail(strEMail))
             {
@@ -63,27 +63,27 @@ public class Empresa
         return null;
     }
 
-    public Cliente novoCliente(String strNome, String strNIF, String strTelefone, String strEmail, EnderecoPostal morada)
+    public Client novoCliente(String strNome, String strNIF, String strTelefone, String strEmail, Address morada)
     {
-        return new Cliente(strNome, strNIF, strTelefone, strEmail, morada);
+        return new Client(strNome, strNIF, strTelefone, strEmail, morada);
     }
 
-    public boolean registaCliente(Cliente oCliente, String strPwd)
+    public boolean registaCliente(Client oCliente, String strPwd)
     {
         if (this.validaCliente(oCliente,strPwd))
         {
-            if (this.m_oAutorizacao.registaUtilizadorComPapel(oCliente.getNome(),oCliente.getEmail(), strPwd, Constantes.PAPEL_CLIENTE))
+            if (this.m_oAutorizacao.registaUtilizadorComPapel(oCliente.getNome(),oCliente.getEmail(), strPwd, Constants.PAPEL_CLIENTE))
                 return addCliente(oCliente);
         }
         return false;
     }
 
-    private boolean addCliente(Cliente oCliente)
+    private boolean addCliente(Client oCliente)
     {
         return m_lstClientes.add(oCliente);
     }
     
-    public boolean validaCliente(Cliente oCliente,String strPwd)
+    public boolean validaCliente(Client oCliente,String strPwd)
     {
         boolean bRet = true;
         
@@ -106,9 +106,9 @@ public class Empresa
     
     // <editor-fold defaultstate="collapsed">
     
-    public Servico getServicoById(String strId)
+    public Service getServicoById(String strId)
     {
-        for(Servico serv : this.m_lstServicos)
+        for(Service serv : this.m_lstServicos)
         {
             if (serv.hasId(strId))
             {
@@ -119,12 +119,12 @@ public class Empresa
         return null;
     }
 
-    public Servico novoServico(String strId, String strDescricaoBreve, String strDescricaoCompleta, double dCustoHora, Categoria oCategoria)
+    public Service novoServico(String strId, String strDescricaoBreve, String strDescricaoCompleta, double dCustoHora, Category oCategoria)
     {
-        return new Servico(strId, strDescricaoBreve,strDescricaoCompleta,dCustoHora,oCategoria);
+        return new Service(strId, strDescricaoBreve,strDescricaoCompleta,dCustoHora,oCategoria);
     }
 
-    public boolean registaServico(Servico oServico)
+    public boolean registaServico(Service oServico)
     {
         if (this.validaServico(oServico))
         {
@@ -133,12 +133,12 @@ public class Empresa
         return false;
     }
 
-    private boolean addServico(Servico oServico)
+    private boolean addServico(Service oServico)
     {
         return m_lstServicos.add(oServico);
     }
     
-    public boolean validaServico(Servico oServico)
+    public boolean validaServico(Service oServico)
     {
         boolean bRet = true;
         
@@ -153,9 +153,9 @@ public class Empresa
     // Categorias 
     // <editor-fold defaultstate="collapsed">
             
-    public Categoria getCategoriaById(String strId)
+    public Category getCategoriaById(String strId)
     {
-        for(Categoria cat : this.m_lstCategorias)
+        for(Category cat : this.m_lstCategorias)
         {
             if (cat.hasId(strId))
             {
@@ -166,12 +166,12 @@ public class Empresa
         return null;
     }
 
-    public Categoria novaCategoria(String strCodigo, String strDescricao)
+    public Category novaCategoria(String strCodigo, String strDescricao)
     {
-        return new Categoria(strCodigo, strDescricao);
+        return new Category(strCodigo, strDescricao);
     }
 
-    public boolean registaCategoria(Categoria oCategoria)
+    public boolean registaCategoria(Category oCategoria)
     {
         if (this.validaCategoria(oCategoria))
         {
@@ -180,12 +180,12 @@ public class Empresa
         return false;
     }
 
-    private boolean addCategoria(Categoria oCategoria)
+    private boolean addCategoria(Category oCategoria)
     {
         return m_lstCategorias.add(oCategoria);
     }
     
-    public boolean validaCategoria(Categoria oCategoria)
+    public boolean validaCategoria(Category oCategoria)
     {
         boolean bRet = true;
         
@@ -196,9 +196,9 @@ public class Empresa
         return bRet;
     }
     
-    public List<Categoria> getCategorias()
+    public List<Category> getCategorias()
     {
-        List<Categoria> lc = new ArrayList<>();
+        List<Category> lc = new ArrayList<>();
         lc.addAll(this.m_lstCategorias);
         return lc;
     }

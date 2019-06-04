@@ -11,15 +11,15 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class Servico
+public class Service
 {
     private String m_strId;
     private String m_strDescricaoBreve;
     private String m_strDescricaoCompleta;
     private double m_dCustoHora;
-    private Categoria m_oCategoria;
+    private Category m_oCategoria;
     
-    public Servico(String strId, String strDescricaoBreve, String strDescricaoCompleta, double dCustoHora, Categoria oCategoria)
+    public Service(String strId, String strDescricaoBreve, String strDescricaoCompleta, double dCustoHora, Category oCategoria)
     {
         if ( (strId == null) || (strDescricaoBreve == null) || (strDescricaoCompleta == null) ||
                 (dCustoHora < 0) || (oCategoria == null) ||
@@ -61,7 +61,7 @@ public class Servico
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        Servico obj = (Servico) o;
+        Service obj = (Service) o;
         return (Objects.equals(m_strId, obj.m_strId));
     }
     

@@ -6,13 +6,15 @@
 
 package lapr.project.gpsd.ui;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import lapr.project.gpsd.ui.console.MenuUI;
 
 /**
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Main
+public class Main extends Application
 {
     public static void main(String[] args)
     {
@@ -26,5 +28,10 @@ public class Main
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class EnderecoPostal
+public class Address
 {
     private String m_strLocal;
     private String m_strCodPostal;
@@ -19,7 +19,7 @@ public class EnderecoPostal
     
             
     
-    public EnderecoPostal(String strLocal, String strCodPostal, String strLocalidade)
+    public Address(String strLocal, String strCodPostal, String strLocalidade)
     {
         if ( (strLocal == null) || (strCodPostal == null) || (strLocalidade == null) ||
                 (strLocal.isEmpty())|| (strCodPostal.isEmpty()) || (strLocalidade.isEmpty()))
@@ -52,7 +52,7 @@ public class EnderecoPostal
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        EnderecoPostal obj = (EnderecoPostal) o;
+        Address obj = (Address) o;
         return (Objects.equals(m_strLocal, obj.m_strLocal) && 
                 Objects.equals(m_strCodPostal, obj.m_strCodPostal) &&
                 Objects.equals(m_strLocalidade, obj.m_strLocalidade));

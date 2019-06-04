@@ -7,9 +7,9 @@ package lapr.project.gpsd.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lapr.project.gpsd.model.Cliente;
-import lapr.project.gpsd.model.Empresa;
-import lapr.project.gpsd.model.EnderecoPostal;
+import lapr.project.gpsd.model.Client;
+import lapr.project.gpsd.model.Company;
+import lapr.project.gpsd.model.Address;
 import lapr.project.gpsd.ui.console.utils.Utils;
 
 /**
@@ -19,8 +19,8 @@ import lapr.project.gpsd.ui.console.utils.Utils;
 public class RegistarClienteController
 {
     private AplicacaoGPSD m_oApp;
-    private Empresa m_oEmpresa;
-    private Cliente m_oCliente;
+    private Company m_oEmpresa;
+    private Client m_oCliente;
     private String m_strPwd;
     public RegistarClienteController()
     {
@@ -34,7 +34,7 @@ public class RegistarClienteController
         try
         {
             this.m_strPwd = strPwd;
-            EnderecoPostal morada = Cliente.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
+            Address morada = Client.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
             this.m_oCliente = this.m_oEmpresa.novoCliente(strNome, strNIF, strTelefone, strEmail, morada);
             return this.m_oEmpresa.validaCliente(this.m_oCliente, this.m_strPwd);
         }
@@ -52,7 +52,7 @@ public class RegistarClienteController
         {
             try
             {
-                EnderecoPostal morada = Cliente.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
+                Address morada = Client.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
                 return this.m_oCliente.addEnderecoPostal(morada);
             }
             catch(RuntimeException ex)
