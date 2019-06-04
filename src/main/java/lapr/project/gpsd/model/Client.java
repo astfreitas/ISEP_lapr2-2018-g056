@@ -1,106 +1,142 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- *
- * @author paulomaio
- */
 public class Client
 {
-    private String m_strNome;
-    private String m_strNIF;
-    private String m_strTelefone;
-    private String m_strEmail;
-    private List<Address> m_lstMoradas = new ArrayList<Address>();
+    private String name;
+    private String NIF;
+    private String telephone;
+    private String email;
+    private List<Address> addresses = new ArrayList<Address>();
             
     
-    public Client(String strNome, String strNIF, String strTelefone, String strEmail, Address oMorada)
+    public Client(String name, String NIF, String telephone, String email, Address address)
     {
-        if ( (strNome == null) || (strNIF == null) || (strTelefone == null) ||
-                (strEmail == null) || (oMorada == null) ||
-                (strNome.isEmpty())|| (strNIF.isEmpty()) || (strTelefone.isEmpty()) || 
-                (strEmail.isEmpty()))
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
+        if ( (name == null) || (NIF == null) || (telephone == null) ||
+                (email == null) || (address == null) ||
+                (name.isEmpty())|| (NIF.isEmpty()) || (telephone.isEmpty()) || 
+                (email.isEmpty()))
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
         
-        this.m_strNome = strNome;
-        this.m_strEmail = strEmail;
-        this.m_strNIF = strNIF;
-        this.m_strTelefone = strTelefone;
-        m_lstMoradas.add(oMorada);
+        this.name = name;
+        this.email = email;
+        this.NIF = NIF;
+        this.telephone = telephone;
+        addresses.add(address);
     }
     
-    public String getNome()
+    /**
+     * 
+     * Returns the Client's name
+     * 
+     * @return Client's name
+     */
+    public String getName()
     {
-        return this.m_strNome;
+        return this.name;
     }
     
+    /**
+     * 
+     * Returns the Client's email
+     * 
+     * @return Client's email
+     */
     public String getEmail()
     {
-        return this.m_strEmail;
+        return this.email;
     }
     
-    public boolean hasEmail(String strEmail)
+    /**
+     * 
+     * Checks if the Cliend has a certain email
+     * 
+     * @param email
+     * @return 
+     */
+    public boolean hasEmail(String email)
     {
-        return this.m_strEmail.equalsIgnoreCase(strEmail);
+        return this.email.equalsIgnoreCase(email);
     }
    
-    public boolean addEnderecoPostal(Address oMorada)
+    /**
+     * 
+     * Adds an Address to the Client's instance
+     * 
+     * @param address Address to be added
+     * @return True/false if the operation is/isn't successful
+     */
+    public boolean addAddress(Address address)
     {
-        return this.m_lstMoradas.add(oMorada);
+        return this.addresses.add(address);
     }
     
-    public boolean removeEnderecoPostal(Address oMorada)
-    {
-        return this.m_lstMoradas.remove(oMorada);
+    /**
+     * 
+     * Removes an Address to the Client's instance
+     * 
+     * @param address Address to be removed
+     * @return True/false if the operation is/isn't successful
+     */
+    public boolean removeAddress(Address address){
+        return this.addresses.remove(address);
     }
     
+    /**
+     *
+     * Compares two instances of Client and returns true/false if they are
+     * equals or possess the same atributes
+     *
+     * @param otherClient Address to compare
+     * @return True/false if they are
+     * equals or possess the same atributes
+     */
     @Override
-    public int hashCode()
-    {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.m_strEmail);
-        return hash;
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+    public boolean equals(Object otherClient) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
         
         // self check
-        if (this == o)
+        if (this == otherClient)
             return true;
         // null check
-        if (o == null)
+        if (otherClient == null)
             return false;
         // type check and cast
-        if (getClass() != o.getClass())
+        if (getClass() != otherClient.getClass())
             return false;
         // field comparison
-        Client obj = (Client) o;
-        return (Objects.equals(m_strEmail, obj.m_strEmail) || Objects.equals(m_strNIF, obj.m_strNIF));
+        Client obj = (Client) otherClient;
+        return (Objects.equals(email, obj.email) || Objects.equals(NIF, obj.NIF));
     }
     
+    /**
+     * 
+     * Returns the info of the Client in a String
+     * 
+     * @return Info of the instance
+     */
     @Override
     public String toString()
     {
-        String str = String.format("%s - %s - %s - %s", this.m_strNome, this.m_strNIF, this.m_strTelefone, this.m_strEmail);
-        for(Address morada:this.m_lstMoradas)
+        String str = String.format("%s - %s - %s - %s", this.name, this.NIF, this.telephone, this.email);
+        for(Address morada:this.addresses)
             str += "\nMorada:\n" + morada.toString();
         return str;
     }
     
-    public static Address novoEnderecoPostal(String strLocal, String strCodPostal, String strLocalidade)
-    {
-        return new Address(strLocal,strCodPostal,strLocalidade);
+    /**
+     * 
+     * Creates a new instance of Address
+     * 
+     * @param local City name
+     * @param postalCode Postal code
+     * @param address Street name
+     * @return Address instatiated
+     */
+    public static Address newAddress(String local, String postalCode, String address){
+        return new Address(local,postalCode,address);
     }
-
-    
 }

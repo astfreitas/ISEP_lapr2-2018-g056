@@ -1,73 +1,117 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.Objects;
 
-/**
- *
- * @author paulomaio
- */
 public class Category
 {
-    private String m_strCodigo;
-    private String m_strDescricao;
+    private String code;
+    private String description;
             
-    
-    public Category(String strCodigo, String strDescricao)
-    {
-        if ( (strCodigo == null) || (strDescricao == null) ||
-                (strCodigo.isEmpty())|| (strDescricao.isEmpty()))
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
+    /**
+     * 
+     * Creates an instance of Category
+     * 
+     * @param code Category unique code
+     * @param description Category description
+     */
+    public Category(String code, String description){
+        if ( (code == null) || (description == null) ||
+                (code.isEmpty())|| (description.isEmpty()))
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
         
-        this.m_strCodigo = strCodigo;
-        this.m_strDescricao = strDescricao;
+        this.code = code;
+        this.description = description;
     }
     
-    public boolean hasId(String strId)
+    /**
+     * 
+     * Checks if the Category has a determined ID
+     * 
+     * @param id ID to check
+     * @return True/false if the Category has/hasn't the ID
+     */
+    public boolean hasId(String id)
     {
-        return this.m_strCodigo.equalsIgnoreCase(strId);
+        return this.code.equalsIgnoreCase(id);
     }
     
-    public String getCodigo()
-    {
-        return this.m_strCodigo;
+    /**
+     * 
+     * Gets the Category unique ID
+     * 
+     * @return Category unique ID
+     */
+    public String getCode(){
+        return this.code;
     }
-   
+
+    /**
+     * 
+     * Gets the Category description
+     * 
+     * @return Category description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * 
+     * Sets the Category unique code
+     * 
+     * @param code Category unique code
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * 
+     * Sets the Category description
+     * 
+     * @param description Category description
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
+    /**
+     * 
+     * Compares two instances of Category and returns true/false if they are
+     * equals or possess the same atributes
+     * 
+     * @param otherCategory Category to compare
+     * @return True/false if they are
+     * equals or possess the same atributes
+     */
     @Override
-    public int hashCode()
-    {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.m_strCodigo);
-        return hash;
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+    public boolean equals(Object otherCategory) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
         
         // self check
-        if (this == o)
+        if (this == otherCategory)
             return true;
         // null check
-        if (o == null)
+        if (otherCategory == null)
             return false;
         // type check and cast
-        if (getClass() != o.getClass())
+        if (getClass() != otherCategory.getClass())
             return false;
         // field comparison
-        Category obj = (Category) o;
-        return (Objects.equals(m_strCodigo, obj.m_strCodigo));
+        Category obj = (Category) otherCategory;
+        return (Objects.equals(code, obj.code));
     }
     
+     /**
+     * 
+     * Returns the info of the Category in a String
+     * 
+     * @return Info of the instance
+     */
     @Override
     public String toString()
     {
-        return String.format("%s - %s ", this.m_strCodigo, this.m_strDescricao);
+        return String.format("%s - %s ", this.code, this.description);
     }
 
 }
