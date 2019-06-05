@@ -14,11 +14,11 @@ import lapr.project.authentication.model.UserRole;
  */
 public class AutenticacaoController
 {
-    private AplicacaoGPSD m_oApp;
+    private ApplicationGPSD m_oApp;
     
     public AutenticacaoController()
     {
-        this.m_oApp = AplicacaoGPSD.getInstance();
+        this.m_oApp = ApplicationGPSD.getInstance();
     }
     
     public boolean doLogin(String strId, String strPwd)
@@ -28,9 +28,9 @@ public class AutenticacaoController
     
     public List<UserRole> getPapeisUtilizador()
     {
-        if (this.m_oApp.getSessaoAtual().isLoggedIn())
+        if (this.m_oApp.getCurrentSession().isLoggedIn())
         {
-            return this.m_oApp.getSessaoAtual().getUserRoles();
+            return this.m_oApp.getCurrentSession().getUserRoles();
         }
         return null;
     }

@@ -2,6 +2,6 @@ package lapr.project.gpsd.model;
 
 class ServiceExecutionOrder {
   private int orderNumber;
-  private ServiceAssignement serviceAssignment;
+  private ServiceAssignment serviceAssignment;
   private String executionStatus;
 }

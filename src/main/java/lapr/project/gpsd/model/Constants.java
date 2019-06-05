@@ -9,15 +9,15 @@ package lapr.project.gpsd.model;
  *
  * @author paulomaio
  */
-public class Constants
-{
-    public static final String PAPEL_ADMINISTRATIVO = "ADMINISTRATIVO";
-    public static final String PAPEL_CLIENTE = "CLIENTE";
-    public static final String PAPEL_FRH = "FUNC_RH";
-    public static final String PAPEL_PRESTADOR_SERVICO = "PRESTADOR SERVIÇO";
+public class Constants{
     
-    public static final String PARAMS_FICHEIRO = "config.properties";
-    public static final String PARAMS_EMPRESA_DESIGNACAO = "Empresa.Designacao";
-    public static final String PARAMS_EMPRESA_NIF = "Empresa.NIF";
+    public static final String ROLE_ADMINISTRATIVE = "ADMINISTRATIVE";
+    public static final String ROLE_CLIENT = "CLIENT";
+    public static final String ROLE_HRO = "HRO";
+    public static final String ROLE_SERVICE_PROVIDER = "SERVICE PROVIDER";
+    
+    public static final String PARAMS_FILE = "config.properties";
+    public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
+    public static final String PARAMS_COMPANY_NIF = "Company.NIF";
     
 }

@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
-class IAssignmentAlgoritm {
+public interface IAssignmentAlgoritm {
 
+    
 }

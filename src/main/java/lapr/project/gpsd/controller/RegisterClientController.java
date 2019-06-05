@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.controller;
 
 import lapr.project.gpsd.model.*;
 
-/**
- *
- * @author paulomaio
- */
 public class RegisterClientController {
 
-    private AplicacaoGPSD app;
+    private ApplicationGPSD app;
     private Company company;
     private ClientRegistry clientRegistry;
     private Client client;
@@ -25,8 +16,8 @@ public class RegisterClientController {
      * 
      */
     public RegisterClientController() {
-        this.app = AplicacaoGPSD.getInstance();
-        this.company = app.getEmpresa();
+        this.app = ApplicationGPSD.getInstance();
+        this.company = app.getCompany();
     }
 
     /**
@@ -76,5 +67,15 @@ public class RegisterClientController {
      */
     public boolean registerCliente(){
         return this.clientRegistry.registerClient(this.client, this.pwd);
+    }
+    
+    /**
+     * 
+     * Gets the created Client
+     * 
+     * @return Client
+     */
+    public Client getClient(){
+        return this.client;
     }
 }
