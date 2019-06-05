@@ -24,7 +24,7 @@ public class EspecificarServicoController
     private Service m_oServico;
     public EspecificarServicoController()
     {
-        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constants.PAPEL_ADMINISTRATIVO))
+        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInWithRole(Constants.PAPEL_ADMINISTRATIVO))
             throw new IllegalStateException("Utilizador não Autorizado");
         this.m_oEmpresa = AplicacaoGPSD.getInstance().getEmpresa();
     }

@@ -6,7 +6,7 @@
 package lapr.project.gpsd.controller;
 
 import java.util.List;
-import lapr.project.autorizacao.model.PapelUtilizador;
+import lapr.project.authentication.model.UserRole;
 
 /**
  *
@@ -26,11 +26,11 @@ public class AutenticacaoController
         return this.m_oApp.doLogin(strId, strPwd);
     }
     
-    public List<PapelUtilizador> getPapeisUtilizador()
+    public List<UserRole> getPapeisUtilizador()
     {
         if (this.m_oApp.getSessaoAtual().isLoggedIn())
         {
-            return this.m_oApp.getSessaoAtual().getPapeisUtilizador();
+            return this.m_oApp.getSessaoAtual().getUserRoles();
         }
         return null;
     }
