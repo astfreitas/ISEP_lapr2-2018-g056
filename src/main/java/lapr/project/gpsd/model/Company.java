@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
@@ -10,12 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.Timer;
 import lapr.project.authentication.AuthenticationFacade;
 
-/**
- *
- * @author Paulo Maio <pam@isep.ipp.pt>
- */
 public class Company {
 
     private String designation;
