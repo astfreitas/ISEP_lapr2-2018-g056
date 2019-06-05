@@ -20,37 +20,36 @@ import lapr.project.gpsd.model.Company;
 public class ApplicationGPSD
 {
        
-    private final Company m_oEmpresa;
-    private final AuthenticationFacade m_oAutorizacao;
+    private final Company company;
+    private final AuthenticationFacade authentication;
     
     private ApplicationGPSD()
     {
         Properties props = getProperties();
-        this.m_oEmpresa = new Company(props.getProperty(Constants.PARAMS_COMPANY_DESIGNATION),
-                        props.getProperty(Constants.PARAMS_COMPANY_NIF));
-        this.m_oAutorizacao = this.m_oEmpresa.getAutorizacaoFacade();
+        this.company = new Company(props);
+        this.authentication = this.company.getAuthenticationFacade();
         bootstrap();
     }
     
-    public Company getEmpresa()
+    public Company getCompany()
     {
-        return this.m_oEmpresa;
+        return this.company;
     }
     
 
     public UserSession getCurrentSession()
     {
-        return this.m_oAutorizacao.getCurrentSession();
+        return this.authentication.getCurrentSession();
     }
     
-    public boolean doLogin(String strId, String strPwd)
+    public boolean doLogin(String id, String pwd)
     {
-       return this.m_oAutorizacao.doLogin(strId,strPwd) != null;
+       return this.authentication.doLogin(id,pwd) != null;
     }
     
     public void doLogout()
     {
-        this.m_oAutorizacao.doLogout();
+        this.authentication.doLogout();
     }
     
     private Properties getProperties()
@@ -76,20 +75,11 @@ public class ApplicationGPSD
     }
 
     
-    private void bootstrap()
-    {
-        this.m_oAutorizacao.registerUserRole(Constants.ROLE_ADMINISTRATIVE);
-        this.m_oAutorizacao.registerUserRole(Constants.ROLE_CLIENT);
-        this.m_oAutorizacao.registerUserRole(Constants.ROLE_HRO);
-        this.m_oAutorizacao.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
-        
-        this.m_oAutorizacao.registerUserWithRole("Administrativo 1", "adm1@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
-        this.m_oAutorizacao.registerUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
-        
-        this.m_oAutorizacao.registerUserWithRole("FRH 1", "frh1@esoft.pt", "123456",Constants.ROLE_HRO);
-        this.m_oAutorizacao.registerUserWithRole("FRH 2", "frh2@esoft.pt", "123456",Constants.ROLE_HRO);
-        
-        this.m_oAutorizacao.registerUserWithRoles("Martim", "martim@esoft.pt", "123456",new String[] {Constants.ROLE_HRO, Constants.ROLE_ADMINISTRATIVE});
+    private void bootstrap(){
+        this.authentication.registerUserRole(Constants.ROLE_ADMINISTRATIVE);
+        this.authentication.registerUserRole(Constants.ROLE_CLIENT);
+        this.authentication.registerUserRole(Constants.ROLE_HRO);
+        this.authentication.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
     }
     
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

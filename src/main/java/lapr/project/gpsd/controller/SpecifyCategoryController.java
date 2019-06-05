@@ -17,7 +17,7 @@ public class SpecifyCategoryController {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_ADMINISTRATIVE)) {
             throw new IllegalStateException("Non authorized user.");
         }
-        this.company = ApplicationGPSD.getInstance().getEmpresa();
+        this.company = ApplicationGPSD.getInstance().getCompany();
     }
 
     /**

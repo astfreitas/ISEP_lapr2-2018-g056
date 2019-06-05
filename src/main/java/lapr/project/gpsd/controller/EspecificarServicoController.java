@@ -26,7 +26,7 @@ public class EspecificarServicoController
     {
         if(!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_ADMINISTRATIVE))
             throw new IllegalStateException("Utilizador não Autorizado");
-        this.m_oEmpresa = ApplicationGPSD.getInstance().getEmpresa();
+        this.m_oEmpresa = ApplicationGPSD.getInstance().getCompany();
     }
     
     public List<Category> getCategorias()

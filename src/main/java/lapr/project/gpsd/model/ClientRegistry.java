@@ -86,7 +86,7 @@ public class ClientRegistry {
         String clientName = client.getName();
         String clientEmail = client.getEmail();
         
-        if(ApplicationGPSD.getInstance().getEmpresa().getAuthenticationFacade().registerUserWithRole(clientName, clientEmail, pwd, Constants.ROLE_CLIENT)){
+        if(ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(clientName, clientEmail, pwd, Constants.ROLE_CLIENT)){
             return this.addClient(client);
         }
         
