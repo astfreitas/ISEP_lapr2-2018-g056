@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
 import lapr.project.authentication.AuthenticationFacade;
 
 /**
@@ -32,6 +33,7 @@ public class Company {
     private GeographicAreaRegistry geographicAreaRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
     private IExternalService externalService;
+    private AssignServiceTask task;
     private Timer timer;
 
     /**
@@ -152,7 +154,7 @@ public class Company {
      * @return applicationRegistry
      */
     public SPApplicationRegistry getSPApplicationRegistry() {
-        return applicationRegistry;
+        return spApplicationRegistry;
     }
     
 
@@ -164,6 +166,12 @@ public class Company {
      */
     public AuthenticationFacade getAuthenticationFacade() {
         return this.authentication;
+    }
+    
+    public void assignServiceTask() {
+        int delay = 5;
+        this.task = new AssignServiceTask();
+//        this.timer = new Timer();
     }
 
 }
