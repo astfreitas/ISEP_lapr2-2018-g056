@@ -17,17 +17,17 @@ import lapr.project.gpsd.model.Company;
  *
  * @author paulomaio
  */
-public class AplicacaoGPSD
+public class ApplicationGPSD
 {
        
     private final Company m_oEmpresa;
     private final AuthenticationFacade m_oAutorizacao;
     
-    private AplicacaoGPSD()
+    private ApplicationGPSD()
     {
         Properties props = getProperties();
-        this.m_oEmpresa = new Company(props.getProperty(Constants.PARAMS_EMPRESA_DESIGNACAO),
-                        props.getProperty(Constants.PARAMS_EMPRESA_NIF));
+        this.m_oEmpresa = new Company(props.getProperty(Constants.PARAMS_COMPANY_DESIGNATION),
+                        props.getProperty(Constants.PARAMS_COMPANY_NIF));
         this.m_oAutorizacao = this.m_oEmpresa.getAutorizacaoFacade();
         bootstrap();
     }
@@ -38,7 +38,7 @@ public class AplicacaoGPSD
     }
     
 
-    public UserSession getSessaoAtual()
+    public UserSession getCurrentSession()
     {
         return this.m_oAutorizacao.getCurrentSession();
     }
@@ -58,13 +58,13 @@ public class AplicacaoGPSD
         Properties props = new Properties();
         
         // Adiciona propriedades e valores por omissão
-        props.setProperty(Constants.PARAMS_EMPRESA_DESIGNACAO, "Default Lda.");
-        props.setProperty(Constants.PARAMS_EMPRESA_NIF, "Default NIF");
+        props.setProperty(Constants.PARAMS_COMPANY_DESIGNATION, "Default Lda.");
+        props.setProperty(Constants.PARAMS_COMPANY_NIF, "Default NIF");
         
         // Lê as propriedades e valores definidas 
         try
         {
-            InputStream in = new FileInputStream(Constants.PARAMS_FICHEIRO);
+            InputStream in = new FileInputStream(Constants.PARAMS_FILE);
             props.load(in);
             in.close();
         }
@@ -78,29 +78,29 @@ public class AplicacaoGPSD
     
     private void bootstrap()
     {
-        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_CLIENTE);
-        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_FRH);
-        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_PRESTADOR_SERVICO);
+        this.m_oAutorizacao.registerUserRole(Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUserRole(Constants.ROLE_CLIENT);
+        this.m_oAutorizacao.registerUserRole(Constants.ROLE_HRO);
+        this.m_oAutorizacao.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
         
-        this.m_oAutorizacao.registerUserWithRole("Administrativo 1", "adm1@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registerUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
+        this.m_oAutorizacao.registerUserWithRole("Administrativo 1", "adm1@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
         
-        this.m_oAutorizacao.registerUserWithRole("FRH 1", "frh1@esoft.pt", "123456",Constants.PAPEL_FRH);
-        this.m_oAutorizacao.registerUserWithRole("FRH 2", "frh2@esoft.pt", "123456",Constants.PAPEL_FRH);
+        this.m_oAutorizacao.registerUserWithRole("FRH 1", "frh1@esoft.pt", "123456",Constants.ROLE_HRO);
+        this.m_oAutorizacao.registerUserWithRole("FRH 2", "frh2@esoft.pt", "123456",Constants.ROLE_HRO);
         
-        this.m_oAutorizacao.registerUserWithRoles("Martim", "martim@esoft.pt", "123456",new String[] {Constants.PAPEL_FRH, Constants.PAPEL_ADMINISTRATIVO});
+        this.m_oAutorizacao.registerUserWithRoles("Martim", "martim@esoft.pt", "123456",new String[] {Constants.ROLE_HRO, Constants.ROLE_ADMINISTRATIVE});
     }
     
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
-    private static AplicacaoGPSD singleton = null;
-    public static AplicacaoGPSD getInstance() 
+    private static ApplicationGPSD singleton = null;
+    public static ApplicationGPSD getInstance() 
     {
         if(singleton == null) 
         {
-            synchronized(AplicacaoGPSD.class) 
+            synchronized(ApplicationGPSD.class) 
             { 
-                singleton = new AplicacaoGPSD();
+                singleton = new ApplicationGPSD();
             }
         }
         return singleton;
