@@ -8,8 +8,8 @@ package lapr.project.gpsd.controller;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
-import lapr.project.autorizacao.AutorizacaoFacade;
-import lapr.project.autorizacao.model.SessaoUtilizador;
+import lapr.project.authentication.AuthenticationFacade;
+import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.Constants;
 import lapr.project.gpsd.model.Company;
 
@@ -21,7 +21,7 @@ public class AplicacaoGPSD
 {
        
     private final Company m_oEmpresa;
-    private final AutorizacaoFacade m_oAutorizacao;
+    private final AuthenticationFacade m_oAutorizacao;
     
     private AplicacaoGPSD()
     {
@@ -38,9 +38,9 @@ public class AplicacaoGPSD
     }
     
 
-    public SessaoUtilizador getSessaoAtual()
+    public UserSession getSessaoAtual()
     {
-        return this.m_oAutorizacao.getSessaoAtual();
+        return this.m_oAutorizacao.getCurrentSession();
     }
     
     public boolean doLogin(String strId, String strPwd)
@@ -78,18 +78,18 @@ public class AplicacaoGPSD
     
     private void bootstrap()
     {
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_CLIENTE);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_FRH);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_PRESTADOR_SERVICO);
+        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_ADMINISTRATIVO);
+        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_CLIENTE);
+        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_FRH);
+        this.m_oAutorizacao.registerUserRole(Constants.PAPEL_PRESTADOR_SERVICO);
         
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 1", "adm1@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 2", "adm2@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
+        this.m_oAutorizacao.registerUserWithRole("Administrativo 1", "adm1@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
+        this.m_oAutorizacao.registerUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
         
-        this.m_oAutorizacao.registaUtilizadorComPapel("FRH 1", "frh1@esoft.pt", "123456",Constants.PAPEL_FRH);
-        this.m_oAutorizacao.registaUtilizadorComPapel("FRH 2", "frh2@esoft.pt", "123456",Constants.PAPEL_FRH);
+        this.m_oAutorizacao.registerUserWithRole("FRH 1", "frh1@esoft.pt", "123456",Constants.PAPEL_FRH);
+        this.m_oAutorizacao.registerUserWithRole("FRH 2", "frh2@esoft.pt", "123456",Constants.PAPEL_FRH);
         
-        this.m_oAutorizacao.registaUtilizadorComPapeis("Martim", "martim@esoft.pt", "123456",new String[] {Constants.PAPEL_FRH, Constants.PAPEL_ADMINISTRATIVO});
+        this.m_oAutorizacao.registerUserWithRoles("Martim", "martim@esoft.pt", "123456",new String[] {Constants.PAPEL_FRH, Constants.PAPEL_ADMINISTRATIVO});
     }
     
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

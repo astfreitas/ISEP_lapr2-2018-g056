@@ -22,7 +22,7 @@ public class EspecificarCategoriaController
     private Category m_oCategoria;
     public EspecificarCategoriaController()
     {
-        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInComPapel(Constants.PAPEL_ADMINISTRATIVO))
+        if(!AplicacaoGPSD.getInstance().getSessaoAtual().isLoggedInWithRole(Constants.PAPEL_ADMINISTRATIVO))
             throw new IllegalStateException("Utilizador não Autorizado");
         this.m_oEmpresa = AplicacaoGPSD.getInstance().getEmpresa();
     }
