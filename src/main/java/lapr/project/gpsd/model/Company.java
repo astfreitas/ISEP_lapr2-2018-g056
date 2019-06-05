@@ -21,7 +21,6 @@ public class Company {
     private String NIF;
     private final AutorizacaoFacade authentication;
     private ServiceAssignementRegistry serviceAssignementRegistry;
-    private ServiceExecutionOrderRegistry serviceExecutionOrderRegistry;
     private ServiceOrderRegistry serviceOrderRegistry;
     private ServiceProviderRegistry serviceProviderRegistry;
     private ServiceRegistry serviceRegistry;
@@ -34,6 +33,13 @@ public class Company {
     private IExternalService externalService;
     private Timer timer;
 
+    /**
+     * 
+     * Creates an instance of Company
+     * 
+     * @param designation Company's designation
+     * @param NIF Company's NIF
+     */
     public Company(String designation, String NIF) {
         if ((designation == null) || (NIF == null)
                 || (designation.isEmpty()) || (NIF.isEmpty())) {
@@ -46,7 +52,6 @@ public class Company {
         this.authentication = new AutorizacaoFacade();
 
         this.serviceAssignementRegistry = new ServiceAssignementRegistry();
-        this.serviceExecutionOrderRegistry = new ServiceExecutionOrderRegistry();
         this.serviceOrderRegistry = new ServiceOrderRegistry();
         this.serviceProviderRegistry = new ServiceProviderRegistry();
         this.serviceRegistry = new ServiceRegistry();
@@ -59,8 +64,104 @@ public class Company {
         this.externalService = null;
         this.timer = null;
     }
+    
+    /**
+     * 
+     * Gets the instance of Service Assignement Registry
+     * 
+     * @return Service Assignement Registry
+     */
+    public ServiceAssignementRegistry getServiceAssignementRegistry(){
+        return this.serviceAssignementRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Service Order Registry
+     * 
+     * @return Service Order Registry
+     */
+    public ServiceOrderRegistry getServiceOrderRegistry(){
+        return this.serviceOrderRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Service Provider Registry
+     * 
+     * @return Service Provider Registry
+     */
+    public ServiceProviderRegistry getServiceProviderRegistry(){
+        return this.serviceProviderRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Service Registry
+     * 
+     * @return Service Registry
+     */
+    public ServiceRegistry getServiceRegistry(){
+        return this.serviceRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Service Request Registry
+     * 
+     * @return Service Request Registry
+     */
+    public ServiceRequestRegistry getServiceRequestRegistry(){
+        return this.serviceRequestRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Geographic Area Registry
+     * 
+     * @return Geographic Area Registry
+     */
+    public GeographicAreaRegistry getGeographicAreaRegistry(){
+        return this.geographicAreaRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Client Registry
+     * 
+     * @return Client Registry
+     */
+    public ClientRegistry getClientRegistry(){
+        return this.clientRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Category Registry
+     * 
+     * @return Category Registry
+     */
+    public CategoryRegistry getCategoryRegistry(){
+        return this.categoryRegistry;
+    }
+    
+    /**
+     * 
+     * Gets the instance of Service Registry
+     * 
+     * @return Service Registry
+     */
+    public ServiceRegistry getServiceRegistry(){
+        return this.serviceRegistry;
+    }
 
-    public AutorizacaoFacade getAutorizacaoFacade() {
+    /**
+     * 
+     * Gets the instance of Authentication Facade
+     * 
+     * @return Authentication Facade
+     */
+    public AutorizacaoFacade getAuthenticationFacade() {
         return this.authentication;
     }
 
