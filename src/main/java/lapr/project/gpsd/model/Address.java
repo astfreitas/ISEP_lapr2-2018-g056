@@ -1,67 +1,132 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.Objects;
 
-/**
- *
- * @author paulomaio
- */
-public class Address
-{
-    private String m_strLocal;
-    private String m_strCodPostal;
-    private String m_strLocalidade;
-    
-            
-    
-    public Address(String strLocal, String strCodPostal, String strLocalidade)
-    {
-        if ( (strLocal == null) || (strCodPostal == null) || (strLocalidade == null) ||
-                (strLocal.isEmpty())|| (strCodPostal.isEmpty()) || (strLocalidade.isEmpty()))
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        
-        this.m_strLocal = strLocal;
-        this.m_strCodPostal = strCodPostal;
-        this.m_strLocalidade = strLocalidade;
+public class Address{
+
+    private String local;
+    private PostalCode postalCode;
+    private String address;
+
+    /**
+     *
+     * Creates an instance of Address
+     *
+     * @param local City name
+     * @param postalCode Postal Code
+     * @param address Street name
+     */
+    public Address(String local, String postalCode, String address) {
+        if ((local == null) || (postalCode == null) || (address == null)
+                || (local.isEmpty()) || (postalCode.isEmpty()) || (address.isEmpty())) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        }
+
+        this.local = local;
+        this.postalCode = new PostalCode(postalCode);
+        this.address = address;
     }
-    
-    @Override
-    public int hashCode()
-    {
-        int hash = 7;
-        hash = 23 * hash + Objects.hash(this.m_strLocal,this.m_strCodPostal, this.m_strLocalidade);
-        return hash;
+
+    /**
+     * 
+     * Get the city name
+     * 
+     * @return City name
+     */
+    public String getLocal() {
+        return local;
     }
-    
+
+    /**
+     * 
+     * Alters the city name
+     * 
+     * @param local City name
+     */
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    /**
+     * 
+     * Returns the Postal Code
+     * 
+     * @return Postal Code
+     */
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
+
+    /**
+     * 
+     * Alters the Postal Code
+     * 
+     * @param postalCode Postal Code
+     */
+    public void setPostalCode(String postalCode) {
+        this.postalCode = new PostalCode(postalCode);
+    }
+
+    /**
+     * 
+     * Returns the street name
+     * 
+     * @return Street name
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * 
+     * Alters the street name
+     * 
+     * @param address Street name
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }   
+
+    /**
+     *
+     * Compares two instances of Address and returns true/false if they are
+     * equals or possess the same atributes
+     *
+     * @param otherAddress Address to compare
+     * @return True/false if they are
+     * equals or possess the same atributes
+     */
     @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
-        
+    public boolean equals(Object otherAddress) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
         // self check
-        if (this == o)
+        if (this == otherAddress) {
             return true;
+        }
         // null check
-        if (o == null)
+        if (otherAddress == null) {
             return false;
+        }
         // type check and cast
-        if (getClass() != o.getClass())
+        if (getClass() != otherAddress.getClass()) {
             return false;
+        }
         // field comparison
-        Address obj = (Address) o;
-        return (Objects.equals(m_strLocal, obj.m_strLocal) && 
-                Objects.equals(m_strCodPostal, obj.m_strCodPostal) &&
-                Objects.equals(m_strLocalidade, obj.m_strLocalidade));
+        Address obj = (Address) otherAddress;
+        return (Objects.equals(local, obj.local)
+                && Objects.equals(postalCode, obj.postalCode)
+                && Objects.equals(address, obj.address));
     }
-    
+
+    /**
+     * 
+     * Returns the info of the Address in a String
+     * 
+     * @return Info of the instance
+     */
     @Override
-    public String toString()
-    {
-        return String.format("%s \n %s - %s", this.m_strLocal, this.m_strCodPostal, this.m_strLocalidade);
+    public String toString() {
+        return String.format("%s \n %s - %s", this.local, this.postalCode, this.address);
     }
-    
 }
