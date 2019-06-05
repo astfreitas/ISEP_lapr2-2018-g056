@@ -2,7 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import lapr.project.gpsd.controller.AplicacaoGPSD;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 
 public class ClientRegistry {
   private List<Client> clients;
@@ -86,7 +86,7 @@ public class ClientRegistry {
         String clientName = client.getName();
         String clientEmail = client.getEmail();
         
-        if(AplicacaoGPSD.getInstance().getEmpresa().getAuthenticationFacade().registerUserWithRole(clientName, clientEmail, pwd, Constants.PAPEL_CLIENTE)){
+        if(ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(clientName, clientEmail, pwd, Constants.ROLE_CLIENT)){
             return this.addClient(client);
         }
         

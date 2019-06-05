@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 

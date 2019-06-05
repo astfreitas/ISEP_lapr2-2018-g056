@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
+import java.util.Timer;
 import lapr.project.authentication.AuthenticationFacade;
 
-/**
- *
- * @author Paulo Maio <pam@isep.ipp.pt>
- */
 public class Company {
 
     private String designation;
@@ -32,22 +25,22 @@ public class Company {
     private IAssignmentAlgoritm assignmentAlgoritm;
     private IExternalService externalService;
     private Timer timer;
+    private Properties props;
 
     /**
-     * 
+     *
      * Creates an instance of Company
-     * 
-     * @param designation Company's designation
-     * @param NIF Company's NIF
+     *
+     * @param props Company properties
      */
-    public Company(String designation, String NIF) {
+    public Company(Properties props) {
+        this.props = props;
+        this.designation = props.getProperty(Constants.PARAMS_COMPANY_DESIGNATION);
+        this.NIF = props.getProperty(Constants.PARAMS_COMPANY_NIF);
         if ((designation == null) || (NIF == null)
                 || (designation.isEmpty()) || (NIF.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-
-        this.designation = designation;
-        this.NIF = NIF;
 
         this.authentication = new AuthenticationFacade();
 
@@ -64,105 +57,134 @@ public class Company {
         this.externalService = null;
         this.timer = null;
     }
-    
+
     /**
-     * 
+     *
      * Gets the instance of Service Assignement Registry
-     * 
+     *
      * @return Service Assignement Registry
      */
-    public ServiceAssignementRegistry getServiceAssignementRegistry(){
+    public ServiceAssignementRegistry getServiceAssignementRegistry() {
         return this.serviceAssignementRegistry;
     }
-    
+
     /**
-     * 
+     *
      * Gets the instance of Service Order Registry
-     * 
+     *
      * @return Service Order Registry
      */
-    public ServiceOrderRegistry getServiceOrderRegistry(){
+    public ServiceOrderRegistry getServiceOrderRegistry() {
         return this.serviceOrderRegistry;
     }
-    
+
     /**
-     * 
+     *
      * Gets the instance of Service Provider Registry
-     * 
+     *
      * @return Service Provider Registry
      */
-    public ServiceProviderRegistry getServiceProviderRegistry(){
+    public ServiceProviderRegistry getServiceProviderRegistry() {
         return this.serviceProviderRegistry;
     }
-    
+
     /**
-     * 
+     *
      * Gets the instance of Service Registry
-     * 
+     *
      * @return Service Registry
      */
-    public ServiceRegistry getServiceRegistry(){
-        return this.serviceRegistry;
-    }
-    
-    /**
-     * 
-     * Gets the instance of Service Request Registry
-     * 
-     * @return Service Request Registry
-     */
-    public ServiceRequestRegistry getServiceRequestRegistry(){
-        return this.serviceRequestRegistry;
-    }
-    
-    /**
-     * 
-     * Gets the instance of Geographic Area Registry
-     * 
-     * @return Geographic Area Registry
-     */
-    public GeographicAreaRegistry getGeographicAreaRegistry(){
-        return this.geographicAreaRegistry;
-    }
-    
-    /**
-     * 
-     * Gets the instance of Client Registry
-     * 
-     * @return Client Registry
-     */
-    public ClientRegistry getClientRegistry(){
-        return this.clientRegistry;
-    }
-    
-    /**
-     * 
-     * Gets the instance of Category Registry
-     * 
-     * @return Category Registry
-     */
-    public CategoryRegistry getCategoryRegistry(){
-        return this.categoryRegistry;
-    }
-    
-    /**
-     * 
-     * Gets the instance of Service Registry
-     * 
-     * @return Service Registry
-     */
-    public ServiceRegistry getServiceRegistry(){
+    public ServiceRegistry getServiceRegistry() {
         return this.serviceRegistry;
     }
 
     /**
-     * 
+     *
+     * Gets the instance of Service Request Registry
+     *
+     * @return Service Request Registry
+     */
+    public ServiceRequestRegistry getServiceRequestRegistry() {
+        return this.serviceRequestRegistry;
+    }
+
+    /**
+     *
+     * Gets the instance of Geographic Area Registry
+     *
+     * @return Geographic Area Registry
+     */
+    public GeographicAreaRegistry getGeographicAreaRegistry() {
+        return this.geographicAreaRegistry;
+    }
+
+    /**
+     *
+     * Gets the instance of Client Registry
+     *
+     * @return Client Registry
+     */
+    public ClientRegistry getClientRegistry() {
+        return this.clientRegistry;
+    }
+
+    /**
+     *
+     * Gets the instance of Category Registry
+     *
+     * @return Category Registry
+     */
+    public CategoryRegistry getCategoryRegistry() {
+        return this.categoryRegistry;
+    }
+
+    /**
+     *
      * Gets the instance of Authentication Facade
-     * 
+     *
      * @return Authentication Facade
      */
     public AuthenticationFacade getAuthenticationFacade() {
         return this.authentication;
     }
 
+     /**
+     *
+     * Gets the instance of Service Type Registry
+     *
+     * @return Service Registry
+     */
+    public ServiceTypeRegistry getServiceTypeRegistry() {
+        return serviceTypeRegistry;
+    }
+
+     /**
+     *
+     * Gets the instance of Assignment Algoritm
+     *
+     * @return Assignment algoritm
+     */
+    public IAssignmentAlgoritm getAssignmentAlgoritm() {
+        return assignmentAlgoritm;
+    }
+
+     /**
+     *
+     * Gets the instance of Timer
+     *
+     * @return Timer
+     */
+    public Timer getTimer() {
+        return timer;
+    }
+
+     /**
+     *
+     * Gets the instance of Properties
+     *
+     * @return Service Registry
+     */
+    public Properties getProps() {
+        return props;
+    }
 }
