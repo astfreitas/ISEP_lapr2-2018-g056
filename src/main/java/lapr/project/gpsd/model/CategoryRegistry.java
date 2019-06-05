@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class CategoryRegistry {
+public class CategoryRegistry {
   private List<Category> categories;
 
     /**
@@ -70,4 +70,10 @@ class CategoryRegistry {
     public boolean addCategory(Category cat){
         return categories.add(cat);
     }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+    
+    
 }

@@ -26,6 +26,7 @@ public class Company {
     private ServiceRegistry serviceRegistry;
     private ServiceRequestRegistry serviceRequestRegistry;
     private ServiceTypeRegistry serviceTypeRegistry;
+    private SPApplicationRegistry spApplicationRegistry;
     private CategoryRegistry categoryRegistry;
     private ClientRegistry clientRegistry;
     private GeographicAreaRegistry geographicAreaRegistry;
@@ -57,6 +58,7 @@ public class Company {
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRequestRegistry = new ServiceRequestRegistry();
         this.serviceTypeRegistry = new ServiceTypeRegistry();
+        this.spApplicationRegistry = new SPApplicationRegistry();
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
@@ -144,16 +146,15 @@ public class Company {
     public CategoryRegistry getCategoryRegistry(){
         return this.categoryRegistry;
     }
-    
+
     /**
-     * 
-     * Gets the instance of Service Registry
-     * 
-     * @return Service Registry
+     * Gets the instance of SPApplicationRegistry
+     * @return applicationRegistry
      */
-    public ServiceRegistry getServiceRegistry(){
-        return this.serviceRegistry;
+    public SPApplicationRegistry getSPApplicationRegistry() {
+        return applicationRegistry;
     }
+    
 
     /**
      * 
