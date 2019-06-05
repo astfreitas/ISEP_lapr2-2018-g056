@@ -2,9 +2,9 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr.project.gpsd.controller.AplicacaoGPSD;
 
-
-class ClientRegistry {
+public class ClientRegistry {
   private List<Client> clients;
 
   /**
@@ -72,5 +72,24 @@ class ClientRegistry {
             }
         }
         return null;
+    }
+    
+    /**
+     * 
+     * Registers the Client as a User and adds it to the Registry
+     * 
+     * @param client Instance of Client to be registed
+     * @param pwd Client's password
+     * @return True/false if the operation succeeds/fails
+     */
+    public boolean registerClient(Client client, String pwd){
+        String clientName = client.getName();
+        String clientEmail = client.getEmail();
+        
+        if(AplicacaoGPSD.getInstance().getEmpresa().getAuthenticationFacade().registerUserWithRole(clientName, clientEmail, pwd, Constants.PAPEL_CLIENTE)){
+            return this.addClient(client);
+        }
+        
+        return false;
     }
 }

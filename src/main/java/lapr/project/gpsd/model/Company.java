@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lapr.project.autorizacao.AutorizacaoFacade;
+import lapr.project.authentication.AuthenticationFacade;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Company {
 
     private String designation;
     private String NIF;
-    private final AutorizacaoFacade authentication;
+    private final AuthenticationFacade authentication;
     private ServiceAssignementRegistry serviceAssignementRegistry;
     private ServiceOrderRegistry serviceOrderRegistry;
     private ServiceProviderRegistry serviceProviderRegistry;
@@ -49,7 +49,7 @@ public class Company {
         this.designation = designation;
         this.NIF = NIF;
 
-        this.authentication = new AutorizacaoFacade();
+        this.authentication = new AuthenticationFacade();
 
         this.serviceAssignementRegistry = new ServiceAssignementRegistry();
         this.serviceOrderRegistry = new ServiceOrderRegistry();
@@ -161,7 +161,7 @@ public class Company {
      * 
      * @return Authentication Facade
      */
-    public AutorizacaoFacade getAuthenticationFacade() {
+    public AuthenticationFacade getAuthenticationFacade() {
         return this.authentication;
     }
 
