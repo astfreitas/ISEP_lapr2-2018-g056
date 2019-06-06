@@ -16,7 +16,7 @@ class ServiceRegistry {
      *
      * @param services
      */
-    public ServiceRegistry(List<Service> services) {
+    public ServiceRegistry() {
         services = new ArrayList();
     }
 

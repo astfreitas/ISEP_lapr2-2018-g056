@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import lapr.project.gpsd.utils.Constants;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -21,26 +22,53 @@ public class AddDailyAvailabilityController {
      *
      */
     public AddDailyAvailabilityController() {
+                if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
+            throw new IllegalStateException("Non authorized user.");
+        }
+        this.company = ApplicationGPSD.getInstance().getCompany();
         avalList = new ArrayList<>();
         setAvailabilities();
     }
 
+    /**
+     * 
+     * Gets the necessary attributes to use the AddDailyAvailabilityController
+     * 
+     */
     public void setAvailabilities() {
-        ApplicationGPSD app = ApplicationGPSD.getInstance();
-        company = app.getCompany();
-        UserSession session = app.getCurrentSession();
+        UserSession session = ApplicationGPSD.getInstance().getCurrentSession();
         String email = session.getUserEmail();
         ServiceProviderRegistry spr = company.getServiceProviderRegistry();
         sp = spr.getServiceProviverByEmail(email);
     }
 
-    public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalDate eDate, LocalTime eTime) {
+    /**
+     * 
+     * Creates one instance of Availability
+     * 
+     * @param date Date of Availability
+     * @param sTime Start time of Availability
+     * @param eTime End of Availability
+     * @return returns a List of availabilities
+     */
+    public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalTime eTime) {
         spal = sp.getSpAvailabilityList();
         Availability aval = spal.newAvailability(date, sTime, eTime);
         avalList.add(aval);
         return avalList;
     }
 
+    /**
+     * 
+     * Creates various instances of Availability with a repetition pattern
+     * 
+     * @param date Date of Availability
+     * @param sTime Start time of Availability
+     * @param eDate End date of repetition
+     * @param eTime End of Availability
+     * @param repPattern Repetition pattern
+     * @return returns a List of availabilities
+     */
     public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalDate eDate, LocalTime eTime, String repPattern) {
         spal = sp.getSpAvailabilityList();
         Availability aval;
@@ -53,16 +81,16 @@ public class AddDailyAvailabilityController {
                 avalList.add(aval);
             }
             switch (repPattern) {
-                case "Daily":
+                case Constants.REPETITION_PATTERN_DAILY:
                     dateAval = dateAval.plusDays(1);
                     break;
-                case "Weekly":
+                case Constants.REPETITION_PATTERN_WEEKLY:
                     dateAval = dateAval.plusWeeks(1);
                     break;
-                case "Fortnightly":
+                case Constants.REPETITION_PATTERN_FORTNIGHTLY:
                     dateAval = dateAval.plusWeeks(2);
                     break;
-                case "Monthly":
+                case Constants.REPETITION_PATTERN_MONTHLY:
                     dateAval = dateAval.plusMonths(1);
                     break;
                 default:
@@ -72,6 +100,12 @@ public class AddDailyAvailabilityController {
         return avalList;
     }
     
+    /**
+     * 
+     * Registers the availability on the Service Provider's list
+     * 
+     * @return The success of the operation
+     */
     public boolean registerAvailability(){
         return spal.addAvailability(avalList);
     }

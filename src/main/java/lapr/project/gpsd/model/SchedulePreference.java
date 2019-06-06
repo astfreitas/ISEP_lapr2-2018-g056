@@ -3,7 +3,6 @@ package lapr.project.gpsd.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
-import lapr.project.utils.*;
 
 public class SchedulePreference {
 

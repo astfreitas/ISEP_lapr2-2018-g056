@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

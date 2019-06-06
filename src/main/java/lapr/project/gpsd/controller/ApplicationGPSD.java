@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.Properties;
 import lapr.project.authentication.AuthenticationFacade;
 import lapr.project.authentication.model.UserSession;
-import lapr.project.gpsd.model.Constants;
+import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
 
 /**

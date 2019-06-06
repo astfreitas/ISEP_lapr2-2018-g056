@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.CategoryRegistry;
-import lapr.project.gpsd.model.Constants;
+import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.model.ServiceType;
