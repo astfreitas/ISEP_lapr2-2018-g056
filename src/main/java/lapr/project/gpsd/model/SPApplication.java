@@ -91,4 +91,12 @@ public class SPApplication {
         return this.address != null;
     }
 
+    public AcademicCompetence newAcademicCompetence(String course, String level, double grade) {
+        return new AcademicCompetence(course, name, grade);
+    }
+    
+    public ProfessionalCompetence newProfessionalCompetence(String description) {
+        return new ProfessionalCompetence(description);
+    }
+
 }

@@ -1,6 +1,6 @@
 package lapr.project.gpsd.model;
 
-class AcademicCompetence {
+public class AcademicCompetence {
   private String course;
   private String level;
   private double score;

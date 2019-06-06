@@ -10,6 +10,7 @@ public class ServiceRequestDescription {
     private Service service;
     private String description;
     private double duration;
+    private boolean assigned;
 
     /**
      * cosntructor with 3 parameters
@@ -21,6 +22,7 @@ public class ServiceRequestDescription {
         this.service = service;
         this.description = description;
         this.duration = duration;
+        this.assigned = false;
     }
     
     /**
@@ -35,6 +37,16 @@ public class ServiceRequestDescription {
     public String toString() {
         return "ServiceRequestDescription{" + "service=" + service + ", description=" + description + ", duration=" + duration + '}';
     }
+
+    public void setAssigned(boolean assigned) {
+        this.assigned = assigned;
+    }
+
+    public boolean isAssigned() {
+        return assigned;
+    }
+    
+    
     
     
     

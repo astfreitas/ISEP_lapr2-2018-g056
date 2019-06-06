@@ -160,6 +160,11 @@ public class Company {
         return this.authentication;
     }
 
+    /**
+     * Creates and sets the Company's AssignServiceTask instance according to
+     * the configuration file (initial DELAY and regular INTERVAL). If the
+     * variables are not properly set, display message.
+     */
     public void assignServiceTask() {
         int interval = 0;
         int delay = -1;
@@ -167,13 +172,15 @@ public class Company {
             delay = Integer.parseInt(props.getProperty("DELAY"));
             interval = Integer.parseInt(props.getProperty("INTERVAL"));
         } catch (Exception e) {
-            System.out.println("no dice");
+            System.out.println("no dice. cannot get DELAY or/and INTERVAL");
             System.out.println(e.getMessage());
         }
         if (interval > 0 && delay >= 0) {
             this.task = new AssignServiceTask();
             this.timer = new Timer();
             this.timer.scheduleAtFixedRate(task, delay, interval);
+        } else {
+            System.out.println("no dice. INTERVAL or DELAY is wack.");
         }
     }
 

@@ -1,5 +1,7 @@
 package lapr.project.gpsd.model;
 
+import java.util.List;
+
 /**
  *
  * @author astfr
@@ -156,8 +158,18 @@ public class ServiceProvider {
         return spAvailabilityList;
     }
     
+    public List<Integer> getRatings() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+    public double getAverageRating() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+
+    public void setClassification(String label) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

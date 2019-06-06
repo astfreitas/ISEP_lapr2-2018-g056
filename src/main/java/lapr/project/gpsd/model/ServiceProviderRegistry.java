@@ -32,4 +32,20 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
+
+    public List<ServiceProvider> getServiceProviders() {
+        return spList;
+    }
+    
+    public ServiceProvider getServiceProviderByEmail(String email) {
+        return null;
+        // to-do
+    }
+    
+    public List<Double> getAverageRatings() {
+        return null;
+        // to-do
+    }
+    
+    
 }
