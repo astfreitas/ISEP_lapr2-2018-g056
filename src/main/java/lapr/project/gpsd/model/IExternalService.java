@@ -5,6 +5,7 @@
  */
 package lapr.project.gpsd.model;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface IExternalService {
     
-    public List<Location> getActsOnLocationList(String pCode, double radius);
+    public List<Location> getActsOnLocationList(PostalCode pCode, double radius);
     
     public boolean checkPostalCodeExist(String cp);
     

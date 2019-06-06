@@ -9,7 +9,7 @@ class ServiceRegistry {
      * list of the existing services
      */
 
-    private List<Service> services;
+    private List<Service> services = new ArrayList<>();
 
     /**
      * constructor of service registry with an array of services as parameter
@@ -84,5 +84,20 @@ class ServiceRegistry {
             }
         }
         return null;
+    }
+    
+    /**
+     * Method return a list of services of a given category id;
+     * @param idCat string of the category id
+     * @return returns a list of services associated with the category.
+     */
+    public List<Service> getServicesFromCategory(String idCat) {
+        List<Service> listOfServicesFromCat = new ArrayList();
+        for(Service s : services) {
+            if(s.getCategory().getCode().equals(idCat)) {
+                listOfServicesFromCat.add(s);
+            }
+        }
+        return listOfServicesFromCat;
     }
 }
