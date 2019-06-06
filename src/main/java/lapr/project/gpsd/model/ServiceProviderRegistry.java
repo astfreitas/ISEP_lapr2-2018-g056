@@ -1,18 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author astfr
- */
 public class ServiceProviderRegistry {
-    
+
     private List<ServiceProvider> spList;
-    
+
+    /**
+     *
+     * Creates an instance of Service Provicer Registry
+     *
+     */
+    public ServiceProviderRegistry() {
+        this.spList = new ArrayList<>();
+    }
+
+    /**
+     *
+     * Searches the Service Provider registry for a SP with a determined email
+     * and returns it.
+     *
+     * @param email Email for the preferred SP
+     * @return Service provider who has the email
+     */
+    public ServiceProvider getServiceProviverByEmail(String email) {
+        for (ServiceProvider sp : spList) {
+            if (sp.getEmail().equals(email)) {
+                return sp;
+            }
+        }
+        return null;
+    }
 }

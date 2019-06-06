@@ -1,8 +1,9 @@
 package lapr.project.gpsd.model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
+import lapr.project.utils.*;
 
 public class SchedulePreference {
 
@@ -10,8 +11,8 @@ public class SchedulePreference {
      * SchedulePreference atributes
      */
     private int order;
-    private Date date;
-    private Time hour;
+    private LocalDate date;
+    private LocalTime time;
 
     /**
      * service constructor with 3 parameters
@@ -20,10 +21,10 @@ public class SchedulePreference {
      * @param date
      * @param time
      */
-    public SchedulePreference(int order, Date date, Time hour) {
+    public SchedulePreference(int order, LocalDate date, LocalTime time) {
         this.order = order;
         this.date = date;
-        this.hour = hour;
+        this.time = time;
     }
 
     /**
@@ -40,17 +41,17 @@ public class SchedulePreference {
      *
      * @return date
      */
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
     /**
-     * returns the hour
+     * returns the time
      *
-     * @return hour
+     * @return time
      */
-    public Time getHour() {
-        return hour;
+    public LocalTime getTime() {
+        return time;
     }
 
     /**
@@ -67,24 +68,24 @@ public class SchedulePreference {
      *
      * @param date
      */
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
     /**
-     * modifies hour
+     * modifies time
      *
-     * @param hour
+     * @param time
      */
-    public void setHour(Time hour) {
-        this.hour = hour;
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + Objects.hashCode(this.date);
-        hash = 13 * hash + Objects.hashCode(this.hour);
+        hash = 13 * hash + Objects.hashCode(this.time);
         return hash;
     }
 
@@ -106,7 +107,7 @@ public class SchedulePreference {
         if (!Objects.equals(this.date, other.date)) {
             return false;
         }
-        if (!Objects.equals(this.hour, other.hour)) {
+        if (!Objects.equals(this.time, other.time)) {
             return false;
         }
         return true;
@@ -114,7 +115,7 @@ public class SchedulePreference {
 
     @Override
     public String toString() {
-        return order + " : " + date + " às " + hour;
+        return order + " : " + date + " às " + time;
     }
     
     
@@ -147,7 +148,7 @@ public class SchedulePreference {
      */
     /*
     public int toMinutes() {
-        return date.countDays() * 24 * 60 + hour.getHours()* 60 + hour.getMinutes();
+        return date.countDays() * 24 * 60 + time.getHours()* 60 + time.getMinutes();
     }
      */
     
