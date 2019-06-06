@@ -47,11 +47,11 @@ public class SchedulePreference {
     }
 
     /**
-     * returns the hour
+     * returns the time
      *
-     * @return hour
+     * @return time
      */
-    public LocalTime getHour() {
+    public LocalTime getTime() {
         return hour;
     }
 
