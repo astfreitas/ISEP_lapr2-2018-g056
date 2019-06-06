@@ -82,4 +82,10 @@ public class CategoryRegistry {
     public boolean registerCategory(Category category) {
         return this.addCategory(category);
     }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+    
+    
 }
