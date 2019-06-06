@@ -2,7 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.util.List;
 
-class SPApplication {
+public class SPApplication {
 
     private String name;
     private String NIF;
@@ -80,10 +80,23 @@ class SPApplication {
     public boolean addCategory(Category cat) {
         return this.categories.add(cat);
     }
-    
+
     public boolean addAcademicCompetence(AcademicCompetence ac) {
         return this.academicCompetences.add(ac);
     }
     
+    public boolean setAddress(String local, String postalCode, String address) {
+        Address a = new Address(local, postalCode, address);
+        this.address = a;
+        return this.address != null;
+    }
+
+    public AcademicCompetence newAcademicCompetence(String course, String level, double grade) {
+        return new AcademicCompetence(course, name, grade);
+    }
+    
+    public ProfessionalCompetence newProfessionalCompetence(String description) {
+        return new ProfessionalCompetence(description);
+    }
 
 }

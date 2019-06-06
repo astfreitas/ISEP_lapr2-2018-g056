@@ -13,17 +13,19 @@ public class Company {
     private String designation;
     private String NIF;
     private final AuthenticationFacade authentication;
-    private ServiceAssignementRegistry serviceAssignementRegistry;
+    private ServiceAssignmentRegistry serviceAssignementRegistry;
     private ServiceOrderRegistry serviceOrderRegistry;
     private ServiceProviderRegistry serviceProviderRegistry;
     private ServiceRegistry serviceRegistry;
     private ServiceRequestRegistry serviceRequestRegistry;
     private ServiceTypeRegistry serviceTypeRegistry;
+    private SPApplicationRegistry spApplicationRegistry;
     private CategoryRegistry categoryRegistry;
     private ClientRegistry clientRegistry;
     private GeographicAreaRegistry geographicAreaRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
     private IExternalService externalService;
+    private AssignServiceTask task;
     private Timer timer;
     private Properties props;
 
@@ -44,12 +46,13 @@ public class Company {
 
         this.authentication = new AuthenticationFacade();
 
-        this.serviceAssignementRegistry = new ServiceAssignementRegistry();
+        this.serviceAssignementRegistry = new ServiceAssignmentRegistry();
         this.serviceOrderRegistry = new ServiceOrderRegistry();
         this.serviceProviderRegistry = new ServiceProviderRegistry();
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRequestRegistry = new ServiceRequestRegistry();
         this.serviceTypeRegistry = new ServiceTypeRegistry();
+        this.spApplicationRegistry = new SPApplicationRegistry();
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
@@ -64,7 +67,7 @@ public class Company {
      *
      * @return Service Assignement Registry
      */
-    public ServiceAssignementRegistry getServiceAssignementRegistry() {
+    public ServiceAssignmentRegistry getServiceAssignementRegistry() {
         return this.serviceAssignementRegistry;
     }
 
@@ -139,6 +142,15 @@ public class Company {
     }
 
     /**
+     * Gets the instance of SPApplicationRegistry
+     *
+     * @return applicationRegistry
+     */
+    public SPApplicationRegistry getSPApplicationRegistry() {
+        return spApplicationRegistry;
+    }
+
+    /**
      *
      * Gets the instance of Authentication Facade
      *
@@ -148,7 +160,31 @@ public class Company {
         return this.authentication;
     }
 
-     /**
+    /**
+     * Creates and sets the Company's AssignServiceTask instance according to
+     * the configuration file (initial DELAY and regular INTERVAL). If the
+     * variables are not properly set, display message.
+     */
+    public void assignServiceTask() {
+        int interval = 0;
+        int delay = -1;
+        try {
+            delay = Integer.parseInt(props.getProperty("DELAY"));
+            interval = Integer.parseInt(props.getProperty("INTERVAL"));
+        } catch (Exception e) {
+            System.out.println("no dice. cannot get DELAY or/and INTERVAL");
+            System.out.println(e.getMessage());
+        }
+        if (interval > 0 && delay >= 0) {
+            this.task = new AssignServiceTask();
+            this.timer = new Timer();
+            this.timer.scheduleAtFixedRate(task, delay, interval);
+        } else {
+            System.out.println("no dice. INTERVAL or DELAY is wack.");
+        }
+    }
+
+    /**
      *
      * Gets the instance of Service Type Registry
      *
@@ -158,7 +194,7 @@ public class Company {
         return serviceTypeRegistry;
     }
 
-     /**
+    /**
      *
      * Gets the instance of Assignment Algoritm
      *
@@ -168,7 +204,7 @@ public class Company {
         return assignmentAlgoritm;
     }
 
-     /**
+    /**
      *
      * Gets the instance of Timer
      *
@@ -178,7 +214,7 @@ public class Company {
         return timer;
     }
 
-     /**
+    /**
      *
      * Gets the instance of Properties
      *

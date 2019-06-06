@@ -8,6 +8,7 @@ class ServiceRegistry {
     /**
      * list of the existing services
      */
+
     private List<Service> services;
 
     /**
@@ -18,6 +19,7 @@ class ServiceRegistry {
     public ServiceRegistry(List<Service> services) {
         services = new ArrayList();
     }
+
 
     /**
      * validates if a service already exists in the existing list

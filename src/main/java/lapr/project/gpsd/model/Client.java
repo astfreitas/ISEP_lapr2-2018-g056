@@ -74,6 +74,32 @@ public class Client
         return this.addresses.add(address);
     }
     
+    
+    /**
+     * 
+     * returns the list of Addresses in the client
+     * 
+     * @return returns the list of Addresses in the client
+     */
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+    
+    /**
+     * 
+     * returns the Address Instance of the client by local, postalCode and address
+     * @return returns client's Address
+     */
+    public Address getAddress(String local, PostalCode postalCode, String address) {
+        for(Address a : addresses) {
+            if(a.getLocal().equals(local) && a.getPostalCode().equals(postalCode) && a.getAddress().equals(address)) {
+                return a;
+            }
+        }
+        return null;
+    }
+    
+    
     /**
      * 
      * Removes an Address to the Client's instance

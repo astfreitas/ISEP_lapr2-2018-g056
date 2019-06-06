@@ -72,6 +72,10 @@ public class CategoryRegistry {
         return categories.add(cat);
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     /**
      *
      * Registers the Category as a User and adds it to the Registry
@@ -83,9 +87,4 @@ public class CategoryRegistry {
         return this.addCategory(category);
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-    
-    
 }

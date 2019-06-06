@@ -1,6 +1,6 @@
 package lapr.project.gpsd.model;
 
-class ProfessionalCompetence {
+public class ProfessionalCompetence {
 
     private String description;
 
