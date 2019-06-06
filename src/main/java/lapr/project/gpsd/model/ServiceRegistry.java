@@ -9,15 +9,7 @@ class ServiceRegistry {
     /**
      * list of the existing services
      */
-    private List<Service> services;
-
-    /**
-     * constructor of service registry with an array of services as parameter
-     * @param services 
-     */
-    public ServiceRegistry(List<Service> services) {
-        services = new ArrayList();
-    }
+    private List<Service> services = new ArrayList<>();
 
     /**
      * validates if a service already exists in the existing list

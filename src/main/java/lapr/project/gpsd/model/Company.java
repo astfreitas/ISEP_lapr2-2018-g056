@@ -152,46 +152,6 @@ public class Company {
 
     /**
      *
-     * Gets the instance of Service Request Registry
-     *
-     * @return Service Request Registry
-     */
-    public ServiceRequestRegistry getServiceRequestRegistry() {
-        return this.serviceRequestRegistry;
-    }
-
-    /**
-     *
-     * Gets the instance of Geographic Area Registry
-     *
-     * @return Geographic Area Registry
-     */
-    public GeographicAreaRegistry getGeographicAreaRegistry() {
-        return this.geographicAreaRegistry;
-    }
-
-    /**
-     *
-     * Gets the instance of Client Registry
-     *
-     * @return Client Registry
-     */
-    public ClientRegistry getClientRegistry() {
-        return this.clientRegistry;
-    }
-
-    /**
-     *
-     * Gets the instance of Category Registry
-     *
-     * @return Category Registry
-     */
-    public CategoryRegistry getCategoryRegistry() {
-        return this.categoryRegistry;
-    }
-
-    /**
-     *
      * Gets the instance of Authentication Facade
      *
      * @return Authentication Facade
