@@ -51,8 +51,8 @@ public class EvaluateSPController {
         this.r = sp.getRatings();
         this.arl = spr.getAverageRatings();
         this.ar = sp.getAverageRating();
-        this.sps = new ServiceProviderStatistics(ar, arl);
-        return this.sps;
+        this.sps = new ServiceProviderStatistics(arl, ar);
+        return sps;
     }
 
     /**
