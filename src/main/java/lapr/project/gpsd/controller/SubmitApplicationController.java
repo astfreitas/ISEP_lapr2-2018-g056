@@ -67,11 +67,12 @@ public class SubmitApplicationController {
      * @param local
      * @param postalCode
      * @param address
-     * @return true if Address is successfully instantiated and added to
-     * SPApplication
+     * @return true if Address is successfully instantiated 
      */
     public boolean newAddress(String local, String postalCode, String address) {
-        return spa.setAddress(local, postalCode, address);
+        Address a = spa.newAddress(local, postalCode, address);
+        spa.setAddress(a);
+        return a != null;
     }
 
     /**
