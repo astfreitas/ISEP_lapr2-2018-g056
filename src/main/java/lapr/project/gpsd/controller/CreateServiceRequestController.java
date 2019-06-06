@@ -36,8 +36,7 @@ public class CreateServiceRequestController {
      * @param address 
      */
     public void setAddress(String local, PostalCode postalCode, String address) {
-        cli.getAddress(local, postalCode, address);
-        
+        cli.getAddress(local, postalCode, address); 
     }
    
     
