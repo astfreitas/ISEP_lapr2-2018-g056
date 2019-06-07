@@ -2,13 +2,7 @@ package lapr.project.gpsd.controller;
 
 import java.util.List;
 import lapr.project.authentication.model.UserSession;
-import lapr.project.gpsd.model.Client;
-import lapr.project.gpsd.model.ClientRegistry;
-import lapr.project.gpsd.model.Company;
-import lapr.project.gpsd.model.ServiceAssignment;
-import lapr.project.gpsd.model.ServiceAssignmentRegistry;
-import lapr.project.gpsd.model.ServiceRequest;
-import lapr.project.gpsd.model.ServiceRequestRegistry;
+import lapr.project.gpsd.model.*;
 
 
 public class AcceptServiceRequestController {
@@ -42,15 +36,21 @@ public class AcceptServiceRequestController {
     }
     
     /**
-     * 
+     * Method removes list of service assignments
      * @param listServiceAssignments 
      */
     public void rejectServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
         sar.removeServiceAssignment(listServiceAssignments, false);
     }
     
+    /**
+     * Method accepts list of service assignments
+     * @param listServiceAssignments 
+     */
     public void acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
-        
+        sar.removeServiceAssignment(listServiceAssignments, true);
+        ServiceOrderRegistry sor = company.getServiceOrderRegistry();
+        sor.registerServiceOrders(listServiceAssignments);
     }
     
     

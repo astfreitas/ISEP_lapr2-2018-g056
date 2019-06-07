@@ -19,9 +19,12 @@ public class Constants{
     public static final String PARAMS_FILE = "config.properties";
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
     public static final String PARAMS_COMPANY_NIF = "Company.NIF";
-    
+
+    public static final String PENDING_ORDER = "Pending";
+
     public static final String REPETITION_PATTERN_DAILY = "DAILY";
     public static final String REPETITION_PATTERN_WEEKLY = "WEEKLY";
     public static final String REPETITION_PATTERN_FORTNIGHTLY = "FORTNIGHTLY";
     public static final String REPETITION_PATTERN_MONTHLY = "MONTHLY";
+
 }
