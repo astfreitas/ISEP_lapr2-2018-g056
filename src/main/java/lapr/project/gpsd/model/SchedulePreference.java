@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.sql.Time;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
@@ -23,6 +24,9 @@ public class SchedulePreference {
      * @param time
      */
     public SchedulePreference(int order, LocalDate date, LocalTime hour) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) || hour.getHour() == 0 || hour.getHour() < 6) {
+            throw new IllegalArgumentException("Invalid availability.");
+        }
         this.order = order;
         this.date = date;
         this.hour = hour;
