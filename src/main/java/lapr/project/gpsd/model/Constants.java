@@ -20,4 +20,5 @@ public class Constants{
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
     public static final String PARAMS_COMPANY_NIF = "Company.NIF";
     
+    public static final String PENDING_ORDER = "Pending";
 }
