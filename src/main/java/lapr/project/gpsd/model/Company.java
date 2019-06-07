@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.io.IOException;
 import lapr.project.gpsd.utils.Constants;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -260,8 +261,9 @@ public class Company {
         return externalService;
     }
     
-    private void loadPostalCodeFromExternalService(){
+    private void loadPostalCodeFromExternalService() throws IOException{
         
+        this.externalService.loadPostalCodeRegistry();
     }
     
 }
