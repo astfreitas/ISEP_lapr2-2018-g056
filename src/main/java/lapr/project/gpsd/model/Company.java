@@ -1,11 +1,8 @@
 package lapr.project.gpsd.model;
 
+import java.io.IOException;
 import lapr.project.gpsd.utils.Constants;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.Timer;
 import lapr.project.authentication.AuthenticationFacade;
 
@@ -64,11 +61,15 @@ public class Company {
         this.fileTypeRegistry = new FileTypeRegistry();
         this.serviceSortingBehavior = null;
         this.assignmentAlgoritm = null;
-        
-        this.externalService = null;
+        // creates instances from configuration file
+        try {
+            this.externalService = (IExternalService) Class.forName(props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).newInstance();
+            this.assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName(props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).newInstance();
+            this.serviceSortingBehavior = (ISortingBehavior) Class.forName(props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).newInstance();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         this.timer = null;
-        //ToDo: forced to Adapter1  change to dyanamic?
-        this.externalService = new ExternalService1();
     }
 
     /**
@@ -261,6 +262,11 @@ public class Company {
 
     public ISortingBehavior getServiceSortingBehavior() {
         return serviceSortingBehavior;
+    }
+    
+    private void loadPostalCodeFromExternalService() throws IOException{
+        
+        this.externalService.loadPostalCodeRegistry();
     }
     
 }

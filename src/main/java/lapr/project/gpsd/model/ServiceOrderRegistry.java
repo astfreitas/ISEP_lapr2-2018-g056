@@ -65,6 +65,7 @@ public class ServiceOrderRegistry {
             if(validate(so)) {
                 int orderNumber = generateServiceOrderNumber();
                 so.setOrderNumber(orderNumber);
+                serviceOrders.add(so);
                 serviceOrdersList.add(so);
             }
         }
@@ -96,7 +97,11 @@ public class ServiceOrderRegistry {
             adapter.export(filename, line);
         }
     }
-
+    
+    /**
+     * Method generates a service Order number from regist size.
+     * @return a number to be set in the ServiceOrder.
+     */
     private int generateServiceOrderNumber() {
         return 1000 + serviceOrders.size();
     }
