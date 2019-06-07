@@ -43,11 +43,11 @@ public class AssignmentAlgoritmRandom implements IAssignmentAlgoritm {
             List<SchedulePreference> schedule = request.getSchedulePreferences();
 
             // returns the schedule suitable for the assignment
-            selectedSP. // creates the assignment instance
-                    ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
-
+//            selectedSP. 
+            // creates the assignment instance
+//                    ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
             // adds the assignment to the list
-            assignments.add(assignment);
+//            assignments.add(assignment);
         }
 
         // returns list of assignments

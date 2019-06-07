@@ -34,6 +34,44 @@ public class ServiceRequestRegistry {
     }
 
     /**
+     * Method registers the service requested by the client.
+     *
+     * @param serviceRequest instance of the service request to be registered.
+     * @return a unique number associated with the service requested or -1 if it
+     * could not be added.
+     */
+    public int registerServiceRequest(ServiceRequest serviceRequest) {
+        validateServiceRequest(serviceRequest);
+        if (validateServiceRequest(serviceRequest)) {
+            int num = 1000 + serviceRequests.size();
+            serviceRequest.setNumber(num);
+            addServiceRequest(serviceRequest);
+            return num;
+        }
+        return -1;
+    }
+
+    /**
+     * Method validates service request.
+     *
+     * @param serviceRequest instance of the service request that is validated
+     * @return true if the service request is not already registered.
+     */
+    private boolean validateServiceRequest(ServiceRequest serviceRequest) {
+        return !serviceRequests.contains(serviceRequest);
+    }
+
+    /**
+     * Method adds a new service request to the registry
+     *
+     * @param serviceRequest
+     * @return true if the operation is successful
+     */
+    private boolean addServiceRequest(ServiceRequest serviceRequest) {
+        return serviceRequests.add(serviceRequest);
+    }
+
+    /**
      * Returns the list of unassigned services (descriptions) from the Service
      * Requests stored in registry
      *
@@ -59,8 +97,8 @@ public class ServiceRequestRegistry {
      * @return
      */
     public ServiceRequest getRequestFromDescription(ServiceRequestDescription srd) {
-        for(ServiceRequest request : serviceRequests) {
-            if(request.getServiceRequestDescriptions().contains(srd)) {
+        for (ServiceRequest request : serviceRequests) {
+            if (request.getServiceRequestDescriptions().contains(srd)) {
                 return request;
             }
         }

@@ -71,15 +71,12 @@ public class RegisterClientUI implements Initializable {
         this.registerClientController.newClient(name, NIF, telephone, email, pwd);
         
         
-        Stage newStage = new Stage();
-        newStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AddressesWindow.fxml"));
         AddressesWindowUI addressesWindow = fxmlLoader.getController();
         Parent root = (Parent) fxmlLoader.load();
         Scene newScene = new Scene(root);
         addressesWindow.setParentController(registerClientController);
-        newStage.setScene(newScene);
-        newStage.show();
+        stage.setScene(newScene);
     }
     
 }

@@ -6,6 +6,8 @@ public class ServiceOrder {
     private ServiceProvider servProvider;
     private ServiceRequestDescription servRequestDesc;
     private SchedulePreference schePref;
+    private String status;
+    private String detail;
 
     public ServiceOrder(ServiceRequest servRequest, ServiceProvider servProvider, ServiceRequestDescription servRequestDesc, SchedulePreference schePref) {
         this.servRequest = servRequest;
@@ -25,4 +27,12 @@ public class ServiceOrder {
     public ServiceRequest getServiceRequest() {
        return this.servRequest;
     }
+
+    public SchedulePreference getSchePref() {
+        return schePref;
+    }
+
+    public String getStatus() {
+        return status;
+    } 
 }

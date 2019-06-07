@@ -22,7 +22,7 @@ public class AddDailyAvailabilityController {
      *
      */
     public AddDailyAvailabilityController() {
-                if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
+             if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
             throw new IllegalStateException("Non authorized user.");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
