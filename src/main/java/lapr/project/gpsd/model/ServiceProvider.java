@@ -47,7 +47,7 @@ public class ServiceProvider {
      */
     private SPAvailabilityList spAvailabilityList;
     private ArrayList<Evaluation> evalList;
-    private double average;
+    private double averageRating;
     
     /**
      * Construtor for Service Provider receiving only the attributes name and 
@@ -166,19 +166,19 @@ public class ServiceProvider {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public double getAverage() {
-        return average;
+    public double getAverageRating() {
+        return averageRating;
     }
 
-    public void setAverage(double average) {
-        this.average = average;
+    public void setAverageRating(double average) {
+        this.averageRating = average;
     }    
 
     public void setClassification(String label) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void registerEvaluation(ServiceOrder servOrder, int rating){
+    public void registerEvaluation(int rating, ServiceOrder servOrder){
         Evaluation eval = new Evaluation(rating, servOrder);
         evalList.add(eval);
         recalculateAverage();
@@ -190,6 +190,6 @@ public class ServiceProvider {
             sum+=eval.getRating();
         }
         double average = sum / evalList.size();
-        this.setAverage(average);
+        this.setAverageRating(average);
     }
 }

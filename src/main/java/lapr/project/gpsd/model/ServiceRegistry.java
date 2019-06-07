@@ -3,7 +3,7 @@ package lapr.project.gpsd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-class ServiceRegistry {
+public class ServiceRegistry {
 
     /**
      * list of the existing services
@@ -14,7 +14,6 @@ class ServiceRegistry {
     /**
      * constructor of service registry with an array of services as parameter
      *
-     * @param services
      */
     public ServiceRegistry() {
         services = new ArrayList();

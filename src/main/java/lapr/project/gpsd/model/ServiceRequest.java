@@ -13,8 +13,8 @@ public class ServiceRequest {
     private Client client;
     private Address address;
     private List<ServiceRequestDescription> serviceRequestDescriptions;
-    private List<SchedulePreference> schedulePreferences;
-    
+    private ArrayList<SchedulePreference> schedulePreferences;
+    private ArrayList<OtherCost> otherCosts;
     
     /**
      * Constructor creates a service request with client and address where the service will be executed
@@ -25,6 +25,8 @@ public class ServiceRequest {
         this.client = client;
         this.address = address;
         this.serviceRequestDescriptions = new ArrayList();
+        this.schedulePreferences = new ArrayList<>();
+        this.otherCosts = new ArrayList<>();
     }
 
     public void setNumber(int number) {
@@ -36,6 +38,7 @@ public class ServiceRequest {
      * @param service the service requested by the client
      * @param desc notes from the client
      * @param dur the duration of the service
+     * @return Success of the operation
      */
     public boolean addServiceRequestDescription(Service service, String desc, int dur) {
         ServiceRequestDescription srd = new ServiceRequestDescription(service, desc, dur);
@@ -58,6 +61,7 @@ public class ServiceRequest {
      * Method appends a schedule preference to the Service Order
      * @param date represents the date preference
      * @param time represents the time preference
+     * @return Success of the operation
      */
     public boolean addSchedulePreference(LocalDate date, LocalTime time) {
         int prefOrder = schedulePreferences.size();
@@ -65,6 +69,7 @@ public class ServiceRequest {
         if(validateSchedulePreference(sh)) {
             return AddSchedulePreference(sh);
         }
+        return false;
     }
     /**
      * 00 - 06
@@ -80,7 +85,21 @@ public class ServiceRequest {
         return schedulePreferences.add(sh);
     }
     
+    /**
+     * 
+     * Returns the Client who created the Request
+     * 
+     * @return Client who created the Request
+     */
+    public Client getClient(){
+        return this.client;
+    }
     
-    
-    
+    public double getOtherCost(){
+        double costs=0;
+        for (OtherCost otherCost : otherCosts) {
+            costs+=otherCost.getValue();
+        }
+        return costs;
+    }
 }

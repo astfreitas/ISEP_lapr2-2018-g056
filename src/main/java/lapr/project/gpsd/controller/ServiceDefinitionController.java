@@ -67,18 +67,12 @@ public class ServiceDefinitionController {
      * @return
      */
     public boolean newService(String id, String bDesc, String fDesc, double hCost, String catId) {
-        try {
             CategoryRegistry cats = this.company.getCategoryRegistry();
             Category cat = cats.getCatById(catId);
 
             this.service = this.company.getServiceRegistry().Service(id, bDesc, fDesc, hCost, cat);
 
             return this.company.getServiceTypeRegistry().getServiceTypes().validateServiceType(this.service);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.service = null;
-            return false;
-        }
     }
 
     /*

@@ -12,9 +12,9 @@ public class Client {
     private String email;
     private List<Address> addresses = new ArrayList<Address>();
 
-    public Client(String name, String NIF, String telephone, String email, Address address) {
+    public Client(String name, String NIF, String telephone, String email) {
         if ((name == null) || (NIF == null) || (telephone == null)
-                || (email == null) || (address == null)
+                || (email == null)
                 || (name.isEmpty()) || (NIF.isEmpty()) || (telephone.isEmpty())
                 || (email.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -24,7 +24,6 @@ public class Client {
         this.email = email;
         this.NIF = NIF;
         this.telephone = telephone;
-        addresses.add(address);
     }
 
     /**
@@ -87,6 +86,9 @@ public class Client {
      * returns the Address Instance of the client by local, postalCode and
      * address
      *
+     * @param local Local
+     * @param postalCode Postal code
+     * @param address Address
      * @return returns client's Address
      */
     public Address getAddress(String local, PostalCode postalCode, String address) {

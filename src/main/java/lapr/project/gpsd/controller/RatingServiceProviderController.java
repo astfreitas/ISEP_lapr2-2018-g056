@@ -26,7 +26,8 @@ public class RatingServiceProviderController {
         ClientRegistry cr = company.getClientRegistry();
         cli = cr.getClientByEmail(email);
         ServiceOrderRegistry sor = company.getServiceOrderRegistry();
-        ArrayList<ServiceOrder> lse = getCompletedServiceOrdersByClient(cli);
+        ArrayList<ServiceOrder> lse = sor.getCompletedServiceOrdersByClient(cli);
+        return lse;
     }
     
     public ServiceProvider getServiceProvider(ServiceOrder servOrder){
@@ -35,7 +36,7 @@ public class RatingServiceProviderController {
     }
 
     public void setRating(int rating){
-        this.servProvider.registerEvaluation(rating,servOrder);
+        this.servProvider.registerEvaluation(rating,this.servOrder);
         this.servProvider.recalculateAverage();
     }
     
@@ -45,5 +46,13 @@ public class RatingServiceProviderController {
     
     public Client getClient(){
         return this.servOrder.getServiceRequest().getClient();
+    }
+    
+    public double getServiceCost(){
+        return this.servOrder.getServiceRequestDescription().getCost();
+    }
+    
+    public double getTravelCost(){
+        return this.servOrder.getServiceRequest().getOtherCost();
     }
 }

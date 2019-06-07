@@ -2,6 +2,7 @@ package lapr.project.gpsd.controller;
 
 import lapr.project.authentication.model.*;
 import lapr.project.gpsd.model.*;
+import lapr.project.gpsd.utils.Constants;
 
 public class AddNewAddressToClientController {
 
