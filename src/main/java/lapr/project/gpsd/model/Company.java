@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.io.IOException;
 import lapr.project.gpsd.utils.Constants;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,6 +8,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lapr.project.authentication.AuthenticationFacade;
 
 public class Company {
@@ -62,10 +65,12 @@ public class Company {
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
         this.assignmentAlgoritm = null;
-        this.externalService = null;
+        try {
+            this.externalService = (IExternalService) Class.forName(props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).newInstance();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         this.timer = null;
-        //ToDo: forced to Adapter1  change to dyanamic?
-        this.externalService = new ExternalService1();
     }
 
     /**
@@ -147,7 +152,6 @@ public class Company {
     public FileTypeRegistry getFileTypeRegistry() {
         return fileTypeRegistry;
     }
-    
 
     /**
      *
@@ -241,19 +245,33 @@ public class Company {
     public Properties getProps() {
         return props;
     }
+
     /**
      * Returns the instance of PostalCodeRegistry
+     *
      * @return Postal Code Registry
      */
     public PostalCodeRegistry getPostalCodeRegistry() {
         return this.postalCodeRegistry;
     }
+
     /**
      * Returns the instance of External Service in used by the system.
+     *
      * @return instance of External Service
      */
     public IExternalService getExternalService() {
         return externalService;
     }
-    
+
+    /**
+     * Loads every available Postal Code from an externalFile to the Postal Code
+     * Registry.
+     *
+     * @throws IOException if PostalCode File is not found
+     */
+    private void loadPostalCodeFromExternalService() throws IOException {
+        this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
+    }
+
 }

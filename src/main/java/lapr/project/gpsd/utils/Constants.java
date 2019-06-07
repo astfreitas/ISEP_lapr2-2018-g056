@@ -26,5 +26,7 @@ public class Constants{
     public static final String REPETITION_PATTERN_WEEKLY = "WEEKLY";
     public static final String REPETITION_PATTERN_FORTNIGHTLY = "FORTNIGHTLY";
     public static final String REPETITION_PATTERN_MONTHLY = "MONTHLY";
+    public static final String PARAMS_EXTERNAL_SERVICE = "Company.ExternalService";
+    public static final String PARAMS_FILE_POSTAL_CODES ="Company.FilePostalCodes";
 
 }
