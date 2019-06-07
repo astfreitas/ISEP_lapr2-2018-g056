@@ -20,5 +20,9 @@ public class ExportCSV {
         } catch (IOException ex) {
         }   
         csvWriter.writeNext(line);
+        try {
+            csvWriter.close();
+        } catch (IOException ex) {
+        }
     }
 }
