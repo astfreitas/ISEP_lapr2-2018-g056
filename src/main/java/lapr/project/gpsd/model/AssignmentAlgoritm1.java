@@ -2,30 +2,28 @@ package lapr.project.gpsd.model;
 
 import lapr.project.gpsd.controller.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import javafx.application.Application;
 
-public class AssignmentAlgoritmRandom implements IAssignmentAlgoritm {
+public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
     Company company;
     ServiceProviderRegistry spRegistry;
     ServiceRequestRegistry requestRegistry;
 
-    public AssignmentAlgoritmRandom() {
+    public AssignmentAlgoritm1() {
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.spRegistry = company.getServiceProviderRegistry();
         this.requestRegistry = company.getServiceRequestRegistry();
     }
 
     @Override
-    public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services) {
+    public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services, ISortingBehavior sortingBehavior) {
 
         // instantiates the assignment list
         List<ServiceAssignment> assignments = new ArrayList<>();
 
-        // shuffles (randomizes) service list
-        Collections.shuffle(services);
+        // sorts the service list according to the input sorting behavior
+        sortingBehavior.sortServiceList(services);
 
         // assign each service from the list of services
         for (ServiceRequestDescription service : services) {
@@ -43,11 +41,16 @@ public class AssignmentAlgoritmRandom implements IAssignmentAlgoritm {
             List<SchedulePreference> schedule = request.getSchedulePreferences();
 
             // returns the schedule suitable for the assignment
-//            selectedSP. 
+            // to-do
+            
             // creates the assignment instance
-//                    ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
+            // ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
+            
             // adds the assignment to the list
-//            assignments.add(assignment);
+            // assignments.add(assignment);
+            
+            // removes the service duration interval from the SP's availability
+            // whooo
         }
 
         // returns list of assignments
@@ -115,9 +118,10 @@ public class AssignmentAlgoritmRandom implements IAssignmentAlgoritm {
      *
      * @param suitableSPs
      * @param srd
-     * @return
+     * @return the most suitable SP for assignment from list
      */
     public ServiceProvider selectMostSuitableSP(List<ServiceProvider> suitableSPs, ServiceRequestDescription srd) {
+
         return null;
     }
 

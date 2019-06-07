@@ -26,6 +26,7 @@ public class Company {
     private GeographicAreaRegistry geographicAreaRegistry;
     private PostalCodeRegistry postalCodeRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
+    private ISortingBehavior serviceSortingBehavior;
     private FileTypeRegistry fileTypeRegistry;
     private IExternalService externalService;
     private AssignServiceTask task;
@@ -61,7 +62,9 @@ public class Company {
         this.geographicAreaRegistry = new GeographicAreaRegistry();
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
+        this.serviceSortingBehavior = null;
         this.assignmentAlgoritm = null;
+        
         this.externalService = null;
         this.timer = null;
         //ToDo: forced to Adapter1  change to dyanamic?
@@ -254,6 +257,10 @@ public class Company {
      */
     public IExternalService getExternalService() {
         return externalService;
+    }
+
+    public ISortingBehavior getServiceSortingBehavior() {
+        return serviceSortingBehavior;
     }
     
 }
