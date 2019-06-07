@@ -1,7 +1,6 @@
 package lapr.project.gpsd.model;
 
 import java.lang.reflect.InvocationTargetException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FileTypeRegistry {
@@ -27,9 +26,5 @@ public class FileTypeRegistry {
                 | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
         }
         return null;
-    }
-    
-    public boolean exportData(ArrayList<ServiceOrder> serviceOrderList, FileType adapter, LocalDate sDate, LocalDate eDate, ServiceProvider sp){
-        return adapter.export(serviceOrderList,sDate,eDate,sp);
     }
 }

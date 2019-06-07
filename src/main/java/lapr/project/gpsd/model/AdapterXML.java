@@ -12,7 +12,7 @@ public class AdapterXML implements FileType{
     }
 
     @Override
-    public boolean export(ArrayList<ServiceOrder> servOrderList, LocalDate sDate, LocalDate eDate, ServiceProvider sp) {
+    public void export(String filename, String[] line) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

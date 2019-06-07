@@ -1,9 +1,9 @@
 package lapr.project.gpsd.controller;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import lapr.project.authentication.model.UserSession;
-import lapr.project.gpsd.model.ClientRegistry;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.FileType;
 import lapr.project.gpsd.model.FileTypeRegistry;
@@ -52,7 +52,11 @@ public class ConsultServiceOrderController {
 
     public boolean exportServiceOrdersByFileType(FileType fileType) {
         FileType adapter = this.fileTypeRegistry.getExportAdapterByFileType(fileType);
+        String filename = "./"+sp.getNumber()+"_"+sDate.toString()+"_"+eDate.toString();
+               
+        sor.exportData(filename, adapter);
 
-        return false;
+       File file = new File(filename);
+       return file.exists();
     }
 }
