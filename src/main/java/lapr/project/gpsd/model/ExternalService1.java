@@ -110,7 +110,7 @@ public class ExternalService1 implements IExternalService {
      * @return Postal Code List
      */
     @Override
-    public List<PostalCode> loadPostalCodeRegistry() throws IOException {
+    public List<PostalCode> loadPostalCodeList() throws IOException {
         List<PostalCode> pCodeList = new ArrayList<>();
         ArrayList<String[]> readCpFile;
         readCpFile = readFile(filePath);

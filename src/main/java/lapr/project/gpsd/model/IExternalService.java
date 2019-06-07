@@ -33,6 +33,6 @@ public interface IExternalService {
      *
      * @return Postal Code List
      */
-    public List<PostalCode> loadPostalCodeRegistry() throws IOException;
+    public List<PostalCode> loadPostalCodeList() throws IOException;
 
 }
