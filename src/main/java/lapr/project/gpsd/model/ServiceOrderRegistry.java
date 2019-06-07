@@ -2,31 +2,68 @@ package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import static lapr.project.gpsd.utils.Constants.*;
 
 public class ServiceOrderRegistry {
 
+    /**
+     * atribute of class ServiceOrderRegistry
+     */
     private ArrayList<ServiceOrder> serviceOrders;
 
+    /**
+     * constructor of ServiceOrderRegistry initialized with an empty arraylist.
+     */
     public ServiceOrderRegistry() {
-        this.serviceOrders = new ArrayList<>();
+        this.serviceOrders = new ArrayList();
     }
 
-    public ServiceOrder getPendingServiceOrders(String status) {
-        for (ServiceOrder sol : serviceOrders) {
-            if (sol.isPending(status)) {
-                return sol;
+    /**
+     * returns a list of only pending service orders
+     * @param status of the service order
+     * @return list of only pending service orders
+     */
+    public ArrayList<ServiceOrder> getPendingServiceOrders(String status) {
+        ArrayList<ServiceOrder> pendingServiceOrders = new ArrayList<>();
+        for (ServiceOrder serviceOrder : serviceOrders) {
+            if (serviceOrder.isPending(status)) {
+                pendingServiceOrders.add(serviceOrder);
+            }
+        }
+        return pendingServiceOrders;
+    }
+
+    /**
+     * searchs for a service order by a specific id
+     * @param serviceOrders
+     * @param id
+     * @return founded service order
+     */
+    public ServiceOrder getServiceOrderByID(ArrayList<ServiceOrder> serviceOrders, String id) {
+        for (ServiceOrder serviceOrder : serviceOrders) {
+            if (serviceOrder.hasId(id)) {
+                return serviceOrder;
             }
         }
         return null;
     }
+    
+    /**
+     * method to conclude service order
+     * @param servOrder service order to be concluded
+     */
+     public void concludeServiceOrder(ServiceOrder servOrder) {
+        servOrder.getStatus().setServOrderStatus(CONCLUDED_ORDER);
+    }
 
-    public ServiceOrder getServiceOrderByID(String id) {
-        for (ServiceOrder sol : serviceOrders) {
-            if (sol.hasId(id)) {
-                return sol;
-            }
-        }
-        return null;
+     /**
+      * method to conclude service order reporting issue (and troubleshooting)
+      * @param servOrder service order to be concluded
+      * @param issue issue to be reported
+      */
+    public void concludeServiceOrderWithIssue(ServiceOrder servOrder, String issue) {
+        servOrder.getStatus().setServOrderStatus(CONCLUDED_ORDER);
+        servOrder.getStatus().setServOrderDetail(issue);
     }
 
     public ArrayList<ServiceOrder> getCompletedServiceOrdersByClient(Client cli) {
