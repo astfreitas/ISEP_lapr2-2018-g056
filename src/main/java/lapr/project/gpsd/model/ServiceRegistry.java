@@ -99,4 +99,13 @@ public class ServiceRegistry {
         }
         return listOfServicesFromCat;
     }
+    
+    /**
+     * Method that validates the service request and returns the total cost.
+     * @param serviceRequest the instance of the service reqeusted by the client.
+     * @return cost of the service request
+     */
+    public double validateRequest(ServiceRequest serviceRequest) {
+        return serviceRequest.calculateCost();
+    }
 }

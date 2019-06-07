@@ -1,9 +1,11 @@
 package lapr.project.gpsd.model;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 
 public class ServiceRequest {
     
@@ -72,13 +74,12 @@ public class ServiceRequest {
         return false;
     }
     /**
-     * 00 - 06
-     * Method verifies if the schedule preferences exists and if 
+     * Method verifies if the schedule preferences already exists
      * @param sh instance of SchedulePreference
      * @return returns true if it does not exist
      */
     private boolean validateSchedulePreference(SchedulePreference sh) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return !schedulePreferences.contains(sh);
     }
 
     private boolean AddSchedulePreference(SchedulePreference sh) {
@@ -101,5 +102,21 @@ public class ServiceRequest {
             costs+=otherCost.getValue();
         }
         return costs;
+    }
+    
+    /**
+     * Method calculates the total cost of the Requested Service and other costs(ie travel expenses)
+     * @return the cost of total services plus the value of the service
+     */
+    public double calculateCost() {
+        double c=0;
+        for(ServiceRequestDescription srd : serviceRequestDescriptions) {
+            c += srd.getCost();
+        }
+        GeographicAreaRegistry rag = ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry();
+        PostalCode pc = address.getPostalCode();
+        GeographicArea ag = rag.getNearestGeographicArea(pc);
+        
+        return c;
     }
 }

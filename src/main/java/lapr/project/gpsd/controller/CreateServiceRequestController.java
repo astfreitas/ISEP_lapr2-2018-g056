@@ -9,11 +9,11 @@ import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.*;
 
 public class CreateServiceRequestController {
-    Company company; 
-    Client cli;
-    ServiceRequestRegistry srr;
-    ServiceRequest serviceRequest;
-    ServiceRegistry servReg;
+    private Company company; 
+    private Client cli;
+    private ServiceRequestRegistry srr;
+    private ServiceRequest serviceRequest;
+    private ServiceRegistry serviceRegister;
     public CreateServiceRequestController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
             throw new IllegalStateException("Non authorized user.");
@@ -57,8 +57,8 @@ public class CreateServiceRequestController {
      * @return returns a list of services associated with the category
      */
     public List<Service> getServicesFromCategory(String idCat) {
-        servReg = company.getServiceRegistry();
-        List<Service> ls = servReg.getServicesFromCategory(idCat);
+        serviceRegister = company.getServiceRegistry();
+        List<Service> ls = serviceRegister.getServicesFromCategory(idCat);
         return ls;
     }
     /**
@@ -69,7 +69,7 @@ public class CreateServiceRequestController {
      * @return true if the service is created.
      */
     public boolean addServiceRequestDescription(String idServ, String desc, int dur) {
-        Service s = servReg.getServiceById(idServ);
+        Service s = serviceRegister.getServiceById(idServ);
         return serviceRequest.addServiceRequestDescription(s, desc, dur);
     }
     /**
@@ -80,6 +80,13 @@ public class CreateServiceRequestController {
     public void addSchedulePreference(LocalDate date, LocalTime time) {
         serviceRequest.addSchedulePreference(date, time);
     }
-   
+    
+    public ServiceRequest validate() {
+        
+        serviceRegister.validateRequest(serviceRequest);
+        
+        return serviceRequest;
+    }
+    
     
 }
