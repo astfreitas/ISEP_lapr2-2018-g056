@@ -3,7 +3,7 @@ package lapr.project.gpsd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-class ServiceAssignmentRegistry {
+public class ServiceAssignmentRegistry {
     List<ServiceAssignment> serviceAssignments = new ArrayList<>();
 
 

@@ -104,4 +104,21 @@ public class ServiceRequestRegistry {
         }
         return null;
     }
+    
+    /**
+     * Method returns a list of Service Requests  fully assigned by the system or admin for a given client.
+     * @param client instance of the client to be filtered by
+     * @return a list of ServiceRequests fully assigned by the system from the client.
+     */
+    public List<ServiceRequest> getServiceRequestsFullyAssignedByClient(Client client) {
+        List<ServiceRequest> serviceRequestsFullyAssigned = new ArrayList();
+        for(ServiceRequest s : serviceRequests) {
+            if(s.getClient().equals(client) && s.fullyAssigned()) {
+                serviceRequestsFullyAssigned.add(s);
+            }
+        }
+        return serviceRequestsFullyAssigned;
+    }
+    
+    
 }

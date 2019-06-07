@@ -171,5 +171,14 @@ public class ServiceRequest {
         return otherCosts;
     }
     
+    boolean fullyAssigned() {
+        for(ServiceRequestDescription srd : serviceRequestDescriptions) {
+            if(!srd.isAssigned()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     
 }
