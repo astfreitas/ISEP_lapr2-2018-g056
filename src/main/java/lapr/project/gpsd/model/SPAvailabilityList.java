@@ -81,5 +81,21 @@ public class SPAvailabilityList {
         }
         return true;
     }
-
+    
+    /**
+     * Method adds an availability to the Service Provider Availability List from a schedulePrefenrece
+     * @param schedulePreference date and time when the service should occur
+     * @param duration duration in minutes of the service duration
+     * @return true if the availability was added with success.
+     */
+    public boolean addAvailabilityBySchedulePreference(SchedulePreference schedulePreference, int duration) {
+        LocalDate date = schedulePreference.getDate();
+        LocalTime bHour = schedulePreference.getTime();
+        LocalTime eHour = schedulePreference.getTime().plusMinutes(duration);
+        Availability availability = newAvailability(date, bHour, eHour);
+        return addAvailability(availability);
+    }
+    
+    
+    
 }

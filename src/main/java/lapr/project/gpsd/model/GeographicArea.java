@@ -50,11 +50,12 @@ public class GeographicArea {
      * @param mainPostalCode Postal Code string for the center of the GeoArea
      * @param exService reference for the External Service to use to obtain the
      * list of locations for this Geo Area
+     * @param pcReg PostalCodeRegistry needed to obtain the existing PostalCode List in system
      * @throws IllegalArgumentException from PostalCode Constructor and from the
      * this constructor.
      */
     public GeographicArea(String designation, double cost, double radius,
-            String mainPostalCode, IExternalService exService) {
+            String mainPostalCode, IExternalService exService, PostalCodeRegistry pcReg) {
         if ((designation == null) || (mainPostalCode == null)
                 || (exService == null)) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -66,7 +67,7 @@ public class GeographicArea {
         this.travelCost = cost;
         this.radius = radius;
         this.mainPostalCode = new PostalCode(mainPostalCode);
-        this.LocationList = exService.getActsOnLocationList(this.mainPostalCode, radius);
+        this.LocationList = exService.getActsOnLocationList(this.mainPostalCode, radius, pcReg);
         
     }
 

@@ -81,14 +81,21 @@ public class CreateServiceRequestController {
         serviceRequest.addSchedulePreference(date, time);
     }
     
+    /**
+     * Method validates the clients order
+     * @return the instance of service request.
+     */
     public ServiceRequest validate() {
         serviceRegister.validateRequest(serviceRequest);
         return serviceRequest;
     }
     
+    /**
+     * Method that registers the order.
+     * @return a unique number associated with the service requested or -1 if it could not be added. 
+     */
     public int registerRequest() {
         return serviceRequestRegistry.registerServiceRequest(serviceRequest);
     }
-    
     
 }
