@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.CategoryRegistry;
-import lapr.project.gpsd.model.Constants;
+import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.model.ServiceType;
@@ -68,18 +68,12 @@ public class ServiceDefinitionController {
      */
     /*
     public boolean newService(String id, String bDesc, String fDesc, double hCost, String catId) {
-        try {
             CategoryRegistry cats = this.company.getCategoryRegistry();
             Category cat = cats.getCatById(catId);
 
             this.service = this.company.getServiceRegistry().Service(id, bDesc, fDesc, hCost, cat);
 
             return this.company.getServiceTypeRegistry().getServiceTypes().validateServiceType(this.service);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.service = null;
-            return false;
-        }
     }
     */
 

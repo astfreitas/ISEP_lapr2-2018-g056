@@ -14,5 +14,10 @@ import java.util.List;
 public class SPCategoryList {
     
     private List<Category> categorylist;
+
+    public List<Category> getCategorylist() {
+        return categorylist;
+    }
+    
     
 }

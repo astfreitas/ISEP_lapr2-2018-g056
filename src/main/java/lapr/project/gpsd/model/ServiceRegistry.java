@@ -3,23 +3,21 @@ package lapr.project.gpsd.model;
 import java.util.ArrayList;
 import java.util.List;
 
-class ServiceRegistry {
+public class ServiceRegistry {
 
     /**
      * list of the existing services
      */
 
-    private List<Service> services;
+    private List<Service> services = new ArrayList<>();
 
     /**
      * constructor of service registry with an array of services as parameter
      *
-     * @param services
      */
-    public ServiceRegistry(List<Service> services) {
+    public ServiceRegistry() {
         services = new ArrayList();
     }
-
 
     /**
      * validates if a service already exists in the existing list
@@ -84,5 +82,39 @@ class ServiceRegistry {
             }
         }
         return null;
+    }
+    
+    /**
+     * Method return a list of services of a given category id;
+     * @param idCat string of the category id
+     * @return returns a list of services associated with the category.
+     */
+    public List<Service> getServicesFromCategory(String idCat) {
+        List<Service> listOfServicesFromCat = new ArrayList();
+        for(Service s : services) {
+            if(s.getCategory().getCode().equals(idCat)) {
+                listOfServicesFromCat.add(s);
+            }
+        }
+        return listOfServicesFromCat;
+    }
+    
+    /**
+     * Method that validates the service request and returns the total cost.
+     * @param serviceRequest the instance of the service reqeusted by the client.
+     * @return true of the service request
+     */
+    public boolean validateRequest(ServiceRequest serviceRequest) {
+        serviceRequest.calculateCost();
+        return verifyRequest(serviceRequest);
+    }
+    
+    /**
+     * Checks if the service request has all the necessary data
+     * @param serviceRequest
+     * @return true if the service is valid
+     */
+    private boolean verifyRequest(ServiceRequest serviceRequest) {        
+        return serviceRequest.validate();
     }
 }

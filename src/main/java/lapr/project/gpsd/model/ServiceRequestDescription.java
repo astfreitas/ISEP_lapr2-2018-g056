@@ -9,7 +9,7 @@ public class ServiceRequestDescription {
      */
     private Service service;
     private String description;
-    private double duration;
+    private int duration;
     private boolean assigned;
 
     /**
@@ -18,7 +18,7 @@ public class ServiceRequestDescription {
      * @param description
      * @param duration 
      */
-    public ServiceRequestDescription(Service service, String description, double duration) {
+    public ServiceRequestDescription(Service service, String description, int duration) {
         this.service = service;
         this.description = description;
         this.duration = duration;
@@ -44,6 +44,18 @@ public class ServiceRequestDescription {
 
     public boolean isAssigned() {
         return assigned;
+    }
+
+    public Service getService() {
+        return service;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getDuration() {
+        return duration;
     }
     
     

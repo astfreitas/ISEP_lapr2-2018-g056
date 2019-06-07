@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import lapr.project.gpsd.utils.Constants;
 import java.util.List;
 import lapr.project.gpsd.model.*;
 
@@ -51,8 +52,8 @@ public class EvaluateSPController {
         this.r = sp.getRatings();
         this.arl = spr.getAverageRatings();
         this.ar = sp.getAverageRating();
-        this.sps = new ServiceProviderStatistics(ar, arl);
-        return this.sps;
+        this.sps = new ServiceProviderStatistics(arl, ar);
+        return sps;
     }
 
     /**

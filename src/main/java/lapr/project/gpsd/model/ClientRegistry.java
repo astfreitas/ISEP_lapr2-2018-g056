@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.gpsd.controller.ApplicationGPSD;
@@ -40,11 +41,10 @@ public class ClientRegistry {
      * @param NIF Client's NIF
      * @param telephone Client's telephone
      * @param email Client's email
-     * @param address Client's address
      * @return Client instantiated
      */
-    public Client newClient(String name, String NIF, String telephone, String email, Address address){
-        return new Client(name, NIF, telephone, email, address);
+    public Client newClient(String name, String NIF, String telephone, String email){
+        return new Client(name, NIF, telephone, email);
     }
     
     /**

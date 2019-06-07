@@ -64,7 +64,7 @@ public class ClientTest {
     public void testHasEmail() {
         System.out.println("hasEmail");
         String email = "test@test.com";
-        Client instance = new Client(null, null, null, "test@test.com", null);
+        Client instance = new Client(null, null, null, "test@test.com");
         boolean expResult = true;
         boolean result = instance.hasEmail(email);
         assertEquals(expResult, result);
@@ -106,8 +106,8 @@ public class ClientTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object otherClient = new Client("Joao", "123", "987", "test@test.com", null);
-        Client instance = new Client("Joao", "123", "987", "test@test.com", null);
+        Object otherClient = new Client("Joao", "123", "987", "test@test.com");
+        Client instance = new Client("Joao", "123", "987", "test@test.com");
         boolean expResult = true;
         boolean result = instance.equals(otherClient);
         assertEquals(expResult, result);

@@ -16,12 +16,22 @@ public class AssignServiceTask extends TimerTask {
      */
     @Override
     public void run() {
+        
+        // returns the list of service providers in the system
         Company company = ApplicationGPSD.getInstance().getCompany();
         ServiceProviderRegistry spr = company.getServiceProviderRegistry();
+        List<ServiceProvider> providers = spr.getServiceProviders();
+        
+        // returns the list of service descriptions not yet assigned
         ServiceRequestRegistry srr = company.getServiceRequestRegistry();
-        ServiceAssignmentRegistry sar = company.getServiceAssignementRegistry();
+        List<ServiceRequestDescription> unassignedServices = srr.getUnassignedServices();
+        
+        // returns the list of assignments from the assignment algoritm
         IAssignmentAlgoritm alg = company.getAssignmentAlgoritm();
-        List<ServiceAssignment> sal = alg.assignServices(srr, spr);
+        List<ServiceAssignment> sal = alg.assignServices(unassignedServices);
+        
+        // registers the assignments into the assignment registry
+        ServiceAssignmentRegistry sar = company.getServiceAssignementRegistry();
         for (ServiceAssignment sa : sal) {
             sar.addServiceAssignment(sa);
         }

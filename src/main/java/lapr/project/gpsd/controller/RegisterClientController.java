@@ -29,16 +29,12 @@ public class RegisterClientController {
      * @param telephone Client's telephone
      * @param email Client's email
      * @param pwd Client's password
-     * @param local Client's city name
-     * @param postalCode Client's postal code
-     * @param address Client's address
      * @return True/false if the operation succeeds or doesn't
      */
-    public boolean newClient(String name, String NIF, String telephone, String email, String pwd, String local, String postalCode, String address) {
+    public boolean newClient(String name, String NIF, String telephone, String email, String pwd) {
         clientRegistry = company.getClientRegistry();
         this.pwd = pwd;
-        Address oAddress = Client.newAddress(local, postalCode, address);
-        this.client = this.clientRegistry.newClient(name, NIF, telephone, email, oAddress);
+        this.client = this.clientRegistry.newClient(name, NIF, telephone, email);
         return this.clientRegistry.validateClient(this.client);
     }
 

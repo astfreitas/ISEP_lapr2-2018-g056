@@ -1,7 +1,9 @@
 package lapr.project.gpsd.model;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Calendar;
 
 /**
  * Availability Class is intended to represent the availability of the service
@@ -15,33 +17,30 @@ public class Availability {
     /**
      * Begin date for the availability
      */
-    private Date bDate;
+    private LocalDate date;
     /**
      * Begin Time for the availability
      */
-    private Time bTime;
-    /**
-     * End date for the availability
-     */
-    private Date eDate;
+    private LocalTime sTime;
     /**
      * End time for the availability
      */
-    private Time eTime;
+    private LocalTime eTime;
 
     /**
      * Constructor for Availability receiving all the atributos by method
      * parameters
      *
-     * @param bDate Begin Date
+     * @param date Date
      * @param bTime Begin Time
-     * @param eDate End Date
      * @param eTime End Time
      */
-    public Availability(Date bDate, Time bTime, Date eDate, Time eTime) {
-        this.bDate = bDate;
-        this.bTime = bTime;
-        this.eDate = eDate;
+    public Availability(LocalDate date, LocalTime bTime, LocalTime eTime) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) || bTime.getHour() == 0 || eTime.getHour() < 6) {
+            throw new IllegalArgumentException("Invalid availability.");
+        }
+        this.date = date;
+        this.sTime = bTime;
         this.eTime = eTime;
     }
 
@@ -51,17 +50,17 @@ public class Availability {
      *
      * @return begin date
      */
-    public Date getbDate() {
-        return bDate;
+    public LocalDate getbDate() {
+        return date;
     }
 
     /**
-     * Sets the begining date for the availability. Java util is used for date.
+     * Sets the date for the availability. Java util is used for date.
      *
-     * @param bDate begining date
+     * @param date begining date
      */
-    public void setbDate(Date bDate) {
-        this.bDate = bDate;
+    public void setbDate(LocalDate date) {
+        this.date = date;
     }
 
     /**
@@ -70,8 +69,8 @@ public class Availability {
      *
      * @return begining time
      */
-    public Time getbTime() {
-        return bTime;
+    public LocalTime getbTime() {
+        return sTime;
     }
 
     /**
@@ -79,26 +78,8 @@ public class Availability {
      *
      * @param bTime begin time
      */
-    public void setbTime(Time bTime) {
-        this.bTime = bTime;
-    }
-
-    /**
-     * Returns the ending date for the availability. Java util is used for date.
-     *
-     * @return ending date
-     */
-    public Date geteDate() {
-        return eDate;
-    }
-
-    /**
-     * Sets the ending date for the availability. Java util is used for date.
-     *
-     * @param eDate ending date
-     */
-    public void seteDate(Date eDate) {
-        this.eDate = eDate;
+    public void setbTime(LocalTime bTime) {
+        this.sTime = bTime;
     }
 
     /**
@@ -106,7 +87,7 @@ public class Availability {
      *
      * @return ending time
      */
-    public Time geteTime() {
+    public LocalTime geteTime() {
         return eTime;
     }
 
@@ -115,7 +96,7 @@ public class Availability {
      *
      * @param eTime end time
      */
-    public void seteTime(Time eTime) {
+    public void seteTime(LocalTime eTime) {
         this.eTime = eTime;
     }
 
@@ -136,9 +117,8 @@ public class Availability {
             return false;
         }
         Availability otherAvailability = (Availability) otherObject;
-        return this.bDate == otherAvailability.bDate
-                && this.eDate == otherAvailability.eDate
-                && this.bTime == otherAvailability.bTime
+        return this.date == otherAvailability.date
+                && this.sTime == otherAvailability.sTime
                 && this.eTime == otherAvailability.eTime;
     }
 
@@ -147,20 +127,17 @@ public class Availability {
      * returning true or false.
      *
      * @param schedulePref instance of SchedulePreference to check
+     * @param duration Service duration
      * @return returns true if, and only if, the schedule preference is
      * contained within the instanced availability
      */
-    public boolean contaisSchedulePref(SchedulePreference schedulePref) {
-        Date scheDate = schedulePref.getDate();
-        Time scheTime = schedulePref.getHour();
-        if (scheDate.before(this.eDate) && scheDate.after(this.bDate)) {
-            return true;
-        } else if (scheDate.equals(this.bDate)) {
-            if (scheTime.after(this.bTime)) {
-                return true;
-            }
-        } else if (scheDate.equals(this.bDate)) {
-            if (scheTime.before(this.eTime)) {
+    public boolean contaisSchedulePref(SchedulePreference schedulePref, int duration) {
+        LocalDate scheDate = schedulePref.getDate();
+        LocalTime scheStartTime = schedulePref.getTime();
+        LocalTime scheEndTime = schedulePref.getTime().plusMinutes(duration);
+        if (scheDate.equals(date)) {
+            if ((scheStartTime.isAfter(sTime) || scheStartTime.equals(sTime))
+                    && (scheEndTime.isBefore(eTime) || scheEndTime.equals(eTime))) {
                 return true;
             }
         }

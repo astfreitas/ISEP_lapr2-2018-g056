@@ -5,7 +5,10 @@
  */
 package lapr.project.gpsd.model;
 
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,14 +50,25 @@ public class GeographicArea {
      * @param mainPostalCode Postal Code string for the center of the GeoArea
      * @param exService reference for the External Service to use to obtain the
      * list of locations for this Geo Area
-     * @throws IllegalArgumentException from PostalCode Constructor.
+     * @param pcReg PostalCodeRegistry needed to obtain the existing PostalCode List in system
+     * @throws IllegalArgumentException from PostalCode Constructor and from the
+     * this constructor.
      */
-    public GeographicArea(String designation, double cost, double radius, String mainPostalCode, IExternalService exService) throws IllegalArgumentException {
+    public GeographicArea(String designation, double cost, double radius,
+            String mainPostalCode, IExternalService exService, PostalCodeRegistry pcReg) {
+        if ((designation == null) || (mainPostalCode == null)
+                || (exService == null)) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        } else if (cost <= 0 || radius <= 0) {
+                throw new IllegalArgumentException("Travel Cost or Radius cannot"
+                        + "have zero or negative values");
+        }
         this.designation = designation;
         this.travelCost = cost;
         this.radius = radius;
         this.mainPostalCode = new PostalCode(mainPostalCode);
-        this.LocationList = exService.getActsOnLocationList(mainPostalCode, radius);
+        this.LocationList = exService.getActsOnLocationList(this.mainPostalCode, radius, pcReg);
+        
     }
 
     /**

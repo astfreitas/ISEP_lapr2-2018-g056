@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,7 +24,9 @@ public class Company {
     private CategoryRegistry categoryRegistry;
     private ClientRegistry clientRegistry;
     private GeographicAreaRegistry geographicAreaRegistry;
+    private PostalCodeRegistry postalCodeRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
+    private FileTypeRegistry fileTypeRegistry;
     private IExternalService externalService;
     private AssignServiceTask task;
     private Timer timer;
@@ -56,9 +59,13 @@ public class Company {
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
+        this.postalCodeRegistry = new PostalCodeRegistry();
+        this.fileTypeRegistry = new FileTypeRegistry();
         this.assignmentAlgoritm = null;
         this.externalService = null;
         this.timer = null;
+        //ToDo: forced to Adapter1  change to dyanamic?
+        this.externalService = new ExternalService1();
     }
 
     /**
@@ -130,6 +137,17 @@ public class Company {
     public ClientRegistry getClientRegistry() {
         return this.clientRegistry;
     }
+
+    /**
+     *
+     * Gets the instance of File Type Registry
+     *
+     * @return File Type Registry
+     */
+    public FileTypeRegistry getFileTypeRegistry() {
+        return fileTypeRegistry;
+    }
+    
 
     /**
      *
@@ -223,4 +241,19 @@ public class Company {
     public Properties getProps() {
         return props;
     }
+    /**
+     * Returns the instance of PostalCodeRegistry
+     * @return Postal Code Registry
+     */
+    public PostalCodeRegistry getPostalCodeRegistry() {
+        return this.postalCodeRegistry;
+    }
+    /**
+     * Returns the instance of External Service in used by the system.
+     * @return instance of External Service
+     */
+    public IExternalService getExternalService() {
+        return externalService;
+    }
+    
 }

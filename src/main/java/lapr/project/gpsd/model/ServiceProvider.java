@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +46,8 @@ public class ServiceProvider {
      * Instance of AvailabilityList.
      */
     private SPAvailabilityList spAvailabilityList;
+    private ArrayList<Evaluation> evalList;
+    private double averageRating;
     
     /**
      * Construtor for Service Provider receiving only the attributes name and 
@@ -61,6 +64,7 @@ public class ServiceProvider {
         spCatList = new SPCategoryList();
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
+        this.evalList=new ArrayList<>();
     }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
@@ -161,17 +165,43 @@ public class ServiceProvider {
     public List<Integer> getRatings() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public double getAverageRating() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return averageRating;
     }
-    
+
+    public void setAverageRating(double average) {
+        this.averageRating = average;
+    }    
 
     public void setClassification(String label) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public void registerEvaluation(int rating, ServiceOrder servOrder){
+        Evaluation eval = new Evaluation(rating, servOrder);
+        evalList.add(eval);
+        recalculateAverage();
+    }
     
-    
-    
+    public void recalculateAverage(){
+        double sum = 0;
+        for(Evaluation eval : evalList){
+            sum+=eval.getRating();
+        }
+        double average = sum / evalList.size();
+        this.setAverageRating(average);
+    }
+
+    boolean isAvailable(SchedulePreference schedule) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean worksInGeographicArea(GeographicArea area) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean providesServicesOfCategory(Category category) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

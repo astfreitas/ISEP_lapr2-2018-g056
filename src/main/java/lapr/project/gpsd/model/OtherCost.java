@@ -15,5 +15,15 @@ class OtherCost {
     public OtherCost(String description, double value) {
         this.description = description;
         this.value = value;
-    }   
+    }
+
+    /**
+     * 
+     * Returns the Other Cost value
+     * 
+     * @return Other Cost value
+     */
+    public double getValue() {
+        return value;
+    }
 }

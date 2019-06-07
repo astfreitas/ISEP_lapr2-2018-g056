@@ -14,5 +14,10 @@ import java.util.List;
 public class SPGeographicAreaList {
     
     private List<GeographicArea> geoAreaList;
+
+    public List<GeographicArea> getGeoAreaList() {
+        return geoAreaList;
+    }
+    
     
 }
