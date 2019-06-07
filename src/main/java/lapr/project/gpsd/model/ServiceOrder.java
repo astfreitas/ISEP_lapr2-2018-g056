@@ -15,7 +15,14 @@ public class ServiceOrder {
     private String status;
     private int orderNumber;
     
+    /**
+     * Constructor instantiates a service order with a service assignment
+     * @param serviceAssignment 
+     */
     ServiceOrder(ServiceAssignment serviceAssignment) {
+        if (serviceAssignment == null) {
+            throw new IllegalArgumentException("serviceAssignment value is null");
+        }
         this.servRequest = serviceAssignment.getServiceRequest();
         this.servProvider = serviceAssignment.getServiceProvider();
         this.servRequestDesc = serviceAssignment.getServiceRequestDescription();
