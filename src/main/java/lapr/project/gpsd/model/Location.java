@@ -25,4 +25,19 @@ class Location {
         this.postalCode = postalCode;
         this.distance = distance;
     }
+    /**
+     * Returns the PostalCode instance
+     * @return postal code 
+     */
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
+    /**
+     * Returns distance value to the center of the GeoArea
+     * @return distance value to center GeoArea
+     */
+    public double getDistance() {
+        return distance;
+    }
+    
 }

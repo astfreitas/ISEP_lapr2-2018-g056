@@ -5,10 +5,7 @@
  */
 package lapr.project.gpsd.model;
 
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -162,5 +159,19 @@ public class GeographicArea {
     public void setMainPostalCode(PostalCode mainPostalCode) {
         this.mainPostalCode = mainPostalCode;
     }
-
+    
+    /**
+     * Search for location listings by location with same postal code and 
+     * return distance.
+     * @param pc Posta Code to searh 
+     * @return the distance of the found Postal Code otherwise returns -1 
+     */
+    public double getDistanceToPostalCode(PostalCode pc){
+        for (Location location : LocationList) {
+            if (location.getPostalCode().equals(pc)) {
+                return location.getDistance();
+            }
+        }
+        return -1;
+    }
 }
