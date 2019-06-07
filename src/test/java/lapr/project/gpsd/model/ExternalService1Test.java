@@ -56,17 +56,16 @@ public class ExternalService1Test {
     }
 
     /**
-     * Test of loadPostalCodeRegistry method, of class ExternalService1.
+     * Test of loadPostalCodeList method, of class ExternalService1.
      */
-    @Test
+    @Ignore
     public void testLoadPostalCodeRegistry() throws Exception {
         System.out.println("loadPostalCodeRegistry");
         ExternalService1 instance = new ExternalService1();
         List<PostalCode> expResult = null;
-        List<PostalCode> result = instance.loadPostalCodeRegistry();
+        List<PostalCode> result = instance.loadPostalCodeList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
 }

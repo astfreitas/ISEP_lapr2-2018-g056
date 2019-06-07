@@ -16,19 +16,29 @@ public class GeographicAreaRegistry {
     private List<GeographicArea> geoAreaList = new ArrayList<>();
 
     /**
-     * Method that returns nearest GeograficArea instance from a given postal
-     * code
+     * Method returns nearest GeograficArea instance from a given postal
+     * code instance 
      *
-     * @param postalCode
-     * @return nearest GeograficArea instance from a given postal code
+     * @param postalCode PostaCode instance to search
+     * @return the nearest GeographicArea instance found or null
      */
-    GeographicArea getNearestGeographicArea(PostalCode postalCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public GeographicArea getNearestGeographicArea(PostalCode postalCode) {
+        double shorteDistance = 999999999;
+        GeographicArea nearestGeoArea = null;
+        for (GeographicArea geoArea : geoAreaList) {
+            if (geoArea.getMainPostalCode().equals(postalCode)) {
+                return geoArea;
+            } else {
+                double distance = geoArea.getDistanceToPostalCode(postalCode);
+                if (distance<shorteDistance) {
+                    nearestGeoArea= geoArea;
+                    shorteDistance = distance;
+                }
+            }
+        }
+        return nearestGeoArea;
     }
 
-    GeographicArea getClosestAG(Address address) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

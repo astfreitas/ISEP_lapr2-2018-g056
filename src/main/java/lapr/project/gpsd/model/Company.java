@@ -151,7 +151,6 @@ public class Company {
     public FileTypeRegistry getFileTypeRegistry() {
         return fileTypeRegistry;
     }
-    
 
     /**
      *
@@ -245,28 +244,36 @@ public class Company {
     public Properties getProps() {
         return props;
     }
+
     /**
      * Returns the instance of PostalCodeRegistry
+     *
      * @return Postal Code Registry
      */
     public PostalCodeRegistry getPostalCodeRegistry() {
         return this.postalCodeRegistry;
     }
+
     /**
      * Returns the instance of External Service in used by the system.
+     *
      * @return instance of External Service
      */
     public IExternalService getExternalService() {
         return externalService;
     }
 
+    /**
+     * Loads every available Postal Code from an externalFile to the Postal Code
+     * Registry.
+     *
+     * @throws IOException if PostalCode File is not found
+     */
+    private void loadPostalCodeFromExternalService() throws IOException {
+        this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
+    }
     public ISortingBehavior getServiceSortingBehavior() {
         return serviceSortingBehavior;
     }
-    
-    private void loadPostalCodeFromExternalService() throws IOException{
-        
-        this.externalService.loadPostalCodeRegistry();
-    }
-    
+
 }
