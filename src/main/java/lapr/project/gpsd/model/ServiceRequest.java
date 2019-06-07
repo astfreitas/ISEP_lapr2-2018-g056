@@ -119,4 +119,34 @@ public class ServiceRequest {
         
         return c;
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public List<ServiceRequestDescription> getServiceRequestDescriptions() {
+        return serviceRequestDescriptions;
+    }
+
+    public ArrayList<SchedulePreference> getSchedulePreferences() {
+        return schedulePreferences;
+    }
+
+    public ArrayList<OtherCost> getOtherCosts() {
+        return otherCosts;
+    }
+    
+    
 }

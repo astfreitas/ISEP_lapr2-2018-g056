@@ -31,7 +31,7 @@ public class ServiceProviderStatistics {
     private double populationStdDeviation;
 
     // SP's average rating's deviation from the population's mean average rating
-    private double spDeviation;
+    private double spAbsoluteDifference;
 
     // SP's classification (label)
     private String classification;
@@ -41,7 +41,7 @@ public class ServiceProviderStatistics {
         this.spAverageRating = spAverageRating;
         this.populationMeanAverageRating = calcPopulationMeanAverageRating();
         this.populationStdDeviation = calcPopulationStdDeviation();
-        this.spDeviation = calcSpDeviation();
+        this.spAbsoluteDifference = calcSpDeviation();
         this.classification = calcClassification();
     }
 
@@ -103,8 +103,8 @@ public class ServiceProviderStatistics {
      *
      * @return
      */
-    public double getSpDeviation() {
-        return spDeviation;
+    public double getSpAbsoluteDifference() {
+        return spAbsoluteDifference;
     }
 
     /**

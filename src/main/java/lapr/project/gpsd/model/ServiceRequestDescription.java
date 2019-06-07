@@ -45,6 +45,18 @@ public class ServiceRequestDescription {
     public boolean isAssigned() {
         return assigned;
     }
+
+    public Service getService() {
+        return service;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
     
     
     

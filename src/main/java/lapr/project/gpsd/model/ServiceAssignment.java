@@ -4,7 +4,7 @@ public class ServiceAssignment {
 
     private ServiceProvider serviceProvider;
     private ServiceRequestDescription serviceRequestDescription;
-    private ServiceOrder serviceOrder;
+    private ServiceRequest serviceRequest;
     private SchedulePreference schedulePreference;
 
     /**
@@ -12,13 +12,13 @@ public class ServiceAssignment {
      *
      * @param serviceProvider
      * @param serviceRequestDescription
-     * @param serviceOrder
+     * @param serviceRequest
      * @param schedulePreference
      */
-    public ServiceAssignment(ServiceProvider serviceProvider, ServiceRequestDescription serviceRequestDescription, ServiceOrder serviceOrder, SchedulePreference schedulePreference) {
+    public ServiceAssignment(ServiceProvider serviceProvider, ServiceRequestDescription serviceRequestDescription, ServiceRequest serviceRequest, SchedulePreference schedulePreference) {
         this.serviceProvider = serviceProvider;
         this.serviceRequestDescription = serviceRequestDescription;
-        this.serviceOrder = serviceOrder;
+        this.serviceRequest = serviceRequest;
         this.schedulePreference = schedulePreference;
     }
 
@@ -42,12 +42,12 @@ public class ServiceAssignment {
     }
 
     /**
-     * Get the ServiceOrder that originated the ServiceRequestDescription
+     * Get the ServiceRequest that originated the ServiceRequestDescription
      *
      * @return
      */
-    public ServiceOrder getServiceOrder() {
-        return serviceOrder;
+    public ServiceRequest getServiceRequest() {
+        return serviceRequest;
     }
 
     /**

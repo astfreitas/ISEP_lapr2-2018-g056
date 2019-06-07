@@ -21,6 +21,14 @@ public class GeographicAreaRegistry {
     GeographicArea getNearestGeographicArea(PostalCode postalCode) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    GeographicArea getClosestAG(Address address) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

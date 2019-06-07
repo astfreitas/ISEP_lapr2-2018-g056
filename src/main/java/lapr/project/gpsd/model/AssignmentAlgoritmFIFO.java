@@ -1,4 +1,4 @@
 package lapr.project.gpsd.model;
 
-class AssignmentAlgoritm1 {
+class AssignmentAlgoritmFIFO {
 }

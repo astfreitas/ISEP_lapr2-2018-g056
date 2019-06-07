@@ -192,4 +192,16 @@ public class ServiceProvider {
         double average = sum / evalList.size();
         this.setAverageRating(average);
     }
+
+    boolean isAvailable(SchedulePreference schedule) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean worksInGeographicArea(GeographicArea area) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean providesServicesOfCategory(Category category) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
