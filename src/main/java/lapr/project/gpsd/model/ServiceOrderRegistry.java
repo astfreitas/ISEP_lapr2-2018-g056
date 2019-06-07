@@ -2,32 +2,73 @@ package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import static lapr.project.gpsd.utils.Constants.*;
 import java.util.List;
 
 public class ServiceOrderRegistry {
 
+    /**
+     * atribute of class ServiceOrderRegistry
+     */
     private ArrayList<ServiceOrder> serviceOrders;
 
+    /**
+     * constructor of ServiceOrderRegistry initialized with an empty arraylist.
+     */
     public ServiceOrderRegistry() {
-        this.serviceOrders = new ArrayList<>();
+        this.serviceOrders = new ArrayList();
     }
 
-    public ServiceOrder getPendingServiceOrders(String status) {
-        for (ServiceOrder sol : serviceOrders) {
-            if (sol.isPending(status)) {
-                return sol;
+    /**
+     * returns a list of only pending service orders
+     *
+     * @param status of the service order
+     * @return list of only pending service orders
+     */
+    public ArrayList<ServiceOrder> getPendingServiceOrders(String status) {
+        ArrayList<ServiceOrder> pendingServiceOrders = new ArrayList<>();
+        for (ServiceOrder serviceOrder : serviceOrders) {
+            if (serviceOrder.isPending(status)) {
+                pendingServiceOrders.add(serviceOrder);
+            }
+        }
+        return pendingServiceOrders;
+    }
+
+    /**
+     * searchs for a service order by a specific id
+     *
+     * @param serviceOrders
+     * @param id
+     * @return founded service order
+     */
+    public ServiceOrder getServiceOrderByID(ArrayList<ServiceOrder> serviceOrders, String id) {
+        for (ServiceOrder serviceOrder : serviceOrders) {
+            if (serviceOrder.hasId(id)) {
+                return serviceOrder;
             }
         }
         return null;
     }
 
-    public ServiceOrder getServiceOrderByID(String id) {
-        for (ServiceOrder sol : serviceOrders) {
-            if (sol.hasId(id)) {
-                return sol;
-            }
-        }
-        return null;
+    /**
+     * method to conclude service order
+     *
+     * @param servOrder service order to be concluded
+     */
+    public void concludeServiceOrder(ServiceOrder servOrder) {
+        servOrder.getStatus().setServOrderStatus(CONCLUDED_ORDER);
+    }
+
+    /**
+     * method to conclude service order reporting issue (and troubleshooting)
+     *
+     * @param servOrder service order to be concluded
+     * @param issue issue to be reported
+     */
+    public void concludeServiceOrderWithIssue(ServiceOrder servOrder, String issue) {
+        servOrder.getStatus().setServOrderStatus(CONCLUDED_ORDER);
+        servOrder.getStatus().setServOrderDetail(issue);
     }
 
     public ArrayList<ServiceOrder> getCompletedServiceOrdersByClient(Client cli) {
@@ -52,17 +93,19 @@ public class ServiceOrderRegistry {
         }
         return servOrderByDate;
     }
-    
+
     /**
-     * Method used to store register service orders from a list of service assignments.
+     * Method used to store register service orders from a list of service
+     * assignments.
+     *
      * @param listServiceAssignments
      * @return list of service orders created.
      */
     public List<ServiceOrder> registerServiceOrders(List<ServiceAssignment> listServiceAssignments) {
         List<ServiceOrder> serviceOrdersList = new ArrayList();
-        for(ServiceAssignment serviceAssignment : listServiceAssignments) {
+        for (ServiceAssignment serviceAssignment : listServiceAssignments) {
             ServiceOrder so = new ServiceOrder(serviceAssignment);
-            if(validate(so)) {
+            if (validate(so)) {
                 int orderNumber = generateServiceOrderNumber();
                 so.setOrderNumber(orderNumber);
                 serviceOrders.add(so);
@@ -71,16 +114,17 @@ public class ServiceOrderRegistry {
         }
         return serviceOrdersList;
     }
-    
+
     /**
      * Method verifies if the service order is already exists
+     *
      * @param serviceOrder instance of the service order to be added.
-     * @return true if the so is not registered yet 
+     * @return true if the so is not registered yet
      */
     private boolean validate(ServiceOrder serviceOrder) {
         return !serviceOrders.contains(serviceOrder);
     }
-    
+
     public void exportData(String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};
@@ -97,9 +141,10 @@ public class ServiceOrderRegistry {
             adapter.export(filename, line);
         }
     }
-    
+
     /**
      * Method generates a service Order number from regist size.
+     *
      * @return a number to be set in the ServiceOrder.
      */
     private int generateServiceOrderNumber() {

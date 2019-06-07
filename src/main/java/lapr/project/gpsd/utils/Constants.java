@@ -16,6 +16,8 @@ public class Constants{
     public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.AssignmentAlgoritm";
 
     public static final String PENDING_ORDER = "Pending";
+    public static final String CONCLUDED_ORDER = "Completed";
+    public static final String CONCLUDED_ORDER_WITH_ISSUE = "Completed with issue";
 
     public static final String REPETITION_PATTERN_DAILY = "DAILY";
     public static final String REPETITION_PATTERN_WEEKLY = "WEEKLY";
