@@ -56,7 +56,6 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
-            <Button mnemonicParsing="false" text="Add addresses" />
             <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleContinueBtn" text="Continue" />
          </children>
       </HBox>

@@ -25,6 +25,7 @@ public class Company {
     private ClientRegistry clientRegistry;
     private GeographicAreaRegistry geographicAreaRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
+    private FileTypeRegistry fileTypeRegistry;
     private IExternalService externalService;
     private AssignServiceTask task;
     private Timer timer;
@@ -57,6 +58,7 @@ public class Company {
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
+        this.fileTypeRegistry = new FileTypeRegistry();
         this.assignmentAlgoritm = null;
         this.externalService = null;
         this.timer = null;
@@ -131,6 +133,17 @@ public class Company {
     public ClientRegistry getClientRegistry() {
         return this.clientRegistry;
     }
+
+    /**
+     *
+     * Gets the instance of File Type Registry
+     *
+     * @return File Type Registry
+     */
+    public FileTypeRegistry getFileTypeRegistry() {
+        return fileTypeRegistry;
+    }
+    
 
     /**
      *
