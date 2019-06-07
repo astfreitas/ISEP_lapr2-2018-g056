@@ -19,7 +19,6 @@ public class ServiceRegistry {
         services = new ArrayList();
     }
 
-
     /**
      * validates if a service already exists in the existing list
      *
@@ -103,9 +102,19 @@ public class ServiceRegistry {
     /**
      * Method that validates the service request and returns the total cost.
      * @param serviceRequest the instance of the service reqeusted by the client.
-     * @return cost of the service request
+     * @return true of the service request
      */
-    public double validateRequest(ServiceRequest serviceRequest) {
-        return serviceRequest.calculateCost();
+    public boolean validateRequest(ServiceRequest serviceRequest) {
+        serviceRequest.calculateCost();
+        return verifyRequest(serviceRequest);
+    }
+    
+    /**
+     * Checks if the service request has all the necessary data
+     * @param serviceRequest
+     * @return true if the service is valid
+     */
+    private boolean verifyRequest(ServiceRequest serviceRequest) {        
+        return serviceRequest.validate();
     }
 }

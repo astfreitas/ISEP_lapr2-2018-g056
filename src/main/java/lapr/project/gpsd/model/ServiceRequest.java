@@ -110,13 +110,36 @@ public class ServiceRequest {
      */
     public double calculateCost() {
         double c=0;
-        for(ServiceRequestDescription srd : serviceRequestDescriptions) {
-            c += srd.getCost();
-        }
+        otherCosts.clear();
         GeographicAreaRegistry rag = ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry();
         PostalCode pc = address.getPostalCode();
         GeographicArea ag = rag.getNearestGeographicArea(pc);
-        
+        for(ServiceRequestDescription srd : serviceRequestDescriptions) {
+            c += srd.getCost() + ag.getTravelCost();
+        }
         return c;
+    }
+    /**
+     * Method that verifies the client order
+     * @return true if it is a valid order
+     */
+    public boolean validate() {
+        //no client
+        if(client==null) {
+            return false;
+        }
+        //no address
+        if(address==null) {
+            return false;
+        }
+        //no service descriptions atleast 1
+        if(serviceRequestDescriptions.isEmpty()) {
+            return false;
+        }
+        //no schedulePreferences atleast 1
+        if(schedulePreferences.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }

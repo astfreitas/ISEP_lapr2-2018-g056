@@ -11,7 +11,7 @@ import lapr.project.gpsd.model.*;
 public class CreateServiceRequestController {
     private Company company; 
     private Client cli;
-    private ServiceRequestRegistry srr;
+    private ServiceRequestRegistry serviceRequestRegistry;
     private ServiceRequest serviceRequest;
     private ServiceRegistry serviceRegister;
     public CreateServiceRequestController() {
@@ -40,8 +40,8 @@ public class CreateServiceRequestController {
      */
     public void setAddress(String local, PostalCode postalCode, String address) {
         Address endP = cli.getAddress(local, postalCode, address); 
-        srr = company.getServiceRequestRegistry();
-        serviceRequest = srr.newServiceRequest(cli, endP);
+        serviceRequestRegistry = company.getServiceRequestRegistry();
+        serviceRequest = serviceRequestRegistry.newServiceRequest(cli, endP);
     }
     /**
      * Method returns the list of categories that exists in the company
@@ -82,10 +82,12 @@ public class CreateServiceRequestController {
     }
     
     public ServiceRequest validate() {
-        
         serviceRegister.validateRequest(serviceRequest);
-        
         return serviceRequest;
+    }
+    
+    public int registerRequest() {
+        return serviceRequestRegistry.registerServiceRequest(serviceRequest);
     }
     
     
