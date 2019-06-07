@@ -11,11 +11,11 @@ import lapr.project.gpsd.model.ServiceRequest;
 import lapr.project.gpsd.model.ServiceRequestRegistry;
 
 
-public class AcceptServiceRequestUI {
+public class AcceptServiceRequestController {
     
     ApplicationGPSD app;
     Company company;
-    
+    ServiceAssignmentRegistry sar;
     
     /**
      * Method returns a list of fully assigned ServiceRequests
@@ -36,10 +36,22 @@ public class AcceptServiceRequestUI {
      * Method returns a list of service assignments for a given ServiceRequest
      * @return a list of service assignments for a given ServiceRequest
      */
-//    public List<ServiceAssignment> checkServiceAssignments(ServiceRequest serviceRequest) {
-//        ServiceAssignmentRegistry sar = company.getServiceAssignementRegistry();
-//        return sar.getServiceAssignmentListByServiceRequest(serviceRequest);
-//    }
+    public List<ServiceAssignment> checkServiceAssignments(ServiceRequest serviceRequest) {
+        sar = company.getServiceAssignementRegistry();
+        return sar.getServiceAssignmentListByServiceRequest(serviceRequest);
+    }
+    
+    /**
+     * 
+     * @param listServiceAssignments 
+     */
+    public void rejectServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
+        sar.removeServiceAssignment(listServiceAssignments, false);
+    }
+    
+    public void acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
+        
+    }
     
     
 }
