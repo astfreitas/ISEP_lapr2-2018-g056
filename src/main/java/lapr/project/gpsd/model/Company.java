@@ -1,11 +1,8 @@
 package lapr.project.gpsd.model;
 
+import java.io.IOException;
 import lapr.project.gpsd.utils.Constants;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.Timer;
 import lapr.project.authentication.AuthenticationFacade;
 
@@ -26,6 +23,7 @@ public class Company {
     private GeographicAreaRegistry geographicAreaRegistry;
     private PostalCodeRegistry postalCodeRegistry;
     private IAssignmentAlgoritm assignmentAlgoritm;
+    private ISortingBehavior serviceSortingBehavior;
     private FileTypeRegistry fileTypeRegistry;
     private IExternalService externalService;
     private AssignServiceTask task;
@@ -61,11 +59,17 @@ public class Company {
         this.geographicAreaRegistry = new GeographicAreaRegistry();
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
+        this.serviceSortingBehavior = null;
         this.assignmentAlgoritm = null;
-        this.externalService = null;
+        // creates instances from configuration file
+        try {
+            this.externalService = (IExternalService) Class.forName(props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).newInstance();
+            this.assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName(props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).newInstance();
+            this.serviceSortingBehavior = (ISortingBehavior) Class.forName(props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).newInstance();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         this.timer = null;
-        //ToDo: forced to Adapter1  change to dyanamic?
-        this.externalService = new ExternalService1();
     }
 
     /**
@@ -147,7 +151,6 @@ public class Company {
     public FileTypeRegistry getFileTypeRegistry() {
         return fileTypeRegistry;
     }
-    
 
     /**
      *
@@ -241,19 +244,36 @@ public class Company {
     public Properties getProps() {
         return props;
     }
+
     /**
      * Returns the instance of PostalCodeRegistry
+     *
      * @return Postal Code Registry
      */
     public PostalCodeRegistry getPostalCodeRegistry() {
         return this.postalCodeRegistry;
     }
+
     /**
      * Returns the instance of External Service in used by the system.
+     *
      * @return instance of External Service
      */
     public IExternalService getExternalService() {
         return externalService;
     }
-    
+
+    /**
+     * Loads every available Postal Code from an externalFile to the Postal Code
+     * Registry.
+     *
+     * @throws IOException if PostalCode File is not found
+     */
+    private void loadPostalCodeFromExternalService() throws IOException {
+        this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
+    }
+    public ISortingBehavior getServiceSortingBehavior() {
+        return serviceSortingBehavior;
+    }
+
 }

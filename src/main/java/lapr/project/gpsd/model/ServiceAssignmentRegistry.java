@@ -59,21 +59,11 @@ public class ServiceAssignmentRegistry {
                 SchedulePreference schp = serviceAssignment.getSchedulePreference();
                 int duration = serviceAssignment.getServiceRequestDescription().getDuration();
                 sp.getSpAvailabilityList().addAvailabilityBySchedulePreference(schp, duration);
-            } else {
-            //just removes service assignment
-                
-            }
-            
+                sp.getSpAvailabilityList().mergeAvailabilities();
+            } 
+            serviceAssignments.remove(serviceAssignment);
         }
     }
-    
-
-//    public void addAvailabilityBySchedulePreference(SchedulePreference schedulePreference, int duration) {        
-//        Availability availability = newAvailability(schedulePreference.getDate(), schedulePreference.getTime(), schedulePreference.getTime());
-//        dasd
-//    }
-    
-    
     
     
 }

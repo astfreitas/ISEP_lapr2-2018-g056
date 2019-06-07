@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.utils;
 
-/**
- *
- * @author paulomaio
- */
 public class Constants{
     
     public static final String ROLE_ADMINISTRATIVE = "ADMINISTRATIVE";
@@ -19,6 +10,10 @@ public class Constants{
     public static final String PARAMS_FILE = "config.properties";
     public static final String PARAMS_COMPANY_DESIGNATION = "Company.Designation";
     public static final String PARAMS_COMPANY_NIF = "Company.NIF";
+    public static final String PARAMS_EXTERNAL_SERVICE = "Company.ExternalService";
+    public static final String PARAMS_FILE_POSTAL_CODES ="Company.FilePostalCodes";
+    public static final String PARAMS_ASSIGNMENT_ALGORITM = "Company.ServiceSortingBehavior";
+    public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.AssignmentAlgoritm";
 
     public static final String PENDING_ORDER = "Pending";
     public static final String CONCLUDED_ORDER = "Completed";

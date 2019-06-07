@@ -50,7 +50,7 @@ public class Availability {
      *
      * @return begin date
      */
-    public LocalDate getbDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -59,7 +59,7 @@ public class Availability {
      *
      * @param date begining date
      */
-    public void setbDate(LocalDate date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -69,7 +69,7 @@ public class Availability {
      *
      * @return begining time
      */
-    public LocalTime getbTime() {
+    public LocalTime getSTime() {
         return sTime;
     }
 
@@ -78,7 +78,7 @@ public class Availability {
      *
      * @param bTime begin time
      */
-    public void setbTime(LocalTime bTime) {
+    public void setSTime(LocalTime bTime) {
         this.sTime = bTime;
     }
 
@@ -87,7 +87,7 @@ public class Availability {
      *
      * @return ending time
      */
-    public LocalTime geteTime() {
+    public LocalTime getETime() {
         return eTime;
     }
 
@@ -96,7 +96,7 @@ public class Availability {
      *
      * @param eTime end time
      */
-    public void seteTime(LocalTime eTime) {
+    public void setETime(LocalTime eTime) {
         this.eTime = eTime;
     }
 

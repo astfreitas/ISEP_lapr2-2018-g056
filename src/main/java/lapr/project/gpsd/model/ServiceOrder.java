@@ -12,25 +12,50 @@ public class ServiceOrder {
     private ServiceRequestDescription servRequestDesc;
     private SchedulePreference schedPreference;
     private String id;
+    private int orderNumber;
     private ServiceOrderStatus status;
 
     /**
      * constructor of ServiceOrder with 6 parameters
      *
-     * @param servRequestDesc
      * @param servProvider
      * @param servRequest
+     * @param servRequestDesc
      * @param schedPreference
      * @param id
      * @param status
      */
-    public ServiceOrder(ServiceRequestDescription servRequestDesc, ServiceProvider servProvider, ServiceRequest servRequest, SchedulePreference schedPreference, String id, ServiceOrderStatus status) {
-        this.servRequestDesc = servRequestDesc;
+    public ServiceOrder(ServiceProvider servProvider, ServiceRequest servRequest, ServiceRequestDescription servRequestDesc, SchedulePreference schedPreference, String id, ServiceOrderStatus status) {
         this.servProvider = servProvider;
         this.servRequest = servRequest;
+        this.servRequestDesc = servRequestDesc;
         this.schedPreference = schedPreference;
         this.id = id;
         this.status = status;
+    }
+
+    /**
+     * Constructor instantiates a service order with a service assignment
+     *
+     * @param serviceAssignment
+     */
+    public ServiceOrder(ServiceAssignment serviceAssignment) {
+        if (serviceAssignment == null) {
+            throw new IllegalArgumentException("serviceAssignment value is null");
+        }
+        this.servRequest = serviceAssignment.getServiceRequest();
+        this.servProvider = serviceAssignment.getServiceProvider();
+        this.servRequestDesc = serviceAssignment.getServiceRequestDescription();
+        this.schedPreference = serviceAssignment.getSchedulePreference();
+    }
+
+    /**
+     * Method that sets the Order Number.
+     *
+     * @param orderNumber number associated with the Service Order.
+     */
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     /**

@@ -1,9 +1,5 @@
 package lapr.project.gpsd.model;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-
 public class AdapterXML implements FileType{
     
     private String adapterFileType = "XML";

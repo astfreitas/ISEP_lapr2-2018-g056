@@ -81,9 +81,11 @@ public class SPAvailabilityList {
         }
         return true;
     }
-    
+
     /**
-     * Method adds an availability to the Service Provider Availability List from a schedulePrefenrece
+     * Method adds an availability to the Service Provider Availability List
+     * from a schedulePrefenrece
+     *
      * @param schedulePreference date and time when the service should occur
      * @param duration duration in minutes of the service duration
      * @return true if the availability was added with success.
@@ -95,7 +97,37 @@ public class SPAvailabilityList {
         Availability availability = newAvailability(date, bHour, eHour);
         return addAvailability(availability);
     }
-    
-    
-    
+
+    /**
+     *
+     * Look for availabilities who are contiguous and merges them into one
+     * single Availability
+     *
+     */
+    public void mergeAvailabilities() {
+        boolean flagMerge = true;
+        while (flagMerge) {
+            flagMerge = false;
+            for (Availability aval : availabilityList) {
+                for (Availability aval1 : availabilityList) {
+                    if (aval.getDate().equals(aval1.getDate())) {
+                        if (aval1.getSTime().equals(aval.getETime())) {
+                            Availability aval2 = new Availability(aval1.getDate(), aval.getSTime(), aval1.getETime());
+                            availabilityList.add(aval2);
+                            availabilityList.remove(aval);
+                            availabilityList.remove(aval1);
+                            flagMerge = true;
+                        }
+                    }
+                    if (flagMerge) {
+                        break;
+                    }
+                }
+                if (flagMerge) {
+                    break;
+                }
+            }
+        }
+    }
+
 }
