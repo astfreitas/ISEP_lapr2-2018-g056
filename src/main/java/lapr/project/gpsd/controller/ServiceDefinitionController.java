@@ -66,6 +66,7 @@ public class ServiceDefinitionController {
      * @param catId
      * @return
      */
+    /*
     public boolean newService(String id, String bDesc, String fDesc, double hCost, String catId) {
         try {
             CategoryRegistry cats = this.company.getCategoryRegistry();
@@ -80,6 +81,7 @@ public class ServiceDefinitionController {
             return false;
         }
     }
+    */
 
     /*
     public boolean registaServico() {
