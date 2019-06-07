@@ -13,7 +13,15 @@ public class ServiceOrder {
     private SchedulePreference schedPreference;
     private String id;
     private String status;
-
+    private int orderNumber;
+    
+    ServiceOrder(ServiceAssignment serviceAssignment) {
+        this.servRequest = serviceAssignment.getServiceRequest();
+        this.servProvider = serviceAssignment.getServiceProvider();
+        this.servRequestDesc = serviceAssignment.getServiceRequestDescription();
+        this.schedPreference = serviceAssignment.getSchedulePreference();
+    }
+    
     public ServiceOrder(ServiceRequestDescription servDesc, ServiceProvider servProvider, ServiceRequest servRequest, SchedulePreference schedPreference, String id, String status) {
         this.servDesc = servDesc;
         this.servProvider = servProvider;
@@ -30,6 +38,15 @@ public class ServiceOrder {
         this.schedPreference = schePref;
     }
 
+    /**
+     * Method that sets the Order Number.
+     * @param orderNumber number associated with the Service Order.
+     */
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+    
+    
     public ServiceRequestDescription getServDesc() {
         return servDesc;
     }
@@ -59,6 +76,8 @@ public class ServiceOrder {
         return status;
 
     }
+
+    
 
     public boolean isPending(String status) {
         return this.status == PENDING_ORDER;

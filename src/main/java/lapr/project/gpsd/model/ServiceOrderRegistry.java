@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceOrderRegistry {
 
@@ -51,7 +52,34 @@ public class ServiceOrderRegistry {
         }
         return servOrderByDate;
     }
-
+    
+    /**
+     * Method used to store register service orders from a list of service assignments.
+     * @param listServiceAssignments
+     * @return list of service orders created.
+     */
+    public List<ServiceOrder> registerServiceOrders(List<ServiceAssignment> listServiceAssignments) {
+        List<ServiceOrder> serviceOrdersList = new ArrayList();
+        for(ServiceAssignment serviceAssignment : listServiceAssignments) {
+            ServiceOrder so = new ServiceOrder(serviceAssignment);
+            if(validate(so)) {
+                int orderNumber = generateServiceOrderNumber();
+                so.setOrderNumber(orderNumber);
+                serviceOrdersList.add(so);
+            }
+        }
+        return serviceOrdersList;
+    }
+    
+    /**
+     * Method verifies if the service order is already exists
+     * @param serviceOrder instance of the service order to be added.
+     * @return true if the so is not registered yet 
+     */
+    private boolean validate(ServiceOrder serviceOrder) {
+        return !serviceOrders.contains(serviceOrder);
+    }
+    
     public void exportData(String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};
@@ -67,6 +95,10 @@ public class ServiceOrderRegistry {
             String[] line = {clientName, clientEmail, schePrefDay, schePrefTime, category, service};
             adapter.export(filename, line);
         }
+    }
+
+    private int generateServiceOrderNumber() {
+        return 1000 + serviceOrders.size();
     }
 
 }
