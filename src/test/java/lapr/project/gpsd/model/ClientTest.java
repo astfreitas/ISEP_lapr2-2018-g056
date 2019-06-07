@@ -39,8 +39,6 @@ public class ClientTest {
         String expResult = "";
         String result = instance.getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -53,8 +51,6 @@ public class ClientTest {
         String expResult = "";
         String result = instance.getEmail();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -81,8 +77,6 @@ public class ClientTest {
         boolean expResult = false;
         boolean result = instance.addAddress(address);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -96,8 +90,6 @@ public class ClientTest {
         boolean expResult = false;
         boolean result = instance.removeAddress(address);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -123,8 +115,6 @@ public class ClientTest {
         String expResult = "";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -139,8 +129,6 @@ public class ClientTest {
         Address expResult = null;
         Address result = Client.newAddress(local, postalCode, address);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
