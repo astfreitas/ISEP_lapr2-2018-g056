@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lapr.project.authentication.AuthenticationFacade;
 
 public class Company {
@@ -62,10 +64,12 @@ public class Company {
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
         this.assignmentAlgoritm = null;
-        this.externalService = null;
+        try {
+            this.externalService = (IExternalService) Class.forName(props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).newInstance();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         this.timer = null;
-        //ToDo: forced to Adapter1  change to dyanamic?
-        this.externalService = new ExternalService1();
     }
 
     /**
@@ -254,6 +258,10 @@ public class Company {
      */
     public IExternalService getExternalService() {
         return externalService;
+    }
+    
+    private void loadPostalCodeFromExternalService(){
+        
     }
     
 }

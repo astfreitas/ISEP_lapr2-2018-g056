@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import lapr.project.gpsd.controller.ApplicationGPSD;
+import lapr.project.gpsd.utils.Constants;
 
 /**
  * External Service classe is responsible to obtain all locations from a
@@ -21,7 +22,7 @@ import lapr.project.gpsd.controller.ApplicationGPSD;
  */
 public class ExternalService1 implements IExternalService {
 
-    private String filePath = ApplicationGPSD.getInstance().getCompany().getProps().getProperty("FilePostalCodes");
+    private String filePath = ApplicationGPSD.getInstance().getCompany().getProps().getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
 
     /**
      * Returns a List of Locations within the given radius for the Geographic
