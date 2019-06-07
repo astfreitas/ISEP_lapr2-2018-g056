@@ -100,24 +100,6 @@ public class SPAvailabilityList {
 
     /**
      *
-     * Restore a rejected Service Assignment time period as an Availability to
-     * the Service Provider.
-     *
-     * @param servAssignment Rejected service Assignment
-     */
-    public void restoreAvailabilty(ServiceAssignment servAssignment) {
-        int duration = servAssignment.getServiceRequestDescription().getDuration();
-        LocalDate date = servAssignment.getSchedulePreference().getDate();
-        LocalTime sTime = servAssignment.getSchedulePreference().getTime();
-        LocalTime eTime = sTime.plusMinutes(duration);
-
-        Availability aval = new Availability(date, sTime, eTime);
-        availabilityList.add(aval);
-        mergeAvailabilities();
-    }
-
-    /**
-     *
      * Look for availabilities who are contiguous and merges them into one
      * single Availability
      *

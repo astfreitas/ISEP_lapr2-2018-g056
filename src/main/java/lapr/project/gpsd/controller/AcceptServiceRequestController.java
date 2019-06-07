@@ -41,6 +41,7 @@ public class AcceptServiceRequestController {
      */
     public void rejectServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
         sar.removeServiceAssignment(listServiceAssignments, false);
+        
     }
     
     /**
