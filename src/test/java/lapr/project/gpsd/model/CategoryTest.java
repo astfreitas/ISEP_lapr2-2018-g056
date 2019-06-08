@@ -1,33 +1,12 @@
 package lapr.project.gpsd.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CategoryTest {
-    
-    public CategoryTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of hasId method, of class Category.
@@ -36,7 +15,7 @@ public class CategoryTest {
     public void testHasId() {
         System.out.println("hasId");
         String id = "123";
-        Category instance = new Category("123", null);
+        Category instance = new Category("123", "testDesc");
         boolean expResult = true;
         boolean result = instance.hasId(id);
         assertEquals(expResult, result);
@@ -45,7 +24,7 @@ public class CategoryTest {
     /**
      * Test of getCode method, of class Category.
      */
-    @Ignore
+    @Disabled
     public void testGetCode() {
         System.out.println("getCode");
         Category instance = null;
@@ -59,7 +38,7 @@ public class CategoryTest {
     /**
      * Test of getDescription method, of class Category.
      */
-    @Ignore
+    @Disabled
     public void testGetDescription() {
         System.out.println("getDescription");
         Category instance = null;
@@ -73,7 +52,7 @@ public class CategoryTest {
     /**
      * Test of setCode method, of class Category.
      */
-    @Ignore
+    @Disabled
     public void testSetCode() {
         System.out.println("setCode");
         String code = "";
@@ -86,7 +65,7 @@ public class CategoryTest {
     /**
      * Test of setDescription method, of class Category.
      */
-    @Ignore
+    @Disabled
     public void testSetDescription() {
         System.out.println("setDescription");
         String description = "";
@@ -112,7 +91,7 @@ public class CategoryTest {
     /**
      * Test of toString method, of class Category.
      */
-    @Ignore
+    @Disabled
     public void testToString() {
         System.out.println("toString");
         Category instance = null;
@@ -122,5 +101,5 @@ public class CategoryTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
