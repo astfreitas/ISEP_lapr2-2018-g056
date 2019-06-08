@@ -54,6 +54,19 @@ public class PostalCodeRegistry {
         return null;
     }
     
+    public List<PostalCode> searchMatchPostalCode(String strPC){
+        List<PostalCode> pcListMatched = new ArrayList<>();
+        String[] strPCray;
+        strPCray = strPC.split("-");
+        for (PostalCode postalCode : postalCodeList) {
+            String[] compPC = postalCode.getPostalCode().split("-");
+            if (strPCray[0].equals(compPC[0])) {
+                pcListMatched.add(postalCode);
+            }
+        }
+        return pcListMatched;
+    }
+    
     
     
 }
