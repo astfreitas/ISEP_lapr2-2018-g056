@@ -13,8 +13,14 @@ public class GeographicAreaRegistry {
     /**
      * List of Geographic Areas known by the company
      */
-    private List<GeographicArea> geoAreaList = new ArrayList<>();
+    private List<GeographicArea> geoAreaList;
 
+    public GeographicAreaRegistry() {
+         geoAreaList = new ArrayList<>();
+    }
+
+    
+    
     /**
      * Method returns nearest GeograficArea instance from a given postal
      * code instance 

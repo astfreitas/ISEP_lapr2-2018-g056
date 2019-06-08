@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.RegisterClientUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.RegisterClientUI1">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_LEFT">
          <children>
@@ -50,7 +50,7 @@
       </VBox>
    </center>
    <left>
-      <HBox maxWidth="135.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox maxWidth="150.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">

@@ -10,7 +10,7 @@ public class Client {
     private String NIF;
     private String telephone;
     private String email;
-    private List<Address> addresses = new ArrayList<Address>();
+    private ArrayList<Address> addresses = new ArrayList<Address>();
 
     public Client(String name, String NIF, String telephone, String email) {
         if ((name == null) || (NIF == null) || (telephone == null)
@@ -77,7 +77,7 @@ public class Client {
      *
      * @return returns the list of Addresses in the client
      */
-    public List<Address> getAddresses() {
+    public ArrayList<Address> getAddresses() {
         return addresses;
     }
 
@@ -148,7 +148,7 @@ public class Client {
      */
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s", this.name, this.NIF, this.telephone, this.email);
+        String str = String.format("Name: %s \nNIF: %s \nTelephone: %s \nEmail: %s", this.name, this.NIF, this.telephone, this.email);
         for (Address morada : this.addresses) {
             str += "\nMorada:\n" + morada.toString();
         }

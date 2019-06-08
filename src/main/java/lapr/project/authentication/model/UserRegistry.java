@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.authentication.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author paulomaio
- */
 public class UserRegistry
 {
     private Set<User> users = new HashSet<>();
-    
+
+    public UserRegistry() {
+    }
     
     public User newUser(String name, String email, String password)
     {

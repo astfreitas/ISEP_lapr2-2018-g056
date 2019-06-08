@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.authentication.model;
 
 import java.util.List;
 
-/**
- *
- * @author paulomaio
- */
 public class UserSession
 {
     private User user = null;

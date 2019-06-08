@@ -58,7 +58,7 @@ public class PostalCode {
      * @return 
      */
     public boolean validatePostalCode(String postalCode){
-        return false;
+        return true;
     }
     
     /**
@@ -108,6 +108,5 @@ public class PostalCode {
     public void setCpLongitude(double cpLongitude) {
         this.cpLongitude = cpLongitude;
     }
-    
-    
+
 }

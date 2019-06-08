@@ -17,7 +17,11 @@ public class PostalCodeRegistry {
     /**
      * List of existing and validated PostalCodes in system.
      */
-    private List<PostalCode> postalCodeList = new ArrayList<>();
+    private List<PostalCode> postalCodeList;
+
+    public PostalCodeRegistry() {
+        this.postalCodeList = new ArrayList<>();
+    }
 
     /**
      * Returns the list of existing PostalCodes in system.

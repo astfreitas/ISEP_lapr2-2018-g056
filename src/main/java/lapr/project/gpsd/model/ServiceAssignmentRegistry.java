@@ -1,15 +1,17 @@
 package lapr.project.gpsd.model;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceAssignmentRegistry {
-    List<ServiceAssignment> serviceAssignments = new ArrayList<>();
+    List<ServiceAssignment> serviceAssignments;
 
+    public ServiceAssignmentRegistry() {
+        this.serviceAssignments = new ArrayList<>();
+    }
 
     public List<ServiceAssignment> getServiceAssignments() {
-        return serviceAssignments;
+        return this.serviceAssignments;
     }
     
     public boolean addServiceAssignment(ServiceAssignment sa) {

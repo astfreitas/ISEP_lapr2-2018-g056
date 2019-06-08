@@ -20,6 +20,8 @@ import javafx.scene.control.TextField;
  * @author joaoferreira
  */
 public class LoginScreenUI implements Initializable {
+    
+    private Main mainApp;
 
     @FXML
     private TextField emailTxt;
@@ -38,7 +40,11 @@ public class LoginScreenUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+    
+    public void setMainApp(Main mainApp) {
+        this.mainApp = mainApp;
+    }
 
     @FXML
     private void handleLoginButton(ActionEvent event) {
@@ -46,6 +52,8 @@ public class LoginScreenUI implements Initializable {
 
     @FXML
     private void handleClientRegisterButton(ActionEvent event) {
+        RegisterClientUI registerEmployeesUI = new RegisterClientUI(this.mainApp);
+        registerEmployeesUI.toRegisterClientScene1();
     }
 
     @FXML
