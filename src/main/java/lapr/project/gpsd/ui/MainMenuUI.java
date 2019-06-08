@@ -15,6 +15,23 @@ public class MainMenuUI {
     public void toMainMenuClient() {
         try {
              MainMenuClientUI mainMenu = (MainMenuClientUI)this.mainApp.replaceSceneContent("/fxml/MainMenuClient.fxml");
+             mainMenu.setMainApp(mainApp);
+        } catch (Exception ex) {
+        }
+    }
+    
+    public void toMainMenuAdmin(){
+        try {
+             MainMenuAdminUI mainMenu = (MainMenuAdminUI)this.mainApp.replaceSceneContent("/fxml/MainMenuAdmin.fxml");
+             mainMenu.setMainApp(mainApp);
+        } catch (Exception ex) {
+        }
+    }
+    
+    public void toMainMenuHRO(){
+        try {
+             MainMenuHROUI mainMenu = (MainMenuHROUI)this.mainApp.replaceSceneContent("/fxml/MainMenuHRO.fxml");
+             mainMenu.setMainApp(mainApp);
         } catch (Exception ex) {
         }
     }

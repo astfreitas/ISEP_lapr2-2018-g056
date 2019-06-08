@@ -6,8 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lapr.project.utils.UIUtils;
 
 public class AddressPopUpUI implements Initializable {
 
@@ -46,7 +48,15 @@ public class AddressPopUpUI implements Initializable {
         String address = addressTxt.getText();
         String postalCode = pcTxt.getText();
         String local = localTxt.getText();
-        registerClient.receiveAddress(address, postalCode,local);
+        if ((address == null) || (address.isEmpty())
+                || (postalCode == null) || (postalCode.isEmpty())
+                || (local == null) || (local.isEmpty())) {
+            UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
+        } else {
+            if (this.registerClient != null) {
+                registerClient.receiveAddress(address, postalCode, local);
+            }
+        }
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
