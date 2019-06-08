@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.GeographicAreaSpecification">
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" />
+                  <TextField fx:id="designationText" />
+               </children>
+            </HBox>
+            <HBox prefHeight="60.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Area of action (radius)" />
+                  <TextField fx:id="radiusText" />
+               </children>
+            </HBox>
+            <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Cost" />
+                  <TextField fx:id="costText" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postal Code" />
+                  <TextField fx:id="postalCodeText" />
+                  <Button fx:id="searchPostalCodeButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+            <ScrollPane prefHeight="150.0" prefWidth="200.0">
+              <content>
+                <AnchorPane fx:id="postalCodeList" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+            <Button fx:id="newGeoAreaButton" mnemonicParsing="false" onAction="#handleNewGeoAreaButton" text="Add GeoGraphic Area" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Geographic Area Specification" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin>
+      </Text>
+   </top>
+</BorderPane>

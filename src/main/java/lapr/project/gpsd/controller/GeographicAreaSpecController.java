@@ -1,8 +1,10 @@
 package lapr.project.gpsd.controller;
 
+import java.util.List;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.GeographicArea;
 import lapr.project.gpsd.model.GeographicAreaRegistry;
+import lapr.project.gpsd.model.PostalCode;
 import lapr.project.gpsd.model.PostalCodeRegistry;
 import lapr.project.gpsd.utils.Constants;
 
@@ -23,6 +25,10 @@ public class GeographicAreaSpecController {
      * GeographicArea instance to create, validate and add to the system.
      */
     private GeographicArea geoA;
+    /**
+     * Reference to Postal Code Registry instance
+     */
+    private PostalCodeRegistry pCodeReg;
     
     /**
      * Constructor for the GeographicAreaController. No parameters needed.
@@ -34,6 +40,7 @@ public class GeographicAreaSpecController {
             throw new IllegalStateException("Non authorized user.");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
+        this.pCodeReg = company.getPostalCodeRegistry();
     }
     /**
      * Returns a new GeographicArea instance.
@@ -59,5 +66,8 @@ public class GeographicAreaSpecController {
     public boolean registerGeographicArea() {
         return geoAreg.registerGeographicArea(geoA);
     }
-
+    
+    public List<PostalCode> searchMatchPostalCode(String strPC){
+        return pCodeReg.searchMatchPostalCode(strPC);
+    }
 }
