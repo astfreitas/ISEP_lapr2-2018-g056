@@ -1,8 +1,6 @@
 package lapr.project.gpsd.controller;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.CategoryRegistry;
 import lapr.project.gpsd.utils.Constants;
@@ -10,18 +8,19 @@ import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.model.ServiceType;
 import lapr.project.gpsd.model.ServiceTypeRegistry;
-//import lapr.project.gpsd.ui.console.utils.Utils;
+
 
 public class ServiceDefinitionController {
 
     private Company company;
-    private Service service;
+    private List<Service> services;
 
     public ServiceDefinitionController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_ADMINISTRATIVE)) {
             throw new IllegalStateException("Utilizador não Autorizado");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
+        this.services = this.company.getServiceRegistry().getServices();
     }
 
     /**
@@ -54,36 +53,12 @@ public class ServiceDefinitionController {
         CategoryRegistry cr = this.company.getCategoryRegistry();
         return cr.getCategories();
     }
-
-    // FALTA O REFLECTION
-    /**
-     * method to instance service withverification by a boolean return type
-     *
-     * @param id
-     * @param bDesc
-     * @param fDesc
-     * @param hCost
-     * @param catId
-     * @return
-     */
-    /*
-    public boolean newService(String id, String bDesc, String fDesc, double hCost, String catId) {
-            CategoryRegistry cats = this.company.getCategoryRegistry();
-            Category cat = cats.getCatById(catId);
-
-            this.service = this.company.getServiceRegistry().Service(id, bDesc, fDesc, hCost, cat);
-
-            return this.company.getServiceTypeRegistry().getServiceTypes().validateServiceType(this.service);
-    }
+  
+   /*
+    newService(id,bDesc,fDesc,hourlyCost,catId)
+    getOtherAtributes()
+    setAditionalData(data)
+    validate()
+    registerService()
     */
-
-    /*
-    public boolean registaServico() {
-        return this.company.registerService(this.service);
-    }
-     */
-    
-    public String getServicoString() {
-        return this.service.toString();
-    }
 }
