@@ -1,5 +1,7 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
+
 public class LimitedService extends Service {
 
     /**
@@ -11,8 +13,8 @@ public class LimitedService extends Service {
      * @param hourlyCost
      * @param category
      */
-    public LimitedService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
-        super(id, briefDescription, fullDescription, hourlyCost, category);
+    public LimitedService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category, ServiceType serviceType) {
+        super(id, briefDescription, fullDescription, hourlyCost, category, serviceType);
     }
 
     /**
@@ -26,4 +28,14 @@ public class LimitedService extends Service {
         return this.getHourlyCost() * (duration / 60);
     }
 
+    public ArrayList[] getAmountOfAttributes(Service service) {
+        ArrayList[] qttAttributes = new ArrayList[6];
+        return qttAttributes;
+    }
+
+    @Override
+    public double getPredeterminedDuration() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
