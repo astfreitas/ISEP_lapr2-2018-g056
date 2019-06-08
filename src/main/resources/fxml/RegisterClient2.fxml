@@ -15,7 +15,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="70.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelBtn" text="Cancel" />
-            <Button fx:id="continueBtn" mnemonicParsing="false" text="Continue" />
+            <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleContinueBtn" text="Continue" />
          </children>
       </HBox>
    </bottom>

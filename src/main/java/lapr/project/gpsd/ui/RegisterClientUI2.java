@@ -89,7 +89,11 @@ public class RegisterClientUI2 implements Initializable {
     @FXML
     private void handleCancelBtn(ActionEvent event) {
         registerClientUI.getMainApp().toMainScene();
+    }
 
+    @FXML
+    private void handleContinueBtn(ActionEvent event) {
+        this.registerClientUI.toRegisterClientScene3();
     }
 
 }

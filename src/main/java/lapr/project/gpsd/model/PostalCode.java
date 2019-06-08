@@ -108,6 +108,5 @@ public class PostalCode {
     public void setCpLongitude(double cpLongitude) {
         this.cpLongitude = cpLongitude;
     }
-    
-    
+
 }

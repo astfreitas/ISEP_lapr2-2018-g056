@@ -127,6 +127,6 @@ public class Address{
      */
     @Override
     public String toString() {
-        return String.format("%s \n %s - %s", this.local, this.postalCode, this.address);
+        return this.address + ", " + this.postalCode.getPostalCode() + ", " + this.local;
     }
 }

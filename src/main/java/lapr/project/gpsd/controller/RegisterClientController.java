@@ -89,4 +89,8 @@ public class RegisterClientController {
     public Client getClient(){
         return this.client;
     }
+    
+    public String toStringClient(){
+        return this.client.toString();
+    }
 }

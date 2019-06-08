@@ -41,10 +41,11 @@ public class RegisterClientUI {
 
     public void toRegisterClientScene3() {
         try {
-            RegisterClientUI3 registerClientScene3UI
+            RegisterClientUI3 registerClientSceneUI3
                     = (RegisterClientUI3) this.mainApp.
                             replaceSceneContent("/fxml/RegisterClient3.fxml");
-            registerClientScene3UI.setRegisterClientUI(this);
+            registerClientSceneUI3.setRegisterClientUI(this);
+            registerClientSceneUI3.showClient();
         } catch (Exception ex) {
         }
     }

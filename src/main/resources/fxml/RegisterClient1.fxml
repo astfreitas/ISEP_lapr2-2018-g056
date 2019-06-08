@@ -50,7 +50,7 @@
       </VBox>
    </center>
    <left>
-      <HBox maxWidth="135.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <HBox maxWidth="150.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">

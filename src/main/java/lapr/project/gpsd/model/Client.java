@@ -148,7 +148,7 @@ public class Client {
      */
     @Override
     public String toString() {
-        String str = String.format("%s - %s - %s - %s", this.name, this.NIF, this.telephone, this.email);
+        String str = String.format("Name: %s \nNIF: %s \nTelephone: %s \nEmail: %s", this.name, this.NIF, this.telephone, this.email);
         for (Address morada : this.addresses) {
             str += "\nMorada:\n" + morada.toString();
         }
