@@ -26,7 +26,7 @@ import lapr.project.gpsd.model.Address;
  * @author joaoferreira
  */
 public class RegisterClientUI2 implements Initializable {
-    
+
     private RegisterClientUI registerClientUI;
 
     @FXML
@@ -45,10 +45,10 @@ public class RegisterClientUI2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
-    public void setRegisterClientUI(RegisterClientUI registerClientUI) {      
+        continueBtn.setDisable(true);
+    }
+
+    public void setRegisterClientUI(RegisterClientUI registerClientUI) {
         this.registerClientUI = registerClientUI;
     }
 
@@ -60,19 +60,20 @@ public class RegisterClientUI2 implements Initializable {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AddressPopUp.fxml"));
         Parent root = (Parent) fxmlLoader.load();
-        
+
         Scene newScene = new Scene(root);
-        
+
         AddressPopUpUI addressPopUp = fxmlLoader.getController();
         addressPopUp.setParentUI(this);
-        
+
         newStage.setScene(newScene);
         newStage.showAndWait();
     }
-    
-    public void receiveAddress(String address, String postalCode, String local){
+
+    public void receiveAddress(String address, String postalCode, String local) {
         Address oAddress = this.registerClientUI.getController().addAddress(local, postalCode, address);
         this.addressList.getItems().add(oAddress);
+        this.continueBtn.setDisable(false);
     }
 
     @FXML
@@ -80,6 +81,15 @@ public class RegisterClientUI2 implements Initializable {
         Address oAddress = this.addressList.getSelectionModel().getSelectedItem();
         this.addressList.getItems().remove(oAddress);
         this.registerClientUI.getController().removeAddress(oAddress);
+        if (this.addressList.getItems().isEmpty()) {
+            this.continueBtn.setDisable(true);
+        }
     }
-    
+
+    @FXML
+    private void handleCancelBtn(ActionEvent event) {
+        registerClientUI.getMainApp().toMainScene();
+
+    }
+
 }

@@ -15,7 +15,7 @@ public class ServiceTypeRegistry {
      * constructor of service type registry
      */
     public ServiceTypeRegistry() {
-        serviceTypes = new ArrayList();
+        serviceTypes = new ArrayList<>();
     }
 
     /**

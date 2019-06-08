@@ -10,7 +10,7 @@ public class ServiceOrderRegistry {
     /**
      * atribute of class ServiceOrderRegistry
      */
-    private ArrayList<ServiceOrder> serviceOrders;
+    private List<ServiceOrder> serviceOrders;
 
     /**
      * constructor of ServiceOrderRegistry initialized with an empty arraylist.

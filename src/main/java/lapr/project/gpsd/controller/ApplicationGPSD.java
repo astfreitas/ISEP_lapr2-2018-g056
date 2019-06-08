@@ -23,7 +23,7 @@ public class ApplicationGPSD
     private final Company company;
     private final AuthenticationFacade authentication;
     
-    private ApplicationGPSD()
+    public ApplicationGPSD()
     {
         Properties props = getProperties();
         this.company = new Company(props);
@@ -91,7 +91,7 @@ public class ApplicationGPSD
             synchronized(ApplicationGPSD.class) 
             { 
                 singleton = new ApplicationGPSD();
-            }
+            } 
         }
         return singleton;
     }

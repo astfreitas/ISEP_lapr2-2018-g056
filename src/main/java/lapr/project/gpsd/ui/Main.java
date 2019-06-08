@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-       this.stage = stage;
+        this.stage = stage;
         stage.setTitle("GPSD Application");
         stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
         stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
@@ -53,10 +53,10 @@ public class Main extends Application {
             LoginScreenUI loginScreenUI = (LoginScreenUI) replaceSceneContent("/fxml/LoginScreen.fxml");
             loginScreenUI.setMainApp(this);
         } catch (Exception ex) {
-            
+
         }
     }
-    
+
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be

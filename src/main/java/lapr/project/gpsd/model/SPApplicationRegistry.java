@@ -1,11 +1,20 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SPApplicationRegistry {
 
     private List<SPApplication> applications;
 
+    public SPApplicationRegistry() {
+        this.applications = new ArrayList<>();
+    }
+
+    /**
+     *
+     * @return
+     */
     public List<SPApplication> getApplications() {
         return applications;
     }

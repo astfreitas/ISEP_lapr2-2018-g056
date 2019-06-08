@@ -47,6 +47,7 @@ public class AddressPopUpUI implements Initializable {
         String postalCode = pcTxt.getText();
         String local = localTxt.getText();
         registerClient.receiveAddress(address, postalCode,local);
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

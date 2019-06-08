@@ -11,16 +11,15 @@ import lapr.project.authentication.model.UserRegistry;
 import lapr.project.authentication.model.UserSession;
 import lapr.project.authentication.model.User;
 
-/**
- *
- * @author paulomaio
- */
 public class AuthenticationFacade
 {
     private UserSession session = null;
     
     private final RegisterUserRoles roles = new RegisterUserRoles();
     private final UserRegistry users = new UserRegistry();
+
+    public AuthenticationFacade() {
+    }
     
     public boolean registerUserRole(String role)
     {

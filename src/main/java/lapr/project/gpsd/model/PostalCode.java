@@ -58,7 +58,7 @@ public class PostalCode {
      * @return 
      */
     public boolean validatePostalCode(String postalCode){
-        return false;
+        return true;
     }
     
     /**

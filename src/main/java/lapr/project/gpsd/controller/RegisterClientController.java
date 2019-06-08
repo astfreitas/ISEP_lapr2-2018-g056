@@ -1,6 +1,5 @@
 package lapr.project.gpsd.controller;
 
-import java.util.ArrayList;
 import lapr.project.gpsd.model.*;
 
 public class RegisterClientController {
@@ -17,8 +16,8 @@ public class RegisterClientController {
      * 
      */
     public RegisterClientController() {
-//        this.app = ApplicationGPSD.getInstance();
-//        this.company = app.getCompany();
+        this.app = ApplicationGPSD.getInstance();
+        this.company = app.getCompany();
     }
 
     /**

@@ -1,11 +1,5 @@
 package lapr.project.gpsd.ui;
 
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import lapr.project.gpsd.controller.RegisterClientController;
 
 public class RegisterClientUI {

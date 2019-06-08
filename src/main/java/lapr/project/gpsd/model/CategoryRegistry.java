@@ -2,7 +2,6 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import lapr.project.gpsd.controller.ApplicationGPSD;
 
 public class CategoryRegistry {
 
