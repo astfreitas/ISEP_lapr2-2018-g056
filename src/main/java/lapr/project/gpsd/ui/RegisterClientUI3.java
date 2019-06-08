@@ -10,26 +10,23 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
  *
  * @author joaoferreira
  */
-public class AddressesWindowUI implements Initializable {
+public class RegisterClientUI3 implements Initializable {
+    
+    private RegisterClientUI registerClientUI;
 
     @FXML
     private Button cancelBtn;
     @FXML
-    private Button continueBtn;
+    private Button confirmBtn;
     @FXML
-    private ListView<?> addressList;
-    @FXML
-    private Button addAddressBtn;
-    @FXML
-    private Button removeAddressBtn;
-    private Object parentController;
+    private TextArea confirmTxt;
 
     /**
      * Initializes the controller class.
@@ -39,13 +36,8 @@ public class AddressesWindowUI implements Initializable {
         // TODO
     }
 
-    /**
-     *
-     * Defines the controller which will control this window
-     *
-     * @param parentController Controller
-     */
-    public void setParentController(Object parentController) {
-        this.parentController = parentController;
+    public void setRegisterClientUI(RegisterClientUI registerClientUI) {
+        this.registerClientUI = registerClientUI;
     }
+
 }

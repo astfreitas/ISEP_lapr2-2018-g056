@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import java.util.ArrayList;
 import lapr.project.gpsd.model.*;
 
 public class RegisterClientController {
@@ -16,8 +17,8 @@ public class RegisterClientController {
      * 
      */
     public RegisterClientController() {
-        this.app = ApplicationGPSD.getInstance();
-        this.company = app.getCompany();
+//        this.app = ApplicationGPSD.getInstance();
+//        this.company = app.getCompany();
     }
 
     /**
@@ -37,6 +38,20 @@ public class RegisterClientController {
         this.client = this.clientRegistry.newClient(name, NIF, telephone, email);
         return this.clientRegistry.validateClient(this.client);
     }
+    
+    /**
+     * 
+     * Sets the sequence of methods necessary to remove an Address to the Client
+     * 
+     * @param address Client's address
+     * @return True/false if the operation succeeds or doesn't
+     */
+    public boolean removeAddress(Address address){
+        if (this.client != null) {
+            return this.client.removeAddress(address);
+        }
+        return false;
+    }
 
     /**
      * 
@@ -47,12 +62,13 @@ public class RegisterClientController {
      * @param address Client's address
      * @return True/false if the operation succeeds or doesn't
      */
-    public boolean addAddress(String local, String postalCode, String address) {
+    public Address addAddress(String local, String postalCode, String address) {
         if (this.client != null) {
             Address oAddress = Client.newAddress(local, postalCode, address);
-            return this.client.addAddress(oAddress);
+            this.client.addAddress(oAddress);
+           return oAddress;
         }
-        return false;
+        return null;
     }
 
     /**
