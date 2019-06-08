@@ -10,20 +10,19 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Menu">
+         <menus>
+            <Menu mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Specify Category" />
-                  <MenuItem mnemonicParsing="false" text="Specify Service" />
-                  <MenuItem mnemonicParsing="false" text="Specify Geographic Area" />
+                  <MenuItem mnemonicParsing="false" text="Register Service Provider" />
+                  <MenuItem mnemonicParsing="false" text="Evaluate Service Provider" />
                </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Info">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Info">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </top>
    <center>
