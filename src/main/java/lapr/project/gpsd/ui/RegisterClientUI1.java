@@ -58,13 +58,13 @@ public class RegisterClientUI1 implements Initializable {
         String telephone = telephoneTxt.getText();
         String email = emailTxt.getText();
         String password = pwdTxt.getText();
-        
+
         try {
             this.registerClientUI.getController().newClient(name, nif, telephone, email, password);
+            this.registerClientUI.toRegisterClientScene2();
         } catch (IllegalArgumentException e) {
             UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
-        }    
-        this.registerClientUI.toRegisterClientScene2();
+        }
     }
 
 }
