@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import lapr.project.gpsd.controller.ApplicationGPSD;
-import lapr.project.gpsd.utils.Constants;
 
 /**
  * External Service classe is responsible to obtain all locations from a
@@ -22,7 +20,11 @@ import lapr.project.gpsd.utils.Constants;
  */
 public class ExternalService1 implements IExternalService {
 
-    private String filePath = ApplicationGPSD.getInstance().getCompany().getProps().getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
+    private String filePath;
+
+    public ExternalService1(String filepath) {
+        this.filePath = filepath;
+    }
 
     /**
      * Returns a List of Locations within the given radius for the Geographic
@@ -68,13 +70,12 @@ public class ExternalService1 implements IExternalService {
         ArrayList<String[]> read = new ArrayList<>();
 
         File file = new File(filepath);
-        Scanner scan = new Scanner(filepath);
+        Scanner scan = new Scanner(file);
         //Reads first line to ignore column title
         scan.nextLine();
         while (scan.hasNextLine()) {
             String[] linha = scan.nextLine().trim().split(";");
             read.add(linha);
-            return read;
         }
 
         return read;
@@ -110,18 +111,20 @@ public class ExternalService1 implements IExternalService {
      * @return Postal Code List
      */
     @Override
-    public List<PostalCode> loadPostalCodeList() throws IOException {
-        List<PostalCode> pCodeList = new ArrayList<>();
+    public ArrayList<PostalCode> loadPostalCodeList() throws IOException {
+        ArrayList<PostalCode> pCodeList = new ArrayList<>();
         ArrayList<String[]> readCpFile;
         readCpFile = readFile(filePath);
         String sNewPC = "";
-        double cpLatitude;
-        double cpLongitude;
+        double cpLatitude = 0;
+        double cpLongitude = 0;
         for (String[] line : readCpFile) {
             if (line[1].length() == 1) {
                 sNewPC = line[0] + "-00" + line[1];
             } else if (line[1].length() == 2) {
                 sNewPC = line[0] + "-0" + line[1];
+            }else if (line[1].length() == 3){
+                sNewPC = line[0] + "-" + line[1];
             }
             cpLatitude = Double.valueOf(line[2]);
             cpLongitude = Double.valueOf(line[3]);
@@ -129,7 +132,6 @@ public class ExternalService1 implements IExternalService {
             pCodeList.add(newCP);
         }
         return pCodeList;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

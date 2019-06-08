@@ -44,15 +44,14 @@ public class ExternalService1Test {
      */
     @Ignore
     public void testGetActsOnLocationList() {
-        System.out.println("getActsOnLocationList");
-        PostalCode pCode = new PostalCode("4000-0013");
-        double radius = 0.0;
-        PostalCodeRegistry cpReg = new PostalCodeRegistry();
-        ExternalService1 instance = new ExternalService1();
-        List<Location> expResult = null;
-        List<Location> result = instance.getActsOnLocationList(pCode, radius, cpReg);
-        assertEquals(expResult, result);
-        
+//        System.out.println("getActsOnLocationList");
+//        PostalCode pCode = new PostalCode("4000-0013");
+//        double radius = 0.0;
+//        PostalCodeRegistry cpReg = new PostalCodeRegistry();
+//        ExternalService1 instance = new ExternalService1();
+//        List<Location> expResult = null;
+//        List<Location> result = instance.getActsOnLocationList(pCode, radius, cpReg);
+//        assertEquals(expResult, result);
     }
 
     /**
@@ -61,7 +60,7 @@ public class ExternalService1Test {
     @Ignore
     public void testLoadPostalCodeRegistry() throws Exception {
         System.out.println("loadPostalCodeRegistry");
-        ExternalService1 instance = new ExternalService1();
+        ExternalService1 instance = new ExternalService1("./ExternalService/codigos_postais.csv");
         List<PostalCode> expResult = null;
         List<PostalCode> result = instance.loadPostalCodeList();
         assertEquals(expResult, result);

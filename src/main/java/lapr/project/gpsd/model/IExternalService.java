@@ -5,8 +5,8 @@
  */
 package lapr.project.gpsd.model;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +33,5 @@ public interface IExternalService {
      *
      * @return Postal Code List
      */
-    public List<PostalCode> loadPostalCodeList() throws IOException;
-
+    public ArrayList<PostalCode> loadPostalCodeList() throws IOException;
 }

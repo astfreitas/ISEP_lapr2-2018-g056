@@ -7,7 +7,10 @@ import java.util.List;
  * each request's creation time
  *
  */
-public class SortFIFO implements ISortingBehavior {
+public class SortingFIFO implements ISortingBehavior {
+
+    public SortingFIFO() {
+    }
 
     /**
      * Returns a copy of the argument's list in order of service request

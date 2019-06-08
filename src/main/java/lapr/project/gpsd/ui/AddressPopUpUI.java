@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lapr.project.gpsd.controller.ApplicationGPSD;
+import lapr.project.gpsd.model.PostalCode;
 import lapr.project.utils.UIUtils;
 
 public class AddressPopUpUI implements Initializable {
@@ -54,10 +56,16 @@ public class AddressPopUpUI implements Initializable {
             UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
         } else {
             if (this.registerClient != null) {
-                registerClient.receiveAddress(address, postalCode, local);
+                PostalCode pc = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(postalCode);
+                if (pc == null) {
+                    UIUtils.createAlert("Invalid address", "Address", Alert.AlertType.ERROR);
+                } else {
+                    registerClient.receiveAddress(address, postalCode, local);
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
+                }
             }
         }
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+
     }
 
 }

@@ -34,7 +34,7 @@ public class PostalCodeRegistry {
      * Sets the PostalCode List 
      * @param postalCodeListReg reference for the new PostalCode List
      */
-    public void setPostalCodeList(List<PostalCode> postalCodeListReg) {
+    public void setPostalCodeList(ArrayList<PostalCode> postalCodeListReg) {
         this.postalCodeList = postalCodeListReg;
     }
     
@@ -43,10 +43,12 @@ public class PostalCodeRegistry {
      * @param strCP postal code to search
      * @return reference to the found PostalCode instance or null
      */
-    public PostalCode getMathingPostalCode(String strCP){
+    public PostalCode getMatchingPostalCode(String strCP){
         for (PostalCode postalCode : postalCodeList) {
             if (strCP.equals(postalCode.getPostalCode())) {
                 return postalCode;
+            }else{
+                 throw new IllegalArgumentException("Invalid Postal Code");
             }
         }
         return null;

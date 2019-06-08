@@ -6,6 +6,7 @@
 package lapr.project.gpsd.model;
 
 import java.util.List;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 
 /**
  *
@@ -63,7 +64,7 @@ public class GeographicArea {
         this.designation = designation;
         this.travelCost = cost;
         this.radius = radius;
-        this.mainPostalCode = new PostalCode(mainPostalCode);
+        this.mainPostalCode = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(mainPostalCode);
         this.LocationList = exService.getActsOnLocationList(this.mainPostalCode, radius, pcReg);
         
     }

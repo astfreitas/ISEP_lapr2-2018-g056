@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.util.Objects;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 
 public class Address{
 
@@ -23,7 +24,7 @@ public class Address{
         }
 
         this.local = local;
-        this.postalCode = new PostalCode(postalCode);
+        this.postalCode = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(postalCode);
         this.address = address;
     }
 
@@ -64,7 +65,7 @@ public class Address{
      * @param postalCode Postal Code
      */
     public void setPostalCode(String postalCode) {
-        this.postalCode = new PostalCode(postalCode);
+        this.postalCode = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(postalCode);
     }
 
     /**
