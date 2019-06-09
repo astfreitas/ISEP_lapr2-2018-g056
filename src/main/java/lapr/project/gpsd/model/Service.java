@@ -24,7 +24,7 @@ public abstract class Service implements ServiceCostCalculation {
      * @param category
      *
      */
-    public Service(String id, String briefDescription, String fullDescription, double hourlyCost, Category category, ServiceType serviceType) {
+    public Service(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
         if ((id == null) || (briefDescription == null) || (fullDescription == null)
                 || (hourlyCost < 0) || (category == null)
                 || (id.isEmpty()) || (briefDescription.isEmpty()) || (fullDescription.isEmpty())) {
@@ -36,7 +36,7 @@ public abstract class Service implements ServiceCostCalculation {
         this.fullDescription = fullDescription;
         this.hourlyCost = hourlyCost;
         this.category = category;
-        this.serviceType = serviceType;
+        this.serviceType = null;
     }
 
     /**
@@ -128,20 +128,7 @@ public abstract class Service implements ServiceCostCalculation {
      */
     public void setServiceType(ServiceType serviceType) {
         this.serviceType = serviceType;
-    }
-
-    public boolean hasOtherAttributes(Service service) {
-        if (getAmountOfAttributes(service).length > 6) {
-            return true;
-        }
-        return false;
-    }
-
-    public double getOtherAtributes(Service service){
-        
-        return getPredeterminedDuration();
-    }
-    
+    }    
     
     @Override
     public int hashCode() {

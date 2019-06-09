@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExtendableService extends Service {
 
@@ -13,8 +14,8 @@ public class ExtendableService extends Service {
      * @param hourlyCost
      * @param category
      */
-    public ExtendableService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category, ServiceType serviceType) {
-        super(id, briefDescription, fullDescription, hourlyCost, category, serviceType);
+    public ExtendableService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
+        super(id, briefDescription, fullDescription, hourlyCost, category);
     }
 
     /**
@@ -27,15 +28,35 @@ public class ExtendableService extends Service {
     public double getDurationCost(double duration) {
         return this.getHourlyCost() * (duration / 60);
     }
-    
-    public ArrayList[] getAmountOfAttributes(Service service) {
-        ArrayList[] qttAttributes = new ArrayList[6];
-        return qttAttributes;
+
+    /**
+     * returns a list of other attributes
+     *
+     * @return list of other attributes
+     */
+    public List<String> getOtherAtributes() {
+        List<String> otherAttributes = new ArrayList();
+        return otherAttributes;
     }
 
+    /**
+     * verifies if the service has other attributes and returns true or false
+     *
+     * @return true or false
+     */
+    public boolean hasOtherAttributes() {
+        return getOtherAtributes().size() > 0;
+    }
+
+    /**
+     * returns false because it has no additional data
+     *
+     * @param data
+     * @return false
+     */
     @Override
-    public double getPredeterminedDuration() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean setAdditionalData(String data) {
+        return false;
     }
 
 }

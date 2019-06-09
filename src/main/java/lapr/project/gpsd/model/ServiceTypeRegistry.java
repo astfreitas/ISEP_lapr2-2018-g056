@@ -49,12 +49,12 @@ public class ServiceTypeRegistry {
      * @param caminhoClass
      * @return true or false
      */
-    public boolean validateServiceType(String idType, String caminhoClass) {
+    public boolean validateServiceType(String idType, String className) {
         if (getServiceTypeByID(idType) != null) {
             return false;
         }
         try {
-            Class<?> servClass = Class.forName(caminhoClass);
+            Class<?> servClass = Class.forName(className);
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
             return false;
@@ -70,9 +70,9 @@ public class ServiceTypeRegistry {
      * @return true or false as the operation succeeds to add service to the
      * ArrayList serviceTypes
      */
-    public boolean addServiceType(String idType, String caminhoClass) {
-        if (validateServiceType(idType, caminhoClass)) {
-            return serviceTypes.add(new ServiceType(idType, caminhoClass));
+    public boolean addServiceType(String idType, String className) {
+        if (validateServiceType(idType, className)) {
+            return serviceTypes.add(new ServiceType(idType, className));
         }
         return false;
     }
