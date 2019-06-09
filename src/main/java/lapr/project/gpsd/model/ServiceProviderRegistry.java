@@ -2,12 +2,14 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import lapr.project.gpsd.controller.ApplicationGPSD;
 import lapr.project.gpsd.utils.Constants;
 
 public class ServiceProviderRegistry {
 
+    /**
+     * attribute of ServiceProviderRegistry as a list of service providers
+     */
     private List<ServiceProvider> spList;
 
     /**
@@ -108,6 +110,10 @@ public class ServiceProviderRegistry {
         return null;
     }
 
+    /**
+     * returns a list of service providers
+     * @return service providers list
+     */
     public List<ServiceProvider> getServiceProviders() {
         return spList;
     }
