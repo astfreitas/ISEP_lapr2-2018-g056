@@ -1,6 +1,8 @@
 package lapr.project.gpsd.model;
 
+import java.time.LocalDate;
 import java.util.List;
+import static lapr.project.gpsd.utils.Constants.*;
 
 /**
  * Service Provider Application created during Use Case 2 - Submit application
@@ -16,6 +18,7 @@ public class SPApplication {
     private List<Category> categories;
     private List<AcademicCompetence> academicCompetences;
     private List<ProfessionalCompetence> professionalCompetences;
+    private SPApplicationStatus applicationStatus;
 
     /**
      * Constructor: creates new instance of SPApplication if String arguments
@@ -38,6 +41,7 @@ public class SPApplication {
         this.NIF = NIF;
         this.phone = phone;
         this.email = email;
+        this.applicationStatus = new SPApplicationStatus();
     }
 
     /**
@@ -56,6 +60,16 @@ public class SPApplication {
      */
     public String getNIF() {
         return NIF;
+    }
+
+    /**
+     * Checks if the SP application has a determined NIF
+     *
+     * @param nif NIF to check
+     * @return true or false
+     */
+    public boolean hasNIF(String nif) {
+        return this.NIF.equalsIgnoreCase(nif);
     }
 
     /**
@@ -219,6 +233,25 @@ public class SPApplication {
      */
     public static ProfessionalCompetence newProfessionalCompetence(String description) {
         return new ProfessionalCompetence(description);
+    }
+
+    /**
+     * returns the SP application status
+     *
+     * @return service order status
+     */
+    public SPApplicationStatus getApplicationStatus() {
+        return applicationStatus;
+    }
+    
+    /**
+     * verifies if a SP application has an accepted state
+     *
+     * @param status of the service order
+     * @return true or false
+     */
+    public boolean isAccepted(String applicationStatus) {
+        return this.applicationStatus.getSPApplicationStatus().equalsIgnoreCase(ACCEPTED_APPLICATION);
     }
 
 }
