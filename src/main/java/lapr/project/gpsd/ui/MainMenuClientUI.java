@@ -21,6 +21,7 @@ import lapr.project.utils.UIUtils;
 public class MainMenuClientUI implements Initializable {
     
     private Main mainApp;
+    private MainMenuUI mainMenuUI;
     @FXML
     private MenuItem serviceRequestBtn;
     @FXML
@@ -43,13 +44,13 @@ public class MainMenuClientUI implements Initializable {
     public void setMainApp(Main mainApp){
         this.mainApp = mainApp;
     }
-    
-    public void toMainMenu() {
-        try {
-            MainMenuClientUI loginScreenUI = (MainMenuClientUI) this.mainApp.replaceSceneContent("/fxml/MainMenuClient.fxml");
-        } catch (Exception ex) {
 
-        }
+    public void setMainMenuUI(MainMenuUI mainMenuUI) {
+        this.mainMenuUI = mainMenuUI;
+    }
+
+    public void backToMainMenu(){
+        this.mainMenuUI.toMainMenuClient();
     }
 
     @FXML

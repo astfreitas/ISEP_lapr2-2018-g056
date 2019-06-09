@@ -17,7 +17,7 @@ import lapr.project.gpsd.utils.Constants;
 import lapr.project.utils.UIUtils;
 
 public class LoginScreenUI implements Initializable {
-    
+
     private Main mainApp;
 
     @FXML
@@ -37,8 +37,8 @@ public class LoginScreenUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         emailTxt.requestFocus();
-    }  
-    
+    }
+
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
@@ -48,21 +48,21 @@ public class LoginScreenUI implements Initializable {
         ApplicationGPSD app = ApplicationGPSD.getInstance();
         String email = emailTxt.getText();
         String pwd = pwdTxt.getText();
-        if(!app.doLogin(email, pwd)){
+        if (!app.doLogin(email, pwd)) {
             UIUtils.createAlert("", "The username and password that you entered did not match our records. Please double-check and try again.", Alert.AlertType.ERROR);
             emailTxt.clear();
             pwdTxt.clear();
             emailTxt.requestFocus();
-        }else{
+        } else {
             List<UserRole> roleList = app.getCurrentSession().getUserRoles();
             String role = roleList.get(0).getRole();
-            if(role.equals(Constants.ROLE_CLIENT)){
-                MainMenuUI mainMenu = new MainMenuUI(this.mainApp, this.mainApp.getStage());
+            MainMenuUI mainMenu = new MainMenuUI(this.mainApp, this.mainApp.getStage());
+            if (role.equals(Constants.ROLE_CLIENT)) {
                 mainMenu.toMainMenuClient();
-            }else if(role.equals(Constants.ROLE_ADMINISTRATIVE)){
-                
-            }else if(role.equals(Constants.ROLE_HRO)){
-                
+            } else if (role.equals(Constants.ROLE_ADMINISTRATIVE)) {
+                mainMenu.toMainMenuAdmin();
+            } else if (role.equals(Constants.ROLE_HRO)) {
+                mainMenu.toMainMenuHRO();
             }
         }
     }
@@ -81,5 +81,5 @@ public class LoginScreenUI implements Initializable {
     private void openAbout(MouseEvent event) {
         UIUtils.about();
     }
-    
+
 }

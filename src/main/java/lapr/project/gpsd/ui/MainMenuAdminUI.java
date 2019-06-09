@@ -20,6 +20,7 @@ import javafx.scene.control.MenuItem;
 public class MainMenuAdminUI implements Initializable {
     
     private Main mainApp;
+    private MainMenuUI mainMenuUI;
     @FXML
     private MenuItem specCatBtn;
     @FXML
@@ -41,8 +42,18 @@ public class MainMenuAdminUI implements Initializable {
         this.mainApp = mainApp;
     }
 
+    public void setMainMenuUI(MainMenuUI mainMenuUI) {
+        this.mainMenuUI = mainMenuUI;
+    }
+
+    public void backToMainMenu(){
+        this.mainMenuUI.toMainMenuAdmin();
+    }
+
     @FXML
     private void handleSpecCatBtn(ActionEvent event) {
+        SpecifyCategoryUI specCat = new SpecifyCategoryUI(this, mainApp);
+        specCat.toSpecifyCategoryScene1();
     }
 
     @FXML

@@ -14,24 +14,27 @@ public class MainMenuUI {
 
     public void toMainMenuClient() {
         try {
-             MainMenuClientUI mainMenu = (MainMenuClientUI)this.mainApp.replaceSceneContent("/fxml/MainMenuClient.fxml");
-             mainMenu.setMainApp(mainApp);
+            MainMenuClientUI mainMenu = (MainMenuClientUI) this.mainApp.replaceSceneContent("/fxml/MainMenuClient.fxml");
+            mainMenu.setMainApp(mainApp);
+            mainMenu.setMainMenuUI(this);
         } catch (Exception ex) {
         }
     }
-    
-    public void toMainMenuAdmin(){
+
+    public void toMainMenuAdmin() {
         try {
-             MainMenuAdminUI mainMenu = (MainMenuAdminUI)this.mainApp.replaceSceneContent("/fxml/MainMenuAdmin.fxml");
-             mainMenu.setMainApp(mainApp);
+            MainMenuAdminUI mainMenu = (MainMenuAdminUI) this.mainApp.replaceSceneContent("/fxml/MainMenuAdmin.fxml");
+            mainMenu.setMainApp(mainApp);
+            mainMenu.setMainMenuUI(this);
         } catch (Exception ex) {
         }
     }
-    
-    public void toMainMenuHRO(){
+
+    public void toMainMenuHRO() {
         try {
-             MainMenuHROUI mainMenu = (MainMenuHROUI)this.mainApp.replaceSceneContent("/fxml/MainMenuHRO.fxml");
-             mainMenu.setMainApp(mainApp);
+            MainMenuHROUI mainMenu = (MainMenuHROUI) this.mainApp.replaceSceneContent("/fxml/MainMenuHRO.fxml");
+            mainMenu.setMainApp(mainApp);
+            mainMenu.setMainMenuUI(this);
         } catch (Exception ex) {
         }
     }

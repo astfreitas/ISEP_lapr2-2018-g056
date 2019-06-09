@@ -21,6 +21,7 @@ import javafx.scene.control.MenuItem;
 public class MainMenuHROUI implements Initializable {
     
     private Main mainApp;
+    private MainMenuUI mainMenuUI;
     @FXML
     private MenuItem registerSPBtn;
     @FXML
@@ -39,9 +40,18 @@ public class MainMenuHROUI implements Initializable {
     public void setMainApp(Main mainApp){
         this.mainApp = mainApp;
     }
+    
+    public void setMainMenuUI(MainMenuUI mainMenuUI) {
+        this.mainMenuUI = mainMenuUI;
+    }
+    
+    public void backToMainMenu(){
+        this.mainMenuUI.toMainMenuHRO();
+    }
 
     @FXML
     private void handleRegisterSPBtn(ActionEvent event) {
+        
     }
 
     @FXML
