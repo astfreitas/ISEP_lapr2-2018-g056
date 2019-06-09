@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.CategoryRegistry;
@@ -43,7 +44,8 @@ public class ServiceDefinitionController {
     }
 
     /**
-     * 2.1 from design: returns the service type according to the idType selected
+     * 2.1 from design: returns the service type according to the idType
+     * selected
      *
      * @param idType
      * @return st -> service type
@@ -64,7 +66,8 @@ public class ServiceDefinitionController {
     }
 
     /**
-     * 4.1 from design: Sets the sequence of methods necessary to create a valid Service
+     * 4.1 from design: Sets the sequence of methods necessary to create a valid
+     * Service
      *
      * @param id service id
      * @param bDesc brief description
@@ -76,9 +79,30 @@ public class ServiceDefinitionController {
     public boolean newService(String id, String bDesc, String fDesc, double hourlyCost, String catId) {
         this.category = this.company.getCategoryRegistry().getCatById(catId);
         this.service = this.company.getServiceTypeRegistry().getServiceTypeByID(id).newService(id, fDesc, fDesc, hourlyCost, category);
+        Boolean bAtrbs = this.service.hasOtherAttributes();
+        return bAtrbs;
+    }
 
-        return false;
+    /**
+     * verifies if a service has other attributes and returns a list of them
+     *
+     * @return list of ohter attributes or null if has no other attributes
+     */
+    public List<String> getOtherAttributes() {
+        List<String> atrbs = new ArrayList();
+        if (this.service.hasOtherAttributes()) {
+            return atrbs = this.service.getOtherAtributes();
+        }
+        return null;
+    }
 
+    /**
+     * modifies data from the other attributes of the service
+     *
+     * @param data
+     */
+    public void setAdditionalData(String data) {
+        this.service.setAdditionalData(data);
     }
 
     /**
@@ -108,11 +132,4 @@ public class ServiceDefinitionController {
         return this.service;
     }
 
-    /*
-     --> newService(id,bDesc,fDesc,hourlyCost,catId)
-    getOtherAtributes()
-    setAditionalData(data)
-     ok -> validate()
-     ok -> registerService()
-     */
 }
