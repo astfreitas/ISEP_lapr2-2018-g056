@@ -279,4 +279,9 @@ public class Company {
         return serviceSortingBehavior;
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
+    
 }
