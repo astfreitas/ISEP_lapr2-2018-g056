@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import lapr.project.gpsd.controller.RegisterClientController;
 import lapr.project.gpsd.model.Client;
 
 /**

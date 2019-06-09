@@ -60,11 +60,13 @@ public class RegisterClientUI1 implements Initializable {
         String password = pwdTxt.getText();
 
         try {
-            this.registerClientUI.getController().newClient(name, nif, telephone, email, password);
-            this.registerClientUI.toRegisterClientScene2();
+            if (this.registerClientUI.getController().newClient(name, nif, telephone, email, password)) {
+                this.registerClientUI.toRegisterClientScene2();
+            } else {
+                UIUtils.createAlert("User already registered.", "", Alert.AlertType.ERROR);
+            }
         } catch (IllegalArgumentException e) {
             UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
         }
     }
-
 }
