@@ -48,7 +48,7 @@ public class RegisterUserRoles
     {
         UserRole papel = searchRole(role);
         if (papel != null)
-            return this.roles.contains(role);
+            return this.roles.contains(papel);
         return false;
     }
     

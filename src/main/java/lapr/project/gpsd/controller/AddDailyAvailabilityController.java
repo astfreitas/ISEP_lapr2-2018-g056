@@ -22,20 +22,11 @@ public class AddDailyAvailabilityController {
      *
      */
     public AddDailyAvailabilityController() {
-             if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
+        if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
             throw new IllegalStateException("Non authorized user.");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
         avalList = new ArrayList<>();
-        setAvailabilities();
-    }
-
-    /**
-     * 
-     * Gets the necessary attributes to use the AddDailyAvailabilityController
-     * 
-     */
-    public void setAvailabilities() {
         UserSession session = ApplicationGPSD.getInstance().getCurrentSession();
         String email = session.getUserEmail();
         ServiceProviderRegistry spr = company.getServiceProviderRegistry();
@@ -43,9 +34,9 @@ public class AddDailyAvailabilityController {
     }
 
     /**
-     * 
+     *
      * Creates one instance of Availability
-     * 
+     *
      * @param date Date of Availability
      * @param sTime Start time of Availability
      * @param eTime End of Availability
@@ -59,9 +50,9 @@ public class AddDailyAvailabilityController {
     }
 
     /**
-     * 
+     *
      * Creates various instances of Availability with a repetition pattern
-     * 
+     *
      * @param date Date of Availability
      * @param sTime Start time of Availability
      * @param eDate End date of repetition
@@ -99,14 +90,14 @@ public class AddDailyAvailabilityController {
         }
         return avalList;
     }
-    
+
     /**
-     * 
+     *
      * Registers the availability on the Service Provider's list
-     * 
+     *
      * @return The success of the operation
      */
-    public boolean registerAvailability(){
+    public boolean registerAvailability() {
         return spal.addAvailability(avalList);
     }
 }

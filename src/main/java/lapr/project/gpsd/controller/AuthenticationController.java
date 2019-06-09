@@ -12,11 +12,11 @@ import lapr.project.authentication.model.UserRole;
  *
  * @author paulomaio
  */
-public class AutenticacaoController
+public class AuthenticationController
 {
     private ApplicationGPSD m_oApp;
     
-    public AutenticacaoController()
+    public AuthenticationController()
     {
         this.m_oApp = ApplicationGPSD.getInstance();
     }

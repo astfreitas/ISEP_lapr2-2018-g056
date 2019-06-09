@@ -1,38 +1,20 @@
 package lapr.project.gpsd.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClientTest {
     
     public ClientTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of getName method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testGetName() {
         System.out.println("getName");
         Client instance = null;
@@ -44,7 +26,7 @@ public class ClientTest {
     /**
      * Test of getEmail method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testGetEmail() {
         System.out.println("getEmail");
         Client instance = null;
@@ -60,7 +42,7 @@ public class ClientTest {
     public void testHasEmail() {
         System.out.println("hasEmail");
         String email = "test@test.com";
-        Client instance = new Client(null, null, null, "test@test.com");
+        Client instance = new Client("test", "test", "test", "test@test.com");
         boolean expResult = true;
         boolean result = instance.hasEmail(email);
         assertEquals(expResult, result);
@@ -69,7 +51,7 @@ public class ClientTest {
     /**
      * Test of addAddress method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testAddAddress() {
         System.out.println("addAddress");
         Address address = null;
@@ -82,7 +64,7 @@ public class ClientTest {
     /**
      * Test of removeAddress method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testRemoveAddress() {
         System.out.println("removeAddress");
         Address address = null;
@@ -108,7 +90,7 @@ public class ClientTest {
     /**
      * Test of toString method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testToString() {
         System.out.println("toString");
         Client instance = null;
@@ -120,7 +102,7 @@ public class ClientTest {
     /**
      * Test of newAddress method, of class Client.
      */
-    @Ignore
+    @Disabled
     public void testNewAddress() {
         System.out.println("newAddress");
         String local = "";

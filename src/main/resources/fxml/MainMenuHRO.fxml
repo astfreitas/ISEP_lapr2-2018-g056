@@ -7,19 +7,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.MainMenuHROUI">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
          <menus>
             <Menu mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Register Service Provider" />
-                  <MenuItem mnemonicParsing="false" text="Evaluate Service Provider" />
+                  <MenuItem fx:id="registerSPBtn" mnemonicParsing="false" onAction="#handleRegisterSPBtn" text="Register Service Provider" />
+                  <MenuItem fx:id="evaluateSPBtn" mnemonicParsing="false" onAction="#handleEvaluateSPBtn" text="Evaluate Service Provider" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Info">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="aboutBtn" mnemonicParsing="false" onAction="#handleAboutBtn" text="About" />
                </items>
             </Menu>
          </menus>

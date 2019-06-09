@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.LoginScreenUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.LoginScreenUI">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <padding>
             <Insets top="30.0" />
          </padding>
          <children>
-            <ImageView fitHeight="130.0" fitWidth="254.0">
+            <ImageView fitHeight="130.0" fitWidth="254.0" onMouseClicked="#openAbout" preserveRatio="true">
                <image>
                   <Image url="@../files/logo.png" />
                </image>

@@ -11,13 +11,14 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
     ServiceRequestRegistry requestRegistry;
 
     public AssignmentAlgoritm1() {
-        this.company = ApplicationGPSD.getInstance().getCompany();
-        this.spRegistry = company.getServiceProviderRegistry();
-        this.requestRegistry = company.getServiceRequestRegistry();
+
     }
 
     @Override
     public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services, ISortingBehavior sortingBehavior) {
+        this.company = ApplicationGPSD.getInstance().getCompany();
+        this.spRegistry = company.getServiceProviderRegistry();
+        this.requestRegistry = company.getServiceRequestRegistry();
 
         // instantiates the assignment list
         List<ServiceAssignment> assignments = new ArrayList<>();
@@ -42,13 +43,10 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
             // returns the schedule suitable for the assignment
             // to-do
-            
             // creates the assignment instance
             // ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
-            
             // adds the assignment to the list
             // assignments.add(assignment);
-            
             // removes the service duration interval from the SP's availability
             // whooo
         }

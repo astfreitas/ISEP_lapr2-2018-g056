@@ -63,9 +63,11 @@ public class Company {
         this.assignmentAlgoritm = null;
         // creates instances from configuration file
         try {
-            this.externalService = (IExternalService) Class.forName(props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).newInstance();
-            this.assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName(props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).newInstance();
-            this.serviceSortingBehavior = (ISortingBehavior) Class.forName(props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).newInstance();
+            String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
+            this.externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
+            this.assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
+            this.serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
+            loadPostalCodeFromExternalService();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -272,6 +274,7 @@ public class Company {
     private void loadPostalCodeFromExternalService() throws IOException {
         this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
     }
+
     public ISortingBehavior getServiceSortingBehavior() {
         return serviceSortingBehavior;
     }

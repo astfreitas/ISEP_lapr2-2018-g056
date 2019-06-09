@@ -16,21 +16,7 @@ public class PostalCode {
      */
     private double cpLongitude;
 
-    /**
-     * 
-     * Creates an instance of Postal Code
-     * 
-     * @param postalCode 
-     */
-    public PostalCode(String postalCode) {
-        if(!validatePostalCode(postalCode)){
-            throw new IllegalArgumentException("Postal code not valid.");
-        }
-         if ( (postalCode == null)||
-                (postalCode.isEmpty()))
-            throw new IllegalArgumentException("None of the arguments can be null or empty.");
-        this.postalCode = postalCode;
-    }
+    
     /**
      * Constructor for PostalCode instance receiving all the attributes by method parameters
      * @param postalCode postal code string info

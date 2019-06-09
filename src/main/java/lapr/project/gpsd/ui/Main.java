@@ -2,12 +2,16 @@ package lapr.project.gpsd.ui;
 
 import java.io.InputStream;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
@@ -20,10 +24,24 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        stage.setTitle("GPSD Application");
-        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
-        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+        this.stage.setTitle("GPSD Application");
+        this.stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
+        this.stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
         toMainScene();
+        this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+                    alert.setTitle("ApplicationGPSD");
+                    alert.setHeaderText("Confirmation");
+                    alert.setContentText("Are you sure you want to exit?");
+
+                    if (alert.showAndWait().get() == ButtonType.CANCEL) {
+                        event.consume();
+                    }
+                }
+            });
         this.stage.show();
     }
 

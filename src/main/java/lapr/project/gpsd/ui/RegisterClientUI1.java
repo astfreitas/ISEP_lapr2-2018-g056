@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import lapr.project.utils.UIUtils;
 
 public class RegisterClientUI1 implements Initializable {
 
@@ -56,8 +58,15 @@ public class RegisterClientUI1 implements Initializable {
         String telephone = telephoneTxt.getText();
         String email = emailTxt.getText();
         String password = pwdTxt.getText();
-        this.registerClientUI.getController().newClient(name, nif, telephone, email, password);
-        this.registerClientUI.toRegisterClientScene2();
-    }
 
+        try {
+            if (this.registerClientUI.getController().newClient(name, nif, telephone, email, password)) {
+                this.registerClientUI.toRegisterClientScene2();
+            } else {
+                UIUtils.createAlert("User already registered.", "", Alert.AlertType.ERROR);
+            }
+        } catch (IllegalArgumentException e) {
+            UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
+        }
+    }
 }

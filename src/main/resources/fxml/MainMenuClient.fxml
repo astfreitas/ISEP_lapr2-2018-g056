@@ -7,25 +7,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.MainMenuClientUI">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Menu">
+         <menus>
+            <Menu mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" text="New Service Request" />
-                  <MenuItem mnemonicParsing="false" text="Add Address" />
-                  <MenuItem mnemonicParsing="false" text="Accept Service Request Assignments" />
-                  <MenuItem mnemonicParsing="false" text="Rate Service Providers" />
+                  <MenuItem fx:id="serviceRequestBtn" mnemonicParsing="false" onAction="#handleServiceRequestBtn" text="New Service Request" />
+                  <MenuItem fx:id="addAddressBtn" mnemonicParsing="false" onAction="#handleAddAddressBtn" text="Add Address" />
+                  <MenuItem fx:id="acceptServiceReqAssignmentBtn" mnemonicParsing="false" onAction="#handleAcceptServiceReqAssignmentBtn" text="Accept Service Request Assignments" />
+                  <MenuItem fx:id="rateSPBtn" mnemonicParsing="false" onAction="#handleRateSPBtn" text="Rate Service Providers" />
                </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Info">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Info">
+               <items>
+                  <MenuItem fx:id="aboutBtn" mnemonicParsing="false" onAction="#handleAboutBtn" text="About" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </top>
    <center>

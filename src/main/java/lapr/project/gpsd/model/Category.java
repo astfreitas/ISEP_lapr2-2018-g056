@@ -111,7 +111,7 @@ public class Category
     @Override
     public String toString()
     {
-        return String.format("%s - %s ", this.code, this.description);
+        return String.format("Category code: %s\nDescription: %s ", this.code, this.description);
     }
 
 }

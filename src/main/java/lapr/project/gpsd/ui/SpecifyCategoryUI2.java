@@ -10,18 +10,20 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import lapr.project.gpsd.model.Client;
+import lapr.project.gpsd.model.Category;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
  *
  * @author joaoferreira
  */
-public class RegisterClientUI3 implements Initializable {
+public class SpecifyCategoryUI2 implements Initializable {
 
-    private RegisterClientUI registerClientUI;
+    private SpecifyCategoryUI specifyCategoryUI;
 
     @FXML
     private Button cancelBtn;
@@ -35,25 +37,31 @@ public class RegisterClientUI3 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+      
     }
 
-    public void setRegisterClientUI(RegisterClientUI registerClientUI) {
-        this.registerClientUI = registerClientUI;
+    public void setSpecifyCategoryUI(SpecifyCategoryUI specifyCategoryUI) {
+        this.specifyCategoryUI = specifyCategoryUI;
     }
-
-    public void showClient() {
-        Client cli = this.registerClientUI.getController().getClient();
-        confirmTxt.setText(cli.toString());
+    
+    public void showCategory(){
+        Category cat = this.specifyCategoryUI.getController().getCategory();
+        confirmTxt.setText(cat.toString());
     }
 
     @FXML
     private void handleCancelBtn(ActionEvent event) {
-        registerClientUI.getMainApp().toMainScene();
+        this.specifyCategoryUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
-        this.registerClientUI.getController().registerCliente();
-        registerClientUI.getMainApp().toMainScene();
+        if(this.specifyCategoryUI.getController().registerCategory()){
+            specifyCategoryUI.getMainMenu().backToMainMenu();
+        }else{
+            this.specifyCategoryUI.getController().registerCategory();
+            UIUtils.createAlert("Error creating category.", "", Alert.AlertType.ERROR);
+        }
     }
+
 }

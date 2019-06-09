@@ -7,20 +7,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.MainMenuAdminUI">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Menu">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Specify Category" />
-                  <MenuItem mnemonicParsing="false" text="Specify Service" />
-                  <MenuItem mnemonicParsing="false" text="Specify Geographic Area" />
+                  <MenuItem fx:id="specCatBtn" mnemonicParsing="false" onAction="#handleSpecCatBtn" text="Specify Category" />
+                  <MenuItem fx:id="specServBtn" mnemonicParsing="false" onAction="#handleSpecServBtn" text="Specify Service" />
+                  <MenuItem fx:id="specGABtn" mnemonicParsing="false" onAction="#handleSpecGABtn" text="Specify Geographic Area" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Info">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="aboutBtn" mnemonicParsing="false" onAction="#handleAboutBtn" text="About" />
             </items>
           </Menu>
         </menus>
