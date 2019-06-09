@@ -55,9 +55,10 @@ public class ServiceRegistry {
      */
     public boolean registerService(Service serv) {
         if (validateService(serv)) {
-            return addService(serv);
+            addService(serv);
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
