@@ -43,6 +43,14 @@ public class CreateServiceRequestController {
         serviceRequestRegistry = company.getServiceRequestRegistry();
         serviceRequest = serviceRequestRegistry.newServiceRequest(cli, endP);
     }
+    
+    /**
+     * Method returns the instance of the service requested
+     * @return 
+     */
+    public ServiceRequest getServiceRequest() {
+        return serviceRequest;
+    }
     /**
      * Method returns the list of categories that exists in the company
      * @return return a list of Category instances

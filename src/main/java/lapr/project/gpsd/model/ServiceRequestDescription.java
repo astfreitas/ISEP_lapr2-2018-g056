@@ -58,8 +58,37 @@ public class ServiceRequestDescription {
         return duration;
     }
     
+    /**
+     * Method returns Category of the Service Request Description
+     * @return Category of the Service Request Description
+     */
+    public String getPropertyCategory() {
+        return this.service.getCategory().getDescription();
+    }
     
+    /**
+     * Method returns Service Brief Desc
+     * @return Service Brief Desc
+     */
+    public String getPropertyService() {
+        return this.service.getBriefDescription();
+    }
     
+    /**
+     * Method returns Service Duration
+     * @return Service Duration
+     */
+    public String getPropertyDuration() {
+        return String.valueOf(this.duration);
+    }
+    
+    /**
+     * Method returns Service Cost
+     * @return Service Cost
+     */
+    public String getPropertyCost() {
+        return String.valueOf(this.getCost());
+    }
     
     
 }

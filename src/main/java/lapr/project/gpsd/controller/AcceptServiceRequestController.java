@@ -7,9 +7,9 @@ import lapr.project.gpsd.model.*;
 
 public class AcceptServiceRequestController {
     
-    ApplicationGPSD app;
-    Company company;
-    ServiceAssignmentRegistry sar;
+    private ApplicationGPSD app;
+    private Company company;
+    private ServiceAssignmentRegistry sar;
     
     /**
      * Method returns a list of fully assigned ServiceRequests
