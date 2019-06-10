@@ -48,7 +48,20 @@ public class ConsultServiceOrderUI {
     }
 
     public void toConsultServiceOrderScene2() {
+        try {
+        ConsultServiceOrderUI2 consultServOrderUI2 = (ConsultServiceOrderUI2) this.mainApp.replaceSceneContent("/fxml/ConsultServiceOrderUI2.fxml");
+        consultServOrderUI2.setConsultServOrderUI(this);
+        } catch (Exception e) {
+        }
 
     }
+    /**
+     * Returns ConsulServiceOrder Controller instance
+     * @return ConsulServiceOrder Controller instance
+     */
+    public ConsultServiceOrderController getController() {
+        return controller;
+    }
+    
 
 }

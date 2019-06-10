@@ -3,6 +3,7 @@ package lapr.project.gpsd.controller;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.FileType;
@@ -41,7 +42,9 @@ public class ConsultServiceOrderController {
         this.sor = this.company.getServiceOrderRegistry();
         this.sDate = sDate;
         this.eDate = eDate;
-        return this.sor.getServiceOrderByDateAndSP(this.sDate, this.eDate, sp);
+        this.servOrderList = new ArrayList<>();
+        this.servOrderList.addAll(this.sor.getServiceOrderByDateAndSP(this.sDate, this.eDate, sp));
+        return servOrderList;
     }
 
     public ArrayList<FileType> getFileTypes() {
@@ -54,9 +57,35 @@ public class ConsultServiceOrderController {
         FileType adapter = this.fileTypeRegistry.getExportAdapterByFileType(fileType);
         String filename = "./"+sp.getNumber()+"_"+sDate.toString()+"_"+eDate.toString();
                
-        sor.exportData(filename, adapter);
+        sor.exportData(servOrderList,filename, adapter);
 
        File file = new File(filename);
        return file.exists();
     }
+    
+    /**
+     * Sets the Start Date and End Date for the use case in controller
+     * @param sDate start date
+     * @param eDate end date
+     */
+    public void setDatesToSearch(LocalDate sDate, LocalDate eDate){
+        this.sDate = sDate;
+        this.eDate = eDate;
+    }
+    /**
+     * Returns the StartDate saved in the controller
+     * @return startDate
+     */
+    public LocalDate getsDate() {
+        return sDate;
+    }
+    /**
+     * Returns the End Date saved in the controller
+     * @return endDate
+     */
+    public LocalDate geteDate() {
+        return eDate;
+    }
+    
+    
 }

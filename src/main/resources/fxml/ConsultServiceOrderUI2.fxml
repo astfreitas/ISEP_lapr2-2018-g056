@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.ConsultServiceOrderUI2">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="StartDate" />
+                  <DatePicker fx:id="startDatePicker" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <DatePicker fx:id="endDatePicker" />
+               </children>
+            </HBox>
+            <ListView fx:id="listViewServOrders" onEditStart="#handleLoadListServOrders" prefHeight="250.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Consult Service Orders">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+            <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshBut" text="Refresh Search" />
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#handleExportBut" text="Export" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

@@ -91,8 +91,6 @@ public class SpecifyGeographicAreaUI1 implements Initializable {
 //            UIUtils.createAlert(e.getMessage(), e.getLocalizedMessage(), Alert.AlertType.ERROR);
             UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
         }
-        
-        
     }
     
     public void setSpecifyGeographicAreaUI(SpecifyGeographicAreaUI specifyGeographicAreaUI){

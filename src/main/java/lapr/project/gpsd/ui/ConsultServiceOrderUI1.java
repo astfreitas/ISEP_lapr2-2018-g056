@@ -6,6 +6,7 @@
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,12 +43,24 @@ public class ConsultServiceOrderUI1 implements Initializable {
         this.consultServOrderUI = consultServOrderUI;
     }
 
+    /**
+     * Allows the scene to go back to the main menu throw the ConsultServiceOrderUI
+     * instance
+     * @param event event generated from button
+     */
     @FXML
     private void handleCancelBut(ActionEvent event) {
+        this.consultServOrderUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
     private void handleSearchBut(ActionEvent event) {
+//        this.consultServOrderUI.getController().
+        LocalDate sDate = startDate.getValue();
+        LocalDate eDate = endDate.getValue();
+        if (sDate.isBefore(eDate)) {
+            
+        }
     }
 
     public DatePicker getStartDate() {
