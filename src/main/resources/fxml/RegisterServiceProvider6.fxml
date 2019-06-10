@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.RegisterServiceProviderUI6">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="39.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Service provider access data" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="39.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Abbreviated name" />
+                  <TextField fx:id="nameTxt" prefHeight="27.0" prefWidth="275.0">
+                     <HBox.margin>
+                        <Insets left="-15.0" />
+                     </HBox.margin></TextField>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="43.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number" />
+                  <TextField fx:id="emailTxt" prefHeight="27.0" prefWidth="181.0">
+                     <HBox.margin>
+                        <Insets left="48.0" />
+                     </HBox.margin></TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Institutional Email" />
+                  <TextField fx:id="telephoneTxt" prefHeight="27.0" prefWidth="275.0">
+                     <HBox.margin>
+                        <Insets left="18.0" />
+                     </HBox.margin></TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please set password" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="537.0" spacing="55.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pasword" />
+                  <TextField fx:id="nifTxt" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="183.0">
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin></TextField>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <HBox maxWidth="150.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+            <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleContinueBtn" text="Continue" />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <Label alignment="CENTER" prefHeight="51.0" prefWidth="404.0" text="Register Service Provider" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
