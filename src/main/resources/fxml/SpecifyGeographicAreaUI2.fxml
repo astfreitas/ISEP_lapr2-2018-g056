@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.SpecifyGeographicAreaUI2">
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm New Geographic Area" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+   </top>
+   <center>
+      <TextArea fx:id="newGeoAreaTextArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="15.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelBut" text="Cancel" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#handleConfirmBut" text="Confirm" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

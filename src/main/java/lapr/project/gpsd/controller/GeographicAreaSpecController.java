@@ -70,4 +70,14 @@ public class GeographicAreaSpecController {
     public List<PostalCode> searchMatchPostalCode(String strPC){
         return pCodeReg.searchMatchPostalCode(strPC);
     }
+    /**
+     * Returns reference of GeoGraphic Area instance created during the controller
+     * 
+     * @return Geographic Area instance
+     */
+    public GeographicArea getGeoA() {
+        return geoA;
+    }
+    
+    
 }

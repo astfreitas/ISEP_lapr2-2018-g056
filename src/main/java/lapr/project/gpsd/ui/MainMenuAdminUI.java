@@ -62,6 +62,8 @@ public class MainMenuAdminUI implements Initializable {
 
     @FXML
     private void handleSpecGABtn(ActionEvent event) {
+        SpecifyGeographicAreaUI specGeoArea = new SpecifyGeographicAreaUI(this, mainApp);
+        specGeoArea.toSpecifyCategoryScene1();
     }
 
     @FXML
