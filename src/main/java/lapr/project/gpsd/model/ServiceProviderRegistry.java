@@ -62,12 +62,38 @@ public class ServiceProviderRegistry {
     /**
      * Method generates a service provider number from regist size.
      *
-     * @return a number to be set in the ServiceProvider.
+     * @param sp service provider to set his number
      */
-    private int generateServiceProviderNumber(ServiceProvider sp) {
+    private void generateServiceProviderNumber(ServiceProvider sp) {
         int number = 1000 + spList.size();
         sp.setNumber(number);
-        return number;
+    }
+
+    /**
+     * Method generates the institutional SP email using SP number and company
+     * name
+     *
+     * @param sp service provider to obtain number
+     * @return created institutional email of service provider
+     */
+    private String generateServiceProviderInstEmail(ServiceProvider sp) {
+        int number = sp.getNumber();
+        String companyName = ApplicationGPSD.getInstance().getCompany().getDesignation();
+        String emailCompanyName = companyName.trim().toLowerCase().replace(" ", "");
+        String spEmail = number + "@" + emailCompanyName + ".com";
+        return spEmail;
+    }
+
+    /**
+     * Method generates abbreviated name of service provider
+     *
+     * @param sp service provider to obtain full name
+     */
+    private void generateAbbreviatedName(ServiceProvider sp) {
+        int firstNameIndex = sp.getName().indexOf(' ');
+        int lastNameIndex = sp.getName().lastIndexOf(' ');
+        String abbrevName = sp.getName().substring(0, firstNameIndex) + sp.getName().substring(lastNameIndex);
+        sp.setAbbrevName(abbrevName);
     }
 
     /**
@@ -79,15 +105,9 @@ public class ServiceProviderRegistry {
      * @return True/false if the operation succeeds/fails
      */
     public boolean registerServiceProvider(ServiceProvider sp, String pwd) {
-        int number = generateServiceProviderNumber(sp);
-        String companyName = ApplicationGPSD.getInstance().getCompany().getDesignation();
-        String emailCompanyName = companyName.trim().toLowerCase().replace(" ", "");
-        String spEmail = number + "@" + emailCompanyName + ".com";
-        int firstNameIndex = sp.getName().indexOf(' ');
-        int lastNameIndex = sp.getName().lastIndexOf(' ');
-        String abbrevName = sp.getName().substring(0, firstNameIndex) + sp.getName().substring(lastNameIndex);
-
-        if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
+        String spInstEmail = generateServiceProviderInstEmail(sp);
+        String abbrevName = sp.getAbbrevName();
+        if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
             return this.addServiceProvider(sp);
         }
 
@@ -112,6 +132,7 @@ public class ServiceProviderRegistry {
 
     /**
      * returns a list of service providers
+     *
      * @return service providers list
      */
     public List<ServiceProvider> getServiceProviders() {
