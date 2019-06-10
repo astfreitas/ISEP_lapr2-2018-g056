@@ -67,11 +67,9 @@ public class MainMenuClientUI implements Initializable {
     private void handleAcceptServiceReqAssignmentBtn(ActionEvent event) {
     }
 
-    // esse botão é no menu do admin
     @FXML
     private void handleRateSPBtn(ActionEvent event) {
-//        EvaluateSPUI evaluateSPUI = new EvaluateSPUI(this, mainApp);
-//        evaluateSPUI.toEvaluateSPScene1();
+
     }
 
     @FXML

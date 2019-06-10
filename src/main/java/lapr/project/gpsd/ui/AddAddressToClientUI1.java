@@ -5,8 +5,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lapr.project.utils.UIUtils;
 
 public class AddAddressToClientUI1 implements Initializable {
 
@@ -46,7 +48,21 @@ public class AddAddressToClientUI1 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        addAddressToClientUI.toAddAddressToClientScene2();
+        String address = null;
+        String postalCode = null;
+        String local = null;
+        try {
+            address = addressTxt.getText();
+            postalCode = postalCodeTxt.getText();
+            local = localTxt.getText();
+        } catch (NullPointerException e) {
+        }
+        try {
+            addAddressToClientUI.getController().newAddress(local, postalCode, address);
+            addAddressToClientUI.toAddAddressToClientScene2();
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
     }
 
 }

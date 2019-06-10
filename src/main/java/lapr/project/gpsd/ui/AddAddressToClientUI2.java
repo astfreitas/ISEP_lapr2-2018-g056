@@ -5,8 +5,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import lapr.project.utils.UIUtils;
 
 public class AddAddressToClientUI2 implements Initializable {
 
@@ -24,7 +26,7 @@ public class AddAddressToClientUI2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 
     public void setAddAddressToClientUI(AddAddressToClientUI addAddressToClientUI) {
@@ -38,7 +40,17 @@ public class AddAddressToClientUI2 implements Initializable {
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
+        try {
+            addAddressToClientUI.getController().registerAddress();
+            UIUtils.createAlert("The new Address was added to your profile!", "Success!", Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
         addAddressToClientUI.getMainMenu().backToMainMenu();
+    }
+
+    void displayAddress() {
+        this.confirmTxt.setText(addAddressToClientUI.getController().getAddress().toString());
     }
 
 }

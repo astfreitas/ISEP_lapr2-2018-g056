@@ -5,7 +5,6 @@
  */
 package lapr.project.gpsd.ui;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +18,7 @@ import javafx.scene.control.MenuItem;
  * @author joaoferreira
  */
 public class MainMenuHROUI implements Initializable {
-    
+
     private Main mainApp;
     private MainMenuUI mainMenuUI;
     @FXML
@@ -35,27 +34,29 @@ public class MainMenuHROUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void setMainApp(Main mainApp){
+    }
+
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
-    
+
     public void setMainMenuUI(MainMenuUI mainMenuUI) {
         this.mainMenuUI = mainMenuUI;
     }
-    
-    public void backToMainMenu(){
+
+    public void backToMainMenu() {
         this.mainMenuUI.toMainMenuHRO();
     }
 
     @FXML
     private void handleRegisterSPBtn(ActionEvent event) {
-        
+
     }
 
     @FXML
     private void handleEvaluateSPBtn(ActionEvent event) {
+        EvaluateSPUI evaluateSPUI = new EvaluateSPUI(this, mainApp);
+        evaluateSPUI.toEvaluateSPScene1();
     }
 
     @FXML

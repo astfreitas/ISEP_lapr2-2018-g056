@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.util.Properties;
 import lapr.project.authentication.AuthenticationFacade;
 import lapr.project.authentication.model.UserSession;
+import lapr.project.gpsd.model.Client;
 import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
 
@@ -76,7 +77,7 @@ public class ApplicationGPSD {
         this.authentication.registerUserWithRole("HRO 2", "hro2", "123456", Constants.ROLE_HRO);
 
         this.authentication.registerUserWithRole("Client 1", "cli1", "123", Constants.ROLE_CLIENT);
-
+        this.company.getClientRegistry().addClient(new Client("Client 1", "123", "123", "cli1"));
     }
 
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
