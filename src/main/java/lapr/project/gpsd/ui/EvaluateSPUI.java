@@ -1,26 +1,30 @@
 package lapr.project.gpsd.ui;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lapr.project.gpsd.controller.EvaluateSPController;
+import lapr.project.utils.UIUtils;
 
 public class EvaluateSPUI {
 
     private MainMenuHROUI mainMenu;
     private Main mainApp;
     private EvaluateSPController controller;
-    private EvaluateSPUI1 evaluateSPSceneUI1;
 
     public EvaluateSPUI(MainMenuHROUI mainMenu, Main mainApp) {
         this.mainMenu = mainMenu;
         this.mainApp = mainApp;
-        this.controller = new EvaluateSPController();
+        try {
+            this.controller = new EvaluateSPController();
+        } catch (Exception e) {
+            this.mainMenu.backToMainMenu();
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
     }
 
     public MainMenuHROUI getMainMenu() {
@@ -37,8 +41,9 @@ public class EvaluateSPUI {
 
     public void toEvaluateSPScene1() {
         try {
-            this.evaluateSPSceneUI1 = (EvaluateSPUI1) this.mainApp.replaceSceneContent("/fxml/EvaluateSP1.fxml");
+            EvaluateSPUI1 evaluateSPSceneUI1 = (EvaluateSPUI1) this.mainApp.replaceSceneContent("/fxml/EvaluateSP1.fxml");
             evaluateSPSceneUI1.setEvaluateSPUI(this);
+            evaluateSPSceneUI1.populateSPComboBox();
         } catch (Exception ex) {
         }
     }
@@ -55,10 +60,12 @@ public class EvaluateSPUI {
             Scene newScene = new Scene(root);
             EvaluateSPUI2 evaluateSPUI2 = fxmlLoader.getController();
             evaluateSPUI2.setEvaluateSPUI(this);
+            evaluateSPUI2.populateFields();
             newStage.setScene(newScene);
             newStage.showAndWait();
         } catch (IOException ex) {
-            Logger.getLogger(EvaluateSPUI.class.getName()).log(Level.SEVERE, null, ex);
+            UIUtils.createAlert(ex.getMessage(), "Error:", Alert.AlertType.ERROR);
+            mainMenu.backToMainMenu();
         }
     }
 
@@ -74,11 +81,12 @@ public class EvaluateSPUI {
             Scene newScene = new Scene(root);
             EvaluateSPUI3 evaluateSPUI3 = fxmlLoader.getController();
             evaluateSPUI3.setEvaluateSPUI(this);
+            evaluateSPUI3.populateFields();
             newStage.setScene(newScene);
             newStage.showAndWait();
         } catch (IOException ex) {
-            Logger.getLogger(EvaluateSPUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            UIUtils.createAlert(ex.getMessage(), "Error:", Alert.AlertType.ERROR);
+            mainMenu.backToMainMenu();        }
     }
 
 }

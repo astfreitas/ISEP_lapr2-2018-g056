@@ -39,6 +39,17 @@ public class EvaluateSPUI2 implements Initializable {
         this.evaluateSPUI = evaluateSPUI;
     }
 
+    public void populateFields() {
+        double par = evaluateSPUI.getController().getStatistics().getPopulationMeanAverageRating();
+        double pstd = evaluateSPUI.getController().getStatistics().getPopulationStdDeviation();
+        double ar = evaluateSPUI.getController().getStatistics().getSpAverageRating();
+        double std = evaluateSPUI.getController().getStatistics().getSpAbsoluteDifference();
+        popAverageTxt.setText(String.valueOf(par));
+        popStdDevTxt.setText(String.valueOf(pstd));
+        spAverageTxt.setText(String.valueOf(ar));
+        spDevTxt.setText(String.valueOf(std));
+    }
+
     @FXML
     private void handleCloseBtn(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();

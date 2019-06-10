@@ -64,6 +64,25 @@ public class ServiceProvider {
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
     }
+    
+    /**
+     * Constructor 
+     * @param name
+     * @param NIF
+     * @param email 
+     */
+    public ServiceProvider(String name, String nif, String email) {
+        if ((name == null) || (nif == null)
+                || (email == null)
+                || (name.isEmpty()) || (nif.isEmpty())
+                || (email.isEmpty())) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        }
+        
+        this.name = name;
+        this.email = email;
+        this.nif = nif;
+    }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
     // a Address and create a new instance fo address in the construtor?
