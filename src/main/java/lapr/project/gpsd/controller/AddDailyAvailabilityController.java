@@ -60,7 +60,7 @@ public class AddDailyAvailabilityController {
      * @param repPattern Repetition pattern
      * @return returns a List of availabilities
      */
-    public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalDate eDate, LocalTime eTime, String repPattern) {
+    public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalTime eTime, LocalDate eDate, String repPattern) {
         spal = sp.getSpAvailabilityList();
         Availability aval;
         DayOfWeek weekday = date.getDayOfWeek();
@@ -99,5 +99,9 @@ public class AddDailyAvailabilityController {
      */
     public boolean registerAvailability() {
         return spal.addAvailability(avalList);
+    }
+    
+    public ArrayList<Availability> getAvalList(){
+        return this.avalList;
     }
 }
