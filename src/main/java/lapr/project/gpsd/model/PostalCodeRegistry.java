@@ -51,15 +51,15 @@ public class PostalCodeRegistry {
         for (PostalCode postalCode : postalCodeList) {
             if (strCP.equals(postalCode.getPostalCode())) {
                 return postalCode;
-            } else {
-                throw new IllegalArgumentException("Invalid Postal Code");
             }
         }
         return null;
     }
+
     /**
-     * Searchs in the existing Postal Code list in registry and compares with 
+     * Searchs in the existing Postal Code list in registry and compares with
      * the given string of postal code to search
+     *
      * @param strPC postal code string to search
      * @return list of postal Code that contains the given string
      */
