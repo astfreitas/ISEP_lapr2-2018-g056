@@ -9,7 +9,7 @@ public class AdapterXML implements FileType{
 
     @Override
     public void export(String filename, String[] line) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ExportXML.export(filename, line);
     }
 
     @Override

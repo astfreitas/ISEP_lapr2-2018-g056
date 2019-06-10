@@ -82,4 +82,28 @@ public class LoginScreenUI implements Initializable {
         UIUtils.about();
     }
 
+    @FXML
+    private void onEnter(ActionEvent event) {
+        ApplicationGPSD app = ApplicationGPSD.getInstance();
+        String email = emailTxt.getText();
+        String pwd = pwdTxt.getText();
+        if (!app.doLogin(email, pwd)) {
+            UIUtils.createAlert("", "The username and password that you entered did not match our records. Please double-check and try again.", Alert.AlertType.ERROR);
+            emailTxt.clear();
+            pwdTxt.clear();
+            emailTxt.requestFocus();
+        } else {
+            List<UserRole> roleList = app.getCurrentSession().getUserRoles();
+            String role = roleList.get(0).getRole();
+            MainMenuUI mainMenu = new MainMenuUI(this.mainApp, this.mainApp.getStage());
+            if (role.equals(Constants.ROLE_CLIENT)) {
+                mainMenu.toMainMenuClient();
+            } else if (role.equals(Constants.ROLE_ADMINISTRATIVE)) {
+                mainMenu.toMainMenuAdmin();
+            } else if (role.equals(Constants.ROLE_HRO)) {
+                mainMenu.toMainMenuHRO();
+            }
+        }
+    }
+
 }

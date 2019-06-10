@@ -47,10 +47,12 @@ public class EvaluateSPUI1 implements Initializable {
 
     @FXML
     private void handleViewStatisticsBtn(ActionEvent event) {
+        evaluateSPUI.toEvaluateSPScene2();
     }
 
     @FXML
     private void handleChangeClassificationBtn(ActionEvent event) {
+        evaluateSPUI.toEvaluateSPScene3();
     }
 
 }

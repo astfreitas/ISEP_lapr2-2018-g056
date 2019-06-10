@@ -29,27 +29,33 @@ public class AddNewAddressToClientController {
         ApplicationGPSD app = ApplicationGPSD.getInstance();
         UserSession session = app.getCurrentSession();
         String email = session.getUserEmail();
+        System.out.println("email: " + email);
         ClientRegistry rc = company.getClientRegistry();
         this.cli = rc.getClientByEmail(email);
     }
-    
+
     /**
      * Creates new Address for Client
+     *
      * @param local
      * @param postalCode
      * @param address
-     * @return 
      */
-    public Address newAddress(String local, String postalCode, String address) {
+    public void newAddress(String local, String postalCode, String address) {
         this.address = Client.newAddress(local, postalCode, local);
-        return this.address;
     }
-    
+
     /**
      * Register address to Client's Address list
-     * @return 
+     *
+     * @return
      */
     public boolean registerAddress() {
         return cli.addAddress(address);
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
 }

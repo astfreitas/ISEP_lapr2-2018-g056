@@ -125,12 +125,12 @@ public class ServiceOrderRegistry {
         return !serviceOrders.contains(serviceOrder);
     }
 
-    public void exportData(String filename, FileType adapter) {
+    public void exportData(List<ServiceOrder> servOrdList,String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};
         adapter.export(filename, header);
 
-        for (ServiceOrder servOrder : serviceOrders) {
+        for (ServiceOrder servOrder : servOrdList) {
             String clientName = servOrder.getServiceRequest().getClient().getName();
             String clientEmail = servOrder.getServiceRequest().getClient().getEmail();
             String schePrefDay = servOrder.getSchePref().getDate().toString();

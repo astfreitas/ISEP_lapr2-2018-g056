@@ -14,12 +14,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lapr.project.gpsd.controller.GeographicAreaSpecController;
 import lapr.project.gpsd.model.PostalCode;
+import lapr.project.utils.UIUtils;
 
 /**
  *
@@ -54,13 +56,15 @@ public class SpecifyGeographicAreaUI1 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @FXML
     private void handleSearchButton(ActionEvent event) {
+        pcString.clear();
         String strPC = this.postalCodeText.getText();
-        List<PostalCode> searchedPClist = specifyGeographicAreaUI.getController().searchMatchPostalCode(strPC);
+        List<PostalCode> searchedPClist = specifyGeographicAreaUI.getController()
+                .searchMatchPostalCode(strPC);
         for (PostalCode postalCode : searchedPClist) {
             pcString.add(postalCode);
         }
@@ -74,14 +78,29 @@ public class SpecifyGeographicAreaUI1 implements Initializable {
         String desigStr = designationText.getText();
         double radius = Double.parseDouble(radiusText.getText());
         double cost = Double.parseDouble(costText.getText());
-        PostalCode selectedPC = listViewCP.getSelectionModel().getSelectedItem();
-//        this.specifyGeographicAreaUI.getController().newGeographicArea(desigStr, cost, desigStr, radius);
+        String selectedPC = listViewCP.getSelectionModel().getSelectedItem().getPostalCode();
         
+        try {
+            if (this.specifyGeographicAreaUI.getController().
+                    newGeographicArea(desigStr, cost, selectedPC, radius)) {
+                this.specifyGeographicAreaUI.toSpecifyCategoryScene2();                
+            } else {
+                UIUtils.createAlert("GeographicArea already exists", "", Alert.AlertType.ERROR);
+            }
+        } catch (Exception e) {
+//            UIUtils.createAlert(e.getMessage(), e.getLocalizedMessage(), Alert.AlertType.ERROR);
+            UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
+        }
     }
     
     public void setSpecifyGeographicAreaUI(SpecifyGeographicAreaUI specifyGeographicAreaUI){
         this.specifyGeographicAreaUI = specifyGeographicAreaUI;
     }
+
+    public TextField getDesignationText() {
+        return designationText;
+    }
+    
 
     @FXML
     private void handleCancelButton(ActionEvent event) {

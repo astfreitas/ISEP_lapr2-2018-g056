@@ -50,11 +50,11 @@ public class GeographicAreaSpecController {
      * @param radius Radius double for the area of action of the GeoArea
      * @return new GeographicArea instance
      */
-    public GeographicArea newGeographicArea(String geoId, String designation, double cost,
+    public boolean newGeographicArea(String designation, double cost,
             String strPC, double radius) {
         geoAreg = company.getGeographicAreaRegistry();
-        geoA = geoAreg.newGeographicArea(geoId, designation, cost, strPC, radius);
-        return geoA;
+        this.geoA = geoAreg.newGeographicArea(designation, cost, strPC, radius);
+        return this.geoAreg.validationGeoArea(geoA);
     }
     
     /**
@@ -66,7 +66,12 @@ public class GeographicAreaSpecController {
     public boolean registerGeographicArea() {
         return geoAreg.registerGeographicArea(geoA);
     }
-    
+    /**
+     * Uses the PostalCode Registry to get a matching PostalCode instance to an
+     * given postal code string
+     * @param strPC postal code string to compare
+     * @return List of PostalCodes matching a given string
+     */
     public List<PostalCode> searchMatchPostalCode(String strPC){
         return pCodeReg.searchMatchPostalCode(strPC);
     }

@@ -18,20 +18,20 @@ import lapr.project.utils.UIUtils;
  *
  * @author joaoferreira
  */
-public class MainMenuClientUI implements Initializable {
+public class MainMenuSPUI implements Initializable {
     
     private Main mainApp;
     private MainMenuUI mainMenuUI;
     @FXML
-    private MenuItem serviceRequestBtn;
-    @FXML
-    private MenuItem addAddressBtn;
-    @FXML
-    private MenuItem acceptServiceReqAssignmentBtn;
-    @FXML
     private MenuItem rateSPBtn;
     @FXML
     private MenuItem aboutBtn;
+    @FXML
+    private MenuItem addDailyAvaiBtn;
+    @FXML
+    private MenuItem consultServiceOrders;
+    @FXML
+    private MenuItem completeServiceBtn;
 
     /**
      * Initializes the controller class.
@@ -54,26 +54,20 @@ public class MainMenuClientUI implements Initializable {
     }
 
     @FXML
-    private void handleServiceRequestBtn(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleAddAddressBtn(ActionEvent event) {
-        AddAddressToClientUI addAddressUI = new AddAddressToClientUI(this, mainApp);
-        addAddressUI.toAddAddressToClientScene1();
-    }
-
-    @FXML
-    private void handleAcceptServiceReqAssignmentBtn(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleRateSPBtn(ActionEvent event) {
-
-    }
-
-    @FXML
     private void handleAboutBtn(ActionEvent event) {
         UIUtils.about();
+    }
+
+    @FXML
+    private void handleAddDailyAvaiBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleConsultServiceOrdersBtn(ActionEvent event) {
+        ConsultServiceOrderUI consultServiceOrderUI = new ConsultServiceOrderUI(this, mainApp);
+    }
+
+    @FXML
+    private void handleCompleteServiceBtn(ActionEvent event) {
     }
 }
