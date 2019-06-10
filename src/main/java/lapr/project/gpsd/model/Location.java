@@ -39,5 +39,12 @@ class Location {
     public double getDistance() {
         return distance;
     }
+
+    @Override
+    public String toString() {
+        return "\n"+postalCode + " -> " + String.format("%.2f", distance);
+    }
+    
+    
     
 }

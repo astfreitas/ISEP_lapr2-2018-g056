@@ -14,7 +14,17 @@ public class GeographicAreaRegistry {
      * List of Geographic Areas known by the company
      */
     private List<GeographicArea> geoAreaList;
-
+    
+    /**
+     * Protected string to use to generate and ID for each Geographic Area
+     * Instance.
+     */
+    protected String geoIDModel="GeoArea";
+    
+    /**
+     * Construstor for the GeographicAreaRegistry instance.
+     * No parameters needed - just iniciates a new ArrayList for GeoAreaList.
+     */
     public GeographicAreaRegistry() {
         geoAreaList = new ArrayList<>();
     }
@@ -43,7 +53,7 @@ public class GeographicAreaRegistry {
         return nearestGeoArea;
     }
 
-    List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
+    public List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -59,10 +69,10 @@ public class GeographicAreaRegistry {
      * @param pcReg reference for the PostalCodeRegistry
      * @return new instance of GeographicArea
      */
-    public GeographicArea newGeographicArea(String geoId, String designation, double cost, String strPC, double radius) {
+    public GeographicArea newGeographicArea(String designation, double cost, String strPC, double radius) {
         IExternalService exService = ApplicationGPSD.getInstance().getCompany().getExternalService();
         PostalCodeRegistry pcReg = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry();
-        return new GeographicArea(geoId, designation, cost, radius, strPC, exService, pcReg);
+        return new GeographicArea(designation, cost, radius, strPC, exService, pcReg);
     }
 
     /**
@@ -74,14 +84,24 @@ public class GeographicAreaRegistry {
      * false
      */
     public boolean registerGeographicArea(GeographicArea geoA) {
-        if (validationGeoArea(geoA)) {
+        if (validateGeoAreaExists(geoA)) {
+            setNewGeoAreaID(geoA);
             return addGeoArea(geoA);
         } else {
             return false;
         }
 
     }
-
+    
+    private boolean validateGeoAreaExists(GeographicArea geoA){
+        for (GeographicArea geographicArea : geoAreaList) {
+            if (geographicArea.equals(geoA)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * Validates if the given GeographicArea instance alredy exists in the
      * geoAreaList.
@@ -90,12 +110,15 @@ public class GeographicAreaRegistry {
      * @return true if an equal instance of GeoArea is not found in the list
      * otherwise returns false
      */
-    private boolean validationGeoArea(GeographicArea geoA) {
-        for (GeographicArea geographicArea : geoAreaList) {
-            if (geographicArea.equals(geoA)) {
-                return false;
-            }
+    public boolean validationGeoArea(GeographicArea geoA) {
+        if (geoA.getDesignation().isEmpty() && geoA.getMainPostalCode().getPostalCode().isEmpty()) {
+            return false;
         }
+//        for (GeographicArea geographicArea : geoAreaList) {
+//            if (geographicArea.equals(geoA)) {
+//                return false;
+//            }
+//        }
         return true;
     }
 
@@ -131,6 +154,16 @@ public class GeographicAreaRegistry {
             }
         }
         return null;
+    }
+    /**
+     * Generates and ID for and give Geographic Area instance bases on a protected
+     * atribute in this class and the number of elemets whitin the GeoAreList List.
+     * 
+     * @param geoA Instance of GeographicAre to set an ID
+     */
+    private void setNewGeoAreaID(GeographicArea geoA){
+        int numberGeoListEntries = geoAreaList.size();
+        geoA.setGeoId(geoIDModel+numberGeoListEntries);
     }
 
 }

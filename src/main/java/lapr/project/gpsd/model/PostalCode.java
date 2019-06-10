@@ -95,4 +95,10 @@ public class PostalCode {
         this.cpLongitude = cpLongitude;
     }
 
+    @Override
+    public String toString() {
+        return postalCode;
+    }
+    
+
 }

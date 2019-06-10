@@ -30,17 +30,19 @@ public class SpecifyGeographicAreaUI {
         try {
             SpecifyGeographicAreaUI1 specifyGeographicAreaUI1 = (SpecifyGeographicAreaUI1) this.mainApp.replaceSceneContent("/fxml/SpecifyGeographicAreaUI1.fxml");
             specifyGeographicAreaUI1.setSpecifyGeographicAreaUI(this);
+            specifyGeographicAreaUI1.getDesignationText().requestFocus();
+            
         } catch (Exception ex) {
         }
     }
 
-//    public void toSpecifyCategoryScene2() {
-//        try {
-//            SpecifyCategoryUI2 specifyCategorySceneUI2 = (SpecifyCategoryUI2) this.mainApp.replaceSceneContent("/fxml/SpecifyCategory2.fxml");
-//            specifyCategorySceneUI2.setSpecifyCategoryUI(this);
-//            specifyCategorySceneUI2.showCategory();
-//        } catch (Exception e) {
-//        }
-//    }
+    public void toSpecifyCategoryScene2() {
+        try {
+            SpecifyGeographicAreaUI2 specifyCategorySceneUI2 = (SpecifyGeographicAreaUI2) this.mainApp.replaceSceneContent("/fxml/SpecifyGeographicAreaUI2.fxml");
+            specifyCategorySceneUI2.setSpecifyGeographicAreaUI(this);
+            specifyCategorySceneUI2.showGeographicArea();
+        } catch (Exception e) {
+        }
+    }
 
 }

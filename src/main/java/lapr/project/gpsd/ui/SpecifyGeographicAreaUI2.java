@@ -56,12 +56,17 @@ public class SpecifyGeographicAreaUI2 implements Initializable {
 
     @FXML
     private void handleConfirmBut(ActionEvent event) {
-        if (this.specifyGeographicAreaUI.getController().registerGeographicArea()) {
+        try {
+            if (this.specifyGeographicAreaUI.getController().registerGeographicArea()) {
             specifyGeographicAreaUI.getMainMenu().backToMainMenu();
         } else {
             UIUtils.createAlert("Error creating Geographic Area", "", Alert.AlertType.ERROR);
             
         }
+        } catch (Exception e) {
+            UIUtils.createAlert("GeographicArea already exists!", "", Alert.AlertType.ERROR);
+        }
+        
 
     }
 

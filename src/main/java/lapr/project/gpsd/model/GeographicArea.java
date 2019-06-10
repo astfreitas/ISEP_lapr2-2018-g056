@@ -90,8 +90,8 @@ public class GeographicArea {
      * this constructor.
      */
     public GeographicArea(String designation, double cost, double radius, String mainPostalCode, IExternalService exService, PostalCodeRegistry pcReg) {
-        if ((geoId == null) || (designation == null) || (mainPostalCode == null)
-                || (exService == null) || (geoId.isEmpty())) {
+        if ((designation == null) || (mainPostalCode == null)
+                || (exService == null)) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         } else if (cost <= 0 || radius <= 0) {
             throw new IllegalArgumentException("Travel Cost or Radius cannot"
@@ -231,4 +231,49 @@ public class GeographicArea {
         }
         return -1;
     }
+    /**
+     * Returns string with the desciption of Geohraphic Area with all atributes
+     * to present to the textArea field
+     * @return string describing geogrphic Area instance
+     */
+    @Override
+    public String toString() {
+        return "Designation: '" + designation + "' and central PostalCode is " + 
+                mainPostalCode +". \nTravel Cost is " + travelCost +
+                "€, and radius of the area of action is " + radius +"."+
+                "\nLocations that are part of this area are the following: \n" +
+                "\n(postal code | distance to center)"+
+                LocationList;
+    }
+    /**
+     * Compares the GeographicArea instance with an objet received by reference in
+     * the method parameter.
+     *
+     * @param otherObject Objet to compare with the GeographicArea instance
+     * @return true if the received object represent and equal object of the
+     * instanced GeographicArea. Otherwise returns False.
+     */
+    public boolean equals(Object otherObject){
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        GeographicArea otherGeoArea = (GeographicArea) otherObject;
+        return this.designation.equals(otherGeoArea.designation)
+                && this.mainPostalCode.equals(otherGeoArea.mainPostalCode)
+                && this.radius== otherGeoArea.radius
+                && this.travelCost == otherGeoArea.travelCost;
+    }
+    /**
+     * Sets the value for the GeographicAre ID atribute
+     * @param geoId give strin ID to set
+     */
+    public void setGeoId(String geoId) {
+        this.geoId = geoId;
+    }
+    
+    
+    
 }
