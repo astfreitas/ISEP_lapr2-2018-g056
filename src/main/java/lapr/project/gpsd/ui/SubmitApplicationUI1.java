@@ -50,23 +50,24 @@ public class SubmitApplicationUI1 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-//        String name = null;
-//        String nif = null;
-//        String telephone = null;
-//        String email = null;
+        String name = null;
+        String nif = null;
+        String telephone = null;
+        String email = null;
         try {
-            // get texts
+            name = nameTxt.getText();
+            nif = nifTxt.getText();
+            telephone = telephoneTxt.getText();
+            email = emailTxt.getText();
         } catch (NullPointerException e) {
-            System.out.println("Missing data");
         }
         try {
-            // create objects
+            this.submitApplicationUI.getController().newSPApplication(
+                    nameTxt.getText(), nifTxt.getText(),
+                    telephoneTxt.getText(), emailTxt.getText());
             this.submitApplicationUI.toSubmitApplicationScene2();
-//            this.submitApplicationUI.getController().newSPApplication(
-//                    nameTxt.getText(), nifTxt.getText(),
-//                    telephoneTxt.getText(), emailTxt.getText());
         } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro", Alert.AlertType.ERROR);
+            UIUtils.createAlert(e.getMessage(), "No dice bro:", Alert.AlertType.ERROR);
         }
     }
 

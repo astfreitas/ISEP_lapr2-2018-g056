@@ -48,17 +48,21 @@ public class SubmitApplicationUI2 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
+        String address = null;
+        String postalCode = null;
+        String local = null;
         try {
-            // get texts
+            address = addressTxt.getText();
+            postalCode = postalCodeTxt.getText();
+            local = localTxt.getText();
         } catch (NullPointerException e) {
         }
         try {
-            // create objects
-            this.submitApplicationUI.toSubmitApplicationScene3();
+            submitApplicationUI.getController().newAddress(local, postalCode, address);
+            submitApplicationUI.toSubmitApplicationScene3();
         } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro", Alert.AlertType.ERROR);
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
         }
-
     }
 
 }
