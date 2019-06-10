@@ -74,6 +74,9 @@ public class ApplicationGPSD {
 
         this.authentication.registerUserWithRole("HRO 1", "hro1", "123456", Constants.ROLE_HRO);
         this.authentication.registerUserWithRole("HRO 2", "hro2", "123456", Constants.ROLE_HRO);
+
+        this.authentication.registerUserWithRole("Client 1", "cli1", "123", Constants.ROLE_CLIENT);
+
     }
 
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

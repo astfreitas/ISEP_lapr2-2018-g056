@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
@@ -13,12 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author breno
- */
 public class EvaluateSPUI1 implements Initializable {
+
+    private EvaluateSPUI evaluateSPUI;
 
     @FXML
     private Button cancelBtn;
@@ -37,14 +29,20 @@ public class EvaluateSPUI1 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    public void setEvaluateSPUI(EvaluateSPUI evaluateSPUI) {
+        this.evaluateSPUI = evaluateSPUI;
+    }
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
+        evaluateSPUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
+        evaluateSPUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
@@ -54,5 +52,5 @@ public class EvaluateSPUI1 implements Initializable {
     @FXML
     private void handleChangeClassificationBtn(ActionEvent event) {
     }
-    
+
 }
