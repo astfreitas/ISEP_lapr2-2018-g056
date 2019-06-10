@@ -59,14 +59,19 @@ public class MainMenuClientUI implements Initializable {
 
     @FXML
     private void handleAddAddressBtn(ActionEvent event) {
+        AddAddressToClientUI addAddressUI = new AddAddressToClientUI(this, mainApp);
+        addAddressUI.toAddAddressToClientScene1();
     }
 
     @FXML
     private void handleAcceptServiceReqAssignmentBtn(ActionEvent event) {
     }
 
+    // esse botão é no menu do admin
     @FXML
     private void handleRateSPBtn(ActionEvent event) {
+//        EvaluateSPUI evaluateSPUI = new EvaluateSPUI(this, mainApp);
+//        evaluateSPUI.toEvaluateSPScene1();
     }
 
     @FXML
