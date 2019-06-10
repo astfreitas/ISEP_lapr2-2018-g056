@@ -4,17 +4,18 @@ public class AcademicCompetence {
 
     private String course;
     private String level;
-    private double score;
+    private double grade;
 
     public AcademicCompetence(String course, String level, double score) {
 
         if ((course == null) || (course.isEmpty())
-                || (level == null) || (level.isEmpty())) {
+                || (level == null) || (level.isEmpty())
+                || grade <= 0) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
         this.course = course;
         this.level = level;
-        this.score = score;
+        this.grade = score;
     }
 
     public String getCourse() {
@@ -34,11 +35,11 @@ public class AcademicCompetence {
     }
 
     public double getScore() {
-        return score;
+        return grade;
     }
 
     public void setScore(double score) {
-        this.score = score;
+        this.grade = score;
     }
 
 }

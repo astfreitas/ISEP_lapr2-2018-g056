@@ -254,4 +254,10 @@ public class SPApplication {
         return this.applicationStatus.getSPApplicationStatus().equalsIgnoreCase(ACCEPTED_APPLICATION);
     }
 
+    @Override
+    public String toString() {
+        return "SPApplication{" + "name=" + name + ", NIF=" + NIF + ", phone=" + phone + ", email=" + email + ", address=" + address + ", categories=" + categories + ", academicCompetences=" + academicCompetences + ", professionalCompetences=" + professionalCompetences + ", applicationStatus=" + applicationStatus + '}';
+    }
+
+    
 }

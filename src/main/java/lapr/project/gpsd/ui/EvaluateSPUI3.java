@@ -18,7 +18,7 @@ public class EvaluateSPUI3 implements Initializable {
     @FXML
     private Button confirmBtn;
     @FXML
-    private ComboBox<?> labelComboBox;
+    private ComboBox<String> labelComboBox;
 
     /**
      * Initializes the controller class.
@@ -44,6 +44,10 @@ public class EvaluateSPUI3 implements Initializable {
 
     @FXML
     private void handleLabelComboBox(ActionEvent event) {
+    }
+
+    void populateFields() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

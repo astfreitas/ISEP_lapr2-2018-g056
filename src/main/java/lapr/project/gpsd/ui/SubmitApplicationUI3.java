@@ -24,16 +24,21 @@ public class SubmitApplicationUI3 implements Initializable {
     @FXML
     private TextField courseTxt;
     @FXML
-    private ComboBox<?> levelComboBox;
+    private ComboBox<String> levelComboBox;
     @FXML
-    private ComboBox<?> gradeComboBox;
+    private ComboBox<Double> gradeComboBox;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        String[] levels = {"High school", "Undergraduate", "Graduate", "Doctor"};
+        levelComboBox.getItems().addAll(levels);
+        for (int i = 1; i < 20; i++) {
+            gradeComboBox.getItems().add((double) i);
+        }
+
     }
 
     public void setSubmitApplicationUI(SubmitApplicationUI submitApplicationUI) {
@@ -51,21 +56,26 @@ public class SubmitApplicationUI3 implements Initializable {
 
     @FXML
     private void handleAddQualificationBtn(ActionEvent event) {
+        String course = null;
+        String level = null;
+        double grade = 0;
+        try {
+            course = courseTxt.getText();
+            level = levelComboBox.getValue();
+            grade = gradeComboBox.getValue();
+        } catch (Exception e) {
+        }
+        try {
+            submitApplicationUI.getController().addAcademicCompetence(course, level, grade);
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
+        submitApplicationUI.toSubmitApplicationScene3();
     }
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        try {
-            // get texts
-        } catch (NullPointerException e) {
-        }
-        try {
-            // create objects
-            this.submitApplicationUI.toSubmitApplicationScene4();
-        } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro", Alert.AlertType.ERROR);
-        }
-
+        submitApplicationUI.toSubmitApplicationScene4();
     }
 
 }

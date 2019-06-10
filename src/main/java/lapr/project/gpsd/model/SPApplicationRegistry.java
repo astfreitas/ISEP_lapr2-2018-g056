@@ -76,18 +76,30 @@ public class SPApplicationRegistry {
      * @param spa
      * @return
      */
-    public boolean validateApplication(SPApplication spa) {
-        if (spa != null
-                && !spa.getCategories().isEmpty()
-                && !spa.getAcademicCompetences().isEmpty()
-                && !spa.getProfessionalCompetences().isEmpty()) {
-            return true;
+//    public boolean validateApplication(SPApplication spa) {
+//        if (spa != null
+//                && !spa.getCategories().isEmpty()
+//                && !spa.getAcademicCompetences().isEmpty()
+//                && !spa.getProfessionalCompetences().isEmpty()) {
+//            return true;
+//        }
+//        return false;
+//    }
+    public void validateApplication(SPApplication spa) {
+        if (spa.getCategories().isEmpty()) {
+            throw new RuntimeException("Application is missing categories");
         }
-        return false;
+        if (spa.getAcademicCompetences().isEmpty()) {
+            throw new RuntimeException("Application is missing academic competences");
+        }
+        if (spa.getProfessionalCompetences().isEmpty()) {
+            throw new RuntimeException("Application is missing professional competences");
+        }
     }
 
     /**
      * Registers the Service Provider application and adds it to the Registry
+     *
      * @param spa Service Provider application
      * @return True/false if the operation succeeds/fails
      */

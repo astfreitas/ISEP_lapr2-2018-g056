@@ -92,7 +92,11 @@ public class SubmitApplicationController {
      * @return List of Categories
      */
     public List<Category> getCategories() {
-        return cr.getCategories();
+        List<Category> categories = cr.getCategories();
+        if(categories.isEmpty()) {
+            throw new RuntimeException("No categories found in the system");
+        }
+        return categories;
     }
 
     /**
@@ -112,8 +116,12 @@ public class SubmitApplicationController {
      * @return returns true if none of SPApplication's attributes is null or
      * empty
      */
-    public boolean validateApplication() {
-        return spar.validateApplication(spa);
+    public void validateApplication() {
+        spar.validateApplication(spa);
     }
 
+    public SPApplication getApplication() {
+        return spa;
+    }
+    
 }

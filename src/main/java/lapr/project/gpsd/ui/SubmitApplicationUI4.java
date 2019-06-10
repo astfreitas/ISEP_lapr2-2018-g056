@@ -46,21 +46,22 @@ public class SubmitApplicationUI4 implements Initializable {
 
     @FXML
     private void handleAddQualificationBtn(ActionEvent event) {
+        String description = null;
+        try {
+            description = descriptionTxt.getText();
+        } catch (Exception e) {
+        }
+        try {
+            submitApplicationUI.getController().addProfessionalCompetence(description);
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
+        submitApplicationUI.toSubmitApplicationScene4();
     }
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        try {
-            // get texts
-        } catch (NullPointerException e) {
-        }
-        try {
-            // create objects
-            this.submitApplicationUI.toSubmitApplicationScene5();
-        } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro", Alert.AlertType.ERROR);
-        }
-
+        submitApplicationUI.toSubmitApplicationScene5();
     }
 
 }

@@ -36,6 +36,9 @@ public class EvaluateSPController {
     public List<ServiceProvider> getServiceProviders() {
         this.spr = company.getServiceProviderRegistry();
         this.spl = spr.getServiceProviders();
+        if(spl.isEmpty()) {
+            throw new RuntimeException("No Service Providers were found in the system.");
+        }
         return spl;
     }
 
@@ -47,13 +50,12 @@ public class EvaluateSPController {
      * @param email
      * @return SPStatistics for a given Service Provider (given it's email)
      */
-    public ServiceProviderStatistics newSPStatistics(String email) {
+    public void newSPStatistics(String email) {
         this.sp = spr.getServiceProviderByEmail(email);
         this.r = sp.getRatings();
         this.arl = spr.getAverageRatings();
         this.ar = sp.getAverageRating();
         this.sps = new ServiceProviderStatistics(arl, ar);
-        return sps;
     }
 
     /**
@@ -90,5 +92,11 @@ public class EvaluateSPController {
     public void setSPClassification() {
         sp.setClassification(label);
     }
+
+    public ServiceProviderStatistics getStatistics() {
+        return sps;
+    }
+    
+    
 
 }

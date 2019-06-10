@@ -1,6 +1,7 @@
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import lapr.project.gpsd.model.Category;
 import lapr.project.utils.UIUtils;
 
 public class SubmitApplicationUI5 implements Initializable {
@@ -19,7 +21,7 @@ public class SubmitApplicationUI5 implements Initializable {
     @FXML
     private Button completeBtn;
     @FXML
-    private ComboBox<?> categoryComboBox;
+    private ComboBox<Category> categoryComboBox;
     @FXML
     private Button addCatBtn;
 
@@ -42,17 +44,7 @@ public class SubmitApplicationUI5 implements Initializable {
 
     @FXML
     private void handleCompleteBtn(ActionEvent event) {
-        try {
-            // get texts
-        } catch (NullPointerException e) {
-        }
-        try {
-            // create objects
-            this.submitApplicationUI.toSubmitApplicationScene6();
-        } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro", Alert.AlertType.ERROR);
-        }
-
+        submitApplicationUI.toSubmitApplicationScene6();
     }
 
     @FXML
@@ -61,6 +53,21 @@ public class SubmitApplicationUI5 implements Initializable {
 
     @FXML
     private void handleAddCatBtn(ActionEvent event) {
+        try {
+            submitApplicationUI.getController().addCategory(categoryComboBox.getValue().toString());
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
+        submitApplicationUI.toSubmitApplicationScene5();
+    }
+
+    void populateCategory() {
+        try {
+            List<Category> categories = submitApplicationUI.getController().getCategories();
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+            submitApplicationUI.toSubmitApplicationScene6();
+        }
     }
 
 }

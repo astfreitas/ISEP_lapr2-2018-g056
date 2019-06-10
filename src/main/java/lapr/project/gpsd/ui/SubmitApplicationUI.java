@@ -60,6 +60,7 @@ public class SubmitApplicationUI {
         try {
             SubmitApplicationUI5 submitApplicationSceneUI5 = (SubmitApplicationUI5) this.mainApp.replaceSceneContent("/fxml/SubmitApplication5.fxml");
             submitApplicationSceneUI5.setSubmitApplicationUI(this);
+            submitApplicationSceneUI5.populateCategory();
         } catch (Exception ex) {
         }
     }
@@ -68,6 +69,7 @@ public class SubmitApplicationUI {
         try {
             SubmitApplicationUI6 submitApplicationSceneUI6 = (SubmitApplicationUI6) this.mainApp.replaceSceneContent("/fxml/SubmitApplication6.fxml");
             submitApplicationSceneUI6.setSubmitApplicationUI(this);
+            submitApplicationSceneUI6.showApplication();
         } catch (Exception ex) {
         }
     }
