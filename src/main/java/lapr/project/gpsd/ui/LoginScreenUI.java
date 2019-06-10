@@ -75,6 +75,8 @@ public class LoginScreenUI implements Initializable {
 
     @FXML
     private void handleApplyForSPBtn(ActionEvent event) {
+        SubmitApplicationUI submitApplicationUI = new SubmitApplicationUI(this.mainApp);
+        submitApplicationUI.toSubmitApplicationScene1();
     }
 
     @FXML

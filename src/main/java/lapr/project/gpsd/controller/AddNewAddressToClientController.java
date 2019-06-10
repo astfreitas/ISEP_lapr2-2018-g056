@@ -29,7 +29,6 @@ public class AddNewAddressToClientController {
         ApplicationGPSD app = ApplicationGPSD.getInstance();
         UserSession session = app.getCurrentSession();
         String email = session.getUserEmail();
-        System.out.println("email: " + email);
         ClientRegistry rc = company.getClientRegistry();
         this.cli = rc.getClientByEmail(email);
     }
