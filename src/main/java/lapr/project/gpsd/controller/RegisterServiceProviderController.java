@@ -7,8 +7,10 @@ import lapr.project.gpsd.model.CategoryRegistry;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.GeographicArea;
 import lapr.project.gpsd.model.GeographicAreaRegistry;
+import lapr.project.gpsd.model.SPApplication;
 import lapr.project.gpsd.model.ServiceProvider;
 import lapr.project.gpsd.model.ServiceProviderRegistry;
+import static lapr.project.gpsd.utils.Constants.*;
 
 public class RegisterServiceProviderController {
 
@@ -28,6 +30,14 @@ public class RegisterServiceProviderController {
     public RegisterServiceProviderController() {
         this.app = ApplicationGPSD.getInstance();
         this.company = app.getCompany();
+    }
+
+    public SPApplication getApplicationData(String nif) {
+        SPApplication application = this.company.getSPApplicationRegistry().getApplicationByNIF(nif);
+        if (application.isAccepted(ACCEPTED_APPLICATION)) {
+            return application;
+        }
+        return null;
     }
 
     /**
