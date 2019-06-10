@@ -1,50 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import lapr.project.gpsd.controller.AddNewAddressToClientController;
 
-/**
- * FXML Controller class
- *
- * @author breno
- */
-public class AddAddressToClientUI implements Initializable {
+public class AddAddressToClientUI {
 
-    @FXML
-    private Button cancelBtn;
-    @FXML
-    private Button continueBtn;
-    @FXML
-    private TextField addressTxt;
-    @FXML
-    private TextField postalCodeTxt;
-    @FXML
-    private TextField localTxt;
+    private MainMenuClientUI mainMenu;
+    private Main mainApp;
+    private AddNewAddressToClientController controller;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void handleCancelButton(ActionEvent event) {
+    public AddAddressToClientUI(MainMenuClientUI mainMenu, Main mainApp) {
+        this.mainMenu = mainMenu;
+        this.mainApp = mainApp;
+        this.controller = new AddNewAddressToClientController();
     }
 
-    @FXML
-    private void handleContinueBtn(ActionEvent event) {
+    public MainMenuClientUI getMainMenu() {
+        return this.mainMenu;
     }
-    
+
+    public Main getMainApp() {
+        return mainApp;
+    }
+
+    public AddNewAddressToClientController getController() {
+        return this.controller;
+    }
+
+    public void toAddAddressToClientScene1() {
+        try {
+            AddAddressToClientUI1 addAddressToClientSceneUI1 = (AddAddressToClientUI1) this.mainApp.replaceSceneContent("/fxml/AddAddressToClient1.fxml");
+            addAddressToClientSceneUI1.setAddAddressToClientUI(this);
+            addAddressToClientSceneUI1.getAddressTxt().requestFocus();
+        } catch (Exception ex) {
+        }
+    }
+
+    public void toAddAddressToClientScene2() {
+        try {
+            AddAddressToClientUI2 addAddressToClientSceneUI2 = (AddAddressToClientUI2) this.mainApp.replaceSceneContent("/fxml/AddAddressToClient2.fxml");
+            addAddressToClientSceneUI2.setAddAddressToClientUI(this);
+        } catch (Exception e) {
+        }
+    }
+
 }
