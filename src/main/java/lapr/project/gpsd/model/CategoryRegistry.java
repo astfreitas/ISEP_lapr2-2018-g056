@@ -71,6 +71,11 @@ public class CategoryRegistry {
         return categories.add(cat);
     }
 
+    /**
+     * returns a list of categories
+     *
+     * @return categories list
+     */
     public List<Category> getCategories() {
         return categories;
     }
@@ -83,7 +88,11 @@ public class CategoryRegistry {
      * @return True/false if the operation succeeds/fails
      */
     public boolean registerCategory(Category category) {
-        return this.addCategory(category);
+        if (validateCategory(category)) {
+            addCategory(category);
+            return true;
+        }
+        return false;
     }
 
 }

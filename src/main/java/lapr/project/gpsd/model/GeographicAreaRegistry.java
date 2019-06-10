@@ -16,14 +16,12 @@ public class GeographicAreaRegistry {
     private List<GeographicArea> geoAreaList;
 
     public GeographicAreaRegistry() {
-         geoAreaList = new ArrayList<>();
+        geoAreaList = new ArrayList<>();
     }
 
-    
-    
     /**
-     * Method returns nearest GeograficArea instance from a given postal
-     * code instance 
+     * Method returns nearest GeograficArea instance from a given postal code
+     * instance
      *
      * @param postalCode PostaCode instance to search
      * @return the nearest GeographicArea instance found or null
@@ -36,15 +34,14 @@ public class GeographicAreaRegistry {
                 return geoArea;
             } else {
                 double distance = geoArea.getDistanceToPostalCode(postalCode);
-                if (distance<shorteDistance) {
-                    nearestGeoArea= geoArea;
+                if (distance < shorteDistance) {
+                    nearestGeoArea = geoArea;
                     shorteDistance = distance;
                 }
             }
         }
         return nearestGeoArea;
     }
-
 
     List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -53,6 +50,7 @@ public class GeographicAreaRegistry {
     /**
      * Returns a new instance of Geographic Area.
      *
+     * @param geoId id of GeographicArea
      * @param designation designaation
      * @param cost cost
      * @param strPC PostalCode in String format
@@ -61,11 +59,10 @@ public class GeographicAreaRegistry {
      * @param pcReg reference for the PostalCodeRegistry
      * @return new instance of GeographicArea
      */
-    public GeographicArea newGeographicArea(String designation, double cost,
-            String strPC, double radius) {
+    public GeographicArea newGeographicArea(String geoId, String designation, double cost, String strPC, double radius) {
         IExternalService exService = ApplicationGPSD.getInstance().getCompany().getExternalService();
         PostalCodeRegistry pcReg = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry();
-        return new GeographicArea(designation, cost, radius, strPC, exService, pcReg);
+        return new GeographicArea(geoId, designation, cost, radius, strPC, exService, pcReg);
     }
 
     /**
@@ -110,6 +107,30 @@ public class GeographicAreaRegistry {
      */
     private boolean addGeoArea(GeographicArea geoA) {
         return geoAreaList.add(geoA);
+    }
+
+    /**
+     * returns a list of geographic areas
+     *
+     * @return geographic areas list
+     */
+    public List<GeographicArea> getGeographicAreas() {
+        return geoAreaList;
+    }
+
+    /**
+     * serches in the registry for a geographic area with a specific ID
+     *
+     * @param geoId ID to look for
+     * @return Category with the ID. Null if none is found.
+     */
+    public GeographicArea getGeoAreaById(String geoId) {
+        for (GeographicArea geo : geoAreaList) {
+            if (geo.hasId(geoId)) {
+                return geo;
+            }
+        }
+        return null;
     }
 
 }

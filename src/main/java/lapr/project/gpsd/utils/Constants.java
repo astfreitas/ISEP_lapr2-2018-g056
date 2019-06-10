@@ -24,4 +24,8 @@ public class Constants{
     public static final String REPETITION_PATTERN_FORTNIGHTLY = "FORTNIGHTLY";
     public static final String REPETITION_PATTERN_MONTHLY = "MONTHLY";
 
+    public static final String ACCEPTED_APPLICATION = "Accepted";
+    public static final String REJECTED_APPLICATION = "Rejected";
+    
+    
 }

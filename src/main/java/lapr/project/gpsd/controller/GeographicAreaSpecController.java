@@ -50,10 +50,10 @@ public class GeographicAreaSpecController {
      * @param radius Radius double for the area of action of the GeoArea
      * @return new GeographicArea instance
      */
-    public GeographicArea newGeographicArea(String designation, double cost,
+    public GeographicArea newGeographicArea(String geoId, String designation, double cost,
             String strPC, double radius) {
         geoAreg = company.getGeographicAreaRegistry();
-        geoA = geoAreg.newGeographicArea(designation, cost, strPC, radius);
+        geoA = geoAreg.newGeographicArea(geoId, designation, cost, strPC, radius);
         return geoA;
     }
     
