@@ -53,7 +53,7 @@ public class PostalCodeRegistry {
                 return postalCode;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Postal Code not valid.");
     }
 
     /**
