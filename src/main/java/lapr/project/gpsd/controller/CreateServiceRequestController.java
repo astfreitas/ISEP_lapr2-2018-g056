@@ -89,9 +89,13 @@ public class CreateServiceRequestController {
      * @param dur duration of the service
      * @return true if the service is created.
      */
-    public boolean addServiceRequestDescription(String idServ, String desc, int dur) {
+    public boolean addServiceRequestDescription(String idServ, String desc, int dur) {       
         Service s = serviceRegister.getServiceById(idServ);
-        return serviceRequest.addServiceRequestDescription(s, desc, dur);
+        if (s!=null) {
+            return serviceRequest.addServiceRequestDescription(s, desc, dur);
+        } else { 
+            return false;
+        }
     }
 
     /**

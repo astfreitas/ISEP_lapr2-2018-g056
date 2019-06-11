@@ -99,20 +99,20 @@ public class ServiceOrderRegistry {
      * assignments.
      *
      * @param listServiceAssignments
-     * @return list of service orders created.
+     * @return list of serviceOrdersIDs.
      */
-    public List<ServiceOrder> registerServiceOrders(List<ServiceAssignment> listServiceAssignments) {
-        List<ServiceOrder> serviceOrdersList = new ArrayList();
+    public List<Integer> registerServiceOrders(List<ServiceAssignment> listServiceAssignments) {
+        List<Integer> serviceOrdersIDList = new ArrayList();
         for (ServiceAssignment serviceAssignment : listServiceAssignments) {
             ServiceOrder so = new ServiceOrder(serviceAssignment);
             if (validate(so)) {
                 int orderNumber = generateServiceOrderNumber();
                 so.setOrderNumber(orderNumber);
                 serviceOrders.add(so);
-                serviceOrdersList.add(so);
+                serviceOrdersIDList.add(orderNumber);
             }
         }
-        return serviceOrdersList;
+        return serviceOrdersIDList;
     }
 
     /**

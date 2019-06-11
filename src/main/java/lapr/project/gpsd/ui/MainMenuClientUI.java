@@ -67,6 +67,8 @@ public class MainMenuClientUI implements Initializable {
 
     @FXML
     private void handleAcceptServiceReqAssignmentBtn(ActionEvent event) {
+        AcceptServiceRequestAssignmentsUI acceptServiceRequestAssignmentsUI = new AcceptServiceRequestAssignmentsUI(this, mainApp);
+        acceptServiceRequestAssignmentsUI.toAcceptServiceRequestScene1();
     }
 
     @FXML
