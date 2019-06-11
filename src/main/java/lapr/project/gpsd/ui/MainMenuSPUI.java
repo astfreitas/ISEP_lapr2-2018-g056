@@ -50,7 +50,7 @@ public class MainMenuSPUI implements Initializable {
     }
 
     public void backToMainMenu(){
-        this.mainMenuUI.toMainMenuClient();
+        this.mainMenuUI.toMainMenuSP();
     }
 
     @FXML
