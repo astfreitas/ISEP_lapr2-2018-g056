@@ -34,4 +34,12 @@ public interface IExternalService {
      * @return Postal Code List
      */
     public ArrayList<PostalCode> loadPostalCodeList() throws IOException;
+    
+    /**
+     * Return the distance between two given Postal Codes. Distance value is not checked in return.
+     * @param pc1 PostalCode instance 
+     * @param pc2 PostalCOde instance
+     * @return the value of the distance between the two given Postal Code Instances.
+     */
+    public double getDistanceBetCP(PostalCode pc1, PostalCode pc2);
 }
