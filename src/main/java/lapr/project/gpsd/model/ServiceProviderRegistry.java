@@ -20,6 +20,18 @@ public class ServiceProviderRegistry {
     public ServiceProviderRegistry() {
         this.spList = new ArrayList<>();
     }
+    
+    /**
+     * Creates new Address instance
+     *
+     * @param local
+     * @param postalCode
+     * @param address
+     * @return Address
+     */
+    public Address newAddress(String local, String postalCode, String address) {
+        return new Address(local, postalCode, address);
+    }
 
     /**
      *
