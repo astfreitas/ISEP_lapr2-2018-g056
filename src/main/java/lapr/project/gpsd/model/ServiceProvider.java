@@ -242,7 +242,9 @@ public class ServiceProvider {
      */
     public double getAverageRating() {
         double sum = 0;
-        if(evalList.isEmpty()) { return -1;} 
+        if (evalList.isEmpty()) {
+            return -1;
+        }
         for (Evaluation eval : evalList) {
             sum += eval.getRating();
         }
@@ -269,6 +271,11 @@ public class ServiceProvider {
         classification = label;
     }
 
+    /**
+     * register new evaluation and recalculates average
+     * @param rating
+     * @param servOrder 
+     */
     public void registerEvaluation(int rating, ServiceOrder servOrder) {
         Evaluation eval = new Evaluation(rating, servOrder);
         evalList.add(eval);
@@ -284,24 +291,87 @@ public class ServiceProvider {
         this.setAverageRating(average);
     }
 
-    boolean isAvailable(SchedulePreference schedule) {
+    /**
+     * Verifies that Service Provider is available in Schedule given as
+     * argument
+     *
+     * @param schedule
+     * @return
+     */
+    public boolean isAvailable(SchedulePreference schedule) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    boolean worksInGeographicArea(GeographicArea area) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Verify that service provider has Geographic Area
+     *
+     * @param area
+     * @return
+     */
+    public boolean hasGeographicArea(GeographicArea area) {
+        return spGeoAreaList.getGeoAreaList().contains(area);
     }
 
-    boolean providesServicesOfCategory(Category category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Verifies that Service Provider has category
+     *
+     * @param category
+     * @return
+     */
+    public boolean hasCategory(Category category) {
+        return spCatList.getCategorylist().contains(category);
     }
 
+    /**
+     * toString method returning only name and email
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return name + " : " + email;
     }
 
+    /**
+     * Adds evaluation to Service provider
+     *
+     * @param eval
+     * @return
+     */
     public boolean addEvaluation(Evaluation eval) {
         return evalList.add(eval);
     }
+
+    /**
+     * Gets least distance from SP's to address given as argument
+     *
+     * @param address
+     * @return
+     */
+    public double getDistanceFrom(Address address) {
+        return 0;
+    }
+
+    /**
+     * Returns first schedule (from list given as argument) matching one of the
+     * SP's availabilities
+     *
+     * @param scheduleList
+     * @return
+     */
+    public SchedulePreference matchSchedule(List<SchedulePreference> scheduleList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Splits SP's availability into two according to schedule and duration
+     * given as argument (removes availability "window")
+     *
+     * @param selectedSchedule
+     * @param duration
+     */
+    public void splitAvailability(SchedulePreference selectedSchedule, int duration) {
+
+    }
+
 }
