@@ -51,6 +51,8 @@ public class MainMenuHROUI implements Initializable {
 
     @FXML
     private void handleRegisterSPBtn(ActionEvent event) {
+        RegisterServiceProviderUI registerSPUI = new RegisterServiceProviderUI(this, mainApp);
+        registerSPUI.toRegisterServiceProviderScene1();
 
     }
 

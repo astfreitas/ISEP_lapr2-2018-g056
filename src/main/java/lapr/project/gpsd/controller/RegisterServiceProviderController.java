@@ -22,6 +22,8 @@ public class RegisterServiceProviderController {
     private ServiceProviderRegistry spRegistry;
     private ServiceProvider sp;
     private String pwd;
+    private SPApplication spApp;
+    private Address address;
 
     /**
      * Creates an instance of RegisterServiceProviderController
@@ -32,12 +34,14 @@ public class RegisterServiceProviderController {
         this.company = app.getCompany();
     }
 
-    public SPApplication getApplicationData(String nif) {
+    public boolean getApplicationData(String nif) {
         SPApplication application = this.company.getSPApplicationRegistry().getApplicationByNIF(nif);
-        if (application.isAccepted(ACCEPTED_APPLICATION)) {
-            return application;
+//        if ((application != null) && (application.isAccepted(ACCEPTED_APPLICATION))) {
+        if (application != null) {
+            spApp = application;
+            return true;
         }
-        return null;
+        return false;
     }
 
     /**
@@ -129,6 +133,20 @@ public class RegisterServiceProviderController {
      */
     public String toStringServiceProvider() {
         return this.sp.toString();
+    }
+
+    public String getName() {
+        return spApp.getName();
+    }
+
+    public Address getAddress() {
+        return spApp.getAddress();
+    }
+
+    public void newAddress(String local, String postalCode, String address) {
+        
+        this.address = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
+        
     }
 
 }
