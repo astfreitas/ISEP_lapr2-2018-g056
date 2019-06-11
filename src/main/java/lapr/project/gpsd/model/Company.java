@@ -53,12 +53,14 @@ public class Company {
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRequestRegistry = new ServiceRequestRegistry();
         this.serviceTypeRegistry = new ServiceTypeRegistry();
+        this.serviceTypeRegistry.createSupportedServiceTypes(props);
         this.spApplicationRegistry = new SPApplicationRegistry();
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
+        this.fileTypeRegistry.createSupportedFileTypes(props);
         this.serviceSortingBehavior = null;
         this.assignmentAlgoritm = null;
         // creates instances from configuration file

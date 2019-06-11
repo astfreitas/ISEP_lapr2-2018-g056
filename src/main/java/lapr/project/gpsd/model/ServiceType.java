@@ -52,7 +52,7 @@ public class ServiceType {
         try {
             Class<?> oClass = Class.forName(typeName);
             Constructor constructor = oClass.getConstructor(new Class[]{String.class, String.class, String.class, Double.class, Category.class});
-            Service serviceInstance = (Service) constructor.newInstance(new Object[]{id, briefDescription, fullDescription, hourlyCost, category});
+            Service serviceInstance =(Service) constructor.newInstance(new Object[]{id, briefDescription, fullDescription, hourlyCost, category});
             
             return serviceInstance;
             
