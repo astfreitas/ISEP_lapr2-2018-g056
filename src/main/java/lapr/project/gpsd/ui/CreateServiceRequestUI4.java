@@ -2,15 +2,19 @@ package lapr.project.gpsd.ui;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import lapr.project.gpsd.model.SchedulePreference;
+import lapr.project.utils.UIUtils;
 
 public class CreateServiceRequestUI4 implements Initializable {
 
@@ -46,7 +50,19 @@ public class CreateServiceRequestUI4 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        this.createServiceRequestUI.toCreateServiceRequestControllerScene5();
+        if(validate()) {
+            this.createServiceRequestUI.toCreateServiceRequestControllerScene5();
+        }
+    }
+    
+    @FXML
+    private void handleAddSchedulePrefBtn(ActionEvent event) {
+        LocalDate scheduleDay = datePicker.getValue();
+        int hour = Integer.parseInt(hourComboBox.getSelectionModel().getSelectedItem());
+        int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());
+        LocalTime scheduleTime = LocalTime.of(hour, min, 0);
+        this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
+        updateScheduleList();
     }
     
     public void setCreateServiceRequestSceneUI(CreateServiceRequestUI createServiceRequestUI) {
@@ -72,5 +88,23 @@ public class CreateServiceRequestUI4 implements Initializable {
         }
         minuteComboBox.getSelectionModel().selectFirst();
     }
+
+    private void updateScheduleList() {
+        scheduleLst.getItems().clear();
+        List<SchedulePreference> schedulePreferences = this.createServiceRequestUI.getController().getServiceRequest().getSchedulePreferences();
+        scheduleLst.getItems().addAll(schedulePreferences);
+    }
+    
+    
+    private boolean validate() {
+        if(scheduleLst.getItems().isEmpty()) {
+            UIUtils.createAlert("You must have atleast 1 Schedule Preference", "SchedulePreference Error", Alert.AlertType.ERROR);
+            return false;
+        }
+        
+        return true;
+    }
+
+    
     
 }

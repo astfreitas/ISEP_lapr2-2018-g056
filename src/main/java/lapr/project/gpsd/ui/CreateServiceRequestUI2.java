@@ -60,7 +60,6 @@ public class CreateServiceRequestUI2 implements Initializable {
     }
     
     public void setupServiceRequestDescriptionTable() {
-        System.out.println(this.createServiceRequestUI.getController().getServiceRequest().getServiceRequestDescriptions().size());
         categoryCol.setCellValueFactory(new PropertyValueFactory<>("propertyCategory"));
         serviceCol.setCellValueFactory(new PropertyValueFactory<>("propertyService"));
         durationCol.setCellValueFactory(new PropertyValueFactory<>("propertyDuration"));

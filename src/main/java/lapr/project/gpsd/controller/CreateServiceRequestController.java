@@ -113,7 +113,15 @@ public class CreateServiceRequestController {
         serviceRegister.validateRequest(serviceRequest);
         return serviceRequest;
     }
-
+    
+    public double getTravelExpenses() {
+        return serviceRequest.getTravelExpenses();
+    }
+    
+    public double getTotalCost() {
+        return serviceRequest.getTotal();
+    }
+    
     /**
      * Method that registers the order.
      *

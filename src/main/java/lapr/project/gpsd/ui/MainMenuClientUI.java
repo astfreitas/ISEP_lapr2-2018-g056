@@ -55,6 +55,8 @@ public class MainMenuClientUI implements Initializable {
 
     @FXML
     private void handleServiceRequestBtn(ActionEvent event) {
+        CreateServiceRequestUI createServiceRequestUI = new CreateServiceRequestUI(this, mainApp);
+        createServiceRequestUI.toCreateServiceRequestControllerScene1();
     }
 
     @FXML

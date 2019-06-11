@@ -106,7 +106,9 @@ public class ServiceRegistry {
      * @return true of the service request
      */
     public boolean validateRequest(ServiceRequest serviceRequest) {
+        
         serviceRequest.calculateCost();
+        
         return verifyRequest(serviceRequest);
     }
     

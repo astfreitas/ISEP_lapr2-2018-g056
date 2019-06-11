@@ -74,7 +74,7 @@ public class CreateServiceRequestUI {
                     = (CreateServiceRequestUI5) this.mainApp.
                             replaceSceneContent("/fxml/CreateServiceRequest5.fxml");
             createServiceRequestScene5UI.setCreateServiceRequestSceneUI (this);
-            //createServiceRequestScene3UI.showClient();
+            createServiceRequestScene5UI.setupConfirmationScene();
         } catch (Exception ex) {
         }
     }
