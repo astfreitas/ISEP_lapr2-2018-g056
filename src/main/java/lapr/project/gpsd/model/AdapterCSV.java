@@ -8,7 +8,7 @@ public class AdapterCSV implements FileType {
     }
 
     @Override
-    public String getAdapterFileType() {
+    public String toString() {
         return adapterFileType;
     }
 

@@ -23,7 +23,7 @@ public class AdapterXLS implements FileType {
     }
     
     @Override
-    public String getAdapterFileType() {
+    public String toString() {
         return this.adapterFileType;
     }
     

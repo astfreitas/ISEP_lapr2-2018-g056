@@ -13,7 +13,7 @@ public class AdapterXML implements FileType{
     }
 
     @Override
-    public String getAdapterFileType() {
+    public String toString() {
         return this.adapterFileType;
     }
 
