@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -63,5 +64,6 @@ public class MainMenuHROUI implements Initializable {
 
     @FXML
     private void handleAboutBtn(ActionEvent event) {
+         UIUtils.about();
     }
 }

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import lapr.project.utils.UIUtils;
 
 public class MainMenuAdminUI implements Initializable {
     
@@ -58,5 +59,6 @@ public class MainMenuAdminUI implements Initializable {
 
     @FXML
     private void handleAboutBtn(ActionEvent event) {
+         UIUtils.about();
     }
 }

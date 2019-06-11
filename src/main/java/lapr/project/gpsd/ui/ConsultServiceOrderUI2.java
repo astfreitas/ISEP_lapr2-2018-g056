@@ -57,15 +57,20 @@ public class ConsultServiceOrderUI2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+    }
+
+    public void setDatesToScene() {
         this.sDate = consultServOrderUI.getController().getsDate();
         this.eDate = consultServOrderUI.getController().geteDate();
-        loadListView();
     }
 
     public void loadListView() {
+        setDatesToScene();
+        startDatePicker.setValue(sDate);
+        endDatePicker.setValue(eDate);
         List<ServiceOrder> tmpServList = consultServOrderUI.getController().getServiceOrderByDateAndSP(sDate, eDate);
         listViewServOrders.getItems().addAll(tmpServList);
-
     }
 
     public void setConsultServOrderUI(ConsultServiceOrderUI consultServOrderUI) {
@@ -101,4 +106,12 @@ public class ConsultServiceOrderUI2 implements Initializable {
             UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
         }
     }
+
+    public DatePicker getStartDatePicker() {
+        return startDatePicker;
+    }
+
+
+    
+    
 }

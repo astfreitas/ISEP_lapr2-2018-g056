@@ -38,4 +38,13 @@ public class MainMenuUI {
         } catch (Exception ex) {
         }
     }
+    
+    public void toMainMenuSP() {
+        try {
+            MainMenuSPUI mainMenu = (MainMenuSPUI) this.mainApp.replaceSceneContent("/fxml/MainMenuSP.fxml");
+            mainMenu.setMainApp(mainApp);
+            mainMenu.setMainMenuUI(this);
+        } catch (Exception ex) {
+        }
+    }
 }

@@ -23,8 +23,6 @@ public class MainMenuSPUI implements Initializable {
     private Main mainApp;
     private MainMenuUI mainMenuUI;
     @FXML
-    private MenuItem rateSPBtn;
-    @FXML
     private MenuItem aboutBtn;
     @FXML
     private MenuItem addDailyAvaiBtn;
@@ -50,7 +48,7 @@ public class MainMenuSPUI implements Initializable {
     }
 
     public void backToMainMenu(){
-        this.mainMenuUI.toMainMenuClient();
+        this.mainMenuUI.toMainMenuSP();
     }
 
     @FXML
@@ -60,14 +58,20 @@ public class MainMenuSPUI implements Initializable {
 
     @FXML
     private void handleAddDailyAvaiBtn(ActionEvent event) {
+        AddDailyAvailabilityUI addDailyAvailabilityUI = new AddDailyAvailabilityUI(this, mainApp);
+        addDailyAvailabilityUI.toAddAvailabilityScene1();
     }
 
     @FXML
     private void handleConsultServiceOrdersBtn(ActionEvent event) {
         ConsultServiceOrderUI consultServiceOrderUI = new ConsultServiceOrderUI(this, mainApp);
+        consultServiceOrderUI.toConsultServiceOrderScene1();
     }
 
     @FXML
     private void handleCompleteServiceBtn(ActionEvent event) {
+        CompleteServiceUI completeServiceUI = new CompleteServiceUI(this, mainApp);
+        completeServiceUI.toCompleteServiceScene1();
     }
+
 }

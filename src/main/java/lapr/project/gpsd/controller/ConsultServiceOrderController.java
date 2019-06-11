@@ -3,7 +3,6 @@ package lapr.project.gpsd.controller;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.Company;
 import lapr.project.gpsd.model.FileType;

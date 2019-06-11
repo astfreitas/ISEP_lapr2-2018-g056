@@ -63,6 +63,8 @@ public class LoginScreenUI implements Initializable {
                 mainMenu.toMainMenuAdmin();
             } else if (role.equals(Constants.ROLE_HRO)) {
                 mainMenu.toMainMenuHRO();
+            } else if (role.equals(Constants.ROLE_SERVICE_PROVIDER)) {
+                mainMenu.toMainMenuSP();
             }
         }
     }
@@ -104,6 +106,8 @@ public class LoginScreenUI implements Initializable {
                 mainMenu.toMainMenuAdmin();
             } else if (role.equals(Constants.ROLE_HRO)) {
                 mainMenu.toMainMenuHRO();
+            } else if (role.equals(Constants.ROLE_SERVICE_PROVIDER)) {
+                mainMenu.toMainMenuSP();
             }
         }
     }

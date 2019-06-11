@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -55,11 +57,18 @@ public class ConsultServiceOrderUI1 implements Initializable {
 
     @FXML
     private void handleSearchBut(ActionEvent event) {
-//        this.consultServOrderUI.getController().
         LocalDate sDate = startDate.getValue();
         LocalDate eDate = endDate.getValue();
-        if (sDate.isBefore(eDate)) {
+        try {
             
+        if (eDate.isBefore(sDate)) {
+            UIUtils.createAlert("Invalid dates selected.", "", Alert.AlertType.ERROR);
+        }else{
+            this.consultServOrderUI.getController().setDatesToSearch(sDate, eDate);
+            this.consultServOrderUI.toConsultServiceOrderScene2();
+        }
+        } catch (Exception e) {
+            UIUtils.createAlert("An error ocurred with the given search parameters", "", Alert.AlertType.ERROR);
         }
     }
 

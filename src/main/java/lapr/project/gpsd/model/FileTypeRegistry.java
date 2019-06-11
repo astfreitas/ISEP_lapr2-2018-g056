@@ -18,7 +18,7 @@ public class FileTypeRegistry {
     public FileType getExportAdapterByFileType(FileType fileType) {
         Class fileTypeClass;
         try {
-            fileTypeClass = Class.forName(fileType.getAdapterFileType());
+            fileTypeClass = Class.forName(fileType.toString());
             FileType adapter = (FileType) fileTypeClass.getConstructor().newInstance();
             return adapter;
         } catch (ClassNotFoundException | IllegalAccessException 

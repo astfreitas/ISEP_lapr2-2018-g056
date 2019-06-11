@@ -20,15 +20,16 @@ public class ServiceOrderRegistry {
     }
 
     /**
-     * returns a list of only pending service orders
+     * returns a list of only pending service orders by Service Provider
      *
-     * @param status of the service order
-     * @return list of only pending service orders
+     * @param status Status of the service order
+     * @param sp Service Provider
+     * @return list List of only pending service orders
      */
-    public ArrayList<ServiceOrder> getPendingServiceOrders(String status) {
+    public ArrayList<ServiceOrder> getPendingServiceOrdersByServiceProvider(String status, ServiceProvider sp) {
         ArrayList<ServiceOrder> pendingServiceOrders = new ArrayList<>();
         for (ServiceOrder serviceOrder : serviceOrders) {
-            if (serviceOrder.isPending(status)) {
+            if (serviceOrder.isPending(status) && serviceOrder.getServiceProvider().equals(sp)) {
                 pendingServiceOrders.add(serviceOrder);
             }
         }
