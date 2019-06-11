@@ -52,6 +52,8 @@ public class EvaluateSPUI1 implements Initializable {
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
+        evaluateSPUI.getController().setSPClassification();
+        UIUtils.createAlert("Evaluation sucessful!", "", Alert.AlertType.INFORMATION);
         evaluateSPUI.getMainMenu().backToMainMenu();
     }
 
@@ -62,7 +64,7 @@ public class EvaluateSPUI1 implements Initializable {
 
     @FXML
     private void handleChangeClassificationBtn(ActionEvent event) {
-        evaluateSPUI.toEvaluateSPScene3();
+        evaluateSPUI.toEvaluateSPScene3(this);
     }
 
     public void populateSPComboBox() {
@@ -79,13 +81,22 @@ public class EvaluateSPUI1 implements Initializable {
     private void handleSPComboBox(ActionEvent event) {
         try {
             evaluateSPUI.getController().newSPStatistics(spComboBox.getValue().getEmail());
+            updateLabel();
         } catch (Exception e) {
             UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+            evaluateSPUI.getMainMenu().backToMainMenu();
         }
         spComboBox.setDisable(true);
         confirmBtn.setDisable(false);
         viewStatisticsBtn.setDisable(false);
         changeClassificationBtn.setDisable(false);
+    }
+
+    void updateLabel() {
+        String label = evaluateSPUI.getController().getLabel();
+        if (label != null) {
+            classificationTxt.setText(label);
+        }
     }
 
 }

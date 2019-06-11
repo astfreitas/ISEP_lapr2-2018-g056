@@ -14,6 +14,7 @@ import lapr.project.gpsd.model.Address;
 import lapr.project.gpsd.model.Client;
 import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
+import lapr.project.gpsd.model.Evaluation;
 import lapr.project.gpsd.model.ServiceProvider;
 
 /**
@@ -83,6 +84,14 @@ public class ApplicationGPSD {
 
         this.authentication.registerUserWithRole("Service Provider 1", "sp1", "123", Constants.ROLE_SERVICE_PROVIDER);
         this.company.getServiceProviderRegistry().addServiceProvider(new ServiceProvider("Service Provider 1", "123", "sp1"));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp1").addEvaluation(new Evaluation(2, null));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp1").addEvaluation(new Evaluation(1, null));
+        this.company.getServiceProviderRegistry().addServiceProvider(new ServiceProvider("Service Provider 2", "123", "sp2"));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp2").addEvaluation(new Evaluation(5, null));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp2").addEvaluation(new Evaluation(4, null));
+        this.company.getServiceProviderRegistry().addServiceProvider(new ServiceProvider("Service Provider 3", "123", "sp3"));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp2").addEvaluation(new Evaluation(3, null));
+        this.company.getServiceProviderRegistry().getServiceProviderByEmail("sp2").addEvaluation(new Evaluation(4, null));
     }
 
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

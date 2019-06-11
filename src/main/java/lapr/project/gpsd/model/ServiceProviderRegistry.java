@@ -139,9 +139,20 @@ public class ServiceProviderRegistry {
         return spList;
     }
 
+    /**
+     * Returns a list of the average rating for each service provider
+     *
+     * @return
+     */
     public List<Double> getAverageRatings() {
-        return null;
-        // to-do
+        List<Double> averageRatings = new ArrayList<>();
+        for (ServiceProvider sp : spList) {
+            double avgRating = sp.getAverageRating();
+            if (avgRating > -1) {
+                averageRatings.add(avgRating);
+            }
+        }
+        return averageRatings;
     }
 
 }

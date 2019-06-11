@@ -15,7 +15,6 @@ public class EvaluateSPController {
     private List<Double> arl;
     private double ar;
     private ServiceProviderStatistics sps;
-    private String label;
 
     /**
      * Constructor: checks if user has HRO ROLE and sets the company reference
@@ -36,7 +35,7 @@ public class EvaluateSPController {
     public List<ServiceProvider> getServiceProviders() {
         this.spr = company.getServiceProviderRegistry();
         this.spl = spr.getServiceProviders();
-        if(spl.isEmpty()) {
+        if (spl.isEmpty()) {
             throw new RuntimeException("No Service Providers were found in the system.");
         }
         return spl;
@@ -55,7 +54,7 @@ public class EvaluateSPController {
         this.r = sp.getRatings();
         this.arl = spr.getAverageRatings();
         this.ar = sp.getAverageRating();
-        this.sps = new ServiceProviderStatistics(arl, ar);
+        this.sps = new ServiceProviderStatistics(arl, r);
     }
 
     /**
@@ -72,31 +71,47 @@ public class EvaluateSPController {
     /**
      * Sets the label to be used to define the Service Provider's classification
      * (local to the Controller)
-     * @param label 
+     *
+     * @param label
      */
     public void setLabel(String label) {
-        this.label = label;
+        this.sps.setClassification(label);
     }
 
     /**
      * returns the label chosen to define the Service Provider's classification
-     * @return 
+     *
+     * @return
      */
     public String getLabel() {
-        return label;
+        return sps.getClassification();
     }
 
     /**
      * Sets the Service Provider's classification to the chosen label.
      */
     public void setSPClassification() {
-        sp.setClassification(label);
+        sp.setClassification(sps.getClassification());
     }
 
-    public ServiceProviderStatistics getStatistics() {
-        return sps;
+    public double getPopulationMeanAverageRating() {
+        return sps.getPopulationMeanAverageRating();
     }
-    
-    
+
+    public double getPopulationStdDeviation() {
+        return sps.getPopulationStdDeviation();
+    }
+
+    public double getSpAverageRating() {
+        return sps.getSpAverageRating();
+    }
+
+    public double getSpAbsoluteDifference() {
+        return sps.getSpAbsoluteDifference();
+    }
+
+    public List<Integer> getSpRatings() {
+        return sps.getSpRatings();
+    }
 
 }

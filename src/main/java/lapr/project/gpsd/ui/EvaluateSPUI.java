@@ -69,7 +69,7 @@ public class EvaluateSPUI {
         }
     }
 
-    public void toEvaluateSPScene3() {
+    public void toEvaluateSPScene3(EvaluateSPUI1 parentUI) {
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.setTitle("Change SP's classification");
@@ -81,6 +81,7 @@ public class EvaluateSPUI {
             Scene newScene = new Scene(root);
             EvaluateSPUI3 evaluateSPUI3 = fxmlLoader.getController();
             evaluateSPUI3.setEvaluateSPUI(this);
+            evaluateSPUI3.setParentUI(parentUI);
             evaluateSPUI3.populateFields();
             newStage.setScene(newScene);
             newStage.showAndWait();

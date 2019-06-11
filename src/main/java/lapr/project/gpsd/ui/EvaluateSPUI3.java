@@ -1,6 +1,7 @@
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.ComboBox;
 public class EvaluateSPUI3 implements Initializable {
 
     private EvaluateSPUI evaluateSPUI;
+    private EvaluateSPUI1 parentUI;
 
     @FXML
     private Button cancelBtn;
@@ -25,11 +27,15 @@ public class EvaluateSPUI3 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        confirmBtn.setDisable(true);
     }
 
     public void setEvaluateSPUI(EvaluateSPUI evaluateSPUI) {
         this.evaluateSPUI = evaluateSPUI;
+    }
+
+    public void setParentUI(EvaluateSPUI1 parentUI) {
+        this.parentUI = parentUI;
     }
 
     @FXML
@@ -39,15 +45,19 @@ public class EvaluateSPUI3 implements Initializable {
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
+        evaluateSPUI.getController().setLabel(labelComboBox.getValue());
+        parentUI.updateLabel();
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void handleLabelComboBox(ActionEvent event) {
+        confirmBtn.setDisable(false);
     }
 
     void populateFields() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> labels = evaluateSPUI.getController().getLabels();
+        labelComboBox.getItems().addAll(labels);
     }
 
 }
