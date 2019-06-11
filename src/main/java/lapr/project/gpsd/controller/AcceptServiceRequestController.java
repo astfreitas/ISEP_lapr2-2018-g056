@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.*;
@@ -10,29 +11,40 @@ public class AcceptServiceRequestController {
     private ApplicationGPSD app;
     private Company company;
     private ServiceAssignmentRegistry sar;
-    
+    private ServiceRequestRegistry srr;
     /**
-     * Method returns a list of fully assigned ServiceRequests
-     * @return a list of fully assigned ServiceRequets from the user
+     * Method returns a list of fully assigned ServiceRequests ID's
+     * @return a list of fully assigned ServiceRequet ID's from the user
      */
-    public List<ServiceRequest> checkAssignedServiceRequests() {
+    public List<Integer> checkAssignedServiceRequests() {
         app = ApplicationGPSD.getInstance();
         UserSession session = app.getCurrentSession();
         String email = session.getUserEmail();
         company = app.getCompany();
         ClientRegistry cr = company.getClientRegistry();
         Client cli = cr.getClientByEmail(email);
-        ServiceRequestRegistry srr = app.getCompany().getServiceRequestRegistry();
-        return srr.getServiceRequestsFullyAssignedByClient(cli); 
+        srr = app.getCompany().getServiceRequestRegistry();
+        
+        List<Integer> serviceIDS = new ArrayList();
+        List<ServiceRequest> serviceRequests = srr.getServiceRequestsFullyAssignedByClient(cli);
+        for(ServiceRequest sreq : serviceRequests) {
+            serviceIDS.add(sreq.getNumber());
+        }
+        return serviceIDS; 
     }
     
     /**
      * Method returns a list of service assignments for a given ServiceRequest
      * @return a list of service assignments for a given ServiceRequest
      */
-    public List<ServiceAssignment> checkServiceAssignments(ServiceRequest serviceRequest) {
-        sar = company.getServiceAssignementRegistry();
-        return sar.getServiceAssignmentListByServiceRequest(serviceRequest);
+    public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
+        List<ServiceAssignment> result = new ArrayList();
+        ServiceRequest servRequest = srr.getServiceRequestByNumber(serviceNumber);
+        if(servRequest!=null) {
+            sar = company.getServiceAssignementRegistry();
+            result = sar.getServiceAssignmentListByServiceRequest(servRequest);
+        } 
+        return result;
     }
     
     /**
@@ -48,10 +60,10 @@ public class AcceptServiceRequestController {
      * Method accepts list of service assignments
      * @param listServiceAssignments 
      */
-    public void acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
+    public List<Integer> acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
         sar.removeServiceAssignment(listServiceAssignments, true);
         ServiceOrderRegistry sor = company.getServiceOrderRegistry();
-        sor.registerServiceOrders(listServiceAssignments);
+        return sor.registerServiceOrders(listServiceAssignments);
     }
     
     

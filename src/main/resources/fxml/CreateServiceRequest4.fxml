@@ -57,7 +57,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="381.0">
                                  <children>
-                                    <Button fx:id="addSchedulePrefBtn" mnemonicParsing="false" text="Add Schedule Preference" />
+                                    <Button fx:id="addSchedulePrefBtn" mnemonicParsing="false" onAction="#handleAddSchedulePrefBtn" text="Add Schedule Preference" />
                                  </children>
                               </HBox>
                            </children>
