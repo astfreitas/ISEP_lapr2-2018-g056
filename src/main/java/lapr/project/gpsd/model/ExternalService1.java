@@ -133,5 +133,16 @@ public class ExternalService1 implements IExternalService {
         }
         return pCodeList;
     }
+    
+    /**
+     * Return the distance between two given Postal Codes. Distance value is not checked in return.
+     * @param pc1 PostalCode instance 
+     * @param pc2 PostalCOde instance
+     * @return the value of the distance between the two given Postal Code Instances.
+     */
+    public double getDistanceBetCP(PostalCode pc1, PostalCode pc2){
+        return calculatesDistance(pc1.getCpLatitude(), pc1.getCpLongitude(), pc2.getCpLatitude(), pc2.getCpLongitude());
+        
+    }
 
 }
