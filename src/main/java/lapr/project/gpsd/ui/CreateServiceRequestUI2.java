@@ -47,12 +47,12 @@ public class CreateServiceRequestUI2 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        this.createServiceRequestUI.toCreateServiceRequestControllerScene3();
+        this.createServiceRequestUI.toCreateServiceRequestControllerScene4();
     }
 
     @FXML
     private void handleAddServiceBtn(ActionEvent event) {
-        
+        this.createServiceRequestUI.toCreateServiceRequestControllerScene3();
     }
     
     public void setCreateServiceRequestSceneUI(CreateServiceRequestUI createServiceRequestUI) {
@@ -60,10 +60,13 @@ public class CreateServiceRequestUI2 implements Initializable {
     }
     
     public void setupServiceRequestDescriptionTable() {
+        System.out.println(this.createServiceRequestUI.getController().getServiceRequest().getServiceRequestDescriptions().size());
         categoryCol.setCellValueFactory(new PropertyValueFactory<>("propertyCategory"));
         serviceCol.setCellValueFactory(new PropertyValueFactory<>("propertyService"));
         durationCol.setCellValueFactory(new PropertyValueFactory<>("propertyDuration"));
         costCol.setCellValueFactory(new PropertyValueFactory<>("propertyCost"));
+        addServiceTbl.getItems().clear();
+        addServiceTbl.getItems().addAll(createServiceRequestUI.getController().getServiceRequest().getServiceRequestDescriptions());
     }
 
 }
