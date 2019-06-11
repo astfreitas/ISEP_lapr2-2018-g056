@@ -59,7 +59,7 @@ public class ConsultServiceOrderUI1 implements Initializable {
     private void handleSearchBut(ActionEvent event) {
         LocalDate sDate = startDate.getValue();
         LocalDate eDate = endDate.getValue();
-        if (sDate.isBefore(eDate)) {
+        if (eDate.isBefore(sDate)) {
             UIUtils.createAlert("Invalid dates selected.", "", Alert.AlertType.ERROR);
         }else{
             this.consultServOrderUI.getController().setDatesToSearch(sDate, eDate);
