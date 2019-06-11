@@ -65,7 +65,6 @@ public class ConsultServiceOrderUI2 implements Initializable {
     public void loadListView() {
         List<ServiceOrder> tmpServList = consultServOrderUI.getController().getServiceOrderByDateAndSP(sDate, eDate);
         listViewServOrders.getItems().addAll(tmpServList);
-
     }
 
     public void setConsultServOrderUI(ConsultServiceOrderUI consultServOrderUI) {

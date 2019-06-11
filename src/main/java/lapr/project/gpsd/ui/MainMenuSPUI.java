@@ -65,9 +65,14 @@ public class MainMenuSPUI implements Initializable {
     @FXML
     private void handleConsultServiceOrdersBtn(ActionEvent event) {
         ConsultServiceOrderUI consultServiceOrderUI = new ConsultServiceOrderUI(this, mainApp);
+        consultServiceOrderUI.toConsultServiceOrderScene1();
     }
 
     @FXML
     private void handleCompleteServiceBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleRateSPBtn(ActionEvent event) {
     }
 }
