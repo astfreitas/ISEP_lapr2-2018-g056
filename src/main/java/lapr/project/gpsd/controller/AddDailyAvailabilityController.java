@@ -65,6 +65,9 @@ public class AddDailyAvailabilityController {
         Availability aval;
         DayOfWeek weekday = date.getDayOfWeek();
         LocalDate dateAval = date;
+        if(date.isAfter(eDate) || repPattern.equals("")){
+            throw new IllegalArgumentException("Invalid frequency.");
+        }
         for (int i = 0; i < Period.between(date, eDate).getDays(); i++) {
             if (dateAval.getDayOfWeek().equals(weekday)
                     && (dateAval.isBefore(eDate) || dateAval.equals(eDate))) {

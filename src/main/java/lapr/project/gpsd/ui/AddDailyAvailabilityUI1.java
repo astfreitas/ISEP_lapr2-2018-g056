@@ -6,10 +6,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import lapr.project.gpsd.utils.Constants;
+import lapr.project.utils.UIUtils;
 
 public class AddDailyAvailabilityUI1 implements Initializable {
 
@@ -44,12 +46,19 @@ public class AddDailyAvailabilityUI1 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        LocalTime bTime = LocalTime.of(bHourPicker.getValue(), bMinPicker.getValue(), 0, 0);
-        LocalTime eTime = LocalTime.of(eHourPicker.getValue(), eMinPicker.getValue(), 0, 0);
-        if (frequencyComboBox.getSelectionModel().getSelectedItem().equals("")) {
-            this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime);
+        if (avalDatePicker.getValue() == null
+                || bHourPicker.getValue() == null || bMinPicker.getValue() == null
+                || eHourPicker.getValue() == null || eMinPicker.getValue() == null) {
+            UIUtils.createAlert("Missing data", "", Alert.AlertType.ERROR);
         } else {
-            this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime, endDatePicker.getValue(), frequencyComboBox.getValue());
+            LocalTime bTime = LocalTime.of(bHourPicker.getValue(), bMinPicker.getValue(), 0, 0);
+            LocalTime eTime = LocalTime.of(eHourPicker.getValue(), eMinPicker.getValue(), 0, 0);
+            if (frequencyComboBox.getSelectionModel().getSelectedItem().equals("")) {
+                this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime);
+            } else {
+                this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime, endDatePicker.getValue(), frequencyComboBox.getValue());
+            }
+
         }
     }
 
