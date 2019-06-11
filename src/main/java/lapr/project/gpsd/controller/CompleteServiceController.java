@@ -1,6 +1,7 @@
 package lapr.project.gpsd.controller;
 
 import java.util.ArrayList;
+import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.*;
 import lapr.project.gpsd.utils.Constants;
 import static lapr.project.gpsd.utils.Constants.*;
@@ -12,6 +13,7 @@ public class CompleteServiceController {
      */
     private Company company;
     private ServiceOrder servOrder;
+    private ServiceProvider sp;
     private ServiceOrderStatus servOrderstatus;
     private ArrayList<ServiceOrder> servOrders;
     private ServiceOrderRegistry sor;
@@ -34,8 +36,13 @@ public class CompleteServiceController {
      * @return list of pending service orders
      */
     public ArrayList<ServiceOrder> getPendingServiceOrders() {
+        ApplicationGPSD app = ApplicationGPSD.getInstance();
+        UserSession session = app.getCurrentSession();
+        String email = session.getUserEmail();
+        ServiceProviderRegistry spr = company.getServiceProviderRegistry();
+        sp = spr.getServiceProviderByEmail(email);
         this.sor = this.company.getServiceOrderRegistry();
-        pendingServOrders = sor.getPendingServiceOrders(PENDING_ORDER);
+        pendingServOrders = sor.getPendingServiceOrdersByServiceProvider(PENDING_ORDER, sp);
         return pendingServOrders;
     }
 
@@ -55,6 +62,26 @@ public class CompleteServiceController {
      */
     public void concludeServiceOrder() {
         this.company.getServiceOrderRegistry().concludeServiceOrder(servOrder);
+    }
+
+    /**
+     * 
+     * Sets the Service Order used on this controller
+     * 
+     * @param servOrder Service Order
+     */
+    public void setServOrder(ServiceOrder servOrder) {
+        this.servOrder = servOrder;
+    }
+
+    /**
+     * 
+     * Returns the Service Order used on this controller
+     * 
+     * @return Service Order
+     */
+    public ServiceOrder getServOrder() {
+        return servOrder;
     }
 
     /**

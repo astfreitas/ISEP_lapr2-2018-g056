@@ -10,9 +10,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import lapr.project.gpsd.model.ServiceOrder;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -20,7 +22,7 @@ import lapr.project.gpsd.model.ServiceOrder;
  * @author joaoferreira
  */
 public class RateSPUI1 implements Initializable {
-    
+
     private RateSPUI rateSPUI;
 
     @FXML
@@ -36,7 +38,7 @@ public class RateSPUI1 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void handleCancelBtn(ActionEvent event) {
@@ -45,12 +47,16 @@ public class RateSPUI1 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        this.rateSPUI.getController().setServOrder(this.servOrderList.getSelectionModel().getSelectedItem());
-        this.rateSPUI.getController().setServiceProvider();
-        this.rateSPUI.toSpecifyCategoryScene2();
+        if (this.servOrderList.getSelectionModel().getSelectedItem() == null) {
+            UIUtils.createAlert("Please select one service", "", Alert.AlertType.ERROR);
+        } else {
+            this.rateSPUI.getController().setServOrder(this.servOrderList.getSelectionModel().getSelectedItem());
+            this.rateSPUI.getController().setServiceProvider();
+            this.rateSPUI.toSpecifyCategoryScene2();
+        }
     }
-    
-    public void populateServOrderList(){
+
+    public void populateServOrderList() {
         this.servOrderList.getItems().addAll(this.rateSPUI.getController().getClientServices());
     }
 
