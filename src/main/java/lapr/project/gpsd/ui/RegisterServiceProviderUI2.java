@@ -10,8 +10,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -21,6 +24,7 @@ import javafx.scene.control.TextField;
 public class RegisterServiceProviderUI2 implements Initializable {
 
     private RegisterServiceProviderUI registerServiceProviderUI;
+    private RegisterServiceProviderUI1 parentUI;
 
     @FXML
     private Button cancelBtn;
@@ -45,12 +49,33 @@ public class RegisterServiceProviderUI2 implements Initializable {
         this.registerServiceProviderUI = registerServiceProviderUI;
     }
 
+    public void setParentUI(RegisterServiceProviderUI1 parentUI) {
+        this.parentUI = parentUI;
+    }
+
     @FXML
     private void handleCancelButton(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
+        String address = null;
+        String postalCode = null;
+        String local = null;
+        try {
+            address = addressTxt.getText();
+            postalCode = postalCodeTxt.getText();
+            local = localTxt.getText();
+        } catch (NullPointerException e) {
+        }
+        try {
+            registerServiceProviderUI.getController().newAddress(local, postalCode, address);
+            parentUI.updateAddress();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
     }
 
 }

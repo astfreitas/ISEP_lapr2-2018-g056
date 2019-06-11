@@ -20,6 +20,8 @@ import javafx.scene.control.ComboBox;
  */
 public class RegisterServiceProviderUI3 implements Initializable {
 
+    private RegisterServiceProviderUI registerServiceProviderUI;
+    
     @FXML
     private Button cancelBtn;
     @FXML
@@ -37,6 +39,10 @@ public class RegisterServiceProviderUI3 implements Initializable {
         // TODO
     }    
 
+    public void setRegisterServiceProviderUI(RegisterServiceProviderUI registerServiceProviderUI) {
+        this.registerServiceProviderUI = registerServiceProviderUI;
+    }
+    
     @FXML
     private void handleCancelButton(ActionEvent event) {
     }

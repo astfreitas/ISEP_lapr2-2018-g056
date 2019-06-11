@@ -14,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lapr.project.gpsd.model.Address;
-import lapr.project.gpsd.model.SPApplication;
 import lapr.project.utils.UIUtils;
 
 /**
@@ -38,13 +37,16 @@ public class RegisterServiceProviderUI1 implements Initializable {
     private TextField addressTxt;
     @FXML
     private Button editBtn;
+    @FXML
+    private Button getAppBtn;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        continueBtn.setDisable(true);
+        editBtn.setDisable(true);
     }
 
     public void setRegisterServiceProviderUI(RegisterServiceProviderUI registerServiceProviderUI) {
@@ -56,33 +58,55 @@ public class RegisterServiceProviderUI1 implements Initializable {
     }
 
     @FXML
-    private void handleCancelButton(ActionEvent event) {
-        registerServiceProviderUI.getMainApp().toMainScene();
-    }
-
-    @FXML
-    private void handleContinueBtn(ActionEvent event) {
-        String nif = nifTxt.getText();
-        SPApplication application = this.registerServiceProviderUI.getController().getApplicationData(nif);
+    private void handleGetAppBtn(ActionEvent event) {
+        String nif = null;
         try {
-            if (!application.equals(null)) {
-                String name = application.getName();
-                Address address = application.getAddress();
-                // confirmar como permitir editar estes campos !!!
-                this.registerServiceProviderUI.getController().newServiceProvider(name, address);
-                // avançar para a cena 3
-            } else {
-                UIUtils.createAlert("Application not found!", "", Alert.AlertType.WARNING);
-            }
-        } catch (IllegalArgumentException e) {
-            UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
+            nif = nifTxt.getText();
+        } catch (Exception e) {
         }
-
+        if (registerServiceProviderUI.getController().getApplicationData(nif)) {
+            nameTxt.setText(registerServiceProviderUI.getController().getName());
+            addressTxt.setText(registerServiceProviderUI.getController().getAddress().toString());
+            editBtn.setDisable(false);
+            continueBtn.setDisable(false);
+            getAppBtn.setDisable(true);
+            nifTxt.setDisable(true);
+        } else {
+            UIUtils.createAlert("Service Provider's application not found!", "Incorrect NIF", Alert.AlertType.WARNING);
+        }
     }
 
     @FXML
     private void handleEditBtn(ActionEvent event) {
-        this.registerServiceProviderUI.toRegisterServiceProviderScene2();
+        registerServiceProviderUI.toRegisterServiceProviderScene2(this);
+        addressTxt.setDisable(true);
+    }
+
+    @FXML
+    private void handleContinueBtn(ActionEvent event) {
+
+        String name = null;
+
+        try {
+            name = nameTxt.getText();
+        } catch (NullPointerException e) {
+        }
+        try {
+            Address address = this.registerServiceProviderUI.getController().getAddress();
+            this.registerServiceProviderUI.getController().newServiceProvider(name, address);
+            this.registerServiceProviderUI.toRegisterServiceProviderScene3();
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "No dice bro:", Alert.AlertType.ERROR);
+        }
+    }
+
+    @FXML
+    private void handleCancelButton(ActionEvent event) {
+        registerServiceProviderUI.getMainApp().toMainScene();
+    }
+
+    void updateAddress() {
+        addressTxt.setText(registerServiceProviderUI.getController().getAddress().toString());
     }
 
 }
