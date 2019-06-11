@@ -82,7 +82,6 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
         List<Integer> servicesFullyAssigned = this.acceptServiceRequestAssignmentsUI.getController().checkAssignedServiceRequests();
         serviceRequestComboBox.getItems().clear();
         serviceRequestComboBox.getItems().addAll(servicesFullyAssigned);
-        serviceRequestComboBox.getItems().addAll(servicesFullyAssigned);
         if (serviceRequestComboBox.getItems().size() > 0) {
             serviceRequestComboBox.getSelectionModel().selectFirst();
             //check first assignment by default.
