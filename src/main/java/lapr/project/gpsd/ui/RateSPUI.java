@@ -1,22 +1,20 @@
 package lapr.project.gpsd.ui;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lapr.project.gpsd.controller.RatingServiceProviderController;
 
 public class RateSPUI {
 
-    private MainMenuAdminUI mainMenu;
+    private MainMenuClientUI mainMenu;
     private Main mainApp;
     private RatingServiceProviderController controller;
 
-    public RateSPUI(MainMenuAdminUI mainMenu, Main mainApp) {
+    public RateSPUI(MainMenuClientUI mainMenu, Main mainApp) {
         this.mainMenu = mainMenu;
         this.mainApp = mainApp;
         this.controller = new RatingServiceProviderController();
     }
 
-    public MainMenuAdminUI getMainMenu() {
+    public MainMenuClientUI getMainMenu() {
         return this.mainMenu;
     }
 

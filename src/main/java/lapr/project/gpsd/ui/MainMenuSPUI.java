@@ -70,6 +70,8 @@ public class MainMenuSPUI implements Initializable {
 
     @FXML
     private void handleCompleteServiceBtn(ActionEvent event) {
+        CompleteServiceUI completeServiceUI = new CompleteServiceUI(this, mainApp);
+        completeServiceUI.toCompleteServiceScene1();
     }
 
     @FXML

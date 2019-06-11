@@ -73,7 +73,8 @@ public class MainMenuClientUI implements Initializable {
 
     @FXML
     private void handleRateSPBtn(ActionEvent event) {
-
+        RateSPUI rateSPUI = new RateSPUI(this, mainApp);
+        rateSPUI.toSpecifyCategoryScene1();
     }
 
     @FXML
