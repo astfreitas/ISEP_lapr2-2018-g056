@@ -1,6 +1,8 @@
 package lapr.project.gpsd.ui;
 
+import javafx.scene.control.Alert;
 import lapr.project.gpsd.controller.ConsultServiceOrderController;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -18,7 +20,7 @@ public class ConsultServiceOrderUI {
         this.mainApp = mainApp;
         this.controller = new ConsultServiceOrderController();
     }
-
+    
     /**
      * Returns the reference for instance to the main menu for SP
      *
@@ -50,8 +52,10 @@ public class ConsultServiceOrderUI {
         try {
             ConsultServiceOrderUI2 consultServOrderUI2 = (ConsultServiceOrderUI2) this.mainApp.replaceSceneContent("/fxml/ConsultServiceOrderUI2.fxml");
             consultServOrderUI2.setConsultServOrderUI(this);
-           
+            consultServOrderUI2.loadListView();
+            consultServOrderUI2.getStartDatePicker().requestFocus();
         } catch (Exception e) {
+            UIUtils.createAlert("Error occured during the search", "", Alert.AlertType.ERROR);
         }
 
     }
