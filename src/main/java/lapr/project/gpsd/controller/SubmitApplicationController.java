@@ -58,6 +58,7 @@ public class SubmitApplicationController {
     public boolean newSPApplication(String name, String NIF, String phone, String email) {
         this.spar = company.getSPApplicationRegistry();
         this.spa = spar.newSPApplication(name, NIF, phone, email);
+        this.cr = company.getCategoryRegistry();
         return this.spar != null;
     }
 
@@ -93,9 +94,6 @@ public class SubmitApplicationController {
      */
     public List<Category> getCategories() {
         List<Category> categories = cr.getCategories();
-        if(categories.isEmpty()) {
-            throw new RuntimeException("No categories found in the system");
-        }
         return categories;
     }
 
@@ -122,6 +120,17 @@ public class SubmitApplicationController {
 
     public SPApplication getApplication() {
         return spa;
+    }
+    
+    /**
+     * Validates if category is not repeated in SPApplication
+     * @param catId
+     * @return true if category has not yet been added do spapplication
+     */
+    public boolean validateCategory(String catId) {
+        Category cat = cr.getCatById(catId);
+        if(cat == null) { return false; }
+        return !spa.getCategories().contains(cat);
     }
     
 }

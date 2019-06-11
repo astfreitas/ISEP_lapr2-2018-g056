@@ -6,7 +6,7 @@ public class AcademicCompetence {
     private String level;
     private double grade;
 
-    public AcademicCompetence(String course, String level, double score) {
+    public AcademicCompetence(String course, String level, double grade) {
 
         if ((course == null) || (course.isEmpty())
                 || (level == null) || (level.isEmpty())
@@ -15,7 +15,7 @@ public class AcademicCompetence {
         }
         this.course = course;
         this.level = level;
-        this.grade = score;
+        this.grade = grade;
     }
 
     public String getCourse() {
@@ -40,6 +40,11 @@ public class AcademicCompetence {
 
     public void setScore(double score) {
         this.grade = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Course: " + course + ", Level: " + level + ", Grade: " + grade ;
     }
 
 }

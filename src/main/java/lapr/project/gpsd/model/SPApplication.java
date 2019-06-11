@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import static lapr.project.gpsd.utils.Constants.*;
 
@@ -41,6 +42,9 @@ public class SPApplication {
         this.NIF = NIF;
         this.phone = phone;
         this.email = email;
+        this.categories = new ArrayList<>();
+        this.academicCompetences = new ArrayList<>();
+        this.professionalCompetences = new ArrayList<>();
         this.applicationStatus = new SPApplicationStatus();
     }
 
@@ -243,7 +247,7 @@ public class SPApplication {
     public SPApplicationStatus getApplicationStatus() {
         return applicationStatus;
     }
-    
+
     /**
      * verifies if a SP application has an accepted state
      *
@@ -256,8 +260,17 @@ public class SPApplication {
 
     @Override
     public String toString() {
-        return "SPApplication{" + "name=" + name + ", NIF=" + NIF + ", phone=" + phone + ", email=" + email + ", address=" + address + ", categories=" + categories + ", academicCompetences=" + academicCompetences + ", professionalCompetences=" + professionalCompetences + ", applicationStatus=" + applicationStatus + '}';
+        String str = String.format("Name: %s \nNIF: %s \nTelephone: %s \nEmail: %s \nAddress: %s", name, NIF, phone, email, address);
+        for (AcademicCompetence ac : academicCompetences) {
+            str += "\nAcademic competence:\n" + ac.toString();
+        }
+        for (ProfessionalCompetence pc : professionalCompetences) {
+            str += "\nProfessional competence:\n" + pc.toString();
+        }
+        for (Category cat : categories) {
+            str += "\nCategories:\n" + cat.toString();
+        }
+        return str;
     }
 
-    
 }

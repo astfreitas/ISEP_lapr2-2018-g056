@@ -37,10 +37,10 @@
                <children>
                   <BarChart fx:id="ratingsBarChart" barGap="5.0" prefHeight="223.0" prefWidth="490.0" title="Ratings">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis fx:id="xAxis" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" />
+                      <NumberAxis fx:id="yAxis" side="LEFT" />
                     </yAxis>
                   </BarChart>
                </children>

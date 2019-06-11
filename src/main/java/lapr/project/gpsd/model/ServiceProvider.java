@@ -46,7 +46,7 @@ public class ServiceProvider {
      */
     private SPAvailabilityList spAvailabilityList;
     private ArrayList<Evaluation> evalList;
-    private double averageRating;
+    private String classification;
 
     /**
      * Construtor for Service Provider receiving only the attributes name and
@@ -64,12 +64,13 @@ public class ServiceProvider {
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
     }
-    
+
     /**
-     * Constructor 
+     * Constructor
+     *
      * @param name
      * @param NIF
-     * @param email 
+     * @param email
      */
     public ServiceProvider(String name, String nif, String email) {
         if ((name == null) || (nif == null)
@@ -78,10 +79,14 @@ public class ServiceProvider {
                 || (email.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-        
+
         this.name = name;
         this.email = email;
         this.nif = nif;
+        spCatList = new SPCategoryList();
+        spGeoAreaList = new SPGeographicAreaList();
+        spAvailabilityList = new SPAvailabilityList();
+        this.evalList = new ArrayList<>();
     }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
@@ -197,11 +202,11 @@ public class ServiceProvider {
     public SPCategoryList getSpCatList() {
         return spCatList;
     }
-    
-     public boolean addCategory(Category cat) {
+
+    public boolean addCategory(Category cat) {
         return spCatList.getCategorylist().add(cat);
     }
-    
+
     public boolean addGeoArea(GeographicArea geoArea) {
         return spGeoAreaList.getGeoAreaList().add(geoArea);
     }
@@ -215,20 +220,53 @@ public class ServiceProvider {
         return spAvailabilityList;
     }
 
+    /**
+     * Returns a list of integers representing the ratings of the service
+     * provider
+     *
+     * @return
+     */
     public List<Integer> getRatings() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Integer> ratings = new ArrayList<>();
+        for (Evaluation eval : evalList) {
+            ratings.add(eval.getRating());
+        }
+        return ratings;
     }
 
+    /**
+     * Returns the average rating of a service provider. By default if no
+     * evaluation is available returns -1
+     *
+     * @return average rating for service provider
+     */
     public double getAverageRating() {
-        return averageRating;
+        double sum = 0;
+        if(evalList.isEmpty()) { return -1;} 
+        for (Evaluation eval : evalList) {
+            sum += eval.getRating();
+        }
+        double average = sum / evalList.size();
+        return average;
     }
 
+    /**
+     * DEPRECATED (average is calculated on the fly by getAverage() Sets the
+     * average rating attribute of the service provider
+     *
+     * @param average
+     */
     public void setAverageRating(double average) {
-        this.averageRating = average;
+//        this.averageRating = average;
     }
 
+    /**
+     * Sets the classification of the service provider
+     *
+     * @param label
+     */
     public void setClassification(String label) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        classification = label;
     }
 
     public void registerEvaluation(int rating, ServiceOrder servOrder) {
@@ -260,8 +298,10 @@ public class ServiceProvider {
 
     @Override
     public String toString() {
-        return "ServiceProvider{" + "number=" + number + ", name=" + name + ", abbrevName=" + abbrevName + ", email=" + email + ", spAddress=" + spAddress + '}';
+        return name + " : " + email;
     }
 
-   
+    public boolean addEvaluation(Evaluation eval) {
+        return evalList.add(eval);
+    }
 }
