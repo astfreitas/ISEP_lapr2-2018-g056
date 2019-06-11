@@ -20,7 +20,7 @@
                   <DatePicker fx:id="endDatePicker" />
                </children>
             </HBox>
-            <ListView fx:id="listViewServOrders" onEditStart="#handleLoadListServOrders" prefHeight="250.0" prefWidth="200.0" />
+            <ListView fx:id="listViewServOrders" prefHeight="250.0" prefWidth="200.0" />
          </children>
       </VBox>
    </center>

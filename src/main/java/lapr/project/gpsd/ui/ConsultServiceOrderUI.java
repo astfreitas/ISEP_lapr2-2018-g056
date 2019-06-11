@@ -1,6 +1,8 @@
 package lapr.project.gpsd.ui;
 
+import javafx.scene.control.Alert;
 import lapr.project.gpsd.controller.ConsultServiceOrderController;
+import lapr.project.utils.UIUtils;
 
 /**
  * FXML Controller class
@@ -54,6 +56,7 @@ public class ConsultServiceOrderUI {
             consultServOrderUI2.getStartDatePicker().requestFocus();
             
         } catch (Exception e) {
+            UIUtils.createAlert("Error occured during the search", "", Alert.AlertType.ERROR);
         }
 
     }
