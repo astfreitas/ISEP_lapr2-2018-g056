@@ -120,5 +120,18 @@ public class ServiceRequestRegistry {
         return serviceRequestsFullyAssigned;
     }
     
+    /**
+     * Method returns a service request by a given number
+     * @param number
+     * @return null if not exist
+     */
+    public ServiceRequest getServiceRequestByNumber(int number) {
+        for(ServiceRequest s : serviceRequests) {
+            if (s.getNumber() == number) {
+                return s;
+            }
+        }
+        return null;
+    }
     
 }
