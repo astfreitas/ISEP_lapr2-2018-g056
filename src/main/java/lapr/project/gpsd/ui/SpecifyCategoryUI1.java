@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
@@ -16,11 +11,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import lapr.project.utils.UIUtils;
 
-/**
- * FXML Controller class
- *
- * @author joaoferreira
- */
 public class SpecifyCategoryUI1 implements Initializable {
 
     private SpecifyCategoryUI specifyCategoryUI;

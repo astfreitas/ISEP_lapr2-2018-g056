@@ -48,6 +48,16 @@ public class Client {
 
     /**
      *
+     * Returns the Client's NIF
+     *
+     * @return Client's NIF
+     */
+    public String getNIF() {
+        return NIF;
+    }
+
+    /**
+     *
      * Checks if the Cliend has a certain email
      *
      * @param email

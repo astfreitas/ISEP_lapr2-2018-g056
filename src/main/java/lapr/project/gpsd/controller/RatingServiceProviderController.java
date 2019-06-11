@@ -13,6 +13,11 @@ public class RatingServiceProviderController {
     private Client cli;
     private ServiceProvider servProvider;
 
+    /**
+     * 
+     * Creates an instance of RatingServiceProvider Controller
+     * 
+     */
     public RatingServiceProviderController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
             throw new IllegalStateException("Non authorized user.");
@@ -20,6 +25,21 @@ public class RatingServiceProviderController {
         this.company = ApplicationGPSD.getInstance().getCompany();
     }
 
+    /**
+     * 
+     * Sets the Service Order used on the controller
+     * 
+     * @param servOrder Service order
+     */
+    public void setServOrder(ServiceOrder servOrder) {
+        this.servOrder = servOrder;
+    }
+    
+    
+    public void setServiceProvider(){
+        this.servProvider = this.servOrder.getServiceProvider();
+    }
+    
     public ArrayList<ServiceOrder> getClientServices() {
         UserSession session = ApplicationGPSD.getInstance().getCurrentSession();
         String email = session.getUserEmail();
@@ -31,7 +51,6 @@ public class RatingServiceProviderController {
     }
     
     public ServiceProvider getServiceProvider(ServiceOrder servOrder){
-        this.servOrder = servOrder;
         return servOrder.getServiceProvider();
     }
 
@@ -46,6 +65,14 @@ public class RatingServiceProviderController {
     
     public Client getClient(){
         return this.servOrder.getServiceRequest().getClient();
+    }
+    
+    public ServiceRequest getServiceRequest(){
+        return this.servOrder.getServiceRequest();
+    }
+
+    public ServiceOrder getServOrder() {
+        return servOrder;
     }
     
     public double getServiceCost(){
