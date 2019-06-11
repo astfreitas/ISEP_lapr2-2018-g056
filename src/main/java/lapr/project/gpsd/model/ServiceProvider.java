@@ -205,10 +205,6 @@ public class ServiceProvider {
     public boolean addGeoArea(GeographicArea geoArea) {
         return spGeoAreaList.getGeoAreaList().add(geoArea);
     }
-    
-    
-    
-    
 
     /**
      * Returns instance of SPAvailabilityList containing the list of SP.

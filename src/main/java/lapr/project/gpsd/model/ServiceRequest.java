@@ -114,10 +114,16 @@ public class ServiceRequest {
         GeographicAreaRegistry rag = ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry();
         PostalCode pc = address.getPostalCode();
         GeographicArea ag = rag.getNearestGeographicArea(pc);
-        for(ServiceRequestDescription srd : serviceRequestDescriptions) {
-            c += srd.getCost() + ag.getTravelCost();
+        //não existe area geográfica coberta a cobrir a zona do pedido
+        if(ag!=null) {
+            for(ServiceRequestDescription srd : serviceRequestDescriptions) {
+                c += srd.getCost() + ag.getTravelCost();
+            }
+            total = c;
+        } else {
+            total = -1;
         }
-        return c;
+        return total;
     }
     /**
      * Method that verifies the client order
@@ -138,6 +144,10 @@ public class ServiceRequest {
         }
         //no schedulePreferences atleast 1
         if(schedulePreferences.isEmpty()) {
+            return false;
+        }
+        //se o total for inferior a 0 o pedido não é valido
+        if(total<0) {
             return false;
         }
         return true;
@@ -178,6 +188,13 @@ public class ServiceRequest {
             }
         }
         return true;
+    }
+
+    public double getTravelExpenses() {
+        GeographicAreaRegistry rag = ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry();
+        PostalCode pc = address.getPostalCode();
+        GeographicArea ag = rag.getNearestGeographicArea(pc);
+        return ag.getTravelCost() * serviceRequestDescriptions.size();
     }
     
     

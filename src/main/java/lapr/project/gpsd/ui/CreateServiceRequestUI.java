@@ -1,17 +1,24 @@
 package lapr.project.gpsd.ui;
 
-import javafx.stage.Stage;
 import lapr.project.gpsd.controller.CreateServiceRequestController;
 
 public class CreateServiceRequestUI {
     private Main mainApp;
     private CreateServiceRequestController controller;
-
+    private MainMenuClientUI mainMenu;
+    
     public CreateServiceRequestUI(Main mainApp) {
         this.mainApp = mainApp;
         this.controller = new CreateServiceRequestController();
     }
 
+    public CreateServiceRequestUI(MainMenuClientUI mainMenu, Main mainApp) {
+        this.mainMenu = mainMenu;
+        this.mainApp = mainApp;
+        this.controller = new CreateServiceRequestController();
+
+    }
+    
     public Main getMainApp() {
         return this.mainApp;
     }
@@ -43,10 +50,9 @@ public class CreateServiceRequestUI {
     public void toCreateServiceRequestControllerScene3() {
         try {
             CreateServiceRequestUI3 createServiceRequestScene3UI
-                    = (CreateServiceRequestUI3) this.mainApp.
-                            replaceSceneContent("/fxml/CreateServiceRequest3.fxml");
+                    = (CreateServiceRequestUI3) this.mainApp.replaceSceneContent("/fxml/CreateServiceRequest3.fxml");
             createServiceRequestScene3UI.setCreateServiceRequestSceneUI (this);
-            //createServiceRequestScene3UI.showClient();
+            createServiceRequestScene3UI.setupServiceDescriptionScene();
         } catch (Exception ex) {
         }
     }
@@ -57,7 +63,7 @@ public class CreateServiceRequestUI {
                     = (CreateServiceRequestUI4) this.mainApp.
                             replaceSceneContent("/fxml/CreateServiceRequest4.fxml");
             createServiceRequestScene4UI.setCreateServiceRequestSceneUI (this);
-            //createServiceRequestScene3UI.showClient();
+            createServiceRequestScene4UI.setupSchedulePreferenceScene();
         } catch (Exception ex) {
         }
     }
@@ -68,7 +74,7 @@ public class CreateServiceRequestUI {
                     = (CreateServiceRequestUI5) this.mainApp.
                             replaceSceneContent("/fxml/CreateServiceRequest5.fxml");
             createServiceRequestScene5UI.setCreateServiceRequestSceneUI (this);
-            //createServiceRequestScene3UI.showClient();
+            createServiceRequestScene5UI.setupConfirmationScene();
         } catch (Exception ex) {
         }
     }

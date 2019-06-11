@@ -62,6 +62,4 @@ public class ConsultServiceOrderUI {
     public ConsultServiceOrderController getController() {
         return controller;
     }
-    
-
 }
