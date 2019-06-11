@@ -81,11 +81,8 @@ public class ServiceTypeRegistry {
      * build supported service types
      *
      * @param props
-     * @return list of supported service types
      */
-    public List<ServiceType> createSupportedServiceTypes(Properties props) {
-        List<ServiceType> serviceTypes = new ArrayList();
-        
+    public void createSupportedServiceTypes(Properties props) {
         // know how many ServiceTypes are supported
         String qttServiceTypes = props.getProperty("Company.AmountServiceTypesSupported");
         int qtt = Integer.parseInt(qttServiceTypes);
@@ -98,6 +95,5 @@ public class ServiceTypeRegistry {
             ServiceType serviceType = new ServiceType(desc, classe);
             serviceTypes.add(serviceType);
         }
-        return serviceTypes;
     }
 }

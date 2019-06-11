@@ -4,9 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import lapr.project.gpsd.utils.Constants;
 
 public class FileTypeRegistry {
 
@@ -37,16 +34,15 @@ public class FileTypeRegistry {
      * build supported file types
      *
      * @param props
-     * @return list of supported file types
      */
-    public List<FileType> createSupportedFileTypes(Properties props) {
+    public void createSupportedFileTypes(Properties props) {
         List<FileType> fileTypes = new ArrayList();
         
         // know how many ServiceTypes are supported
         String qttFileTypes = props.getProperty("Company.QuantityImportTypesSupported");
         int qtt = Integer.parseInt(qttFileTypes);
    
-        // for each type of service supported creates the respective instance  
+        // for each type of files supported creates the respective instance  
         for (int i = 1; i <= qtt; i++) {
             String classe = props.getProperty("Company.ImportType." + i + ".Class");
             FileType fileType = null;
@@ -54,8 +50,7 @@ public class FileTypeRegistry {
                 fileType = (FileType) Class.forName(classe).getConstructor().newInstance();
             } catch (Exception ex) {
             }
-            fileTypes.add(fileType);
+            fileTypeList.add(fileType);
         }
-        return fileTypes;
     } 
 }
