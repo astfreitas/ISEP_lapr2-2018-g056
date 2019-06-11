@@ -2,9 +2,12 @@ package lapr.project.gpsd.model;
 
 import lapr.project.gpsd.controller.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
+
+    private final double THREASHOLD = 0.001;
 
     Company company;
     ServiceProviderRegistry spRegistry;
@@ -26,29 +29,10 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         // sorts the service list according to the input sorting behavior
         sortingBehavior.sortServiceList(services);
 
-        // assign each service from the list of services
+        // assign each service from the list of services, create and add assignment
         for (ServiceRequestDescription service : services) {
-            // for every service gets a list of suitable service providers
-            List<ServiceProvider> suitableSPs = getSuitableSPList(service);
-
-            // selects the most suitable
-            ServiceProvider selectedSP = selectMostSuitableSP(suitableSPs, service);
-
-            // gets the request that originated the service description
-            // *** is there an easier way?
-            ServiceRequest request = requestRegistry.getRequestFromDescription(service);
-
-            // returns the schedule preference list
-            List<SchedulePreference> schedule = request.getSchedulePreferences();
-
-            // returns the schedule suitable for the assignment
-            // to-do
-            // creates the assignment instance
-            // ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, schedule);
-            // adds the assignment to the list
-            // assignments.add(assignment);
-            // removes the service duration interval from the SP's availability
-            // whooo
+            ServiceAssignment newAssignment = createAssignment(service);
+            assignments.add(newAssignment);
         }
 
         // returns list of assignments
@@ -70,36 +54,33 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
      * @return list of SP's suitable to perform a Service from a request
      */
     public List<ServiceProvider> getSuitableSPList(ServiceRequestDescription srd) {
-        // gets list of SP's in the system
-        List<ServiceProvider> registeredProviders = spRegistry.getServiceProviders();
-        // instantiates list of suitable SP's
-        List<ServiceProvider> suitableProviders = new ArrayList<>();
         // gathers the request that originated the service description
         ServiceRequest request = requestRegistry.getRequestFromDescription(srd);
-        // gathers the areas encompassing the service's request address
-        List<GeographicArea> areas = company.getGeographicAreaRegistry().getAreasWithLocale(request.getAddress().getPostalCode());
+
         // gathers the category of the service to be performed
         Category category = srd.getService().getCategory();
+
         // gathers the schedule preference's list for the service
         List<SchedulePreference> scheduleList = request.getSchedulePreferences();
 
-        // for each SP perform verifications
-        for (ServiceProvider sp : registeredProviders) {
-            // works in any GA containing the request's address
-            for (GeographicArea area : areas) {
-                if (sp.worksInGeographicArea(area)) {
-                    // has the category of the service
-                    if (sp.providesServicesOfCategory(category)) {
-                        // has available in any of the scheduled preferences
-                        for (SchedulePreference schedule : scheduleList) {
-                            if (sp.isAvailable(schedule)) {
-                                suitableProviders.add(sp);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        // gathers address of service request
+        Address address = request.getAddress();
+
+        // gets list of SP's in the system
+        List<ServiceProvider> registeredProviders = spRegistry.getServiceProviders();
+
+        // instantiates list of suitable SP's as copy of available SP's
+        List<ServiceProvider> suitableProviders = new ArrayList<>(registeredProviders);
+
+        // filters list of providers by category of service 
+        suitableProviders = filterByCategory(suitableProviders, category);
+
+        // filters list of providers by address of service
+        suitableProviders = filterByAddress(suitableProviders, address);
+
+        // filters list of providers by request's schedule preferences
+        suitableProviders = filterByAvailability(suitableProviders, scheduleList);
+
         return suitableProviders;
     }
 
@@ -119,8 +100,141 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
      * @return the most suitable SP for assignment from list
      */
     public ServiceProvider selectMostSuitableSP(List<ServiceProvider> suitableSPs, ServiceRequestDescription srd) {
+        if (suitableSPs == null) {
+            return null;
+        }
+        ServiceRequest request = requestRegistry.getRequestFromDescription(srd);
+        Address address = request.getAddress();
 
-        return null;
+        Comparator<ServiceProvider> orderRatings = new Comparator<ServiceProvider>() {
+            @Override
+            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
+                double rating1 = sp1.getAverageRating();
+                double rating2 = sp2.getAverageRating();
+                if (Math.abs(rating1 - rating2) / rating1 < THREASHOLD) {
+                    return 0;
+                } else if (rating1 < rating2) {
+                    return -1;
+                }
+                return 1;
+            }
+        };
+
+        Comparator<ServiceProvider> orderDistance = new Comparator<ServiceProvider>() {
+            @Override
+            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
+                double dist1 = sp1.getDistanceFrom(address);
+                double dist2 = sp2.getDistanceFrom(address);
+                if (Math.abs(dist1 - dist2) / dist1 < THREASHOLD) {
+                    return 0;
+                } else if (dist1 < dist2) {
+                    return -1;
+                }
+                return 1;
+            }
+        };
+
+        Comparator<ServiceProvider> orderName = new Comparator<ServiceProvider>() {
+            @Override
+            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
+                String name1 = sp1.getName();
+                String name2 = sp2.getName();
+                return name1.compareTo(name2);
+            }
+        };
+
+        Comparator<ServiceProvider> order = orderRatings.thenComparing(orderDistance).thenComparing(orderName);
+        suitableSPs.sort(order);
+        return suitableSPs.get(0);
     }
 
+    /**
+     * Manipulates the provided list of SP's to remove those that do not perform
+     * services of the category given as argumentS
+     *
+     * @param spList
+     * @param cat
+     * @return
+     */
+    public List<ServiceProvider> filterByCategory(List<ServiceProvider> spList, Category cat) {
+        List<ServiceProvider> spFilteredList = new ArrayList<>();
+        for (ServiceProvider sp : spList) {
+            if (sp.hasCategory(cat)) {
+                spFilteredList.add(sp);
+                break;
+            }
+
+        }
+        return spFilteredList;
+    }
+
+    /**
+     * Manipulates the provided list of SP's to remove those that is not
+     * availabe at given schedule
+     *
+     * @param spList
+     * @param scheduleList
+     * @return
+     */
+    public List<ServiceProvider> filterByAvailability(List<ServiceProvider> spList, List<SchedulePreference> scheduleList) {
+        List<ServiceProvider> spFilteredList = new ArrayList<>();
+        for (ServiceProvider sp : spList) {
+            for (SchedulePreference schedule : scheduleList) {
+                if (sp.isAvailable(schedule)) {
+                    spFilteredList.add(sp);
+                    break;
+                }
+            }
+        }
+        return spFilteredList;
+    }
+
+    /**
+     * Manipulates the provided list of SP's to remove those that are not able
+     * to work in the address given as argument.The SP's are tested for all
+     * geographic areas containing said address
+     *
+     * @param spList
+     * @param address
+     * @return
+     */
+    public List<ServiceProvider> filterByAddress(List<ServiceProvider> spList, Address address) {
+        List<GeographicArea> areas = company.getGeographicAreaRegistry().getAreasWithLocale(address.getPostalCode());
+        List<ServiceProvider> spFilteredList = new ArrayList<>();
+        for (ServiceProvider sp : spList) {
+            for (GeographicArea area : areas) {
+                if (sp.hasGeographicArea(area)) {
+                    spFilteredList.add(sp);
+                    break;
+                }
+            }
+        }
+        return spFilteredList;
+    }
+
+    public ServiceAssignment createAssignment(ServiceRequestDescription service) {
+        // for every service gets a list of suitable service providers
+        List<ServiceProvider> suitableSPs = getSuitableSPList(service);
+
+        // selects the most suitable
+        ServiceProvider selectedSP = selectMostSuitableSP(suitableSPs, service);
+
+        // gets the request that originated the service description
+        ServiceRequest request = requestRegistry.getRequestFromDescription(service);
+
+        // returns the schedule preference list
+        List<SchedulePreference> scheduleList = request.getSchedulePreferences();
+
+        // returns the schedule suitable for the assignment
+        SchedulePreference selectedSchedule = selectedSP.matchSchedule(scheduleList);
+
+        // creates the assignment instance
+        ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, selectedSchedule);
+
+        // removes the service duration interval from the SP's availability
+        selectedSP.splitAvailability(selectedSchedule, service.getDuration());
+
+        // returns the newly created assignment
+        return assignment;
+    }
 }
