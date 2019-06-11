@@ -53,10 +53,11 @@ public class SubmitApplicationUI4 implements Initializable {
         }
         try {
             submitApplicationUI.getController().addProfessionalCompetence(description);
+            submitApplicationUI.toSubmitApplicationScene4();
+            UIUtils.createAlert("Professional competence added successfuly.", "", Alert.AlertType.INFORMATION);
         } catch (Exception e) {
             UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
         }
-        submitApplicationUI.toSubmitApplicationScene4();
     }
 
     @FXML
