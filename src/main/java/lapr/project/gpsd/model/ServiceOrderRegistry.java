@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import static lapr.project.gpsd.utils.Constants.*;
 import java.util.List;
+import lapr.project.gpsd.utils.Constants;
 
 public class ServiceOrderRegistry {
 
@@ -37,22 +38,6 @@ public class ServiceOrderRegistry {
     }
 
     /**
-     * searchs for a service order by a specific id
-     *
-     * @param serviceOrders
-     * @param id
-     * @return founded service order
-     */
-    public ServiceOrder getServiceOrderByID(ArrayList<ServiceOrder> serviceOrders, String id) {
-        for (ServiceOrder serviceOrder : serviceOrders) {
-            if (serviceOrder.hasId(id)) {
-                return serviceOrder;
-            }
-        }
-        return null;
-    }
-
-    /**
      * method to conclude service order
      *
      * @param servOrder service order to be concluded
@@ -75,7 +60,7 @@ public class ServiceOrderRegistry {
     public ArrayList<ServiceOrder> getCompletedServiceOrdersByClient(Client cli) {
         ArrayList<ServiceOrder> servOrderByClient = new ArrayList<>();
         for (ServiceOrder servOrder : serviceOrders) {
-            if (servOrder.getServiceRequest().getClient().equals(cli) && servOrder.getStatus().equals("")) {
+            if (servOrder.getServiceRequest().getClient().equals(cli) && servOrder.getStatus().getServOrderStatus().equals(Constants.CONCLUDED_ORDER)) {
                 servOrderByClient.add(servOrder);
             }
         }

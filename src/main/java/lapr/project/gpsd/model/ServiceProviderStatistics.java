@@ -125,15 +125,6 @@ public final class ServiceProviderStatistics {
     }
 
     /**
-     * Calculates the mean average rating for the SP's population
-     *
-     * @return
-     */
-    private double calcPopulationMeanAverageRating() {
-        return 0;
-    }
-
-    /**
      * Calculates the population average rating's deviation
      *
      * @return

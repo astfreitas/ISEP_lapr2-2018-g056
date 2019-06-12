@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -7,9 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClientTest {
-    
-    public ClientTest() {
-    }
     
     /**
      * Test of getName method, of class Client.
@@ -51,7 +49,7 @@ public class ClientTest {
     /**
      * Test of addAddress method, of class Client.
      */
-    @Disabled
+    @Test
     public void testAddAddress() {
         System.out.println("addAddress");
         Address address = null;
@@ -64,7 +62,7 @@ public class ClientTest {
     /**
      * Test of removeAddress method, of class Client.
      */
-    @Disabled
+    @Test
     public void testRemoveAddress() {
         System.out.println("removeAddress");
         Address address = null;
@@ -102,7 +100,7 @@ public class ClientTest {
     /**
      * Test of newAddress method, of class Client.
      */
-    @Disabled
+    @Test
     public void testNewAddress() {
         System.out.println("newAddress");
         String local = "";
@@ -111,6 +109,66 @@ public class ClientTest {
         Address expResult = null;
         Address result = Client.newAddress(local, postalCode, address);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getNIF method, of class Client.
+     */
+    @Disabled
+    public void testGetNIF() {
+        System.out.println("getNIF");
+        Client instance = null;
+        String expResult = "";
+        String result = instance.getNIF();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getAddresses method, of class Client.
+     */
+    @Disabled
+    public void testGetAddresses() {
+        System.out.println("getAddresses");
+        Client instance = null;
+        ArrayList<Address> expResult = null;
+        ArrayList<Address> result = instance.getAddresses();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getAddress method, of class Client.
+     */
+    @Disabled
+    public void testGetAddress() {
+        System.out.println("getAddress");
+        String local = "";
+        PostalCode postalCode = null;
+        String address = "";
+        Client instance = null;
+        Address expResult = null;
+        Address result = instance.getAddress(local, postalCode, address);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of validateAddress method, of class Client.
+     */
+    @Test
+    public void testValidateAddress() {
+        System.out.println("validateAddress");
+        Address address = null;
+        Client instance = null;
+        boolean expResult = false;
+        boolean result = instance.validateAddress(address);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

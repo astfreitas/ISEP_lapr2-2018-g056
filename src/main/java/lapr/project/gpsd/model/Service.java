@@ -20,7 +20,7 @@ public abstract class Service implements ServiceCostCalculation {
      * @param id
      * @param briefDescription
      * @param fullDescription
-     * @param costHour
+     * @param hourlyCost
      * @param category
      *
      */
@@ -129,13 +129,6 @@ public abstract class Service implements ServiceCostCalculation {
     public void setServiceType(ServiceType serviceType) {
         this.serviceType = serviceType;
     }    
-    
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
 
     @Override
     public boolean equals(Object o) {

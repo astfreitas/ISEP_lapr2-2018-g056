@@ -52,21 +52,15 @@ public class GeographicAreaRegistry {
         }
         return nearestGeoArea;
     }
-
-    public List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      * Returns a new instance of Geographic Area.
      *
-     * @param geoId id of GeographicArea
      * @param designation designaation
      * @param cost cost
      * @param strPC PostalCode in String format
      * @param radius radius for action area // * @param exService reference for
      * the ExternalService
-     * @param pcReg reference for the PostalCodeRegistry
      * @return new instance of GeographicArea
      */
     public GeographicArea newGeographicArea(String designation, double cost, String strPC, double radius) {
@@ -164,6 +158,10 @@ public class GeographicAreaRegistry {
     private void setNewGeoAreaID(GeographicArea geoA){
         int numberGeoListEntries = geoAreaList.size();
         geoA.setGeoId(geoIDModel+numberGeoListEntries);
+    }
+
+    List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

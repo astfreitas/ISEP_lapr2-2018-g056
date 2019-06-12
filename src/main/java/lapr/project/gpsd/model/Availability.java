@@ -135,7 +135,7 @@ public class Availability {
      * @return returns true if, and only if, the schedule preference is
      * contained within the instanced availability
      */
-    public boolean contaisSchedulePref(SchedulePreference schedulePref, int duration) {
+    public boolean containsSchedulePref(SchedulePreference schedulePref, int duration) {
         LocalDate scheDate = schedulePref.getDate();
         LocalTime scheStartTime = schedulePref.getTime();
         LocalTime scheEndTime = schedulePref.getTime().plusMinutes(duration);

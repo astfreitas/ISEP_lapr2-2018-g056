@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
 import static lapr.project.gpsd.utils.Constants.*;
 
 public class ServiceOrder {
@@ -11,28 +12,8 @@ public class ServiceOrder {
     private ServiceRequest servRequest;
     private ServiceRequestDescription servRequestDesc;
     private SchedulePreference schedPreference;
-    private String id;
     private int orderNumber;
     private ServiceOrderStatus status;
-
-    /**
-     * constructor of ServiceOrder with 6 parameters
-     *
-     * @param servProvider
-     * @param servRequest
-     * @param servRequestDesc
-     * @param schedPreference
-     * @param id
-     * @param status
-     */
-    public ServiceOrder(ServiceProvider servProvider, ServiceRequest servRequest, ServiceRequestDescription servRequestDesc, SchedulePreference schedPreference, String id, ServiceOrderStatus status) {
-        this.servProvider = servProvider;
-        this.servRequest = servRequest;
-        this.servRequestDesc = servRequestDesc;
-        this.schedPreference = schedPreference;
-        this.id = id;
-        this.status = status;
-    }
 
     /**
      * Constructor instantiates a service order with a service assignment
@@ -47,6 +28,8 @@ public class ServiceOrder {
         this.servProvider = serviceAssignment.getServiceProvider();
         this.servRequestDesc = serviceAssignment.getServiceRequestDescription();
         this.schedPreference = serviceAssignment.getSchedulePreference();
+        this.status = new ServiceOrderStatus(Constants.PENDING_ORDER);
+        
     }
 
     /**
@@ -95,15 +78,6 @@ public class ServiceOrder {
     }
 
     /**
-     * returns the service order id associated to the service order
-     *
-     * @return service order id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
      * returns the service order status associated to the service order
      *
      * @return service order status
@@ -121,16 +95,6 @@ public class ServiceOrder {
      */
     public boolean isPending(String status) {
         return this.status.getServOrderStatus().equalsIgnoreCase(PENDING_ORDER);
-    }
-
-    /**
-     * Checks if the Service Order has a determined ID
-     *
-     * @param id ID to check
-     * @return true or false
-     */
-    public boolean hasId(String id) {
-        return this.id.equalsIgnoreCase(id);
     }
 
 }

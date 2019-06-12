@@ -47,17 +47,6 @@ public class CompleteServiceController {
     }
 
     /**
-     * method to get the service description of a specific service, obtained by the service order id
-     * @param orderId the service order id
-     * @return service description
-     */
-    public ServiceRequestDescription getServiceDescriptionByOrderId(String orderId) {
-        servOrder = this.company.getServiceOrderRegistry().getServiceOrderByID(this.pendingServOrders, orderId);
-        servDesc = servOrder.getServiceRequestDescription();
-        return servDesc;
-    }
-
-    /**
      * method used to conclude a service order without any issue
      */
     public void concludeServiceOrder() {

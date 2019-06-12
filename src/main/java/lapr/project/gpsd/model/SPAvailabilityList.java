@@ -144,7 +144,7 @@ public class SPAvailabilityList {
      */
     public boolean hasAvailability(SchedulePreference schedule, int duration) {
         for (Availability availability : availabilityList) {
-            if (availability.contaisSchedulePref(schedule, duration)) {
+            if (availability.containsSchedulePref(schedule, duration)) {
                 return true;
             }
         }
@@ -174,7 +174,7 @@ public class SPAvailabilityList {
      */
     private Availability matchAvailability(SchedulePreference schedule, int duration) {
         for (Availability availability : availabilityList) {
-            if (availability.contaisSchedulePref(schedule, duration)) {
+            if (availability.containsSchedulePref(schedule, duration)) {
                 return availability;
             }
         }
