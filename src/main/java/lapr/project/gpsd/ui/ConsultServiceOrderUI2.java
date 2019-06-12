@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -57,7 +58,7 @@ public class ConsultServiceOrderUI2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     public void setDatesToScene() {
@@ -98,12 +99,17 @@ public class ConsultServiceOrderUI2 implements Initializable {
         dialog.setHeaderText("Exporting selected Service Orders List");
         dialog.setContentText("Please choose format for export:");
         dialog.showAndWait();
-        FileType selectedFileType = (FileType) dialog.getResultConverter();
-        if (selectedFileType != null && consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
-            UIUtils.createAlert("Export Service Orders Completed", "Export Confirmation", Alert.AlertType.INFORMATION);
-            consultServOrderUI.getMainMenu().backToMainMenu();
+
+        if (dialog.getResult() == null) {
+            event.consume();
         } else {
-            UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
+            FileType selectedFileType = (FileType) dialog.getResult();
+            if (selectedFileType != null && consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
+                UIUtils.createAlert("Export Service Orders Completed", "Export Confirmation", Alert.AlertType.INFORMATION);
+                consultServOrderUI.getMainMenu().backToMainMenu();
+            } else {
+                UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
+            }
         }
     }
 
@@ -111,7 +117,4 @@ public class ConsultServiceOrderUI2 implements Initializable {
         return startDatePicker;
     }
 
-
-    
-    
 }

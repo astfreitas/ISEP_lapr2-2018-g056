@@ -23,34 +23,36 @@ public class FileTypeRegistry {
             fileTypeClass = Class.forName(fileType.toString());
             FileType adapter = (FileType) fileTypeClass.getConstructor().newInstance();
             return adapter;
-        } catch (ClassNotFoundException | IllegalAccessException 
-                | IllegalArgumentException | InstantiationException 
+        } catch (ClassNotFoundException | IllegalAccessException
+                | IllegalArgumentException | InstantiationException
                 | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
         }
         return null;
     }
-    
-   /**
+
+    /**
      * build supported file types
      *
      * @param props
      */
     public void createSupportedFileTypes(Properties props) {
         List<FileType> fileTypes = new ArrayList();
-        
+
         // know how many ServiceTypes are supported
         String qttFileTypes = props.getProperty("Company.QuantityImportTypesSupported");
         int qtt = Integer.parseInt(qttFileTypes);
-   
+
         // for each type of files supported creates the respective instance  
-        for (int i = 1; i <= qtt; i++) {
+        for (int i = 0; i < qtt; i++) {
             String classe = props.getProperty("Company.ImportType." + i + ".Class");
             FileType fileType = null;
             try {
+                Class.forName(classe);
                 fileType = (FileType) Class.forName(classe).getConstructor().newInstance();
             } catch (Exception ex) {
+                ex.printStackTrace();
             }
             fileTypeList.add(fileType);
         }
-    } 
+    }
 }

@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import lapr.project.gpsd.model.FileType;
 
 public class Main extends Application {
 
@@ -23,25 +24,26 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
         this.stage = stage;
         this.stage.setTitle("GPSD Application");
         this.stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
         this.stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
         toMainScene();
         this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            @Override
+            public void handle(WindowEvent event) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-                    alert.setTitle("ApplicationGPSD");
-                    alert.setHeaderText("Confirmation");
-                    alert.setContentText("Are you sure you want to exit?");
+                alert.setTitle("ApplicationGPSD");
+                alert.setHeaderText("Confirmation");
+                alert.setContentText("Are you sure you want to exit?");
 
-                    if (alert.showAndWait().get() == ButtonType.CANCEL) {
-                        event.consume();
-                    }
+                if (alert.showAndWait().get() == ButtonType.CANCEL) {
+                    event.consume();
                 }
-            });
+            }
+        });
         this.stage.show();
     }
 
