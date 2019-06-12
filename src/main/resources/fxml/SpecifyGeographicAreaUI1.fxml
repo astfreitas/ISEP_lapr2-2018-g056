@@ -9,57 +9,6 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.SpecifyGeographicAreaUI1">
-   <left>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" />
-                  <TextField fx:id="designationText" />
-               </children>
-            </HBox>
-            <HBox prefHeight="60.0" prefWidth="200.0" spacing="5.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Area of action (radius)" />
-                  <TextField fx:id="radiusText" />
-               </children>
-            </HBox>
-            <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Cost" />
-                  <TextField fx:id="costText" />
-               </children>
-            </HBox>
-            <HBox prefHeight="90.0" prefWidth="200.0" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="10.0" />
-         </padding>
-      </VBox>
-   </left>
-   <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postal Code" />
-                  <TextField fx:id="postalCodeText" />
-                  <Button fx:id="searchPostalCodeButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-            <ListView fx:id="listViewCP" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="newGeoAreaButton" mnemonicParsing="false" onAction="#handleNewGeoAreaButton" text="New GeoGraphic Area" />
-         </children>
-      </VBox>
-   </center>
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Geographic Area Specification" BorderPane.alignment="CENTER">
          <font>
@@ -70,4 +19,59 @@
          </BorderPane.margin>
       </Text>
    </top>
+   <center>
+      <HBox prefWidth="290.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="295.0">
+               <children>
+                  <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" />
+                        <TextField fx:id="designationText" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="60.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Area of action (radius)" />
+                        <TextField fx:id="radiusText" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Cost" />
+                        <TextField fx:id="costText" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="90.0" prefWidth="200.0" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="295.0" spacing="20.0">
+               <children>
+                  <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postal Code" />
+                        <TextField fx:id="postalCodeText" prefWidth="120.0" />
+                        <Button fx:id="searchPostalCodeButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <ListView fx:id="listViewCP" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
+            <Button fx:id="newGeoAreaButton" mnemonicParsing="false" onAction="#handleNewGeoAreaButton" text="New GeoGraphic Area" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
