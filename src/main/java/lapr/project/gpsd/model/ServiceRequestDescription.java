@@ -1,6 +1,8 @@
 
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
+
 
 public class ServiceRequestDescription {
     
@@ -10,8 +12,7 @@ public class ServiceRequestDescription {
     private Service service;
     private String description;
     private int duration;
-    private boolean assigned;
-
+    private String assigned;
     /**
      * cosntructor with 3 parameters
      * @param service
@@ -22,7 +23,7 @@ public class ServiceRequestDescription {
         this.service = service;
         this.description = description;
         this.duration = duration;
-        this.assigned = false;
+        this.assigned = Constants.SERVICE_NOT_ASSIGNED;
     }
     
     /**
@@ -38,12 +39,22 @@ public class ServiceRequestDescription {
         return "ServiceRequestDescription{" + "service=" + service + ", description=" + description + ", duration=" + duration + '}';
     }
 
-    public void setAssigned(boolean assigned) {
+    public void setAssigned(String assigned) {
         this.assigned = assigned;
     }
-
+    
+    /**
+     * @return if the service is assigned
+     */
     public boolean isAssigned() {
-        return assigned;
+        return assigned.equals(Constants.SERVICE_ASSIGNED);
+    }
+    
+    /**
+     * @return if the service was acepted
+     */    
+    public boolean isAccepted() {
+        return assigned.equals(Constants.SERVICE_ACCEPTED);
     }
 
     public Service getService() {

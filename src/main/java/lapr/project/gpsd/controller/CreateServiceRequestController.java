@@ -39,9 +39,6 @@ public class CreateServiceRequestController {
 
     /**
      * Method that defines the address where the service will take place
-     *
-     * @param local
-     * @param postalCode
      * @param address
      */
     public void setAddress(Address address) {

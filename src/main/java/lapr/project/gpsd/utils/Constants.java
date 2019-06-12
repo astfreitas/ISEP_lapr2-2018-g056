@@ -15,6 +15,10 @@ public class Constants{
     public static final String PARAMS_ASSIGNMENT_ALGORITM = "Company.AssignmentAlgoritm";
     public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.ServiceSortingBehavior";
 
+    public static final String SERVICE_NOT_ASSIGNED = "not assigned";
+    public static final String SERVICE_ASSIGNED = "service assigned";
+    public static final String SERVICE_ACCEPTED = "service accepted";
+    
     public static final String PENDING_ORDER = "Pending";
     public static final String CONCLUDED_ORDER = "Completed";
     public static final String CONCLUDED_ORDER_WITH_ISSUE = "Completed with issue";

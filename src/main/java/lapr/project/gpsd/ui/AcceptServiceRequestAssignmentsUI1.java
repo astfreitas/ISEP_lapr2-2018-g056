@@ -10,10 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import lapr.project.gpsd.model.ServiceAssignment;
-import lapr.project.gpsd.model.ServiceRequest;
 import lapr.project.utils.UIUtils;
 
 public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
@@ -43,7 +40,7 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
-
+        this.acceptServiceRequestAssignmentsUI.getMainMenu().backToMainMenu();
     }
 
     @FXML

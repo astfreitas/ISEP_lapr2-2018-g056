@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr.project.gpsd.utils.Constants;
 
 public class ServiceAssignmentRegistry {
     List<ServiceAssignment> serviceAssignments;
@@ -56,13 +57,15 @@ public class ServiceAssignmentRegistry {
         for(ServiceAssignment serviceAssignment : listServiceAssignments) {
             //removes and sets service assignment to false
             if(setAssigned == false) {
-                serviceAssignment.getServiceRequestDescription().setAssigned(false);
+                serviceAssignment.getServiceRequestDescription().setAssigned(Constants.SERVICE_NOT_ASSIGNED);
                 ServiceProvider sp = serviceAssignment.getServiceProvider();
                 SchedulePreference schp = serviceAssignment.getSchedulePreference();
                 int duration = serviceAssignment.getServiceRequestDescription().getDuration();
                 sp.getSpAvailabilityList().addAvailabilityBySchedulePreference(schp, duration);
                 sp.getSpAvailabilityList().mergeAvailabilities();
-            } 
+            } else {
+                serviceAssignment.getServiceRequestDescription().setAssigned(Constants.SERVICE_ACCEPTED);
+            }
             serviceAssignments.remove(serviceAssignment);
         }
     }

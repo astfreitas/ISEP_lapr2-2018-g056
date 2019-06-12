@@ -35,6 +35,7 @@ public class AcceptServiceRequestController {
     
     /**
      * Method returns a list of service assignments for a given ServiceRequest
+     * @param serviceNumber
      * @return a list of service assignments for a given ServiceRequest
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
@@ -59,6 +60,7 @@ public class AcceptServiceRequestController {
     /**
      * Method accepts list of service assignments
      * @param listServiceAssignments 
+     * @return  list of ServiceOrder numbers
      */
     public List<Integer> acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
         sar.removeServiceAssignment(listServiceAssignments, true);
