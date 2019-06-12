@@ -3,6 +3,7 @@ package lapr.project.gpsd.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import lapr.project.gpsd.utils.Constants;
 
 public class ServiceTypeRegistry {
 
@@ -43,38 +44,16 @@ public class ServiceTypeRegistry {
     }
 
     /**
-     * validates if a service type already exists in the existing list
-     *
-     * @param idType
-     * @param caminhoClass
-     * @return true or false
-     */
-    public boolean validateServiceType(String idType, String className) {
-        if (getServiceTypeByID(idType) != null) {
-            return false;
-        }
-        try {
-            Class<?> servClass = Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Add service type with attributes
+     * Add service type  to list
      *
      * @param idType
      * @param caminhoClass
      * @return true or false as the operation succeeds to add service to the
      * ArrayList serviceTypes
      */
-    public boolean addServiceType(String idType, String className) {
-        if (validateServiceType(idType, className)) {
-            return serviceTypes.add(new ServiceType(idType, className));
-        }
-        return false;
+    public boolean addServiceType(ServiceType serviceType) {
+        return serviceTypes.add(serviceType);
+
     }
 
     /**
@@ -83,17 +62,20 @@ public class ServiceTypeRegistry {
      * @param props
      */
     public void createSupportedServiceTypes(Properties props) {
-        // know how many ServiceTypes are supported
-        String qttServiceTypes = props.getProperty("Company.AmountServiceTypesSupported");
-        int qtt = Integer.parseInt(qttServiceTypes);
-   
-        // for each type of service supported creates the respective instance  
-        for (int i = 1; i <= qtt; i++) {
-            String desc = props.getProperty("Company.ServiceType." + i + ".Designation");
-            String classe = props.getProperty("Company.ServiceType." + i + ".Class");
+        try {
+            // know how many ServiceTypes are supported
+            String qttServiceTypes = props.getProperty(Constants.PARAMS_NUMBER_SERVICE_TYPES);
+            int qtt = Integer.parseInt(qttServiceTypes);
 
-            ServiceType serviceType = new ServiceType(desc, classe);
-            serviceTypes.add(serviceType);
+            // for each type of service supported creates the respective instance  
+            for (int i = 1; i <= qtt; i++) {
+                String serviceName = props.getProperty(Constants.PARAMS_SERVICE_TYPE_SIGNATURE + i);
+                String servicePath = Constants.PARAMS_MODEL_PATH + "." + serviceName;
+                ServiceType serviceType = new ServiceType(String.valueOf(i), serviceName, servicePath);
+                serviceTypes.add(serviceType);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

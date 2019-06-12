@@ -37,7 +37,6 @@ public class FileTypeRegistry {
      */
     public void createSupportedFileTypes(Properties props) {
         List<FileType> fileTypes = new ArrayList();
-        
         // know how many ServiceTypes are supported
         String qttFileTypes = props.getProperty("Company.QuantityImportTypesSupported");
         int qtt = Integer.parseInt(qttFileTypes);

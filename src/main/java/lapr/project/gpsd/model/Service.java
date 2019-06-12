@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Service implements ServiceCostCalculation {
@@ -21,6 +22,7 @@ public abstract class Service implements ServiceCostCalculation {
      * @param briefDescription
      * @param fullDescription
      * @param hourlyCost
+     * @param costHour
      * @param category
      *
      */
@@ -129,6 +131,13 @@ public abstract class Service implements ServiceCostCalculation {
     public void setServiceType(ServiceType serviceType) {
         this.serviceType = serviceType;
     }    
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -153,7 +162,9 @@ public abstract class Service implements ServiceCostCalculation {
 
     @Override
     public String toString() {
-        return String.format("%s - %s - %s - %.2f - Categoria: %s", this.id, this.briefDescription, this.fullDescription, this.hourlyCost, this.category.toString());
+        return "Service:" + "\nId: " + id + "\nBrief description: " + briefDescription + "\nComplete description: " + fullDescription + "\nCost (hour) :" + hourlyCost + "\nCategory: \n" + category;
     }
+
+    
 
 }

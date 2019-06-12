@@ -53,23 +53,23 @@ public class Company {
         this.serviceRegistry = new ServiceRegistry();
         this.serviceRequestRegistry = new ServiceRequestRegistry();
         this.serviceTypeRegistry = new ServiceTypeRegistry();
-        this.serviceTypeRegistry.createSupportedServiceTypes(props);
         this.spApplicationRegistry = new SPApplicationRegistry();
         this.categoryRegistry = new CategoryRegistry();
         this.clientRegistry = new ClientRegistry();
         this.geographicAreaRegistry = new GeographicAreaRegistry();
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
-        this.fileTypeRegistry.createSupportedFileTypes(props);
         this.serviceSortingBehavior = null;
         this.assignmentAlgoritm = null;
         // creates instances from configuration file
         try {
-            String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
-            this.externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
-            this.assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
-            this.serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
+            fileTypeRegistry.createSupportedFileTypes(props);
+            serviceTypeRegistry.createSupportedServiceTypes(props);
             loadPostalCodeFromExternalService();
+            String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
+            externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
+            assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
+            serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -285,5 +285,4 @@ public class Company {
         return designation;
     }
 
-    
 }
