@@ -1,4 +1,4 @@
-package lapr.project.gpsd.utils;
+package lapr.project.gpsd.model;
 
 public class Constants {
 
