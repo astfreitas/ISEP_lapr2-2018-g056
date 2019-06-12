@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,6 +17,8 @@
                   <MenuItem fx:id="specCatBtn" mnemonicParsing="false" onAction="#handleSpecCatBtn" text="Specify Category" />
                   <MenuItem fx:id="specServBtn" mnemonicParsing="false" onAction="#handleSpecServBtn" text="Specify Service" />
                   <MenuItem fx:id="specGABtn" mnemonicParsing="false" onAction="#handleSpecGABtn" text="Specify Geographic Area" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="logoutBtn" mnemonicParsing="false" onAction="#handleLogoutBtn" text="Logout" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Info">

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 import lapr.project.utils.UIUtils;
 
 /**
@@ -28,6 +29,8 @@ public class MainMenuHROUI implements Initializable {
     private MenuItem evaluateSPBtn;
     @FXML
     private MenuItem aboutBtn;
+    @FXML
+    private MenuItem logoutBtn;
 
     /**
      * Initializes the controller class.
@@ -64,6 +67,12 @@ public class MainMenuHROUI implements Initializable {
 
     @FXML
     private void handleAboutBtn(ActionEvent event) {
-         UIUtils.about();
+        UIUtils.about();
+    }
+
+    @FXML
+    private void handleLogoutBtn(ActionEvent event) {
+        ApplicationGPSD.getInstance().doLogout();
+        mainApp.toMainScene();
     }
 }

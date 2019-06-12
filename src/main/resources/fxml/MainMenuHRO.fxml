@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,6 +16,8 @@
                <items>
                   <MenuItem fx:id="registerSPBtn" mnemonicParsing="false" onAction="#handleRegisterSPBtn" text="Register Service Provider" />
                   <MenuItem fx:id="evaluateSPBtn" mnemonicParsing="false" onAction="#handleEvaluateSPBtn" text="Evaluate Service Provider" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="logoutBtn" mnemonicParsing="false" onAction="#handleLogoutBtn" text="Logout" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Info">
