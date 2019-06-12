@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -35,7 +36,7 @@ public class Availability {
      * @param eTime End Time
      */
     public Availability(LocalDate date, LocalTime bTime, LocalTime eTime) {
-        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)
                 || bTime.getHour() == 0 || eTime.getHour() < 6
                 || eTime.isAfter(bTime) || eTime.equals(bTime)) {
             throw new IllegalArgumentException("Invalid availability.");
@@ -149,4 +150,6 @@ public class Availability {
     public String toString() {
         return "Date: " + date + "\n" + "Start time: " + sTime + "\n" + "End time: " + eTime + "\n";
     }
+
+
 }

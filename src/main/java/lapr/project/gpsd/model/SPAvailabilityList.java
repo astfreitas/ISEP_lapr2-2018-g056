@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.logging.impl.AvalonLogger;
 
 public class SPAvailabilityList {
 
@@ -98,6 +99,10 @@ public class SPAvailabilityList {
         return addAvailability(availability);
     }
 
+    public List<Availability> getAvailabilityList() {
+        return availabilityList;
+    }
+
     /**
      *
      * Look for availabilities who are contiguous and merges them into one
@@ -128,6 +133,88 @@ public class SPAvailabilityList {
                 }
             }
         }
+    }
+
+    /**
+     * Verifies that Service Provider is available in Schedule given as argument
+     *
+     * @param schedule
+     * @param duration
+     * @return
+     */
+    public boolean hasAvailability(SchedulePreference schedule, int duration) {
+        for (Availability availability : availabilityList) {
+            if (availability.contaisSchedulePref(schedule, duration)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns the first schedule (from list given as argument) matching one of
+     * the SP's availabilities
+     *
+     * @param scheduleList
+     * @return
+     */
+    public SchedulePreference matchSchedule(List<SchedulePreference> scheduleList, int duration) {
+        for (SchedulePreference schedule : scheduleList) {
+            if (this.hasAvailability(schedule, duration)) {
+                return schedule;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Matches the first availability with schedule and duration and returns it
+     *
+     * @return the first availability matching a schedule and duration
+     */
+    private Availability matchAvailability(SchedulePreference schedule, int duration) {
+        for (Availability availability : availabilityList) {
+            if (availability.contaisSchedulePref(schedule, duration)) {
+                return availability;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Splits availability into two according to schedule and duration given as
+     * argument (removes availability "window"). if schedule and duration does
+     * not match availibility in the list returns false
+     *
+     * @param schedule
+     * @param duration
+     * @return
+     */
+    public boolean splitAvailability(SchedulePreference schedule, int duration) {
+        LocalDate date = schedule.getDate();
+        LocalTime bHour = schedule.getTime();
+        LocalTime eHour = schedule.getTime().plusMinutes(duration);
+        Availability availability = matchAvailability(schedule, duration);
+        if (availability == null) {
+            return false;
+        }
+        availabilityList.remove(availability);
+        if (availability.getSTime().equals(bHour)) {
+            // split pela esquerda
+            Availability avail = new Availability(date, eHour, availability.getETime());
+            availabilityList.add(avail);
+        } else if (availability.getETime().equals(eHour)) {
+            // split pela direita
+            Availability avail = new Availability(date, availability.getSTime(), bHour);
+            availabilityList.add(avail);
+        } else {
+            // split no meio
+            Availability avail1 = new Availability(date, availability.getSTime(), bHour);
+            Availability avail2 = new Availability(date, eHour, availability.getETime());
+            availabilityList.add(avail1);
+            availabilityList.add(avail2);
+        }
+        return true;
     }
 
 }

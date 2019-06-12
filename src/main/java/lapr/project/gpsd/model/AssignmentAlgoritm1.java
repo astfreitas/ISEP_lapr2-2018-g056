@@ -12,6 +12,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
     Company company;
     ServiceProviderRegistry spRegistry;
     ServiceRequestRegistry requestRegistry;
+    IExternalService externalService;
 
     public AssignmentAlgoritm1() {
 
@@ -22,6 +23,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.spRegistry = company.getServiceProviderRegistry();
         this.requestRegistry = company.getServiceRequestRegistry();
+        this.externalService = company.getExternalService();
 
         // instantiates the assignment list
         List<ServiceAssignment> assignments = new ArrayList<>();
@@ -78,8 +80,8 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         // filters list of providers by address of service
         suitableProviders = filterByAddress(suitableProviders, address);
 
-        // filters list of providers by request's schedule preferences
-        suitableProviders = filterByAvailability(suitableProviders, scheduleList);
+        // filters list of providers by availability
+        suitableProviders = filterByAvailability(suitableProviders, scheduleList, srd.getDuration());
 
         return suitableProviders;
     }
@@ -123,8 +125,8 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         Comparator<ServiceProvider> orderDistance = new Comparator<ServiceProvider>() {
             @Override
             public int compare(ServiceProvider sp1, ServiceProvider sp2) {
-                double dist1 = sp1.getDistanceFrom(address);
-                double dist2 = sp2.getDistanceFrom(address);
+                double dist1 = externalService.getDistanceBetCP(address.getPostalCode(), sp1.getSpAddress().getPostalCode());
+                double dist2 = externalService.getDistanceBetCP(address.getPostalCode(), sp2.getSpAddress().getPostalCode());
                 if (Math.abs(dist1 - dist2) / dist1 < THREASHOLD) {
                     return 0;
                 } else if (dist1 < dist2) {
@@ -176,11 +178,11 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
      * @param scheduleList
      * @return
      */
-    public List<ServiceProvider> filterByAvailability(List<ServiceProvider> spList, List<SchedulePreference> scheduleList) {
+    public List<ServiceProvider> filterByAvailability(List<ServiceProvider> spList, List<SchedulePreference> scheduleList, int duration) {
         List<ServiceProvider> spFilteredList = new ArrayList<>();
         for (ServiceProvider sp : spList) {
             for (SchedulePreference schedule : scheduleList) {
-                if (sp.isAvailable(schedule)) {
+                if (sp.isAvailable(schedule, duration)) {
                     spFilteredList.add(sp);
                     break;
                 }
@@ -226,13 +228,13 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         List<SchedulePreference> scheduleList = request.getSchedulePreferences();
 
         // returns the schedule suitable for the assignment
-        SchedulePreference selectedSchedule = selectedSP.matchSchedule(scheduleList);
+        SchedulePreference selectedSchedule = selectedSP.getSpAvailabilityList().matchSchedule(scheduleList, service.getDuration());
 
         // creates the assignment instance
         ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, selectedSchedule);
 
         // removes the service duration interval from the SP's availability
-        selectedSP.splitAvailability(selectedSchedule, service.getDuration());
+        selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
 
         // returns the newly created assignment
         return assignment;

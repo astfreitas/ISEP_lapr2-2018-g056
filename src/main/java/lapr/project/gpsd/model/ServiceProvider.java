@@ -273,8 +273,9 @@ public class ServiceProvider {
 
     /**
      * register new evaluation and recalculates average
+     *
      * @param rating
-     * @param servOrder 
+     * @param servOrder
      */
     public void registerEvaluation(int rating, ServiceOrder servOrder) {
         Evaluation eval = new Evaluation(rating, servOrder);
@@ -291,16 +292,7 @@ public class ServiceProvider {
         this.setAverageRating(average);
     }
 
-    /**
-     * Verifies that Service Provider is available in Schedule given as
-     * argument
-     *
-     * @param schedule
-     * @return
-     */
-    public boolean isAvailable(SchedulePreference schedule) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     /**
      * Verify that service provider has Geographic Area
@@ -342,36 +334,9 @@ public class ServiceProvider {
         return evalList.add(eval);
     }
 
-    /**
-     * Gets least distance from SP's to address given as argument
-     *
-     * @param address
-     * @return
-     */
-    public double getDistanceFrom(Address address) {
-        return 0;
+    public boolean isAvailable(SchedulePreference schedule, int duration) {
+        return spAvailabilityList.hasAvailability(schedule, duration);
     }
-
-    /**
-     * Returns first schedule (from list given as argument) matching one of the
-     * SP's availabilities
-     *
-     * @param scheduleList
-     * @return
-     */
-    public SchedulePreference matchSchedule(List<SchedulePreference> scheduleList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * Splits SP's availability into two according to schedule and duration
-     * given as argument (removes availability "window")
-     *
-     * @param selectedSchedule
-     * @param duration
-     */
-    public void splitAvailability(SchedulePreference selectedSchedule, int duration) {
-
-    }
+    
 
 }
