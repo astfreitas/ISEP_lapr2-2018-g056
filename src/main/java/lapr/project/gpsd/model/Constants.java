@@ -1,4 +1,4 @@
-package lapr.project.gpsd.utils;
+package lapr.project.gpsd.model;
 
 public class Constants {
 
@@ -14,14 +14,9 @@ public class Constants {
     public static final String PARAMS_FILE_POSTAL_CODES = "Company.FilePostalCodes";
     public static final String PARAMS_ASSIGNMENT_ALGORITM = "Company.AssignmentAlgoritm";
     public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.ServiceSortingBehavior";
-
-    public static final String PARAMS_NUMBER_SERVICE_TYPES = "Company.NumberOfServiceTypes";
+    public static final String PARAMS_NUMBER_SERVICE_TYPES = "Company.NumberServiceTypes";
     public static final String PARAMS_SERVICE_TYPE_SIGNATURE = "Company.ServiceType";
     public static final String PARAMS_MODEL_PATH = "lapr.project.gpsd.model";
-
-    public static final String SERVICE_NOT_ASSIGNED = "not assigned";
-    public static final String SERVICE_ASSIGNED = "service assigned";
-    public static final String SERVICE_ACCEPTED = "service accepted";
 
     public static final String PENDING_ORDER = "Pending";
     public static final String CONCLUDED_ORDER = "Completed";

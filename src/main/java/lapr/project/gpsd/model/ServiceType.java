@@ -1,46 +1,55 @@
-
 package lapr.project.gpsd.model;
 
 import java.lang.reflect.*;
 
-
 public class ServiceType {
-    
+
     /**
-     * service type atributes
+     * service type attributes
      */
-    String idType;
-    private String typeName;
+    String id;
+    private String name;
+    private String classPath;
 
     /**
      * constructor with 2 parameters
-     * @param idType
-     * @param typeName 
+     *
+     * @param id
+     * @param typeName
      */
-    public ServiceType(String id, String typeName) {
-        this.idType = id;
-        this.typeName = typeName;
+    public ServiceType(String id, String name, String path) {
+        try {
+            Class.forName(path);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Service type cannot be initialized. \"" + name + "\" class not found.");
+        }
+        this.id = id;
+        this.name = name;
+        this.classPath = path;
     }
 
     /**
      * returns type name
+     *
      * @return typeName
      */
-    public String getTypeName() {
-        return typeName;
+    public String getName() {
+        return name;
     }
 
     /**
      * checks if the type name has idType, returning a boolean
+     *
      * @param typeName
      * @return true or false
      */
     public boolean hasId(String typeName) {
-        return idType.equalsIgnoreCase(typeName);
+        return id.equalsIgnoreCase(typeName);
     }
-    
+
     /**
      * method to create new service with 5 parameters
+     *
      * @param id
      * @param briefDescription
      * @param fullDescription
@@ -49,26 +58,38 @@ public class ServiceType {
      * @return service instance
      */
     public Service newService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
-        try {
-            Class<?> oClass = Class.forName(typeName);
-            Constructor constructor = oClass.getConstructor(new Class[]{String.class, String.class, String.class, Double.class, Category.class});
-            Service serviceInstance =(Service) constructor.newInstance(new Object[]{id, briefDescription, fullDescription, hourlyCost, category});
-            
-            return serviceInstance;
-            
-        } catch ( ClassNotFoundException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException | SecurityException | InstantiationException | IllegalAccessException ex) {
-            ex.printStackTrace();
+        if ((id == null) || (id.isEmpty())
+                || (briefDescription == null) || (briefDescription.isEmpty())
+                || (fullDescription == null) || (fullDescription.isEmpty())) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
-        return null;
+        if (hourlyCost <= 0) {
+            throw new IllegalArgumentException("The cost has to be a number greater than zero.");
+        }
+        try {
+            Class<?> oClass = Class.forName(classPath);
+            Constructor constructor = oClass.getConstructor(String.class, String.class, String.class, double.class, Category.class);
+            Service serviceInstance = (Service) constructor.newInstance(id, briefDescription, fullDescription, hourlyCost, category);
+            return serviceInstance;
+        } catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getClass());
+            throw new RuntimeException("Unable to create service. " + e.getMessage());
+        }
     }
 
     /**
      * returns the type of service with all its attributes
+     *
      * @return idType and type name
      */
     @Override
     public String toString() {
-        return "ServiceType{" + "id=" + idType + ", typeName=" + typeName + '}';
+        return name;
     }
-   
+
+    public String getId() {
+        return id;
+    }
+
 }

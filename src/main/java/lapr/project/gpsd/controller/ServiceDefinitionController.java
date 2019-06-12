@@ -19,6 +19,7 @@ public class ServiceDefinitionController {
     private Company company;
     private Category category;
     private Service service;
+    private ServiceType serviceType;
     private List<Service> services;
     private ServiceRegistry serviceRegistry;
 
@@ -51,8 +52,15 @@ public class ServiceDefinitionController {
      * @return st -> service type
      */
     public ServiceType getServiceTypeByID(String idType) {
-        ServiceTypeRegistry st = this.company.getServiceTypeRegistry();
-        return st.getServiceTypeByID(idType);
+        ServiceTypeRegistry str = this.company.getServiceTypeRegistry();
+        return str.getServiceTypeByID(idType);
+    }
+
+    public boolean setServiceType(String idType) {
+        serviceType = null;
+        ServiceTypeRegistry str = this.company.getServiceTypeRegistry();
+        serviceType = str.getServiceTypeByID(idType);
+        return serviceType != null;
     }
 
     /**
@@ -78,7 +86,7 @@ public class ServiceDefinitionController {
      */
     public boolean newService(String id, String bDesc, String fDesc, double hourlyCost, String catId) {
         this.category = this.company.getCategoryRegistry().getCatById(catId);
-        this.service = this.company.getServiceTypeRegistry().getServiceTypeByID(id).newService(id, fDesc, fDesc, hourlyCost, category);
+        this.service = serviceType.newService(id, fDesc, fDesc, hourlyCost, category);
         Boolean bAtrbs = this.service.hasOtherAttributes();
         return bAtrbs;
     }
