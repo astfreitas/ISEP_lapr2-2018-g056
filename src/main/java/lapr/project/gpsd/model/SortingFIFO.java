@@ -17,7 +17,6 @@ public class SortingFIFO implements ISortingBehavior {
      * creation date
      *
      * @param services
-     * @return
      */
     @Override
     public void sortServiceList(List<ServiceRequestDescription> services) {

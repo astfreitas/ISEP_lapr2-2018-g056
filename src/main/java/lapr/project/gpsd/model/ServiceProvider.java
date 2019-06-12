@@ -47,6 +47,7 @@ public class ServiceProvider {
     private SPAvailabilityList spAvailabilityList;
     private ArrayList<Evaluation> evalList;
     private String classification;
+    private double averageRating;
 
     /**
      * Construtor for Service Provider receiving only the attributes name and
@@ -63,14 +64,16 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
+
     }
 
     /**
-     * Constructor
+     * 
+     * Creates an instance of Service Provider
      *
-     * @param name
-     * @param NIF
-     * @param email
+     * @param name Service Provider's name
+     * @param nif Service Provider's nif
+     * @param email Service Provider's email
      */
     public ServiceProvider(String name, String nif, String email) {
         if ((name == null) || (nif == null)
@@ -87,6 +90,7 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
+        this.averageRating = 3;
     }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
@@ -109,6 +113,12 @@ public class ServiceProvider {
         this.number = number;
     }
 
+    /**
+     * 
+     * Gives the Service Provider NIF
+     * 
+     * @return Service Provider's NIF
+     */
     public String getNif() {
         return nif;
     }
@@ -203,10 +213,24 @@ public class ServiceProvider {
         return spCatList;
     }
 
+    /**
+     * 
+     * Adds a Category to the Service Provider
+     * 
+     * @param cat Category to be added
+     * @return Returns the success of the operation
+     */
     public boolean addCategory(Category cat) {
         return spCatList.getCategorylist().add(cat);
     }
 
+    /**
+     * 
+     * Adds a Geographic Area to the Service Provider
+     * 
+     * @param geoArea Geographic Area to be added
+     * @return Returns the success of the operation
+     */
     public boolean addGeoArea(GeographicArea geoArea) {
         return spGeoAreaList.getGeoAreaList().add(geoArea);
     }
@@ -235,31 +259,21 @@ public class ServiceProvider {
     }
 
     /**
-     * Returns the average rating of a service provider. By default if no
-     * evaluation is available returns -1
-     *
+     * Returns the average rating of a service provider. 
+     * 
      * @return average rating for service provider
      */
     public double getAverageRating() {
-        double sum = 0;
-        if (evalList.isEmpty()) {
-            return -1;
-        }
-        for (Evaluation eval : evalList) {
-            sum += eval.getRating();
-        }
-        double average = sum / evalList.size();
-        return average;
+        return this.averageRating;
     }
 
     /**
-     * DEPRECATED (average is calculated on the fly by getAverage() Sets the
-     * average rating attribute of the service provider
+     * Sets the average rating attribute of the service provider
      *
      * @param average
      */
     public void setAverageRating(double average) {
-//        this.averageRating = average;
+        this.averageRating = average;
     }
 
     /**
@@ -283,16 +297,19 @@ public class ServiceProvider {
         recalculateAverage();
     }
 
+    /**
+     * 
+     * Recalculates the average of the Service Provider
+     * 
+     */
     public void recalculateAverage() {
         double sum = 0;
         for (Evaluation eval : evalList) {
             sum += eval.getRating();
         }
         double average = sum / evalList.size();
-        this.setAverageRating(average);
+        this.averageRating = average;
     }
-
-
 
     /**
      * Verify that service provider has Geographic Area
@@ -334,9 +351,16 @@ public class ServiceProvider {
         return evalList.add(eval);
     }
 
+    /**
+     * 
+     * Checks if the Service Provider is available in a given time window
+     * 
+     * @param schedule Schedule for the Service
+     * @param duration Service's duration
+     * @return The SP availability for the time window
+     */
     public boolean isAvailable(SchedulePreference schedule, int duration) {
         return spAvailabilityList.hasAvailability(schedule, duration);
     }
-    
 
 }

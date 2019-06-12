@@ -33,8 +33,6 @@ public class PostalCode {
         this.cpLatitude = cpLatitude;
         this.cpLongitude = cpLongitude;
     }
-    
-    
 
     /**
      * 
