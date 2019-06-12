@@ -9,7 +9,7 @@ public class AdapterCSV implements FileType {
 
     @Override
     public String toString() {
-        return adapterFileType;
+        return this.adapterFileType;
     }
 
     /**

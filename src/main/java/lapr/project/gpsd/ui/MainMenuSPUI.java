@@ -82,5 +82,4 @@ public class MainMenuSPUI implements Initializable {
         ApplicationGPSD.getInstance().doLogout();
         mainApp.toMainScene();
     }
-
 }

@@ -181,7 +181,7 @@ public class ServiceRequest {
         return otherCosts;
     }
     
-    boolean fullyAssigned() {
+    public boolean fullyAssigned() {
         for(ServiceRequestDescription srd : serviceRequestDescriptions) {
             if(!srd.isAssigned()) {
                 return false;
