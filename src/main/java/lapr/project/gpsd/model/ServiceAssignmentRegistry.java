@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lapr.project.gpsd.utils.Constants;
@@ -68,6 +69,21 @@ public class ServiceAssignmentRegistry {
             }
             serviceAssignments.remove(serviceAssignment);
         }
+    }
+    
+    /**
+     * Method checks if the Service Request has expired schedule preferences.
+     * @param serviceRequest
+     * @return returns true if the service request has expired assignments
+     */
+    public boolean serviceRequestHasExpiredAssignment(ServiceRequest serviceRequest) {
+        for(ServiceRequestDescription srd : serviceRequest.getServiceRequestDescriptions()) {
+            ServiceAssignment sa = getServiceAssignmentByDescription(srd);
+            if(LocalDateTime.now().isAfter(sa.getSchedulePreference().getDateTime())) {
+                return true;
+            }
+        }
+        return false;
     }
     
     

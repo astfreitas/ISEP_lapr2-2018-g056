@@ -3,6 +3,7 @@ package lapr.project.gpsd.model;
 import java.sql.Time;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Objects;
@@ -63,6 +64,16 @@ public class SchedulePreference {
         return hour;
     }
 
+    
+    /**
+     * returns the date time
+     * 
+     * @return date time
+     */
+    public LocalDateTime getDateTime() {
+        return LocalDateTime.of(date, hour);
+    }
+    
     /**
      * modifies order
      *
