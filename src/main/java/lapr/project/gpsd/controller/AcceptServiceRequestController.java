@@ -27,8 +27,11 @@ public class AcceptServiceRequestController {
         
         List<Integer> serviceIDS = new ArrayList();
         List<ServiceRequest> serviceRequests = srr.getServiceRequestsFullyAssignedByClient(cli);
+        ServiceAssignmentRegistry sar = company.getServiceAssignementRegistry();
         for(ServiceRequest sreq : serviceRequests) {
-            serviceIDS.add(sreq.getNumber());
+            if(!sar.serviceRequestHasExpiredAssignment(sreq)) {
+                serviceIDS.add(sreq.getNumber());
+            }
         }
         return serviceIDS; 
     }
