@@ -4,29 +4,28 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import lapr.project.gpsd.model.Category;
 import lapr.project.utils.UIUtils;
 
-public class RegisterServiceProviderUI2 implements Initializable {
+public class RegisterServiceProviderUI5 implements Initializable {
 
     RegisterServiceProviderUI registerServiceProviderUI;
+    RegisterServiceProviderUI2 parentUI;
 
     @FXML
     private Button cancelBtn;
     @FXML
-    private Button continueBtn;
+    private Button confirmBtn;
     @FXML
-    private Button addBtn;
-    @FXML
-    private Button removeBtn;
-    @FXML
-    private ListView<Category> catList;
+    private ComboBox<Category> categoryComboBox;
 
     /**
      * Initializes the controller class.
@@ -40,30 +39,29 @@ public class RegisterServiceProviderUI2 implements Initializable {
         this.registerServiceProviderUI = registerServiceProviderUI;
     }
 
+    public void setParentUI(RegisterServiceProviderUI2 parentUI) {
+        this.parentUI = parentUI;
+    }
+
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        registerServiceProviderUI.getMainMenu().backToMainMenu();
+        ((Stage) cancelBtn.getScene().getWindow()).close();
     }
 
     @FXML
-    private void handleContinueBtn(ActionEvent event) {
-        registerServiceProviderUI.toRegisterServiceProviderScene3();
+    private void handleConfirmBtn(ActionEvent event) {
+        String catId = categoryComboBox.getValue().getCode();
+        if (registerServiceProviderUI.getController().addCategory(catId)) {
+            ((Stage) cancelBtn.getScene().getWindow()).close();
+            parentUI.updateList();
+        } else {
+            UIUtils.createAlert("Selected Category was not found in registry.", "Error:", Alert.AlertType.ERROR);
+        }
     }
 
-    @FXML
-    private void handleAddBtn(ActionEvent event) {
-        registerServiceProviderUI.toRegisterServiceProviderScene5(this);
-    }
-
-    @FXML
-    private void handleRemoveBtn(ActionEvent event) {
-        // checks if anything is selected
-        // removes category and update list
-    }
-
-    void updateList() {
+    void populateComboBox() {
         List<Category> categories = registerServiceProviderUI.getController().getCategories();
-        catList.getItems().addAll(categories);
+        categoryComboBox.getItems().addAll(categories);
         if (categories.isEmpty()) {
             UIUtils.createAlert("Unable to register Service Provider.", "No categories found.", Alert.AlertType.ERROR);
             ((Stage) cancelBtn.getScene().getWindow()).close();
