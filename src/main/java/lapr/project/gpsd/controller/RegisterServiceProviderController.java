@@ -56,18 +56,30 @@ public class RegisterServiceProviderController {
     public boolean newServiceProvider(String name, String local, String postalCode, String address) {
         Address newAddress = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
         spRegistry = company.getServiceProviderRegistry();
-        this.sp = spRegistry.newServiceProvider(name, newAddress);
+        sp = spRegistry.newServiceProvider(name, newAddress);
+        spApp.getCategories().forEach((cat) -> {
+            sp.addCategory(cat);
+        });
         return this.spRegistry.validateServiceProvider(this.sp);
     }
 
     /**
-     * returns a list of categories
+     * returns a list of categories from registry
      *
      * @return categories list
      */
     public List<Category> getCategories() {
         CategoryRegistry cr = this.company.getCategoryRegistry();
         return cr.getCategories();
+    }
+
+    /**
+     * return the sp's list of categories
+     *
+     * @return
+     */
+    public List<Category> getSPCategories() {
+        return sp.getSpCatList().getCategorylist();
     }
 
     /**
@@ -78,20 +90,32 @@ public class RegisterServiceProviderController {
      */
     public boolean addCategory(String catId) {
         Category oCategory = this.company.getCategoryRegistry().getCatById(catId);
-        if(oCategory == null) {
+        if (oCategory == null) {
             return false;
         }
-        return this.sp.addCategory(oCategory);
+        if (this.sp.getSpCatList().validateCategory(oCategory)) {
+            return this.sp.addCategory(oCategory);
+        }
+        return false;
     }
 
     /**
-     * returns a list of geographic areas
+     * returns a list of geographic areas registry
      *
      * @return geographic areas list
      */
     public List<GeographicArea> getGeographicAreas() {
         GeographicAreaRegistry gar = this.company.getGeographicAreaRegistry();
         return gar.getGeographicAreas();
+    }
+
+    /**
+     * Return the sp's list of geographic areas
+     *
+     * @return
+     */
+    public List<GeographicArea> getSPGeographicAreas() {
+        return sp.getSpGeoAreaList().getGeoAreaList();
     }
 
     /**
@@ -102,10 +126,13 @@ public class RegisterServiceProviderController {
      */
     public boolean addGeographicArea(String geoId) {
         GeographicArea area = this.company.getGeographicAreaRegistry().getGeoAreaById(geoId);
-        if(area == null) {
+        if (area == null) {
             return false;
         }
-        return this.sp.addGeoArea(area);
+        if (sp.getSpGeoAreaList().validateArea(area)) {
+            return this.sp.addGeoArea(area);
+        }
+        return false;
     }
 
     /**
@@ -162,6 +189,16 @@ public class RegisterServiceProviderController {
 
     public String getSPLocal() {
         return spApp.getAddress().getLocal();
+    }
+
+    public void removeSPCategory(String catId) {
+        Category cat = company.getCategoryRegistry().getCatById(catId);
+        this.sp.getSpCatList().removeCategory(cat);
+    }
+
+    public void removeSPArea(String areaId) {
+        GeographicArea area = company.getGeographicAreaRegistry().getGeoAreaById(areaId);
+        this.sp.getSpGeoAreaList().removeGeographicArea(area);
     }
 
 }
