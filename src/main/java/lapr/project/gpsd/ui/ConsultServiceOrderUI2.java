@@ -60,12 +60,27 @@ public class ConsultServiceOrderUI2 implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
+    /**
+     * Sets the class atributes sDate and eDate with the value from the 
+     * ConsultServideOrderCOntroller.
+     */
     public void setDatesToScene() {
         this.sDate = consultServOrderUI.getController().getsDate();
         this.eDate = consultServOrderUI.getController().geteDate();
     }
-
+    /**
+     * Sets the new dates from Scene DatePickers to the local class LocalDate
+     * atributes and to ConsultServideOrderController. 
+     */
+    public void setDatesToController(){
+        sDate = startDatePicker.getValue();
+        eDate = endDatePicker.getValue();
+        consultServOrderUI.getController().setDatesToSearch(sDate, eDate);
+    }
+    /**
+     * Loads the ListView in scene with the servicer orders list returns by
+     * Controller.
+     */
     public void loadListView() {
         setDatesToScene();
         startDatePicker.setValue(sDate);
@@ -73,7 +88,10 @@ public class ConsultServiceOrderUI2 implements Initializable {
         List<ServiceOrder> tmpServList = consultServOrderUI.getController().getServiceOrderByDateAndSP(sDate, eDate);
         listViewServOrders.getItems().addAll(tmpServList);
     }
-
+    /**
+     * Sets the local ConsultServiceOrderUI with the instance to the main UI.
+     * @param consultServOrderUI 
+     */
     public void setConsultServOrderUI(ConsultServiceOrderUI consultServOrderUI) {
         this.consultServOrderUI = consultServOrderUI;
     }
@@ -82,15 +100,24 @@ public class ConsultServiceOrderUI2 implements Initializable {
     private void handleCancelButton(ActionEvent event) {
         consultServOrderUI.getMainMenu().backToMainMenu();
     }
-
+    /**
+     * Method handles the event created from click the Refresh Button in scene
+     * by cleaning the List View, sets the new dates and loads again the List View.
+     * @param event event created from actuating the refresh button
+     */
     @FXML
     private void handleRefreshBut(ActionEvent event) {
         listViewServOrders.getItems().clear();
-        sDate = startDatePicker.getValue();
-        eDate = endDatePicker.getValue();
+        setDatesToController();
         loadListView();
     }
     
+    /**
+     * Method handles the event created from click the Export Button in scene
+     * by getting the FileTypes from controller to a Choice Dialog to allow user
+     * to choose FileType and executes the export data in controller.
+     * @param event event created from actuating the Export button
+     */
     @FXML
     private void handleExportBut(ActionEvent event) {
         List<FileType> choices = consultServOrderUI.getController().getFileTypes();
