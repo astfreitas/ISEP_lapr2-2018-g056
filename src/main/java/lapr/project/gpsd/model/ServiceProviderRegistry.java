@@ -118,6 +118,7 @@ public class ServiceProviderRegistry {
      */
     public boolean registerServiceProvider(ServiceProvider sp, String pwd) {
         String spInstEmail = generateServiceProviderInstEmail(sp);
+        sp.setEmail(spInstEmail);
         String abbrevName = sp.getAbbrevName();
         if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
             return this.addServiceProvider(sp);
