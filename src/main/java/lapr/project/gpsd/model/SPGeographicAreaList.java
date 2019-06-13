@@ -48,4 +48,15 @@ public class SPGeographicAreaList {
         return false;
     }
 
+    @Override
+    public String toString() {
+        String text = "";
+        for(GeographicArea area : geoAreaList) {
+            text += area.toString() + "\n";
+        }
+        return text;
+    }
+    
+    
+
 }

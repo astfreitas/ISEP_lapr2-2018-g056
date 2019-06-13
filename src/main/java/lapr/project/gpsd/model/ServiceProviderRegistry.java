@@ -119,12 +119,14 @@ public class ServiceProviderRegistry {
         generateServiceProviderNumber(sp);
         String spInstEmail = generateServiceProviderInstEmail(sp);
         sp.setEmail(spInstEmail);
-        String abbrevName = sp.getAbbrevName();
+        String abbrevName = genAbrevName(sp.getName());
+        sp.setAbbrevName(abbrevName);
         String pwd = Constants.TEMPORARY_PASSWORD;
-        if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
-            return this.addServiceProvider(sp);
-        }
-
+        try {
+            if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
+                return this.addServiceProvider(sp);
+            }
+        } catch (Exception e) {}
         return false;
     }
 
@@ -182,4 +184,18 @@ public class ServiceProviderRegistry {
         return averageRatings;
     }
 
+    /**
+     * Generates abreviated name from SP's name
+     *
+     * @param spName
+     * @return
+     */
+    public String genAbrevName(String spName) {
+        String abrev = "";
+        String[] names = spName.split(" ");
+        for (String name : names) {
+            abrev += name.toUpperCase().charAt(0);
+        }
+        return abrev;
+    }
 }

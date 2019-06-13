@@ -371,4 +371,22 @@ public class ServiceProvider {
         return spAvailabilityList.hasAvailability(schedule, duration);
     }
 
+    public String display() {
+        return "Name: " + name
+                + "\nNIF: " + nif
+                + "\nAddress: " + spAddress
+                + "\nCategories:\n" + spCatList.toString()
+                + "Geographic Areas:\n" + spGeoAreaList.toString();
+    }
+
+    /**
+     * Sets nif
+     * @param nif 
+     */
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+    
+
+
 }
