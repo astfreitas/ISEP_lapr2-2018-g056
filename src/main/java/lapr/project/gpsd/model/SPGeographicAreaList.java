@@ -43,7 +43,7 @@ public class SPGeographicAreaList {
 
     public boolean addGeographicArea(GeographicArea area) {
         if(validateArea(area)) {
-            geoAreaList.add(area);
+            return geoAreaList.add(area);
         }
         return false;
     }

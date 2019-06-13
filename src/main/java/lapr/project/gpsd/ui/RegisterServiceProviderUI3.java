@@ -47,6 +47,7 @@ public class RegisterServiceProviderUI3 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
+        
         registerServiceProviderUI.toRegisterServiceProviderScene4();
     }
 
@@ -68,11 +69,6 @@ public class RegisterServiceProviderUI3 implements Initializable {
         areasList.getItems().clear();
         List<GeographicArea> areas = registerServiceProviderUI.getController().getSPGeographicAreas();
         areasList.getItems().addAll(areas);
-        if (areas.isEmpty()) {
-            UIUtils.createAlert("Unable to register Service Provider.", "No geographic areas found.", Alert.AlertType.ERROR);
-            ((Stage) cancelBtn.getScene().getWindow()).close();
-            registerServiceProviderUI.getMainMenu().backToMainMenu();
-        }
     }
 }
 

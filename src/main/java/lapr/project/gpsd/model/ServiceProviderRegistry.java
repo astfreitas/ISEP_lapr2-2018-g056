@@ -116,10 +116,11 @@ public class ServiceProviderRegistry {
      * @param pwd Service provider's password
      * @return True/false if the operation succeeds/fails
      */
-    public boolean registerServiceProvider(ServiceProvider sp, String pwd) {
+    public boolean registerServiceProvider(ServiceProvider sp) {
         String spInstEmail = generateServiceProviderInstEmail(sp);
         sp.setEmail(spInstEmail);
         String abbrevName = sp.getAbbrevName();
+        String pwd = Constants.TEMPORARY_PASSWORD;
         if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
             return this.addServiceProvider(sp);
         }

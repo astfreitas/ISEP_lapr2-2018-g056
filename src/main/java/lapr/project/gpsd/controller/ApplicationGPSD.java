@@ -216,7 +216,7 @@ public class ApplicationGPSD {
         sp1.addCategory(this.company.getCategoryRegistry().getCatById("1"));
         sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-1"));
         sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-2"));
-        this.company.getServiceProviderRegistry().registerServiceProvider(sp1, "pwd");
+        this.company.getServiceProviderRegistry().registerServiceProvider(sp1);
 
         Address add6 = new Address("N/A", "4420-002", "N/A");
         ServiceProvider sp2 = new ServiceProvider("Maria Silva", "510324896", "mSilva@hotmail.com", "Maria Das Neves Silva");
@@ -226,7 +226,7 @@ public class ApplicationGPSD {
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("4"));
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("5"));
         sp2.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Porto-1"));
-        this.company.getServiceProviderRegistry().registerServiceProvider(sp2, "pwd");
+        this.company.getServiceProviderRegistry().registerServiceProvider(sp2);
 
         Address add7 = new Address("N/A", "4470-526", "N/A");
         ServiceProvider sp3 = new ServiceProvider("Joaquina Dos Santos", "510324877", "jaquina@hotmail", "Joaquina Dos Santos");
@@ -236,7 +236,7 @@ public class ApplicationGPSD {
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("2"));
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("3"));
         sp3.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Maia-1"));
-        this.company.getServiceProviderRegistry().registerServiceProvider(sp3, "pwd");
+        this.company.getServiceProviderRegistry().registerServiceProvider(sp3);
 
         Address add8 = new Address("N/A", "4430-601", "N/A");
         ServiceProvider sp4 = new ServiceProvider("Serafim Santos", "230324822", "sSantos@gmail.com", "Serafim Santos");
@@ -246,7 +246,7 @@ public class ApplicationGPSD {
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("1"));
         sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Maia-1"));
         sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-2"));
-        this.company.getServiceProviderRegistry().registerServiceProvider(sp4, "pwd");
+        this.company.getServiceProviderRegistry().registerServiceProvider(sp4);
 
         //Availabilities
         LocalDate date1 = LocalDate.of(2019, 6, 3);

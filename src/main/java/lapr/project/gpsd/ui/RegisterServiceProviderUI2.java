@@ -68,11 +68,6 @@ public class RegisterServiceProviderUI2 implements Initializable {
         catList.getItems().clear();
         List<Category> categories = registerServiceProviderUI.getController().getSPCategories();
         catList.getItems().addAll(categories);
-        if (categories.isEmpty()) {
-            UIUtils.createAlert("Unable to register Service Provider.", "No categories found.", Alert.AlertType.ERROR);
-            ((Stage) cancelBtn.getScene().getWindow()).close();
-            registerServiceProviderUI.getMainMenu().backToMainMenu();
-        }
     }
 
 }

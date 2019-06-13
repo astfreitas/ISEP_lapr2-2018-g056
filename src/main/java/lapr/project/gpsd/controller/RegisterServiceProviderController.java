@@ -90,13 +90,7 @@ public class RegisterServiceProviderController {
      */
     public boolean addCategory(String catId) {
         Category oCategory = this.company.getCategoryRegistry().getCatById(catId);
-        if (oCategory == null) {
-            return false;
-        }
-        if (this.sp.getSpCatList().validateCategory(oCategory)) {
-            return this.sp.addCategory(oCategory);
-        }
-        return false;
+        return this.sp.addCategory(oCategory);
     }
 
     /**
@@ -126,13 +120,8 @@ public class RegisterServiceProviderController {
      */
     public boolean addGeographicArea(String geoId) {
         GeographicArea area = this.company.getGeographicAreaRegistry().getGeoAreaById(geoId);
-        if (area == null) {
-            return false;
-        }
-        if (sp.getSpGeoAreaList().validateArea(area)) {
-            return this.sp.addGeoArea(area);
-        }
-        return false;
+        return sp.getSpGeoAreaList().addGeographicArea(area);
+
     }
 
     /**
@@ -142,7 +131,7 @@ public class RegisterServiceProviderController {
      * @return True/false if the operation succeeds or doesn't
      */
     public boolean registerServiceProvider() {
-        return this.spRegistry.registerServiceProvider(sp, pwd);
+        return this.spRegistry.registerServiceProvider(sp);
     }
 
     /**
@@ -199,6 +188,12 @@ public class RegisterServiceProviderController {
     public void removeSPArea(String areaId) {
         GeographicArea area = company.getGeographicAreaRegistry().getGeoAreaById(areaId);
         this.sp.getSpGeoAreaList().removeGeographicArea(area);
+    }
+
+    public String getSuccessMessage() {
+        return "Abreviated name: " + sp.getAbbrevName()
+                + "\nInstitutional email: " + sp.getEmail()
+                + "\nTemporary password: " + lapr.project.gpsd.utils.Constants.TEMPORARY_PASSWORD;
     }
 
 }

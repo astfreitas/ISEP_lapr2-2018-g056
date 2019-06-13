@@ -37,10 +37,17 @@ public class SPCategoryList {
         return true;
     }
 
-    
+    public boolean addCategory(Category cat) {
+        if (validateCategory(cat)) {
+            categorylist.add(cat);
+        }
+        return false;
+    }
+
     /**
      * removes category from list
-     * @param catId 
+     *
+     * @param catId
      */
     public void removeCategory(Category cat) {
         categorylist.remove(cat);
