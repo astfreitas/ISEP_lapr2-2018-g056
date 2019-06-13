@@ -1,44 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import lapr.project.gpsd.model.Address;
+import javafx.scene.text.Text;
 import lapr.project.utils.UIUtils;
 
-/**
- * FXML Controller class
- *
- * @author mdias
- */
 public class RegisterServiceProviderUI1 implements Initializable {
 
-    private RegisterServiceProviderUI registerServiceProviderUI;
+    RegisterServiceProviderUI registerServiceProviderUI;
 
     @FXML
     private Button cancelBtn;
     @FXML
     private Button continueBtn;
     @FXML
-    private TextField nameTxt;
+    private Text acceptLabel;
     @FXML
-    private TextField nifTxt;
+    private TextField nameTxt;
     @FXML
     private TextField addressTxt;
     @FXML
-    private Button editBtn;
+    private TextField postalCodeTxt;
     @FXML
-    private Button getAppBtn;
+    private TextField localTxt;
+    @FXML
+    private ComboBox<String> nifComboBox;
 
     /**
      * Initializes the controller class.
@@ -46,67 +40,72 @@ public class RegisterServiceProviderUI1 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         continueBtn.setDisable(true);
-        editBtn.setDisable(true);
+        nameTxt.setDisable(true);
+        addressTxt.setDisable(true);
+        postalCodeTxt.setDisable(true);
+        localTxt.setDisable(true);
+
     }
 
     public void setRegisterServiceProviderUI(RegisterServiceProviderUI registerServiceProviderUI) {
         this.registerServiceProviderUI = registerServiceProviderUI;
     }
 
-    public TextField getNameTxt() {
-        return nameTxt;
-    }
-
     @FXML
-    private void handleGetAppBtn(ActionEvent event) {
-        String nif = null;
-        try {
-            nif = nifTxt.getText();
-        } catch (Exception e) {
-        }
-        if (registerServiceProviderUI.getController().getApplicationData(nif)) {
-            nameTxt.setText(registerServiceProviderUI.getController().getName());
-            addressTxt.setText(registerServiceProviderUI.getController().getAddress().toString());
-            editBtn.setDisable(false);
-            continueBtn.setDisable(false);
-            getAppBtn.setDisable(true);
-            nifTxt.setDisable(true);
-        } else {
-            UIUtils.createAlert("Service Provider's application not found!", "Incorrect NIF", Alert.AlertType.WARNING);
-        }
-    }
-
-    @FXML
-    private void handleEditBtn(ActionEvent event) {
-        registerServiceProviderUI.toRegisterServiceProviderScene2(this);
-        addressTxt.setDisable(true);
+    private void handleCancelButton(ActionEvent event) {
+        registerServiceProviderUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-
-        String name = null;
-
         try {
-            name = nameTxt.getText();
-        } catch (NullPointerException e) {
-        }
-        try {
-            Address address = this.registerServiceProviderUI.getController().getAddress();
-            this.registerServiceProviderUI.getController().newServiceProvider(name, address);
-            this.registerServiceProviderUI.toRegisterServiceProviderScene3();
+            String name = nameTxt.getText();
+            String address = addressTxt.getText();
+            String postalCode = postalCodeTxt.getText();
+            String local = localTxt.getText();
+            registerServiceProviderUI.getController().newServiceProvider(name, local, postalCode, address);
+            registerServiceProviderUI.toRegisterServiceProviderScene2();
         } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "No dice bro:", Alert.AlertType.ERROR);
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
         }
+
     }
 
     @FXML
-    private void handleCancelButton(ActionEvent event) {
-        registerServiceProviderUI.getMainApp().toMainScene();
+    private void handleNifComboBox(ActionEvent event) {
+        String nif = nifComboBox.getValue();
+        if (registerServiceProviderUI.getController().getApplicationData(nif)) {
+            continueBtn.setDisable(false);
+            nameTxt.setDisable(false);
+            addressTxt.setDisable(false);
+            postalCodeTxt.setDisable(false);
+            localTxt.setDisable(false);
+            updateFields();
+            nifComboBox.setDisable(true);
+        } else {
+            UIUtils.createAlert("Application not found.", "Fatal error:", Alert.AlertType.ERROR);
+            registerServiceProviderUI.getMainMenu().backToMainMenu();
+        }
     }
 
-    void updateAddress() {
-        addressTxt.setText(registerServiceProviderUI.getController().getAddress().toString());
+    public void populateNifComboBox() {
+        List<String> nifs = registerServiceProviderUI.getController().getApplications();
+        nifComboBox.getItems().addAll(nifs);
+        if (nifs.isEmpty()) {
+            UIUtils.createAlert("Unable to register Service Provider.", "No applications found.", Alert.AlertType.ERROR);
+            registerServiceProviderUI.getMainMenu().backToMainMenu();
+        }
+    }
+
+    private void updateFields() {
+        String name = registerServiceProviderUI.getController().getSPName();
+        String address = registerServiceProviderUI.getController().getSPAddress();
+        String postalCode = registerServiceProviderUI.getController().getSPPostalCode();
+        String local = registerServiceProviderUI.getController().getSPLocal();
+        nameTxt.setText(name);
+        addressTxt.setText(address);
+        postalCodeTxt.setText(postalCode);
+        localTxt.setText(local);
     }
 
 }

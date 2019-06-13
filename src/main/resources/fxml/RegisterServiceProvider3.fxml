@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.RegisterServiceProviderUI3">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.RegisterServiceProviderUI3">
    <center>
-      <VBox prefHeight="213.0" prefWidth="459.0" BorderPane.alignment="TOP_LEFT">
+      <VBox prefHeight="179.0" prefWidth="600.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="537.0" spacing="35.0">
+            <HBox alignment="CENTER" prefHeight="41.0" prefWidth="600.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please confirm categories:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm or edit applicant's geographic areas:" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#handleAddBtn" text="Add geographic area">
                      <HBox.margin>
                         <Insets />
-                     </HBox.margin></Text>
-                  <Button mnemonicParsing="false" text="Add category">
-                     <HBox.margin>
-                        <Insets left="75.0" />
                      </HBox.margin>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
                   </Button>
-                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Delete category">
+                  <Button fx:id="removeBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleRemoveBtn" text="Delete geographic area">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets left="10.0" right="10.0" />
+                  <Insets left="68.0" />
                </VBox.margin>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </HBox>
-            <ListView prefHeight="200.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </VBox.margin>
-            </ListView>
+            <HBox alignment="CENTER" prefHeight="205.0" prefWidth="600.0">
+               <children>
+                  <ListView fx:id="areasList" maxWidth="1.7976931348623157E308" prefHeight="219.0" prefWidth="462.0" />
+               </children>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -55,10 +57,10 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel" />
-            <Button fx:id="completeBtn" mnemonicParsing="false" onAction="#handleCompleteBtn" text="Continue" />
+            <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleContinueBtn" text="Continue" />
          </children>
       </HBox>
    </bottom>

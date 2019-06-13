@@ -107,4 +107,12 @@ public class SPApplicationRegistry {
         return this.applications.add(spa);
     }
 
+    public List<String> getApplicationsNifs() {
+        List<String> nifs = new ArrayList<>();
+        for(SPApplication application : applications) {
+            nifs.add(application.getNIF());
+        }
+        return nifs;
+    }
+
 }
