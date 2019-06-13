@@ -113,7 +113,7 @@ public class ServiceAssignmentRegistry {
         } else {
             serviceAssignment.getServiceRequestDescription().setAssigned(Constants.SERVICE_ACCEPTED);
         }
-//        serviceAssignments.remove(serviceAssignment);
+        serviceAssignments.remove(serviceAssignment);
     }
 
     /**
@@ -156,12 +156,12 @@ public class ServiceAssignmentRegistry {
         List<ServiceAssignment> auxList = new ArrayList<>();
         for (ServiceAssignment sa : serviceAssignments) {
             if (sa.isExpired()) {
-                removeServiceAssignment(sa, false);
-            }else{
                 auxList.add(sa);
             }
         }
-        this.serviceAssignments = new ArrayList<>(auxList);
+        for(ServiceAssignment servAssign : auxList){
+            removeServiceAssignment(servAssign, false);
+        }
     }
 
     

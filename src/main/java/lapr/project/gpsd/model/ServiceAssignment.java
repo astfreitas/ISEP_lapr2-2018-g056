@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import java.time.LocalDateTime;
+import lapr.project.gpsd.utils.Constants;
 
 public class ServiceAssignment {
 
@@ -21,6 +22,7 @@ public class ServiceAssignment {
         this.serviceProvider = serviceProvider;
         this.serviceRequestDescription = serviceRequestDescription;
         this.serviceRequest = serviceRequest;
+        serviceRequestDescription.setAssigned(Constants.SERVICE_ASSIGNED);
         this.schedulePreference = schedulePreference;
     }
 

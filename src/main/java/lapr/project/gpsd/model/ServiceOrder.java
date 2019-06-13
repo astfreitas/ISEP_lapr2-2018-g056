@@ -28,8 +28,8 @@ public class ServiceOrder {
         this.servProvider = serviceAssignment.getServiceProvider();
         this.servRequestDesc = serviceAssignment.getServiceRequestDescription();
         this.schedPreference = serviceAssignment.getSchedulePreference();
+        this.servRequestDesc.setAssigned(Constants.SERVICE_ACCEPTED);
         this.status = new ServiceOrderStatus(Constants.PENDING_ORDER);
-
     }
 
     /**

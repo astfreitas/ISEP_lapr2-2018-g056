@@ -73,6 +73,23 @@ public class ServiceRequest {
         }
         return false;
     }
+    
+    /**
+     * Method appends a schedule preference to the Service Order
+     * @param date represents the date preference
+     * @param time represents the time preference
+     * @param str str
+     * @return Success of the operation
+     */
+    public boolean addSchedulePreference(LocalDate date, LocalTime time, String str) {
+        int prefOrder = schedulePreferences.size();
+        SchedulePreference sh = new SchedulePreference(prefOrder, date, time, str);
+        if(validateSchedulePreference(sh)) {
+            return AddSchedulePreference(sh);
+        }
+        return false;
+    }
+    
     /**
      * Method verifies if the schedule preferences already exists
      * @param sh instance of SchedulePreference

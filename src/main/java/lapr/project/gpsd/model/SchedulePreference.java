@@ -4,7 +4,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Objects;
 
 public class SchedulePreference {
 
@@ -23,7 +22,27 @@ public class SchedulePreference {
      * @param hour Hour of the SchedPref
      */
     public SchedulePreference(int order, LocalDate date, LocalTime hour) {
-        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
+        LocalDate today = LocalDate.now();
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)
+                || hour.getHour() == 0 || hour.getHour() < 6
+                || date.isBefore(today)) {
+            throw new IllegalArgumentException("Invalid availability.");
+        }
+        this.order = order;
+        this.date = date;
+        this.hour = hour;
+    }
+
+    /**
+     * service constructor with 3 parameters
+     *
+     * @param order Order of the SchedPref
+     * @param date Date of the SchedPref
+     * @param hour Hour of the SchedPref
+     * @param str str
+     */
+    public SchedulePreference(int order, LocalDate date, LocalTime hour, String str) {
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)
                 || hour.getHour() == 0 || hour.getHour() < 6) {
             throw new IllegalArgumentException("Invalid availability.");
         }
@@ -59,16 +78,15 @@ public class SchedulePreference {
         return hour;
     }
 
-    
     /**
      * returns the date time
-     * 
+     *
      * @return date time
      */
     public LocalDateTime getDateTime() {
         return LocalDateTime.of(date, hour);
     }
-    
+
     /**
      * modifies order
      *
@@ -79,11 +97,11 @@ public class SchedulePreference {
     }
 
     /**
-     * 
+     *
      * Analyses if 2 SchedulePreferences are diferent
-     * 
+     *
      * @param obj SchedulePreference to compare
-     * @return Returns the result of the compare 
+     * @return Returns the result of the compare
      */
     @Override
     public boolean equals(Object obj) {
@@ -101,14 +119,14 @@ public class SchedulePreference {
     }
 
     /**
-     * 
+     *
      * Gives the description for the Schedule Preference object
-     * 
+     *
      * @return String with the SchedulePreference
      */
     @Override
     public String toString() {
         return order + " : " + date + " to " + hour;
     }
-    
+
 }
