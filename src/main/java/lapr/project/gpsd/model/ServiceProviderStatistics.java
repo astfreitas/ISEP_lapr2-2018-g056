@@ -180,7 +180,7 @@ public final class ServiceProviderStatistics {
         for (double val : vals) {
             avg += val;
         }
-        return avg / vals.length;
+        return (double) avg / vals.length;
     }
 
     /**

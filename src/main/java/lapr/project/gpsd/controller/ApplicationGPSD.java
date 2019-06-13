@@ -88,7 +88,7 @@ public class ApplicationGPSD {
         this.authentication.registerUserRole(Constants.ROLE_CLIENT);
         this.authentication.registerUserRole(Constants.ROLE_HRO);
         this.authentication.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
-        
+
         this.authentication.registerUserWithRole("adm1", "adm1@isep.ipp.pt", "123", Constants.ROLE_ADMINISTRATIVE);
             this.authentication.registerUserWithRole("hro1", "hro1@isep.ipp.pt", "123", Constants.ROLE_HRO);
 
@@ -398,7 +398,7 @@ public class ApplicationGPSD {
 
         //Service Orders
         //APadrao
-        ServiceProvider apadrao = this.company.getServiceProviderRegistry().getServiceProviderByEmail("aPadrao@gmail.com");
+        ServiceProvider apadrao = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001);
         ServiceRequest servReq1 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(1);
         ServiceRequestDescription servRD1 = servReq1.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref1 = servReq1.getSchedulePreferences().get(1);
@@ -407,7 +407,7 @@ public class ApplicationGPSD {
         this.company.getServiceOrderRegistry().registerServiceOrder(sa1);
 
         //JSantos
-        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByEmail("jaquina@hotmail");
+        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003);
         ServiceRequest servReq2 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(4);
         ServiceRequestDescription servRD2 = servReq2.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref2 = servReq2.getSchedulePreferences().get(0);
@@ -416,7 +416,7 @@ public class ApplicationGPSD {
         this.company.getServiceOrderRegistry().registerServiceOrder(sa2);
 
         //MSilva
-        ServiceProvider msilva = this.company.getServiceProviderRegistry().getServiceProviderByEmail("mSilva@hotmail.com");
+        ServiceProvider msilva = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002);
         ServiceRequest servReq3 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(5);
         ServiceRequestDescription servRD3 = servReq3.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref3 = servReq3.getSchedulePreferences().get(0);
@@ -443,17 +443,13 @@ public class ApplicationGPSD {
 
         //Rate Service Provider
         ServiceProvider rsp1 = cso1.getServiceProvider();
-        Evaluation eval1 = new Evaluation(4, cso1);
-        rsp1.addEvaluation(eval1);
+        rsp1.registerEvaluation(4, cso1);
         ServiceProvider rsp2 = cso2.getServiceProvider();
-        Evaluation eval2 = new Evaluation(5, cso2);
-        rsp2.addEvaluation(eval2);
+        rsp2.registerEvaluation(5, cso2);
         ServiceProvider rsp3 = cso3.getServiceProvider();
-        Evaluation eval3 = new Evaluation(2, cso3);
-        rsp3.addEvaluation(eval3);
+        rsp3.registerEvaluation(2, cso3);
         ServiceProvider rsp4 = cso4.getServiceProvider();
-        Evaluation eval4 = new Evaluation(2, cso4);
-        rsp4.addEvaluation(eval4);
+        rsp4.registerEvaluation(2, cso4);
     }
 
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

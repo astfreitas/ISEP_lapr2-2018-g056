@@ -56,7 +56,6 @@ public class RatingServiceProviderController {
 
     public void setRating(int rating){
         this.servProvider.registerEvaluation(rating,this.servOrder);
-        this.servProvider.recalculateAverage();
     }
     
     public ServiceRequestDescription getServiceDescription(){
