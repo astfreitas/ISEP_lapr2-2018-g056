@@ -20,7 +20,7 @@
       </Text>
    </top>
    <center>
-      <HBox prefWidth="290.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox prefWidth="285.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="295.0">
                <children>
@@ -48,7 +48,7 @@
                   <Insets left="10.0" />
                </padding>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="295.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="290.0" spacing="20.0">
                <children>
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
@@ -60,7 +60,10 @@
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <ListView fx:id="listViewCP" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="listViewCP" prefHeight="200.0" prefWidth="200.0">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding></ListView>
                </children>
             </VBox>
          </children>
