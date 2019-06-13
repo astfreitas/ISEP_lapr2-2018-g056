@@ -58,7 +58,7 @@ public class FixedService extends Service {
      */
     public List<String> getOtherAtributes() {
         List<String> otherAttributes = new ArrayList();
-        otherAttributes.add("predeterminedDuration");
+        otherAttributes.add("Predetermined duration");
         return otherAttributes;
     }
 

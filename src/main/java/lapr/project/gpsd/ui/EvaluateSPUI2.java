@@ -1,6 +1,7 @@
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -60,10 +61,11 @@ public class EvaluateSPUI2 implements Initializable {
         double ar = evaluateSPUI.getController().getSpAverageRating();
         double std = evaluateSPUI.getController().getSpAbsoluteDifference();
         List<Integer> ratings = evaluateSPUI.getController().getSpRatings();
-        popAverageTxt.setText(String.valueOf(par));
-        popStdDevTxt.setText(String.valueOf(pstd));
-        spAverageTxt.setText(String.valueOf(ar));
-        spDevTxt.setText(String.valueOf(std));
+        DecimalFormat df = new DecimalFormat("#.00");
+        popAverageTxt.setText(df.format(par));
+        popStdDevTxt.setText(df.format(pstd));
+        spAverageTxt.setText(df.format(ar));
+        spDevTxt.setText(df.format(std));
         fillBarChart(ratings);
     }
 

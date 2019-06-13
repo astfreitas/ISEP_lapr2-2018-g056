@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.SubmitApplicationUI5">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lapr.project.gpsd.ui.SubmitApplicationUI5">
    <center>
-      <VBox prefHeight="213.0" prefWidth="459.0" BorderPane.alignment="TOP_LEFT">
+      <VBox alignment="CENTER" prefHeight="213.0" prefWidth="459.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="537.0" spacing="35.0">
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="537.0" spacing="35.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select Categories of services to provide">
                      <HBox.margin>
@@ -25,20 +25,20 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="450.0" spacing="35.0">
+            <HBox alignment="CENTER" prefHeight="71.0" prefWidth="450.0" spacing="35.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
-                  <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryComboBox" prefWidth="150.0" />
+                  <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryComboBox" prefHeight="26.0" prefWidth="201.0" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="40.0">
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
                   <Button fx:id="addCatBtn" mnemonicParsing="false" onAction="#handleAddCatBtn" text="Add category">
                      <HBox.margin>
-                        <Insets left="80.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                </children>
@@ -49,9 +49,6 @@
          </BorderPane.margin>
       </VBox>
    </center>
-   <left>
-      <HBox maxWidth="150.0" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </left>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>

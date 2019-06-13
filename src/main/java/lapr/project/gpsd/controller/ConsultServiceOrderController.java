@@ -47,6 +47,10 @@ public class ConsultServiceOrderController {
      * End date for the search
      */
     private LocalDate eDate;
+    /**
+     * Exported file path
+     */
+    private String filePath;
 
     /**
      * Constructos for the ConsultServiceOrderController - checks the current
@@ -105,11 +109,11 @@ public class ConsultServiceOrderController {
      */
     public boolean exportServiceOrdersByFileType(FileType fileType) {
         FileType adapter = this.fileTypeRegistry.getExportAdapterByFileType(fileType);
-        String filename = "./src/main/resources/exportedFiles/" + sp.getNumber() + "_" + sDate.toString() + "_" + eDate.toString() + "." + fileType.toString();
+        this.filePath= "./src/main/resources/exportedFiles/" + sp.getNumber() + "_" + sDate.toString() + "_" + eDate.toString() + "." + fileType.toString();
 
-        sor.exportData(servOrderList, filename, adapter);
+        sor.exportData(servOrderList, this.filePath, adapter);
 
-        File file = new File(filename);
+        File file = new File(this.filePath);
         return file.exists();
     }
 
@@ -141,5 +145,12 @@ public class ConsultServiceOrderController {
     public LocalDate geteDate() {
         return eDate;
     }
-
+    /**
+     * Returns the exported file path
+     * @return the exported file path in Sring
+     */
+    public String getFilePath() {
+        return filePath;
+    }
+    
 }
