@@ -121,6 +121,22 @@ public class ServiceRequestRegistry {
     }
     
     /**
+     * Method returns a list of ServiceRequests Assigned by the client
+     * @param client
+     * @return 
+     */
+    public List<Integer> getServiceRequestIdsFullyAssignedByClient(Client client) {
+        List<Integer> result = new ArrayList();
+        for(ServiceRequest s : serviceRequests) {
+            if(s.getClient().equals(client) && s.fullyAssigned()) {
+                result.add(s.getNumber());
+            }
+        }
+        return result;
+    }
+    
+    
+    /**
      * Method returns a service request by a given number
      * @param number
      * @return null if not exist

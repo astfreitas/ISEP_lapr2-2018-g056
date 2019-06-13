@@ -4,36 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.*;
+import lapr.project.gpsd.utils.Constants;
 
 
 public class AcceptServiceRequestController {
     
     private ApplicationGPSD app;
     private Company company;
-    private ServiceAssignmentRegistry sar;
-    private ServiceRequestRegistry srr;
+    private ClientRegistry clientRegistry;
+    private ServiceAssignmentRegistry serAssignRegistry;
+    private ServiceRequestRegistry servReqRegistry;
+    private ServiceOrderRegistry servOrderRegistry;
+    private List<ServiceAssignment> clientServiceAssignments;
+    private Client client;
+    public AcceptServiceRequestController() {
+        if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
+            throw new IllegalStateException("Non authorized user.");
+        }
+        app = ApplicationGPSD.getInstance();
+        company = app.getCompany();
+        servOrderRegistry = company.getServiceOrderRegistry();
+        serAssignRegistry = company.getServiceAssignementRegistry();
+        clientRegistry = company.getClientRegistry();
+        servReqRegistry = app.getCompany().getServiceRequestRegistry();
+        serAssignRegistry.removeExpiredAssignments();
+        UserSession session = app.getCurrentSession();
+        String email = session.getUserEmail();
+        client = clientRegistry.getClientByEmail(email);
+        clientServiceAssignments = serAssignRegistry.getServiceAssignmentsByCli(client);
+    }
+    
     /**
      * Method returns a list of fully assigned ServiceRequests ID's
      * @return a list of fully assigned ServiceRequet ID's from the user
      */
     public List<Integer> checkAssignedServiceRequests() {
-        app = ApplicationGPSD.getInstance();
-        UserSession session = app.getCurrentSession();
-        String email = session.getUserEmail();
-        company = app.getCompany();
-        ClientRegistry cr = company.getClientRegistry();
-        Client cli = cr.getClientByEmail(email);
-        srr = app.getCompany().getServiceRequestRegistry();
-        
         List<Integer> serviceIDS = new ArrayList();
-        List<ServiceRequest> serviceRequests = srr.getServiceRequestsFullyAssignedByClient(cli);
-        ServiceAssignmentRegistry sar = company.getServiceAssignementRegistry();
-        for(ServiceRequest sreq : serviceRequests) {
-            if(!sar.serviceRequestHasExpiredAssignment(sreq)) {
-                serviceIDS.add(sreq.getNumber());
-            }
-        }
-        return serviceIDS; 
+        return servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
     }
     
     /**
@@ -43,12 +50,9 @@ public class AcceptServiceRequestController {
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
         List<ServiceAssignment> result = new ArrayList();
-        ServiceRequest servRequest = srr.getServiceRequestByNumber(serviceNumber);
-        if(servRequest!=null) {
-            sar = company.getServiceAssignementRegistry();
-            result = sar.getServiceAssignmentListByServiceRequest(servRequest);
-        } 
-        return result;
+        //**
+        ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);        
+        return serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
     }
     
     /**
@@ -56,8 +60,7 @@ public class AcceptServiceRequestController {
      * @param listServiceAssignments 
      */
     public void rejectServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
-        sar.removeServiceAssignment(listServiceAssignments, false);
-        
+        serAssignRegistry.removeServiceAssignment(listServiceAssignments, false);
     }
     
     /**
@@ -66,9 +69,8 @@ public class AcceptServiceRequestController {
      * @return  list of ServiceOrder numbers
      */
     public List<Integer> acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
-        sar.removeServiceAssignment(listServiceAssignments, true);
-        ServiceOrderRegistry sor = company.getServiceOrderRegistry();
-        return sor.registerServiceOrders(listServiceAssignments);
+        serAssignRegistry.removeServiceAssignment(listServiceAssignments, true);
+        return servOrderRegistry.registerServiceOrders(listServiceAssignments);
     }
     
     

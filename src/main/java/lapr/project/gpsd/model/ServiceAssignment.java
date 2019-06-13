@@ -1,5 +1,7 @@
 package lapr.project.gpsd.model;
 
+import java.time.LocalDateTime;
+
 public class ServiceAssignment {
 
     private ServiceProvider serviceProvider;
@@ -58,6 +60,14 @@ public class ServiceAssignment {
      */
     public SchedulePreference getSchedulePreference() {
         return schedulePreference;
+    }
+
+    /**
+     * Method verifies if the ServiceAssignment has expired
+     * @return true if it is
+     */
+    public boolean isExpired() {
+        return LocalDateTime.now().isAfter(getSchedulePreference().getDateTime());
     }
 
 }
