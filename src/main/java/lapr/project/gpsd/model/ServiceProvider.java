@@ -58,7 +58,7 @@ public class ServiceProvider {
      * @param spAddress instance of Addres to register the service provider.
      */
     public ServiceProvider(String name, Address spAddress) {
-        if ((name == null) || (spAddress == null) 
+        if ((name == null) || (spAddress == null)
                 || (name.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
@@ -72,7 +72,7 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Creates an instance of Service Provider
      *
      * @param name Service Provider's name
@@ -81,7 +81,7 @@ public class ServiceProvider {
      * @param abrevName Abreviated name
      */
     public ServiceProvider(String name, String nif, String email, String abrevName) {
-        if ((name == null) || (nif == null) || (email == null) || (abrevName == null) 
+        if ((name == null) || (nif == null) || (email == null) || (abrevName == null)
                 || (name.isEmpty()) || (nif.isEmpty())
                 || (email.isEmpty()) || (abrevName.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -119,9 +119,9 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Gives the Service Provider NIF
-     * 
+     *
      * @return Service Provider's NIF
      */
     public String getNif() {
@@ -219,9 +219,9 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Adds a Category to the Service Provider
-     * 
+     *
      * @param cat Category to be added
      * @return Returns the success of the operation
      */
@@ -230,9 +230,9 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Adds a Geographic Area to the Service Provider
-     * 
+     *
      * @param geoArea Geographic Area to be added
      * @return Returns the success of the operation
      */
@@ -264,8 +264,8 @@ public class ServiceProvider {
     }
 
     /**
-     * Returns the average rating of a service provider. 
-     * 
+     * Returns the average rating of a service provider.
+     *
      * @return average rating for service provider
      */
     public double getAverageRating() {
@@ -303,16 +303,19 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Recalculates the average of the Service Provider
-     * 
+     *
      */
     public void recalculateAverage() {
+        double average;
+
         double sum = 0;
         for (Evaluation eval : evalList) {
             sum += eval.getRating();
         }
-        double average = sum / evalList.size();
+        sum += 3;
+        average = sum / (evalList.size() + 1);
         this.averageRating = average;
     }
 
@@ -357,9 +360,9 @@ public class ServiceProvider {
     }
 
     /**
-     * 
+     *
      * Checks if the Service Provider is available in a given time window
-     * 
+     *
      * @param schedule Schedule for the Service
      * @param duration Service's duration
      * @return The SP availability for the time window
