@@ -109,7 +109,7 @@ public class Client {
         }
         return null;
     }
-
+    
     /**
      *
      * Removes an Address to the Client's instance

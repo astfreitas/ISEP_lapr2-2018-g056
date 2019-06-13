@@ -12,7 +12,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import lapr.project.gpsd.model.FileType;
 
 public class Main extends Application {
 

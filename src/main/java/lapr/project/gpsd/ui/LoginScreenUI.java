@@ -46,6 +46,7 @@ public class LoginScreenUI implements Initializable {
     @FXML
     private void handleLoginButton(ActionEvent event) throws Exception {
         ApplicationGPSD app = ApplicationGPSD.getInstance();
+        app.bootstrap();
         String email = emailTxt.getText();
         String pwd = pwdTxt.getText();
         if (!app.doLogin(email, pwd)) {
@@ -89,6 +90,7 @@ public class LoginScreenUI implements Initializable {
     @FXML
     private void onEnter(ActionEvent event) {
         ApplicationGPSD app = ApplicationGPSD.getInstance();
+        app.bootstrap();
         String email = emailTxt.getText();
         String pwd = pwdTxt.getText();
         if (!app.doLogin(email, pwd)) {

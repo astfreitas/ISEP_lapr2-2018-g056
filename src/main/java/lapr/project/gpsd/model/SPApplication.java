@@ -25,10 +25,10 @@ public class SPApplication {
      * Constructor: creates new instance of SPApplication if String arguments
      * given are not null or empty
      *
-     * @param name
-     * @param NIF
-     * @param phone
-     * @param email
+     * @param name SP name
+     * @param NIF SP NIF
+     * @param phone SP phone number
+     * @param email SP Email
      */
     public SPApplication(String name, String NIF, String phone, String email) {
         if ((name == null) || (name.isEmpty())

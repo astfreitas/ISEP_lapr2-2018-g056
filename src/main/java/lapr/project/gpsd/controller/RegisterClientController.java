@@ -18,6 +18,7 @@ public class RegisterClientController {
     public RegisterClientController() {
         this.app = ApplicationGPSD.getInstance();
         this.company = app.getCompany();
+        app.bootstrap();
     }
 
     /**

@@ -43,7 +43,7 @@ public class ServiceRequestRegistry {
     public int registerServiceRequest(ServiceRequest serviceRequest) {
         validateServiceRequest(serviceRequest);
         if (validateServiceRequest(serviceRequest)) {
-            int num = 1000 + serviceRequests.size();
+            int num = serviceRequests.size()+1;
             serviceRequest.setNumber(num);
             addServiceRequest(serviceRequest);
             return num;

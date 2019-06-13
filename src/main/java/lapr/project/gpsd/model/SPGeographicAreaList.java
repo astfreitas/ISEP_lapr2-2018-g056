@@ -5,6 +5,7 @@
  */
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ import java.util.List;
 public class SPGeographicAreaList {
     
     private List<GeographicArea> geoAreaList;
+
+    public SPGeographicAreaList() {
+        geoAreaList = new ArrayList<>();
+    }
 
     public List<GeographicArea> getGeoAreaList() {
         return geoAreaList;

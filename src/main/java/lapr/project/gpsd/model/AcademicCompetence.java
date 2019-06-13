@@ -10,7 +10,7 @@ public class AcademicCompetence {
 
         if ((course == null) || (course.isEmpty())
                 || (level == null) || (level.isEmpty())
-                || grade <= 0) {
+                || grade < 0) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
         this.course = course;

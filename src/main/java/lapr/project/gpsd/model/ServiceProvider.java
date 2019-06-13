@@ -58,13 +58,17 @@ public class ServiceProvider {
      * @param spAddress instance of Addres to register the service provider.
      */
     public ServiceProvider(String name, Address spAddress) {
+        if ((name == null) || (spAddress == null) 
+                || (name.isEmpty())) {
+            throw new IllegalArgumentException("None of the arguments can be null or empty.");
+        }
         this.name = name;
         this.spAddress = spAddress;
         spCatList = new SPCategoryList();
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-
+        this.averageRating = 3;
     }
 
     /**
@@ -74,18 +78,19 @@ public class ServiceProvider {
      * @param name Service Provider's name
      * @param nif Service Provider's nif
      * @param email Service Provider's email
+     * @param abrevName Abreviated name
      */
-    public ServiceProvider(String name, String nif, String email) {
-        if ((name == null) || (nif == null)
-                || (email == null)
+    public ServiceProvider(String name, String nif, String email, String abrevName) {
+        if ((name == null) || (nif == null) || (email == null) || (abrevName == null) 
                 || (name.isEmpty()) || (nif.isEmpty())
-                || (email.isEmpty())) {
+                || (email.isEmpty()) || (abrevName.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
         }
 
         this.name = name;
         this.email = email;
         this.nif = nif;
+        this.abbrevName = abrevName;
         spCatList = new SPCategoryList();
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();

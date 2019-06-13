@@ -49,7 +49,7 @@ public class PostalCodeRegistry {
      */
     public PostalCode getMatchingPostalCode(String strCP) {
         for (PostalCode postalCode : postalCodeList) {
-            if (strCP.equals(postalCode.getPostalCode())) {
+            if (postalCode.getPostalCode().equals(strCP)) {
                 return postalCode;
             }
         }

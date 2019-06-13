@@ -42,6 +42,16 @@ public class ServiceOrder {
     }
 
     /**
+     * 
+     * Returns the Service Order number
+     * 
+     * @return Service Order number
+     */
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    /**
      * returns the service provider associated to the service order
      *
      * @return service provider

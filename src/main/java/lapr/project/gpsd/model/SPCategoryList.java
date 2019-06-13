@@ -5,6 +5,7 @@
  */
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,10 @@ import java.util.List;
 public class SPCategoryList {
     
     private List<Category> categorylist;
+
+    public SPCategoryList() {
+        this.categorylist = new ArrayList<>();
+    }
 
     public List<Category> getCategorylist() {
         return categorylist;

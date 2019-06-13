@@ -18,6 +18,7 @@ public class SubmitApplicationController {
      */
     public SubmitApplicationController() {
         this.company = ApplicationGPSD.getInstance().getCompany();
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

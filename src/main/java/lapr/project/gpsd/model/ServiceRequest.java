@@ -23,7 +23,7 @@ public class ServiceRequest {
      * @param client instance of client that requested the service
      * @param address instance of address where the service will be executed
      */
-    ServiceRequest(Client client, Address address) {
+    public ServiceRequest(Client client, Address address) {
         this.client = client;
         this.address = address;
         this.serviceRequestDescriptions = new ArrayList();

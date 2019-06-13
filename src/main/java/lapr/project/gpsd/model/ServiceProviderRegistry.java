@@ -141,6 +141,22 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
+    
+    /**
+     * Searches the Service Provider registry for a SP with a determined number
+     * and returns it.
+     *
+     * @param number Number for the preferred SP
+     * @return Service provider who has the number
+     */
+    public ServiceProvider getServiceProviderByNumber(int number){
+        for (ServiceProvider sp : spList) {
+            if (sp.getNumber() == number) {
+                return sp;
+            }
+        }
+        return null;
+    }
 
     /**
      * returns a list of service providers

@@ -100,6 +100,33 @@ public class ServiceOrderRegistry {
         }
         return serviceOrdersIDList;
     }
+    
+    public ServiceOrder getServiceOrderById(int id){
+        for(ServiceOrder so : serviceOrders){
+            if(so.getOrderNumber() == id){
+                return so;
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
+     * Creates a ServiceOrder from a ServiceAssgnment instance
+     * 
+     * @param servAssi Service assignment
+     * @return Service Order created
+     */
+    public ServiceOrder registerServiceOrder(ServiceAssignment servAssi) {
+        ServiceOrder so = new ServiceOrder(servAssi);
+        if (validate(so)) {
+            int orderNumber = generateServiceOrderNumber();
+            so.setOrderNumber(orderNumber);
+            serviceOrders.add(so);
+            return so;
+        }
+        return null;
+    }
 
     /**
      * Method verifies if the service order is already exists
@@ -111,7 +138,7 @@ public class ServiceOrderRegistry {
         return !serviceOrders.contains(serviceOrder);
     }
 
-    public void exportData(List<ServiceOrder> servOrdList,String filename, FileType adapter) {
+    public void exportData(List<ServiceOrder> servOrdList, String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};
         adapter.export(filename, header);
@@ -134,7 +161,7 @@ public class ServiceOrderRegistry {
      * @return a number to be set in the ServiceOrder.
      */
     private int generateServiceOrderNumber() {
-        return 1000 + serviceOrders.size();
+        return 1 + serviceOrders.size();
     }
 
 }

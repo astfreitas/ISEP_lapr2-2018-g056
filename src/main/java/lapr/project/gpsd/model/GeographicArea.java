@@ -121,7 +121,7 @@ public class GeographicArea {
      * @return True/false if the Geographic area has/hasn't the ID
      */
     public boolean hasId(String id) {
-        return this.geoId.equalsIgnoreCase(id);
+        return this.designation.equalsIgnoreCase(id);
     }
 
     /**

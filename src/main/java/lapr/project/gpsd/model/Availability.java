@@ -30,20 +30,20 @@ public class Availability {
      * Constructor for Availability receiving all the atributos by method
      * parameters
      *
-     * @param date Date
+     * @param sDate Date
      * @param bTime Begin Time
      * @param eTime End Time
      */
-    public Availability(LocalDate date, LocalTime bTime, LocalTime eTime) {
-        LocalDate todayDate = LocalDate.now();
-        LocalTime nowTime = LocalTime.now();
-        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)
-                || bTime.getHour() == 0 || eTime.getHour() < 6
-                || eTime.isAfter(bTime) || eTime.equals(bTime)
-                || date.isBefore(todayDate) || bTime.isBefore(nowTime)) {
-            throw new IllegalArgumentException("Invalid availability.");
-        }
-        this.date = date;
+    public Availability(LocalDate sDate, LocalTime bTime, LocalTime eTime) {
+//        LocalDate todayDate = LocalDate.now();
+//        LocalTime nowTime = LocalTime.now();
+//        if (sDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)
+//                || bTime.getHour() == 0 || eTime.getHour() < 6
+//                || eTime.isBefore(bTime) || eTime.equals(bTime)
+//                || sDate.isBefore(todayDate)) {
+//            throw new IllegalArgumentException("Invalid availability.");
+//        }
+        this.date = sDate;
         this.sTime = bTime;
         this.eTime = eTime;
     }

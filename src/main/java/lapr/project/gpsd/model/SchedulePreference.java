@@ -27,11 +27,11 @@ public class SchedulePreference {
     public SchedulePreference(int order, LocalDate date, LocalTime hour) {
         LocalDate todayDate = LocalDate.now();
         LocalTime todayTime = LocalTime.now();
-        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
-                || hour.getHour() == 0 || hour.getHour() < 6
-                || date.isBefore(todayDate) || hour.isBefore(todayTime)) {
-            throw new IllegalArgumentException("Invalid availability.");
-        }
+//        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
+//                || hour.getHour() == 0 || hour.getHour() < 6
+//                || date.isBefore(todayDate) || hour.isBefore(todayTime)) {
+//            throw new IllegalArgumentException("Invalid availability.");
+//        }
         this.order = order;
         this.date = date;
         this.hour = hour;
