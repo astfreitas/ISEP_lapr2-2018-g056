@@ -398,7 +398,7 @@ public class ApplicationGPSD {
 
         //Service Orders
         //APadrao
-        ServiceProvider apadrao = this.company.getServiceProviderRegistry().getServiceProviderByEmail("aPadrao@gmail.com");
+        ServiceProvider apadrao = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001);
         ServiceRequest servReq1 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(1);
         ServiceRequestDescription servRD1 = servReq1.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref1 = servReq1.getSchedulePreferences().get(1);
@@ -407,7 +407,7 @@ public class ApplicationGPSD {
         this.company.getServiceOrderRegistry().registerServiceOrder(sa1);
 
         //JSantos
-        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByEmail("jaquina@hotmail");
+        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003);
         ServiceRequest servReq2 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(4);
         ServiceRequestDescription servRD2 = servReq2.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref2 = servReq2.getSchedulePreferences().get(0);
@@ -416,7 +416,7 @@ public class ApplicationGPSD {
         this.company.getServiceOrderRegistry().registerServiceOrder(sa2);
 
         //MSilva
-        ServiceProvider msilva = this.company.getServiceProviderRegistry().getServiceProviderByEmail("mSilva@hotmail.com");
+        ServiceProvider msilva = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002);
         ServiceRequest servReq3 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(5);
         ServiceRequestDescription servRD3 = servReq3.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref3 = servReq3.getSchedulePreferences().get(0);

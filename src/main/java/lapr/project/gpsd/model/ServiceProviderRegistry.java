@@ -134,7 +134,7 @@ public class ServiceProviderRegistry {
      * @param email Email for the preferred SP
      * @return Service provider who has the email
      */
-    public ServiceProvider getServiceProviderByEmail(String email) {
+    public ServiceProvider getServiceProviderByNumber(String email) {
         for (ServiceProvider sp : spList) {
             if (sp.getEmail().equals(email)) {
                 return sp;
