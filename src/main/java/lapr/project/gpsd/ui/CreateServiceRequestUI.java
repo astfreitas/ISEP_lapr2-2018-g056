@@ -1,28 +1,35 @@
 package lapr.project.gpsd.ui;
 
+import javafx.scene.control.Alert;
 import lapr.project.gpsd.controller.CreateServiceRequestController;
+import lapr.project.utils.UIUtils;
 
 public class CreateServiceRequestUI {
+    
+    private MainMenuClientUI mainMenu;
     private Main mainApp;
     private CreateServiceRequestController controller;
-    private MainMenuClientUI mainMenu;
     
-    public CreateServiceRequestUI(Main mainApp) {
-        this.mainApp = mainApp;
-        this.controller = new CreateServiceRequestController();
-    }
-
     public CreateServiceRequestUI(MainMenuClientUI mainMenu, Main mainApp) {
         this.mainMenu = mainMenu;
         this.mainApp = mainApp;
         this.controller = new CreateServiceRequestController();
-
+        try {
+            controller.newRequest();
+        } catch (Exception e) {
+            this.mainMenu.backToMainMenu();
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
     }
     
-    public Main getMainApp() {
-        return this.mainApp;
+    public MainMenuClientUI getMainMenu() {
+        return this.mainMenu;
     }
 
+    public Main getMainApp() {
+        return mainApp;
+    }
+    
     public CreateServiceRequestController getController() {
         return this.controller;
     }
