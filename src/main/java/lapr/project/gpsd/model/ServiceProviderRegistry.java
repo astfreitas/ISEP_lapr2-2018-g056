@@ -113,10 +113,10 @@ public class ServiceProviderRegistry {
      * Registers the Service Provider as a User and adds it to the Registry
      *
      * @param sp Instande of Service provider to be registered
-     * @param pwd Service provider's password
      * @return True/false if the operation succeeds/fails
      */
     public boolean registerServiceProvider(ServiceProvider sp) {
+        generateServiceProviderNumber(sp);
         String spInstEmail = generateServiceProviderInstEmail(sp);
         sp.setEmail(spInstEmail);
         String abbrevName = sp.getAbbrevName();
