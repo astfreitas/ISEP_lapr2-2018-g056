@@ -33,7 +33,7 @@ public class SubmitApplicationUI3 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String[] levels = {"High school", "Undergraduate", "Graduate", "Doctor"};
+        String[] levels = {"High school", "Bachelor", "Master", "PhD"};
         levelComboBox.getItems().addAll(levels);
         for (int i = 1; i < 20; i++) {
             gradeComboBox.getItems().add((double) i);
