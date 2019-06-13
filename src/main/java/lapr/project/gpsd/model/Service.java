@@ -159,10 +159,17 @@ public abstract class Service implements ServiceCostCalculation {
         Service obj = (Service) o;
         return (Objects.equals(id, obj.id));
     }
-
+    /**
+     * Returns a description for the Service Object  by string.
+     * Mostly used to display information to CreateServiceRequest UC.
+     * @return description for the Service Object  by string
+     */
     @Override
     public String toString() {
-        return "Service:" + "\nId: " + id + "\nBrief description: " + briefDescription + "\nComplete description: " + fullDescription + "\nCost (hour) :" + hourlyCost + "\nCategory: \n" + category;
+        return "Service Id: " + id + " - " + briefDescription +
+                " - Cost (hour): " + hourlyCost +
+                "\nComplete description: " + fullDescription + 
+                 category;
     }
 
     
