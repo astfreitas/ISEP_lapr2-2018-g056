@@ -116,7 +116,7 @@ public class ServiceOrder {
     public String toString() {
         return "Service Order Number: " + orderNumber + " | " + status
                 + "| for: " + servProvider.getAbbrevName() + servRequest
-                + servRequestDesc + " | |SchedulePreference is " + schedPreference;
+                + servRequestDesc + " | SchedulePreference is " + schedPreference;
     }
 
 }

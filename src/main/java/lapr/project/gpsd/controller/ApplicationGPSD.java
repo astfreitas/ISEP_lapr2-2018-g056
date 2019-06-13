@@ -346,7 +346,7 @@ public class ApplicationGPSD {
         //Service Requests
         Client cli1 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp1 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
-        ServiceRequest sq1 = this.company.getServiceRequestRegistry().newServiceRequest(cli1, cli1.getAddress("Gondomar", cp1, "Rua D. João de França"));
+        ServiceRequest sq1 = this.company.getServiceRequestRegistry().newServiceRequest(cli1, cli1.getAddress("Gondomar", cp1, "Rua D. João de França, nº 1"));
         FixedService fservice1 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
         sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close tap", (int) fservice1.getPredeterminedDuration());
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 3), LocalTime.of(9, 0));
@@ -355,7 +355,7 @@ public class ApplicationGPSD {
 
         Client cli2 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp2 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
-        ServiceRequest sq2 = this.company.getServiceRequestRegistry().newServiceRequest(cli2, cli2.getAddress("Gondomar", cp2, "Rua D. João de França"));
+        ServiceRequest sq2 = this.company.getServiceRequestRegistry().newServiceRequest(cli2, cli2.getAddress("Gondomar", cp2, "Rua D. João de França, nº 1"));
         sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("2"), "Repair ducts", 60);
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 23), LocalTime.of(9, 0));
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(22, 0));
@@ -363,7 +363,7 @@ public class ApplicationGPSD {
 
         Client cli3 = this.company.getClientRegistry().getClientByNIF("110542349");
         PostalCode cp3 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4250-100");
-        ServiceRequest sq3 = this.company.getServiceRequestRegistry().newServiceRequest(cli3, cli3.getAddress("Porto", cp3, "R. do Carvalhido"));
+        ServiceRequest sq3 = this.company.getServiceRequestRegistry().newServiceRequest(cli3, cli3.getAddress("Porto", cp3, "R. do Carvalhido, nº 9"));
         sq3.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("3"), "Paint gate", 120);
         sq3.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(10, 0));
         sq3.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(14, 30));
@@ -371,7 +371,7 @@ public class ApplicationGPSD {
 
         Client cli4 = this.company.getClientRegistry().getClientByNIF("110542349");
         PostalCode cp4 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4250-100");
-        ServiceRequest sq4 = this.company.getServiceRequestRegistry().newServiceRequest(cli4, cli4.getAddress("Porto", cp4, "R. do Carvalhido"));
+        ServiceRequest sq4 = this.company.getServiceRequestRegistry().newServiceRequest(cli4, cli4.getAddress("Porto", cp4, "R. do Carvalhido, nº 9"));
         sq4.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("4"), "Prepare dinner", 120);
         sq4.addSchedulePreference(LocalDate.of(2019, 6, 6), LocalTime.of(19, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq4);
