@@ -47,7 +47,6 @@ public class EvaluateSPController {
      * instance of SPStatistics with all the chosen Service Provider statistics
      *
      * @param email
-     * @return SPStatistics for a given Service Provider (given it's email)
      */
     public void newSPStatistics(String email) {
         this.sp = spr.getServiceProviderByEmail(email);
