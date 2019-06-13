@@ -1,8 +1,10 @@
 package lapr.project.gpsd.model;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AdapterCSVTest {
     
@@ -21,10 +23,10 @@ public class AdapterCSVTest {
     /**
      * Test of export method, of class AdapterCSV.
      */
-    @Disabled
+    @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "";
+        String filename = "./src/main/resources/testFiles/testExportCSV.csv";
         String[] line = {"teste1", "teste2", "teste3"};
         AdapterCSV instance = new AdapterCSV();
         instance.export(filename, line);

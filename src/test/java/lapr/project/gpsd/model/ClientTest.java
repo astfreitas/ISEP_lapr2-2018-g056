@@ -52,9 +52,9 @@ public class ClientTest {
     @Test
     public void testAddAddress() {
         System.out.println("addAddress");
-        Address address = null;
-        Client instance = null;
-        boolean expResult = false;
+        Address address = new Address("localTest", "4000-007", "addressTest");
+        Client instance = new Client("testName", "testNif", "testTel", "testEmail");
+        boolean expResult = true;
         boolean result = instance.addAddress(address);
         assertEquals(expResult, result);
     }
@@ -65,8 +65,8 @@ public class ClientTest {
     @Test
     public void testRemoveAddress() {
         System.out.println("removeAddress");
-        Address address = null;
-        Client instance = null;
+        Address address = new Address("localTest", "4000-007", "addressTest");
+        Client instance = new Client("testName", "testNif", "testTel", "testEmail");
         boolean expResult = false;
         boolean result = instance.removeAddress(address);
         assertEquals(expResult, result);
@@ -103,10 +103,10 @@ public class ClientTest {
     @Test
     public void testNewAddress() {
         System.out.println("newAddress");
-        String local = "";
-        String postalCode = "";
-        String address = "";
-        Address expResult = null;
+        String local = "localTest";
+        String postalCode = "4000-007";
+        String address = "addressTest";
+        Address expResult = new Address(local, postalCode, address);
         Address result = Client.newAddress(local, postalCode, address);
         assertEquals(expResult, result);
     }
@@ -162,13 +162,11 @@ public class ClientTest {
     @Test
     public void testValidateAddress() {
         System.out.println("validateAddress");
-        Address address = null;
-        Client instance = null;
-        boolean expResult = false;
+        Address address = new Address("localTest", "4000-007", "addressTest");;
+        Client instance = new Client("testName", "testNif", "testTel", "testEmail");
+        boolean expResult = true;
         boolean result = instance.validateAddress(address);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

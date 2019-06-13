@@ -10,20 +10,21 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  *
  * @author joaoferreira
  */
 public class AdapterXMLTest {
-    
+
     /**
      * Test of export method, of class AdapterXML.
      */
-    @Disabled
+    @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "";
-        String[] line = null;
+        String filename = "./src/main/resources/testFiles/testExportXML.xml";
+        String[] line = {"teste", "test2", "test3", "test4", "test5", "test6"};
         AdapterXML instance = new AdapterXML();
         instance.export(filename, line);
     }
@@ -39,5 +40,5 @@ public class AdapterXMLTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
-    
+
 }
