@@ -55,9 +55,10 @@
                                     <ComboBox fx:id="minuteComboBox" prefWidth="150.0" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="381.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="115.0" prefWidth="381.0" spacing="15.0">
                                  <children>
                                     <Button fx:id="addSchedulePrefBtn" mnemonicParsing="false" onAction="#handleAddSchedulePrefBtn" text="Add Schedule Preference" />
+                                    <Button fx:id="removeSelected" mnemonicParsing="false" onAction="#handleRemoveSelected" text="Remove Selected" />
                                  </children>
                               </HBox>
                            </children>

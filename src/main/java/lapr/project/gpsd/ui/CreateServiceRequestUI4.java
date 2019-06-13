@@ -19,7 +19,7 @@ import lapr.project.utils.UIUtils;
 public class CreateServiceRequestUI4 implements Initializable {
 
     private CreateServiceRequestUI createServiceRequestUI;
-    
+
     @FXML
     private Button cancelBtn;
     @FXML
@@ -34,6 +34,8 @@ public class CreateServiceRequestUI4 implements Initializable {
     private Button addSchedulePrefBtn;
     @FXML
     private ListView<SchedulePreference> scheduleLst;
+    @FXML
+    private Button removeSelected;
 
     /**
      * Initializes the controller class.
@@ -41,7 +43,7 @@ public class CreateServiceRequestUI4 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
@@ -50,13 +52,13 @@ public class CreateServiceRequestUI4 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        if(!this.createServiceRequestUI.getController().validate()) {
+        if (!this.createServiceRequestUI.getController().validate()) {
             UIUtils.createAlert("You must have atleast 1 Schedule Preference", "SchedulePreference Error", Alert.AlertType.ERROR);
         } else {
             this.createServiceRequestUI.toCreateServiceRequestControllerScene5();
-        }        
+        }
     }
-    
+
     @FXML
     private void handleAddSchedulePrefBtn(ActionEvent event) {
         LocalDate scheduleDay = datePicker.getValue();
@@ -64,18 +66,18 @@ public class CreateServiceRequestUI4 implements Initializable {
         int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());
         LocalTime scheduleTime = LocalTime.of(hour, min, 0);
         boolean schedulePreferenceAdded = this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
-        
-        if(!schedulePreferenceAdded) {
+
+        if (!schedulePreferenceAdded) {
             UIUtils.createAlert("A schedule preference with the same attributes already exist.", "Duplicated Preference.", Alert.AlertType.ERROR);
         }
         updateScheduleList();
     }
-    
+
     public void setCreateServiceRequestSceneUI(CreateServiceRequestUI createServiceRequestUI) {
         this.createServiceRequestUI = createServiceRequestUI;
     }
-    
-    public void setupSchedulePreferenceScene() {        
+
+    public void setupSchedulePreferenceScene() {
         datePicker.setValue(LocalDate.now());
         for (int i = 6; i < 24; i++) {
             String hour = "";
@@ -100,7 +102,22 @@ public class CreateServiceRequestUI4 implements Initializable {
         List<SchedulePreference> schedulePreferences = this.createServiceRequestUI.getController().getServiceRequest().getSchedulePreferences();
         scheduleLst.getItems().addAll(schedulePreferences);
     }
-    
-    
-    
+
+    /**
+     * Handles the Remove Slected button action event by removing the selected
+     * instance in the schedule list
+     *
+     * @param event RemoveSelected button click
+     */
+    @FXML
+    private void handleRemoveSelected(ActionEvent event) {
+        try {
+            if (createServiceRequestUI.getController().getServiceRequest().removeSchedulePreferenceFromList(scheduleLst.getSelectionModel().getSelectedItem())) {
+                scheduleLst.getItems().remove(scheduleLst.getSelectionModel().getSelectedItem());
+            }
+        } catch (Exception e) {
+            UIUtils.createAlert("An error ocurred trying to remove the selected Schedule Preference", "Error removing", Alert.AlertType.ERROR);
+        }
+    }
+
 }

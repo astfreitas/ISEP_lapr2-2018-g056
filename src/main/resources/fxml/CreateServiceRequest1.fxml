@@ -25,7 +25,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Label text="Please specify an Address" />
+                  <Label text="Please select an Address" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="40.0">
