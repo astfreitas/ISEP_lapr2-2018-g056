@@ -2,7 +2,7 @@ package lapr.project.gpsd.model;
 
 public class AdapterXML implements FileType{
     
-    private String adapterFileType = "XML";
+    private String adapterFileType = "xml";
 
     public AdapterXML() {
     }

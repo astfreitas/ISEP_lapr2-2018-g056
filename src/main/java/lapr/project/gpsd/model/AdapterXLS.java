@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.*;
 
 public class AdapterXLS implements FileType {
     
-    private String adapterFileType = "XLS";
+    private String adapterFileType = "xls";
     private int rowNumber;
     private Workbook workbook;
     private Sheet sheet;

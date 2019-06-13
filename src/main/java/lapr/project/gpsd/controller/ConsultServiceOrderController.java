@@ -14,6 +14,7 @@ import lapr.project.gpsd.model.ServiceProviderRegistry;
 import lapr.project.gpsd.utils.Constants;
 
 public class ConsultServiceOrderController {
+
     /**
      * Instance for the Company
      */
@@ -46,11 +47,11 @@ public class ConsultServiceOrderController {
      * End date for the search
      */
     private LocalDate eDate;
-    
+
     /**
-     * Constructos for the ConsultServiceOrderController - checks the current 
-     * session logged and returns the company instances and initiates a new empty
-     * array list for the class atribute servOrderList to be used.
+     * Constructos for the ConsultServiceOrderController - checks the current
+     * session logged and returns the company instances and initiates a new
+     * empty array list for the class atribute servOrderList to be used.
      */
     public ConsultServiceOrderController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_SERVICE_PROVIDER)) {
@@ -59,9 +60,11 @@ public class ConsultServiceOrderController {
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.servOrderList = new ArrayList<>();
     }
+
     /**
-     * Returns a list of objects of ServiceOrder from the Registry  searching
-     * by the given start and end dates.
+     * Returns a list of objects of ServiceOrder from the Registry searching by
+     * the given start and end dates.
+     *
      * @param sDate start date
      * @param eDate end date
      * @return List of ServiceOrders available between the start and end date
@@ -79,8 +82,10 @@ public class ConsultServiceOrderController {
         this.servOrderList.addAll(this.sor.getServiceOrderByDateAndSP(this.sDate, this.eDate, sp));
         return servOrderList;
     }
+
     /**
      * Returns the list objects of FileType available in the FileTypeRegistry
+     *
      * @return List of FileType objects
      */
     public ArrayList<FileType> getFileTypes() {
@@ -88,47 +93,53 @@ public class ConsultServiceOrderController {
         this.fileTypeList = fileTypeRegistry.getFileTypeList();
         return this.fileTypeList;
     }
+
     /**
-     * Method start the execution of the export process checking the rigth adapter
-     * for the export, setting the name of the file by the number of the SP and the
-     * dates selected to export the service orders
+     * Method start the execution of the export process checking the rigth
+     * adapter for the export, setting the name of the file by the number of the
+     * SP and the dates selected to export the service orders
+     *
      * @param fileType filepty to export
-     * @return true and only if the export was perfomed and the created file 
+     * @return true and only if the export was perfomed and the created file
      * exists, otherwise returns false
      */
     public boolean exportServiceOrdersByFileType(FileType fileType) {
         FileType adapter = this.fileTypeRegistry.getExportAdapterByFileType(fileType);
-        String filename = "./"+sp.getNumber()+"_"+sDate.toString()+"_"+eDate.toString();
-               
-        sor.exportData(servOrderList,filename, adapter);
+        String filename = "./src/main/resources/exportedFiles/" + sp.getNumber() + "_" + sDate.toString() + "_" + eDate.toString() + "." + fileType.toString();
 
-       File file = new File(filename);
-       return file.exists();
+        sor.exportData(servOrderList, filename, adapter);
+
+        File file = new File(filename);
+        return file.exists();
     }
-    
+
     /**
      * Sets the Start Date and End Date for the use case in controller
+     *
      * @param sDate start date
      * @param eDate end date
      */
-    public void setDatesToSearch(LocalDate sDate, LocalDate eDate){
+    public void setDatesToSearch(LocalDate sDate, LocalDate eDate) {
         this.sDate = sDate;
         this.eDate = eDate;
     }
+
     /**
      * Returns the StartDate saved in the controller
+     *
      * @return startDate
      */
     public LocalDate getsDate() {
         return sDate;
     }
+
     /**
      * Returns the End Date saved in the controller
+     *
      * @return endDate
      */
     public LocalDate geteDate() {
         return eDate;
     }
-    
-    
+
 }
