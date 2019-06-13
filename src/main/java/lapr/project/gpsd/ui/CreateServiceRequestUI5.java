@@ -60,8 +60,10 @@ public class CreateServiceRequestUI5 implements Initializable {
         int serviceRequestNumber = this.createServiceRequestUI.getController().registerRequest();
         if(serviceRequestNumber>0) {
             UIUtils.createAlert("Service Request Created with success", "Service order was successfully created, register number : " + serviceRequestNumber, Alert.AlertType.INFORMATION);
+            this.createServiceRequestUI.getMainMenu().backToMainMenu();
         } else {
-            UIUtils.createAlert("Error occured during the export of Service Orders", "Create New Service Order Error", Alert.AlertType.ERROR);
+            UIUtils.createAlert("Error occured while creating the Service Request", "Create New Service Order Error", Alert.AlertType.ERROR);
+            this.createServiceRequestUI.getMainMenu().backToMainMenu();
         }
         
     }
@@ -76,11 +78,11 @@ public class CreateServiceRequestUI5 implements Initializable {
         serviceCol.setCellValueFactory(new PropertyValueFactory<>("propertyService"));
         durationCol.setCellValueFactory(new PropertyValueFactory<>("propertyDuration"));
         costCol.setCellValueFactory(new PropertyValueFactory<>("propertyCost"));
-        ServiceRequest so = this.createServiceRequestUI.getController().validate();
         addServiceTbl.getItems().clear();
-        addServiceTbl.getItems().addAll(so.getServiceRequestDescriptions());        
+        ServiceRequest sr = createServiceRequestUI.getController().getServiceRequest();
+        addServiceTbl.getItems().addAll(sr.getServiceRequestDescriptions());        
         scheduleLst.getItems().clear();
-        scheduleLst.getItems().addAll(so.getSchedulePreferences());
+        scheduleLst.getItems().addAll(sr.getSchedulePreferences());
         double travelExpenses = this.createServiceRequestUI.getController().getTravelExpenses();
         double total = this.createServiceRequestUI.getController().getTotalCost();
         travelExpensesLbl.setText(String.format("%.1f €", travelExpenses));

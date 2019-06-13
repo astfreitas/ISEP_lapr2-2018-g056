@@ -100,10 +100,10 @@ public class ServiceOrderRegistry {
         }
         return serviceOrdersIDList;
     }
-    
-    public ServiceOrder getServiceOrderById(int id){
-        for(ServiceOrder so : serviceOrders){
-            if(so.getOrderNumber() == id){
+
+    public ServiceOrder getServiceOrderById(int id) {
+        for (ServiceOrder so : serviceOrders) {
+            if (so.getOrderNumber() == id) {
                 return so;
             }
         }
@@ -113,7 +113,7 @@ public class ServiceOrderRegistry {
     /**
      *
      * Creates a ServiceOrder from a ServiceAssgnment instance
-     * 
+     *
      * @param servAssi Service assignment
      * @return Service Order created
      */
@@ -141,7 +141,10 @@ public class ServiceOrderRegistry {
     public void exportData(List<ServiceOrder> servOrdList, String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};
-        adapter.export(filename, header);
+        if (adapter instanceof AdapterXML) {
+        } else {
+            adapter.export(filename, header);
+        }
 
         for (ServiceOrder servOrder : servOrdList) {
             String clientName = servOrder.getServiceRequest().getClient().getName();

@@ -90,7 +90,7 @@ public class ApplicationGPSD {
         this.authentication.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
 
         this.authentication.registerUserWithRole("adm1", "adm1@isep.ipp.pt", "123", Constants.ROLE_ADMINISTRATIVE);
-            this.authentication.registerUserWithRole("hro1", "hro1@isep.ipp.pt", "123", Constants.ROLE_HRO);
+        this.authentication.registerUserWithRole("hro1", "hro1@isep.ipp.pt", "123", Constants.ROLE_HRO);
 
         //Clients
         ClientRegistry rc = this.company.getClientRegistry();
@@ -115,7 +115,7 @@ public class ApplicationGPSD {
         Category cat1 = new Category("1", "Plumber");
         Category cat2 = new Category("2", "Locksmith");
         Category cat3 = new Category("3", "Automotive Mechanic");
-        Category cat4 = new Category("4", "Cooker");
+        Category cat4 = new Category("4", "Cook");
         Category cat5 = new Category("5", "Painter");
         this.company.getCategoryRegistry().registerCategory(cat1);
         this.company.getCategoryRegistry().registerCategory(cat2);
@@ -129,13 +129,14 @@ public class ApplicationGPSD {
         spa1.setAddress(add1);
         AcademicCompetence ac1 = new AcademicCompetence("Bachelor", "N/A", 0);
         spa1.addAcademicCompetence(ac1);
-        ProfessionalCompetence pc1 = new ProfessionalCompetence("Professional Training Course of Automotive Mechanics of the Center for Professional Training of Automotive Repair");
+        ProfessionalCompetence pc1 = new ProfessionalCompetence("Professional Training Course of Automotive Mechanic of the Center for Professional Training of Automotive Repair");
         spa1.addProfessionalCompetence(pc1);
         ProfessionalCompetence pc2 = new ProfessionalCompetence("Professional license for light and heavy vehicles");
         spa1.addProfessionalCompetence(pc2);
-        ProfessionalCompetence pc3 = new ProfessionalCompetence("Car repair");
+        ProfessionalCompetence pc3 = new ProfessionalCompetence("Advanced Course in Automotive Mechanics");
         spa1.addProfessionalCompetence(pc3);
         spa1.addCategory(this.company.getCategoryRegistry().getCatById("1"));
+        spa1.addCategory(this.company.getCategoryRegistry().getCatById("3"));
         this.company.getSPApplicationRegistry().registerApplication(spa1);
 
         SPApplication spa2 = new SPApplication("Maria Silva", "510324896", "928735537", "mSilva@hotmail.com");
@@ -147,13 +148,13 @@ public class ApplicationGPSD {
         spa2.addAcademicCompetence(ac2);
         spa2.addAcademicCompetence(ac3);
         spa2.addAcademicCompetence(ac4);
-        ProfessionalCompetence pc4 = new ProfessionalCompetence("Advanced Course of Ironmongery and Locksmithing");
+        ProfessionalCompetence pc4 = new ProfessionalCompetence("Advanced Course of plumbing and locksmithing");
         spa2.addProfessionalCompetence(pc4);
         ProfessionalCompetence pc5 = new ProfessionalCompetence("Professional license for light and heavy vehicles");
         spa2.addProfessionalCompetence(pc5);
         ProfessionalCompetence pc6 = new ProfessionalCompetence("Cooking Course");
         spa2.addProfessionalCompetence(pc6);
-        spa2.addCategory(this.company.getCategoryRegistry().getCatById("1"));
+        spa2.addCategory(this.company.getCategoryRegistry().getCatById("5"));
         spa2.addCategory(this.company.getCategoryRegistry().getCatById("2"));
         spa2.addCategory(this.company.getCategoryRegistry().getCatById("4"));
         this.company.getSPApplicationRegistry().registerApplication(spa2);
@@ -163,7 +164,7 @@ public class ApplicationGPSD {
         spa3.setAddress(add3);
         AcademicCompetence ac5 = new AcademicCompetence("Bachelor", "N/A", 0);
         spa3.addAcademicCompetence(ac5);
-        ProfessionalCompetence pc7 = new ProfessionalCompetence("Advanced Course of Ironmongery and Locksmithing");
+        ProfessionalCompetence pc7 = new ProfessionalCompetence("Advanced Course of plumbing and locksmithing");
         spa3.addProfessionalCompetence(pc7);
         ProfessionalCompetence pc8 = new ProfessionalCompetence("Advanced Course in Automotive Mechanics");
         spa3.addProfessionalCompetence(pc8);
@@ -175,7 +176,7 @@ public class ApplicationGPSD {
         SPApplication spa4 = new SPApplication("Serafim Santos", "230324822", "223654987", "sSantos@gmail.com");
         Address add4 = new Address("Vila Nova De Gaia", "4430-601", "R. Alberto Alves Tavares");
         spa4.setAddress(add4);
-        AcademicCompetence ac6 = new AcademicCompetence("Bachelor", "N/A", 0);
+        AcademicCompetence ac6 = new AcademicCompetence("High School", "N/A", 0);
         spa4.addAcademicCompetence(ac6);
         ProfessionalCompetence pc9 = new ProfessionalCompetence("Painter course");
         spa4.addProfessionalCompetence(pc9);
@@ -184,27 +185,27 @@ public class ApplicationGPSD {
         this.company.getSPApplicationRegistry().registerApplication(spa4);
 
         //Services
-        FixedService fs1 = new FixedService("1", "Light plumbing", "Install taps", 100, this.company.getCategoryRegistry().getCatById("1"));
+        FixedService fs1 = new FixedService("1", "Light plumbing", "Install water tap", 100, this.company.getCategoryRegistry().getCatById("1"));
         fs1.setPredeterminedDuration(60);
         this.company.getServiceRegistry().registerService(fs1);
-        LimitedService ls1 = new LimitedService("2", "Heavy plumbing", "Repair ducts", 40, this.company.getCategoryRegistry().getCatById("1"));
+        LimitedService ls1 = new LimitedService("2", "Heavy plumbing", "Pipeline repair", 40, this.company.getCategoryRegistry().getCatById("1"));
         this.company.getServiceRegistry().registerService(ls1);
-        LimitedService ls2 = new LimitedService("3", "Paint gate", "Paint iron gate", 60, this.company.getCategoryRegistry().getCatById("5"));
+        LimitedService ls2 = new LimitedService("3", "Gate painting", "Gate painting", 60, this.company.getCategoryRegistry().getCatById("5"));
         this.company.getServiceRegistry().registerService(ls2);
         ExtendableService es1 = new ExtendableService("4", "Prepare dinner", "Prepare dinner and clean kitchen", 80, this.company.getCategoryRegistry().getCatById("4"));
         this.company.getServiceRegistry().registerService(es1);
-        LimitedService ls3 = new LimitedService("5", "Car repair", "Car engine repair", 80, this.company.getCategoryRegistry().getCatById("3"));
+        LimitedService ls3 = new LimitedService("5", "Vehicle repair", "Repair vehicle engine", 80, this.company.getCategoryRegistry().getCatById("3"));
         this.company.getServiceRegistry().registerService(ls3);
-        FixedService fs2 = new FixedService("6", "Paint gate", "Paint gate", 90, this.company.getCategoryRegistry().getCatById("5"));
+        FixedService fs2 = new FixedService("6", "Gate painting", "Gate painting", 90, this.company.getCategoryRegistry().getCatById("5"));
         fs2.setPredeterminedDuration(60);
         this.company.getServiceRegistry().registerService(fs2);
 
         //Geographic Areas
-        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Gondomar-1", 50, "4420-002", 30000));
+        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Gondomar-1", 50, "4420-002", 10000));
         this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Gondomar-2", 10, "4420-570", 5000));
         this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Gondomar-3", 20, "4435-685", 8000));
-        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Porto-1", 30, "4250-108", 20000));
-        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Maia-1", 40, "4470-526", 20000));
+        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Porto-1", 30, "4250-108", 10000));
+        this.company.getGeographicAreaRegistry().registerGeographicArea(this.company.getGeographicAreaRegistry().newGeographicArea("Maia-1", 40, "4470-526", 5000));
 
         //Service Providers
         Address add5 = new Address("N/A", "4415-995", "N/A");
@@ -221,7 +222,7 @@ public class ApplicationGPSD {
         ServiceProvider sp2 = new ServiceProvider("Maria Silva", "510324896", "mSilva@hotmail.com", "Maria Das Neves Silva");
         sp2.setNumber(10002);
         sp2.setSpAddress(add6);
-        sp2.addCategory(this.company.getCategoryRegistry().getCatById("3"));
+        sp2.addCategory(this.company.getCategoryRegistry().getCatById("2"));
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("4"));
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("5"));
         sp2.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Porto-1"));
@@ -252,127 +253,115 @@ public class ApplicationGPSD {
         LocalDate date2 = LocalDate.of(2019, 6, 4);
         LocalDate date3 = LocalDate.of(2019, 6, 5);
         LocalTime time1 = LocalTime.of(9, 0);
-        LocalTime time2 = LocalTime.of(23, 55);
+        LocalTime time2 = LocalTime.of(23, 0);
         Availability aval1 = new Availability(date1, time1, time2);
         Availability aval2 = new Availability(date2, time1, time2);
         Availability aval3 = new Availability(date3, time1, time2);
-        LocalDate date4 = LocalDate.of(2019, 6, 23);
         LocalDate date5 = LocalDate.of(2019, 6, 24);
         LocalDate date6 = LocalDate.of(2019, 6, 25);
         LocalTime time3 = LocalTime.of(9, 0);
         LocalTime time4 = LocalTime.of(13, 0);
-        Availability aval4 = new Availability(date4, time3, time4);
         Availability aval5 = new Availability(date5, time3, time4);
         Availability aval6 = new Availability(date6, time3, time4);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval1);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval2);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval3);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval4);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval5);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10001).getSpAvailabilityList().addAvailability(aval6);
 
         LocalDate date7 = LocalDate.of(2019, 6, 6);
         LocalDate date8 = LocalDate.of(2019, 6, 7);
         LocalTime time5 = LocalTime.of(9, 0);
-        LocalTime time6 = LocalTime.of(23, 55);
+        LocalTime time6 = LocalTime.of(23, 0);
         Availability aval7 = new Availability(date7, time5, time6);
         Availability aval8 = new Availability(date8, time5, time6);
-        LocalDate date9 = LocalDate.of(2019, 6, 23);
         LocalDate date10 = LocalDate.of(2019, 6, 24);
         LocalDate date11 = LocalDate.of(2019, 6, 25);
         LocalTime time7 = LocalTime.of(9, 0);
-        LocalTime time8 = LocalTime.of(22, 55);
-        Availability aval9 = new Availability(date9, time7, time8);
+        LocalTime time8 = LocalTime.of(22, 0);
         Availability aval10 = new Availability(date10, time7, time8);
         Availability aval11 = new Availability(date11, time7, time8);
         LocalDate date12 = LocalDate.of(2019, 6, 28);
         LocalDate date13 = LocalDate.of(2019, 6, 29);
-        LocalDate date14 = LocalDate.of(2019, 6, 30);
         LocalTime time9 = LocalTime.of(20, 0);
         LocalTime time10 = LocalTime.of(23, 59);
         LocalTime time11 = LocalTime.of(6, 0);
         LocalTime time12 = LocalTime.of(18, 0);
         Availability aval12 = new Availability(date12, time9, time10);
         Availability aval13 = new Availability(date13, time9, time10);
-        Availability aval14 = new Availability(date14, time11, time12);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval7);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval8);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval9);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval10);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval11);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval12);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval13);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval14);
 
         LocalDate date15 = LocalDate.of(2019, 6, 7);
         LocalDate date16 = LocalDate.of(2019, 6, 8);
         LocalDate date17 = LocalDate.of(2019, 6, 9);
+        LocalDate date180 = LocalDate.of(2019, 6, 10);
         LocalTime time13 = LocalTime.of(9, 0);
-        LocalTime time14 = LocalTime.of(23, 55);
+        LocalTime time14 = LocalTime.of(23, 0);
         Availability aval15 = new Availability(date15, time13, time14);
         Availability aval16 = new Availability(date16, time13, time14);
         Availability aval17 = new Availability(date17, time13, time14);
+        Availability aval180 = new Availability(date180, time13, time14);
         LocalDate date18 = LocalDate.of(2019, 6, 28);
         LocalDate date19 = LocalDate.of(2019, 6, 29);
-        LocalDate date20 = LocalDate.of(2019, 6, 30);
         LocalTime time15 = LocalTime.of(20, 0);
         LocalTime time16 = LocalTime.of(23, 59);
         LocalTime time17 = LocalTime.of(6, 0);
         LocalTime time18 = LocalTime.of(18, 0);
         Availability aval18 = new Availability(date18, time15, time16);
         Availability aval19 = new Availability(date19, time17, time18);
-        Availability aval20 = new Availability(date20, time17, time18);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval15);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval16);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval17);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval18);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval19);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval20);
+        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval180);
 
         LocalDate date21 = LocalDate.of(2019, 6, 28);
         LocalDate date22 = LocalDate.of(2019, 6, 29);
-        LocalDate date23 = LocalDate.of(2019, 6, 30);
         LocalTime time19 = LocalTime.of(20, 0);
         LocalTime time20 = LocalTime.of(23, 59);
         LocalTime time21 = LocalTime.of(6, 0);
         LocalTime time22 = LocalTime.of(18, 0);
         Availability aval21 = new Availability(date21, time19, time20);
         Availability aval22 = new Availability(date22, time21, time22);
-        Availability aval23 = new Availability(date23, time21, time22);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10004).getSpAvailabilityList().addAvailability(aval21);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10004).getSpAvailabilityList().addAvailability(aval22);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10004).getSpAvailabilityList().addAvailability(aval23);
 
         //Service Requests
         Client cli1 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp1 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
-        ServiceRequest sq1 = this.company.getServiceRequestRegistry().newServiceRequest(cli1, cli1.getAddress("Gondomar", cp1, "Rua D. João de França"));
+        ServiceRequest sq1 = this.company.getServiceRequestRegistry().newServiceRequest(cli1, cli1.getAddress("Gondomar", cp1, "Rua D. João de França, nº 1"));
         FixedService fservice1 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
-        sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close tap", (int) fservice1.getPredeterminedDuration());
+        sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close water tap", (int) fservice1.getPredeterminedDuration());
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 3), LocalTime.of(9, 0));
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 5), LocalTime.of(22, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq1);
 
         Client cli2 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp2 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
-        ServiceRequest sq2 = this.company.getServiceRequestRegistry().newServiceRequest(cli2, cli2.getAddress("Gondomar", cp2, "Rua D. João de França"));
-        sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("2"), "Repair ducts", 60);
-        sq2.addSchedulePreference(LocalDate.of(2019, 6, 23), LocalTime.of(9, 0));
+        ServiceRequest sq2 = this.company.getServiceRequestRegistry().newServiceRequest(cli2, cli2.getAddress("Gondomar", cp2, "Rua D. João de França, nº 1"));
+        sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("2"), "Pipeline repair", 60);
+        sq2.addSchedulePreference(LocalDate.of(2019, 6, 24), LocalTime.of(9, 0));
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(22, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq2);
 
         Client cli3 = this.company.getClientRegistry().getClientByNIF("110542349");
         PostalCode cp3 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4250-100");
-        ServiceRequest sq3 = this.company.getServiceRequestRegistry().newServiceRequest(cli3, cli3.getAddress("Porto", cp3, "R. do Carvalhido"));
-        sq3.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("3"), "Paint gate", 120);
-        sq3.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(10, 0));
+        ServiceRequest sq3 = this.company.getServiceRequestRegistry().newServiceRequest(cli3, cli3.getAddress("Porto", cp3, "R. do Carvalhido, nº 9"));
+        sq3.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("3"), "Iron gate painting", 120);
+        sq3.addSchedulePreference(LocalDate.of(2019, 6, 24), LocalTime.of(10, 0));
         sq3.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(14, 30));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq3);
 
         Client cli4 = this.company.getClientRegistry().getClientByNIF("110542349");
         PostalCode cp4 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4250-100");
-        ServiceRequest sq4 = this.company.getServiceRequestRegistry().newServiceRequest(cli4, cli4.getAddress("Porto", cp4, "R. do Carvalhido"));
-        sq4.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("4"), "Prepare dinner", 120);
+        ServiceRequest sq4 = this.company.getServiceRequestRegistry().newServiceRequest(cli4, cli4.getAddress("Porto", cp4, "R. do Carvalhido, nº 9"));
+        sq4.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("4"), "Prepare dinner and clean kitchen", 120);
         sq4.addSchedulePreference(LocalDate.of(2019, 6, 6), LocalTime.of(19, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq4);
 
@@ -380,14 +369,14 @@ public class ApplicationGPSD {
         PostalCode cp5 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4470-528");
         ServiceRequest sq5 = this.company.getServiceRequestRegistry().newServiceRequest(cli5, cli5.getAddress("Maia", cp5, "R. Cegonheira, nº 3"));
         FixedService fservice2 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
-        sq5.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Repair tap", (int) fservice2.getPredeterminedDuration());
+        sq5.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Water tap repair", (int) fservice2.getPredeterminedDuration());
         sq5.addSchedulePreference(LocalDate.of(2019, 6, 7), LocalTime.of(19, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq5);
 
         Client cli6 = this.company.getClientRegistry().getClientByNIF("210975020");
         PostalCode cp6 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4470-528");
         ServiceRequest sq6 = this.company.getServiceRequestRegistry().newServiceRequest(cli6, cli6.getAddress("Maia", cp6, "R. Cegonheira, nº 3"));
-        sq6.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("5"), "Repair car", 60);
+        sq6.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("5"), "Repair vehicle engine and change oil", 60);
         sq6.addSchedulePreference(LocalDate.of(2019, 6, 8), LocalTime.of(9, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq6);
 
@@ -408,31 +397,31 @@ public class ApplicationGPSD {
         ServiceAssignment sa1 = new ServiceAssignment(apadrao, servRD1, servReq1, schedPref1);
         this.company.getServiceAssignementRegistry().addServiceAssignment(sa1);
         this.company.getServiceOrderRegistry().registerServiceOrder(sa1);
-
-        //JSantos
-        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003);
-        ServiceRequest servReq2 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(4);
-        ServiceRequestDescription servRD2 = servReq2.getServiceRequestDescriptions().get(0);
-        SchedulePreference schedPref2 = servReq2.getSchedulePreferences().get(0);
-        ServiceAssignment sa2 = new ServiceAssignment(jsantos, servRD2, servReq2, schedPref2);
-        this.company.getServiceAssignementRegistry().addServiceAssignment(sa2);
-        this.company.getServiceOrderRegistry().registerServiceOrder(sa2);
-
+        
         //MSilva
         ServiceProvider msilva = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002);
-        ServiceRequest servReq3 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(5);
+        ServiceRequest servReq3 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(4);
         ServiceRequestDescription servRD3 = servReq3.getServiceRequestDescriptions().get(0);
         SchedulePreference schedPref3 = servReq3.getSchedulePreferences().get(0);
         ServiceAssignment sa3 = new ServiceAssignment(msilva, servRD3, servReq3, schedPref3);
         this.company.getServiceAssignementRegistry().addServiceAssignment(sa3);
         this.company.getServiceOrderRegistry().registerServiceOrder(sa3);
 
-        ServiceRequest servReq4 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(6);
-        ServiceRequestDescription servRD4 = servReq4.getServiceRequestDescriptions().get(0);
-        SchedulePreference schedPref4 = servReq4.getSchedulePreferences().get(0);
-        ServiceAssignment sa4 = new ServiceAssignment(msilva, servRD4, servReq4, schedPref4);
-        this.company.getServiceAssignementRegistry().addServiceAssignment(sa4);
-        this.company.getServiceOrderRegistry().registerServiceOrder(sa4);
+        //JSantos
+        ServiceProvider jsantos = this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003);
+        ServiceRequest servReq2 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(5);
+        ServiceRequestDescription servRD2 = servReq2.getServiceRequestDescriptions().get(0);
+        SchedulePreference schedPref2 = servReq2.getSchedulePreferences().get(0);
+        ServiceAssignment sa2 = new ServiceAssignment(jsantos, servRD2, servReq2, schedPref2);
+        this.company.getServiceAssignementRegistry().addServiceAssignment(sa2);
+        this.company.getServiceOrderRegistry().registerServiceOrder(sa2);
+        
+        ServiceRequest servReq5 = this.company.getServiceRequestRegistry().getServiceRequestByNumber(6);
+        ServiceRequestDescription servRD5 = servReq5.getServiceRequestDescriptions().get(0);
+        SchedulePreference schedPref5 = servReq5.getSchedulePreferences().get(0);
+        ServiceAssignment sa5 = new ServiceAssignment(jsantos, servRD5, servReq5, schedPref5);
+        this.company.getServiceAssignementRegistry().addServiceAssignment(sa5);
+        this.company.getServiceOrderRegistry().registerServiceOrder(sa5);
 
         //Complete Services
         ServiceOrder cso1 = this.company.getServiceOrderRegistry().getServiceOrderById(1);
@@ -442,7 +431,7 @@ public class ApplicationGPSD {
         ServiceOrder cso3 = this.company.getServiceOrderRegistry().getServiceOrderById(3);
         this.company.getServiceOrderRegistry().concludeServiceOrder(cso3);
         ServiceOrder cso4 = this.company.getServiceOrderRegistry().getServiceOrderById(4);
-        this.company.getServiceOrderRegistry().concludeServiceOrderWithIssue(cso4, "Customer complained about delay. Service was provided without the Client's presence.");
+        this.company.getServiceOrderRegistry().concludeServiceOrderWithIssue(cso4, "Customer complained about delay. Work performed without the presence of the client.");
 
         //Rate Service Provider
         ServiceProvider rsp1 = cso1.getServiceProvider();

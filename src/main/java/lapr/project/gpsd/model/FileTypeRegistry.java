@@ -33,10 +33,10 @@ public class FileTypeRegistry {
     public FileType getExportAdapterByFileType(FileType fileType) {
         Class fileTypeClass;
         try {
-            fileTypeClass = Class.forName(fileType.toString());
+            fileTypeClass = fileType.getClass();
             FileType adapter = (FileType) fileTypeClass.getConstructor().newInstance();
             return adapter;
-        } catch (ClassNotFoundException | IllegalAccessException
+        } catch (IllegalAccessException
                 | IllegalArgumentException | InstantiationException
                 | NoSuchMethodException | SecurityException | InvocationTargetException ex) {
         }

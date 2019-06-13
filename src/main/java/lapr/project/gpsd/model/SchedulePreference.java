@@ -1,11 +1,8 @@
 package lapr.project.gpsd.model;
 
-import java.sql.Time;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.Objects;
 
 public class SchedulePreference {
@@ -102,16 +99,7 @@ public class SchedulePreference {
             return false;
         }
         final SchedulePreference other = (SchedulePreference) obj;
-        if (this.order != other.order) {
-            return false;
-        }
-        if (!Objects.equals(this.date, other.date)) {
-            return false;
-        }
-        if (!Objects.equals(this.hour, other.hour)) {
-            return false;
-        }
-        return true;
+        return this.date == other.date && this.hour == other.hour;
     }
 
     /**

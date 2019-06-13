@@ -43,6 +43,7 @@ public class CreateServiceRequestController {
      */
     public void setAddress(Address address) {
         serviceRequestRegistry = company.getServiceRequestRegistry();
+        int size = serviceRequestRegistry.getServiceRequests().size();
         serviceRequest = serviceRequestRegistry.newServiceRequest(cli, address);
     }
 
@@ -101,8 +102,8 @@ public class CreateServiceRequestController {
      * @param date represents the date preference
      * @param time represents the time preference
      */
-    public void addSchedulePreference(LocalDate date, LocalTime time) {
-        serviceRequest.addSchedulePreference(date, time);
+    public boolean addSchedulePreference(LocalDate date, LocalTime time) {
+        return serviceRequest.addSchedulePreference(date, time);
     }
 
     /**
@@ -110,9 +111,8 @@ public class CreateServiceRequestController {
      *
      * @return the instance of service request.
      */
-    public ServiceRequest validate() {
-        serviceRegister.validateRequest(serviceRequest);
-        return serviceRequest;
+    public boolean validate() {
+        return serviceRegister.validateRequest(serviceRequest);
     }
     
     public double getTravelExpenses() {

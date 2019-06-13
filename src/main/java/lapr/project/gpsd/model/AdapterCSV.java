@@ -2,7 +2,7 @@ package lapr.project.gpsd.model;
 
 public class AdapterCSV implements FileType {
 
-    private final String adapterFileType = "CSV";
+    private final String adapterFileType = "csv";
 
     public AdapterCSV() {
     }
