@@ -7,17 +7,13 @@ package lapr.project.gpsd.ui;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -143,7 +139,8 @@ public class ConsultServiceOrderUI2 implements Initializable {
             } else {
                 FileType selectedFileType = (FileType) dialog.getResult();
                 if (consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
-                    UIUtils.createAlertWait("Export Service Orders Completed", "Export Confirmation", Alert.AlertType.INFORMATION);
+                    String filePath = consultServOrderUI.getController().getFilePath();
+                    UIUtils.createAlertWait("Export Service Orders Completed.\nFile exported to: "+ filePath, "Export Confirmation", Alert.AlertType.INFORMATION);
                     consultServOrderUI.getMainMenu().backToMainMenu();
                 } else {
                     UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
