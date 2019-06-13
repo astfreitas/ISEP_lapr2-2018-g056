@@ -56,12 +56,12 @@ public class AddressPopUpUI implements Initializable {
             UIUtils.createAlert("All the fields must be filled", "Missing data", Alert.AlertType.ERROR);
         } else {
             if (this.registerClient != null) {
-                PostalCode pc = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(postalCode);
-                if (pc == null) {
-                    UIUtils.createAlert("Invalid address", "Address", Alert.AlertType.ERROR);
-                } else {
+                try {
+                    PostalCode pc = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(postalCode);
                     registerClient.receiveAddress(address, postalCode, local);
                     ((Node) (event.getSource())).getScene().getWindow().hide();
+                } catch (Exception e) {
+                    UIUtils.createAlert("Invalid postal code", "Address", Alert.AlertType.ERROR);
                 }
             }
         }

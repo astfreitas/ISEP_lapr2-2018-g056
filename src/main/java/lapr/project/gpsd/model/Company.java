@@ -65,13 +65,13 @@ public class Company {
         try {
             fileTypeRegistry.createSupportedFileTypes(props);
             serviceTypeRegistry.createSupportedServiceTypes(props);
-            loadPostalCodeFromExternalService();
             String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
             externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
+            loadPostalCodeFromExternalService();
             assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
             serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            ex.getStackTrace();
         }
         this.timer = null;
     }
