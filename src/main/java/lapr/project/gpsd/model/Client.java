@@ -160,7 +160,7 @@ public class Client {
     public String toString() {
         String str = String.format("Name: %s \nNIF: %s \nTelephone: %s \nEmail: %s", this.name, this.NIF, this.telephone, this.email);
         for (Address morada : this.addresses) {
-            str += "\nMorada:\n" + morada.toString();
+            str += "\nAddress:\n" + morada.toString();
         }
         return str;
     }
