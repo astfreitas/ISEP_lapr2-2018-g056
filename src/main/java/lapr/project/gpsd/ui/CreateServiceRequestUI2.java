@@ -5,11 +5,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lapr.project.gpsd.model.ServiceRequestDescription;
+import lapr.project.utils.UIUtils;
 
 public class CreateServiceRequestUI2 implements Initializable {
 
@@ -47,7 +49,13 @@ public class CreateServiceRequestUI2 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        this.createServiceRequestUI.toCreateServiceRequestControllerScene4();
+        
+        if(this.createServiceRequestUI.getController().getServiceRequest().getServiceRequestDescriptions().size() > 0) {
+            this.createServiceRequestUI.toCreateServiceRequestControllerScene4();
+        } else {
+            UIUtils.createAlert("Please specify a service", "Add Service Error", Alert.AlertType.ERROR);
+        }
+        
     }
 
     @FXML

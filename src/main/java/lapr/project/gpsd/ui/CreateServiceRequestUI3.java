@@ -44,7 +44,7 @@ public class CreateServiceRequestUI3 implements Initializable {
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        this.createServiceRequestUI.getMainMenu().backToMainMenu();
+        this.createServiceRequestUI.toCreateServiceRequestControllerScene2();
     }
 
     @FXML
@@ -109,7 +109,7 @@ public class CreateServiceRequestUI3 implements Initializable {
         if(serviceListView.getSelectionModel().isEmpty()) {
             UIUtils.createAlert("You need to select a service from the list", "Add Service Error", Alert.AlertType.ERROR);
             return false;
-        } else if(getSelectedDuration() <=0) {
+        } else if(getSelectedDuration() <= 0) {
             UIUtils.createAlert("Duration of the service must be more then 0 minutes", "Add Service Error", Alert.AlertType.ERROR);
             return false;
         } 
