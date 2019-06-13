@@ -121,7 +121,7 @@ public class GeographicArea {
      * @return True/false if the Geographic area has/hasn't the ID
      */
     public boolean hasId(String id) {
-        return this.designation.equalsIgnoreCase(id);
+        return this.geoId.equalsIgnoreCase(id);
     }
 
     /**
@@ -236,8 +236,7 @@ public class GeographicArea {
      * to present to the textArea field
      * @return string describing geogrphic Area instance
      */
-    @Override
-    public String toString() {
+    public String display() {
         return "Designation: '" + designation + "' and central PostalCode is " + 
                 mainPostalCode +". \nTravel Cost is " + travelCost +
                 "€, and radius of the area of action is " + radius +"."+
@@ -272,6 +271,11 @@ public class GeographicArea {
      */
     public void setGeoId(String geoId) {
         this.geoId = geoId;
+    }
+
+    @Override
+    public String toString() {
+        return designation + " (id: " + geoId + ")";
     }
     
     

@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.GeographicArea;
 import lapr.project.utils.UIUtils;
 
@@ -48,6 +47,7 @@ public class RegisterServiceProviderUI3 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
+        
         registerServiceProviderUI.toRegisterServiceProviderScene4();
     }
 
@@ -58,18 +58,17 @@ public class RegisterServiceProviderUI3 implements Initializable {
 
     @FXML
     private void handleRemoveBtn(ActionEvent event) {
-        // checks if anything is selected
-        // removes area and update list
+        try {
+            String areaId = areasList.getSelectionModel().getSelectedItem().getGeoId();
+            registerServiceProviderUI.getController().removeSPArea(areaId);
+            updateList();
+        } catch(Exception e) {}
     }
 
     void updateList() {
-        List<GeographicArea> areas = registerServiceProviderUI.getController().getGeographicAreas();
+        areasList.getItems().clear();
+        List<GeographicArea> areas = registerServiceProviderUI.getController().getSPGeographicAreas();
         areasList.getItems().addAll(areas);
-        if (areas.isEmpty()) {
-            UIUtils.createAlert("Unable to register Service Provider.", "No geographic areas found.", Alert.AlertType.ERROR);
-            ((Stage) cancelBtn.getScene().getWindow()).close();
-            registerServiceProviderUI.getMainMenu().backToMainMenu();
-        }
     }
 }
 

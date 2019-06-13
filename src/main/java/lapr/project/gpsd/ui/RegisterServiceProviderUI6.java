@@ -53,7 +53,7 @@ public class RegisterServiceProviderUI6 implements Initializable {
             ((Stage) cancelBtn.getScene().getWindow()).close();
             parentUI.updateList();
         } else {
-            UIUtils.createAlert("Selected Area was not found in registry.", "Error:", Alert.AlertType.ERROR);
+            UIUtils.createAlert("Geographic area already added.", "Error:", Alert.AlertType.ERROR);
         }
     }
 

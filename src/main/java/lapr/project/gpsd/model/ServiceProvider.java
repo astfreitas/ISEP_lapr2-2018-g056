@@ -226,7 +226,7 @@ public class ServiceProvider {
      * @return Returns the success of the operation
      */
     public boolean addCategory(Category cat) {
-        return spCatList.getCategorylist().add(cat);
+        return spCatList.addCategory(cat);
     }
 
     /**
@@ -237,7 +237,7 @@ public class ServiceProvider {
      * @return Returns the success of the operation
      */
     public boolean addGeoArea(GeographicArea geoArea) {
-        return spGeoAreaList.getGeoAreaList().add(geoArea);
+        return spGeoAreaList.addGeographicArea(geoArea);
     }
 
     /**

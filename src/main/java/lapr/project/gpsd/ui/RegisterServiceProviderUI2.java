@@ -57,18 +57,17 @@ public class RegisterServiceProviderUI2 implements Initializable {
 
     @FXML
     private void handleRemoveBtn(ActionEvent event) {
-        // checks if anything is selected
-        // removes category and update list
+        try {
+            String catId = catList.getSelectionModel().getSelectedItem().getCode();
+            registerServiceProviderUI.getController().removeSPCategory(catId);
+            updateList();
+        } catch(Exception e) {}
     }
 
     void updateList() {
-        List<Category> categories = registerServiceProviderUI.getController().getCategories();
+        catList.getItems().clear();
+        List<Category> categories = registerServiceProviderUI.getController().getSPCategories();
         catList.getItems().addAll(categories);
-        if (categories.isEmpty()) {
-            UIUtils.createAlert("Unable to register Service Provider.", "No categories found.", Alert.AlertType.ERROR);
-            ((Stage) cancelBtn.getScene().getWindow()).close();
-            registerServiceProviderUI.getMainMenu().backToMainMenu();
-        }
     }
 
 }

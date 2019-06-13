@@ -55,7 +55,7 @@ public class RegisterServiceProviderUI5 implements Initializable {
             ((Stage) cancelBtn.getScene().getWindow()).close();
             parentUI.updateList();
         } else {
-            UIUtils.createAlert("Selected Category was not found in registry.", "Error:", Alert.AlertType.ERROR);
+            UIUtils.createAlert("Category already added.", "Error:", Alert.AlertType.ERROR);
         }
     }
 

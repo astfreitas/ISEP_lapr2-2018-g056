@@ -89,7 +89,6 @@ ConsultServiceOrderUI1	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI1
 ConsultServiceOrderUI2	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI2.java	/^public class ConsultServiceOrderUI2 implements Initializable {$/;"	c
 CreateServiceRequestController	src/main/java/lapr/project/gpsd/controller/CreateServiceRequestController.java	/^    public CreateServiceRequestController() {$/;"	m	class:CreateServiceRequestController
 CreateServiceRequestController	src/main/java/lapr/project/gpsd/controller/CreateServiceRequestController.java	/^public class CreateServiceRequestController {$/;"	c
-CreateServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI.java	/^    public CreateServiceRequestUI(Main mainApp) {$/;"	m	class:CreateServiceRequestUI
 CreateServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI.java	/^    public CreateServiceRequestUI(MainMenuClientUI mainMenu, Main mainApp) {$/;"	m	class:CreateServiceRequestUI
 CreateServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI.java	/^public class CreateServiceRequestUI {$/;"	c
 CreateServiceRequestUI1	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI1.java	/^public class CreateServiceRequestUI1 implements Initializable {$/;"	c
@@ -454,7 +453,7 @@ applicationStatus	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^   
 applications	src/main/java/lapr/project/gpsd/model/SPApplicationRegistry.java	/^    private List<SPApplication> applications;$/;"	f	class:SPApplicationRegistry	file:
 ar	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    private double ar;$/;"	f	class:EvaluateSPController	file:
 areaComboBox	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI6.java	/^    private ComboBox<GeographicArea> areaComboBox;$/;"	f	class:RegisterServiceProviderUI6	file:
-areasList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI3.java	/^    private ListView<?> areasList;$/;"	f	class:RegisterServiceProviderUI3	file:
+areasList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI3.java	/^    private ListView<GeographicArea> areasList;$/;"	f	class:RegisterServiceProviderUI3	file:
 arl	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    private List<Double> arl;$/;"	f	class:EvaluateSPController	file:
 assignServiceTask	src/main/java/lapr/project/gpsd/model/Company.java	/^    public void assignServiceTask() {$/;"	m	class:Company
 assignServices	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services, ISortingBehavior sortingBehavior) {$/;"	m	class:AssignmentAlgoritm1
@@ -526,7 +525,7 @@ cancelButton	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI1.java	/^
 cancelButton	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI2.java	/^    private Button cancelButton;$/;"	f	class:SpecifyGeographicAreaUI2	file:
 catCodeTxt	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI1.java	/^    private TextField catCodeTxt;$/;"	f	class:SpecifyCategoryUI1	file:
 catDescTxt	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI1.java	/^    private TextArea catDescTxt;$/;"	f	class:SpecifyCategoryUI1	file:
-catList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI2.java	/^    private ListView<?> catList;$/;"	f	class:RegisterServiceProviderUI2	file:
+catList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI2.java	/^    private ListView<Category> catList;$/;"	f	class:RegisterServiceProviderUI2	file:
 categories	src/main/java/lapr/project/gpsd/model/CategoryRegistry.java	/^    private List<Category> categories;$/;"	f	class:CategoryRegistry	file:
 categories	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private List<Category> categories;$/;"	f	class:SPApplication	file:
 category	src/main/java/lapr/project/gpsd/controller/ServiceDefinitionController.java	/^    private Category category;$/;"	f	class:ServiceDefinitionController	file:
@@ -912,6 +911,7 @@ getMainMenu	src/main/java/lapr/project/gpsd/ui/AddAddressToClientUI.java	/^    p
 getMainMenu	src/main/java/lapr/project/gpsd/ui/AddDailyAvailabilityUI.java	/^    public MainMenuSPUI getMainMenu() {$/;"	m	class:AddDailyAvailabilityUI
 getMainMenu	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI.java	/^    public MainMenuSPUI getMainMenu() {$/;"	m	class:CompleteServiceUI
 getMainMenu	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI.java	/^    public MainMenuSPUI getMainMenu() {$/;"	m	class:ConsultServiceOrderUI
+getMainMenu	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI.java	/^    public MainMenuClientUI getMainMenu() {$/;"	m	class:CreateServiceRequestUI
 getMainMenu	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI.java	/^    public MainMenuHROUI getMainMenu() {$/;"	m	class:EvaluateSPUI
 getMainMenu	src/main/java/lapr/project/gpsd/ui/RateSPUI.java	/^    public MainMenuClientUI getMainMenu() {$/;"	m	class:RateSPUI
 getMainMenu	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI.java	/^    public MainMenuHROUI getMainMenu() {$/;"	m	class:RegisterServiceProviderUI
@@ -976,6 +976,8 @@ getRoles	src/main/java/lapr/project/authentication/model/User.java	/^    public 
 getSPAddress	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public String getSPAddress() {$/;"	m	class:RegisterServiceProviderController
 getSPApplicationRegistry	src/main/java/lapr/project/gpsd/model/Company.java	/^    public SPApplicationRegistry getSPApplicationRegistry() {$/;"	m	class:Company
 getSPApplicationStatus	src/main/java/lapr/project/gpsd/model/SPApplicationStatus.java	/^    public String getSPApplicationStatus() {$/;"	m	class:SPApplicationStatus
+getSPCategories	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public List<Category> getSPCategories() {$/;"	m	class:RegisterServiceProviderController
+getSPGeographicAreas	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public List<GeographicArea> getSPGeographicAreas() {$/;"	m	class:RegisterServiceProviderController
 getSPLocal	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public String getSPLocal() {$/;"	m	class:RegisterServiceProviderController
 getSPName	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public String getSPName() {$/;"	m	class:RegisterServiceProviderController
 getSPPostalCode	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    public String getSPPostalCode() {$/;"	m	class:RegisterServiceProviderController
@@ -1624,8 +1626,6 @@ pendingServOrders	src/main/java/lapr/project/gpsd/controller/CompleteServiceCont
 phone	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private String phone;$/;"	f	class:SPApplication	file:
 popAverageTxt	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    private TextField popAverageTxt;$/;"	f	class:EvaluateSPUI2	file:
 popStdDevTxt	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    private TextField popStdDevTxt;$/;"	f	class:EvaluateSPUI2	file:
-populateAreasList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI3.java	/^    void populateAreasList() {$/;"	m	class:RegisterServiceProviderUI3
-populateCatList	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI2.java	/^    Object populateCatList() {$/;"	m	class:RegisterServiceProviderUI2
 populateCategory	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI5.java	/^    public void populateCategory() {$/;"	m	class:SubmitApplicationUI5
 populateCategoryComboBox	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private void populateCategoryComboBox() {$/;"	m	class:ServiceDefinitionUI1	file:
 populateComboBox	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI5.java	/^    void populateComboBox() {$/;"	m	class:RegisterServiceProviderUI5
@@ -2400,7 +2400,10 @@ toString	src/main/java/lapr/project/gpsd/model/ProfessionalCompetence.java	/^   
 toString	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    public String toString() {$/;"	m	class:SPApplication
 toString	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    public String toString() {$/;"	m	class:SchedulePreference
 toString	src/main/java/lapr/project/gpsd/model/Service.java	/^    public String toString() {$/;"	m	class:Service
+toString	src/main/java/lapr/project/gpsd/model/ServiceOrder.java	/^    public String toString() {$/;"	m	class:ServiceOrder
+toString	src/main/java/lapr/project/gpsd/model/ServiceOrderStatus.java	/^    public String toString() {$/;"	m	class:ServiceOrderStatus
 toString	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public String toString() {$/;"	m	class:ServiceProvider
+toString	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    public String toString() {$/;"	m	class:ServiceRequest
 toString	src/main/java/lapr/project/gpsd/model/ServiceRequestDescription.java	/^    public String toString() {$/;"	m	class:ServiceRequestDescription
 toString	src/main/java/lapr/project/gpsd/model/ServiceType.java	/^    public String toString() {$/;"	m	class:ServiceType
 toString	src/test/java/lapr/project/gpsd/model/FileTypeTest.java	/^        public String toString() {$/;"	m	class:FileTypeTest.FileTypeImpl

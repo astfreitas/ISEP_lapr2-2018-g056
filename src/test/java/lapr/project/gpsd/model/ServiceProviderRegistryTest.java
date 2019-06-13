@@ -71,10 +71,9 @@ public class ServiceProviderRegistryTest {
     public void testRegisterServiceProvider() {
         System.out.println("registerServiceProvider");
         ServiceProvider sp = null;
-        String pwd = "";
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
         boolean expResult = false;
-        boolean result = instance.registerServiceProvider(sp, pwd);
+        boolean result = instance.registerServiceProvider(sp);
         assertEquals(expResult, result);
     }
 

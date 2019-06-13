@@ -40,12 +40,12 @@ public class RegisterServiceProviderUI4 implements Initializable {
 
     @FXML
     private void handleConfirmBtn(ActionEvent event) {
-        try {
-            // validate + register
-        } catch (Exception e) {
-            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        if (registerServiceProviderUI.getController().registerServiceProvider()) {
+            String message = registerServiceProviderUI.getController().getSuccessMessage();
+            UIUtils.createAlert(message, "Registration successful.", Alert.AlertType.INFORMATION);
+        } else {
+            registerServiceProviderUI.getMainMenu().backToMainMenu();
         }
-        registerServiceProviderUI.getMainMenu().backToMainMenu();
     }
 
     void displayText() {
