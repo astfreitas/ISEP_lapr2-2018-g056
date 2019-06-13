@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,13 +23,10 @@ public class SchedulePreference {
      * @param hour Hour of the SchedPref
      */
     public SchedulePreference(int order, LocalDate date, LocalTime hour) {
-        LocalDate todayDate = LocalDate.now();
-        LocalTime todayTime = LocalTime.now();
-//        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
-//                || hour.getHour() == 0 || hour.getHour() < 6
-//                || date.isBefore(todayDate) || hour.isBefore(todayTime)) {
-//            throw new IllegalArgumentException("Invalid availability.");
-//        }
+        if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY) 
+                || hour.getHour() == 0 || hour.getHour() < 6) {
+            throw new IllegalArgumentException("Invalid availability.");
+        }
         this.order = order;
         this.date = date;
         this.hour = hour;

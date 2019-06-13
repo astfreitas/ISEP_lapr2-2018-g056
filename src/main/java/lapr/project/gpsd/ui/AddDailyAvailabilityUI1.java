@@ -53,12 +53,22 @@ public class AddDailyAvailabilityUI1 implements Initializable {
         } else {
             LocalTime bTime = LocalTime.of(bHourPicker.getValue(), bMinPicker.getValue(), 0, 0);
             LocalTime eTime = LocalTime.of(eHourPicker.getValue(), eMinPicker.getValue(), 0, 0);
-            if (frequencyComboBox.getSelectionModel().getSelectedItem().equals("")) {
-                this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime);
+            if (frequencyComboBox.getSelectionModel().getSelectedItem() == null) {
+                try {
+                    this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime);
+                    addDailyAvailabilityUI.toAddAvailabilityScene2();
+                } catch (Exception e) {
+                    UIUtils.createAlert(e.getMessage(), "", Alert.AlertType.ERROR);
+                }
             } else {
-                this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime, endDatePicker.getValue(), frequencyComboBox.getValue());
+                try {
+                    this.addDailyAvailabilityUI.getController().newAvailability(avalDatePicker.getValue(), bTime, eTime, endDatePicker.getValue(), frequencyComboBox.getValue());
+                    addDailyAvailabilityUI.toAddAvailabilityScene2();
+                } catch (Exception e) {
+                    this.addDailyAvailabilityUI.getController().clearAvalList();
+                    UIUtils.createAlert(e.getMessage(), "", Alert.AlertType.ERROR);
+                }
             }
-
         }
     }
 

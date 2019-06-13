@@ -288,7 +288,7 @@ public class ApplicationGPSD {
         LocalTime time11 = LocalTime.of(6, 0);
         LocalTime time12 = LocalTime.of(18, 0);
         Availability aval12 = new Availability(date12, time9, time10);
-        Availability aval13 = new Availability(date13, time9, time10);
+        Availability aval13 = new Availability(date13, time11, time12);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval7);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval8);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10002).getSpAvailabilityList().addAvailability(aval10);
@@ -298,13 +298,11 @@ public class ApplicationGPSD {
 
         LocalDate date15 = LocalDate.of(2019, 6, 7);
         LocalDate date16 = LocalDate.of(2019, 6, 8);
-        LocalDate date17 = LocalDate.of(2019, 6, 9);
         LocalDate date180 = LocalDate.of(2019, 6, 10);
         LocalTime time13 = LocalTime.of(9, 0);
         LocalTime time14 = LocalTime.of(23, 0);
         Availability aval15 = new Availability(date15, time13, time14);
         Availability aval16 = new Availability(date16, time13, time14);
-        Availability aval17 = new Availability(date17, time13, time14);
         Availability aval180 = new Availability(date180, time13, time14);
         LocalDate date18 = LocalDate.of(2019, 6, 28);
         LocalDate date19 = LocalDate.of(2019, 6, 29);
@@ -316,7 +314,6 @@ public class ApplicationGPSD {
         Availability aval19 = new Availability(date19, time17, time18);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval15);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval16);
-        this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval17);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval18);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval19);
         this.company.getServiceProviderRegistry().getServiceProviderByNumber(10003).getSpAvailabilityList().addAvailability(aval180);

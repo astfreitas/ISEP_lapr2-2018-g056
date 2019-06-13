@@ -35,14 +35,11 @@ public class Availability {
      * @param eTime End Time
      */
     public Availability(LocalDate sDate, LocalTime bTime, LocalTime eTime) {
-//        LocalDate todayDate = LocalDate.now();
-//        LocalTime nowTime = LocalTime.now();
-//        if (sDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)
-//                || bTime.getHour() == 0 || eTime.getHour() < 6
-//                || eTime.isBefore(bTime) || eTime.equals(bTime)
-//                || sDate.isBefore(todayDate)) {
-//            throw new IllegalArgumentException("Invalid availability.");
-//        }
+        if (sDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)
+                || bTime.getHour() < 6 || eTime.getHour() < 6
+                || eTime.isBefore(bTime) || eTime.equals(bTime)) {
+            throw new IllegalArgumentException("Invalid availability.");
+        }
         this.date = sDate;
         this.sTime = bTime;
         this.eTime = eTime;
