@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import static lapr.project.gpsd.utils.Constants.*;
 import java.util.List;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 import lapr.project.gpsd.utils.Constants;
 
 public class ServiceOrderRegistry {
@@ -96,11 +97,19 @@ public class ServiceOrderRegistry {
                 so.setOrderNumber(orderNumber);
                 serviceOrders.add(so);
                 serviceOrdersIDList.add(orderNumber);
+                ApplicationGPSD.getInstance().getCompany().getServiceAssignementRegistry().getServiceAssignments().remove(serviceAssignment);
             }
         }
         return serviceOrdersIDList;
     }
 
+    /**
+     * 
+     * Returns the Service Order with a specific ID
+     * 
+     * @param id ID to look for
+     * @return Service Order with the ID
+     */
     public ServiceOrder getServiceOrderById(int id) {
         for (ServiceOrder so : serviceOrders) {
             if (so.getOrderNumber() == id) {
@@ -123,6 +132,7 @@ public class ServiceOrderRegistry {
             int orderNumber = generateServiceOrderNumber();
             so.setOrderNumber(orderNumber);
             serviceOrders.add(so);
+            ApplicationGPSD.getInstance().getCompany().getServiceAssignementRegistry().getServiceAssignments().remove(servAssi);
             return so;
         }
         return null;
