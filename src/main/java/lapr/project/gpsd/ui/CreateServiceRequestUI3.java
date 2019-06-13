@@ -83,6 +83,10 @@ public class CreateServiceRequestUI3 implements Initializable {
         minuteComboBox.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Method refreshes the ServiceList by getting the selected category from
+     * the combo box and getting the service list from Controller
+     */
     private void refreshServiceList() {
         serviceListView.getItems().clear();
         Category cat = categoryComboBox.getSelectionModel().getSelectedItem();
@@ -98,22 +102,34 @@ public class CreateServiceRequestUI3 implements Initializable {
             this.createServiceRequestUI.getController().addServiceRequestDescription(selectedService.getId(), descriptionTextArea.getText(), getSelectedDuration());
         }
     }
-    
+
     private int getSelectedDuration() {
         int hour = Integer.parseInt(hourComboBox.getSelectionModel().getSelectedItem());
-        int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());        
+        int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());
         return hour * 60 + min;
     }
-    
+
     private boolean validate() {
-        if(serviceListView.getSelectionModel().isEmpty()) {
+        if (serviceListView.getSelectionModel().isEmpty()) {
             UIUtils.createAlert("You need to select a service from the list", "Add Service Error", Alert.AlertType.ERROR);
             return false;
-        } else if(getSelectedDuration() <= 0) {
+        } else if (getSelectedDuration() <= 0) {
             UIUtils.createAlert("Duration of the service must be more then 0 minutes", "Add Service Error", Alert.AlertType.ERROR);
             return false;
-        } 
+        }
         return true;
     }
-    
+
+    /**
+     * Handles the evento created when the Category ComboBox is clicked or
+     * changed. This initiates the RefreshServiceList method.
+     *
+     * @param event comboBox selection action
+     */
+    @FXML
+    private void handleCategoryComBox(ActionEvent event) {
+        refreshServiceList();
+
+    }
+
 }
