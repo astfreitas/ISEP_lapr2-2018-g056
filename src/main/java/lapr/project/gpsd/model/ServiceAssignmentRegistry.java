@@ -149,6 +149,7 @@ public class ServiceAssignmentRegistry {
     }
 
     /**
+     * 
      * Method removes expired assignments from a List of ServiceAssignments
      *
      */

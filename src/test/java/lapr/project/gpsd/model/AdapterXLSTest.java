@@ -16,11 +16,11 @@ public class AdapterXLSTest {
     /**
      * Test of export method, of class AdapterXLS.
      */
-    @Disabled
+    @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "";
-        String[] line = null;
+       String filename = "./src/main/resources/testFiles/testExportXLS.xls";
+        String[] line = {"teste1", "teste2", "teste3"};
         AdapterXLS instance = new AdapterXLS();
         instance.export(filename, line);
     }

@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -97,8 +98,14 @@ public class AvailabilityTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object otherObject = null;
-        Availability instance = null;
+        LocalDate date1 = LocalDate.of(2019, 6, 22);
+        LocalTime time1 = LocalTime.of(10, 0);
+        LocalTime time2 = LocalTime.of(13, 0);
+        Object otherObject = new Availability(date1, time1, time2);
+        LocalDate date2 = LocalDate.of(2019, 6, 22);
+        LocalTime time3 = LocalTime.of(10, 0);
+        LocalTime time4 = LocalTime.of(13, 0);
+        Availability instance = new Availability(date2, time3, time4);
         boolean expResult = false;
         boolean result = instance.equals(otherObject);
         assertEquals(expResult, result);
@@ -110,10 +117,15 @@ public class AvailabilityTest {
     @Test
     public void testContainsSchedulePref() {
         System.out.println("contaisSchedulePref");
-        SchedulePreference schedulePref = null;
-        int duration = 0;
-        Availability instance = null;
-        boolean expResult = false;
+        LocalDate date1 = LocalDate.of(2019, 6, 29);
+        LocalTime time1 = LocalTime.of(12, 0);
+        SchedulePreference schedulePref = new SchedulePreference(0, date1, time1);
+        int duration = 30;
+        LocalDate date2 = LocalDate.of(2019, 6, 29);
+        LocalTime time3 = LocalTime.of(10, 0);
+        LocalTime time4 = LocalTime.of(13, 0);
+        Availability instance = new Availability(date2, time3, time4);
+        boolean expResult = true;
         boolean result = instance.containsSchedulePref(schedulePref, duration);
         assertEquals(expResult, result);
     }

@@ -16,16 +16,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author joaoferreira
  */
 public class ClientRegistryTest {
-  
+
     /**
      * Test of validateClient method, of class ClientRegistry.
      */
     @Test
     public void testValidateClient() {
         System.out.println("validateClient");
-        Client cli = null;
+        Client cli = new Client("testName", "testNif", "testTel", "testEmail");
         ClientRegistry instance = new ClientRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.validateClient(cli);
         assertEquals(expResult, result);
     }
@@ -36,12 +36,12 @@ public class ClientRegistryTest {
     @Test
     public void testNewClient() {
         System.out.println("newClient");
-        String name = "";
-        String NIF = "";
-        String telephone = "";
-        String email = "";
+        String name = "testName";
+        String NIF = "testNif";
+        String telephone = "testTel";
+        String email = "testEmail";
         ClientRegistry instance = new ClientRegistry();
-        Client expResult = null;
+        Client expResult = new Client("testName", "testNif", "testTel", "testEmail");
         Client result = instance.newClient(name, NIF, telephone, email);
         assertEquals(expResult, result);
     }
@@ -52,9 +52,9 @@ public class ClientRegistryTest {
     @Test
     public void testAddClient() {
         System.out.println("addClient");
-        Client cli = null;
+        Client cli = new Client("testName", "testNif", "testTel", "testEmail");
         ClientRegistry instance = new ClientRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.addClient(cli);
         assertEquals(expResult, result);
     }
@@ -65,9 +65,11 @@ public class ClientRegistryTest {
     @Test
     public void testGetClientByEmail() {
         System.out.println("getClientByEmail");
-        String email = "";
+        String email = "testEmail";
+        Client cli = new Client("testName", "testNif", "testTel", "testEmail");
         ClientRegistry instance = new ClientRegistry();
-        Client expResult = null;
+        instance.addClient(cli);
+        Client expResult = new Client("testName", "testNif", "testTel", "testEmail");
         Client result = instance.getClientByEmail(email);
         assertEquals(expResult, result);
     }
@@ -78,12 +80,12 @@ public class ClientRegistryTest {
     @Test
     public void testRegisterClient() {
         System.out.println("registerClient");
-        Client client = null;
-        String pwd = "";
+        Client client = new Client("testName", "testNif", "testTel", "testEmail");
+        String pwd = "testPWD";
         ClientRegistry instance = new ClientRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.registerClient(client, pwd);
         assertEquals(expResult, result);
     }
-    
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
 import java.util.List;
@@ -12,10 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- *
- * @author joaoferreira
- */
 public class CategoryRegistryTest {
     
     /**
@@ -24,10 +15,10 @@ public class CategoryRegistryTest {
     @Test
     public void testNewCategory() {
         System.out.println("newCategory");
-        String catID = "";
-        String description = "";
+        String catID = "testID";
+        String description = "testDescription";
         CategoryRegistry instance = new CategoryRegistry();
-        Category expResult = null;
+        Category expResult = new Category("testeID", "testDescription");
         Category result = instance.newCategory(catID, description);
         assertEquals(expResult, result);
     }
@@ -38,9 +29,11 @@ public class CategoryRegistryTest {
     @Test
     public void testGetCatById() {
         System.out.println("getCatById");
-        String catID = "";
+        String catID = "testID";
+        Category cat = new Category("testeID", "testDescription");
         CategoryRegistry instance = new CategoryRegistry();
-        Category expResult = null;
+        instance.getCategories().add(cat);
+        Category expResult = cat;
         Category result = instance.getCatById(catID);
         assertEquals(expResult, result);
     }
@@ -51,9 +44,9 @@ public class CategoryRegistryTest {
     @Test
     public void testValidateCategory() {
         System.out.println("validateCategory");
-        Category cat = null;
+        Category cat = new Category("testeID", "testDescription");
         CategoryRegistry instance = new CategoryRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.validateCategory(cat);
         assertEquals(expResult, result);
     }
@@ -64,9 +57,9 @@ public class CategoryRegistryTest {
     @Test
     public void testAddCategory() {
         System.out.println("addCategory");
-        Category cat = null;
+        Category cat = new Category("testeID", "testDescription");
         CategoryRegistry instance = new CategoryRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.addCategory(cat);
         assertEquals(expResult, result);
     }
@@ -89,9 +82,9 @@ public class CategoryRegistryTest {
     @Test
     public void testRegisterCategory() {
         System.out.println("registerCategory");
-        Category category = null;
+        Category category = new Category("testeID", "testDescription");
         CategoryRegistry instance = new CategoryRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.registerCategory(category);
         assertEquals(expResult, result);
     }
