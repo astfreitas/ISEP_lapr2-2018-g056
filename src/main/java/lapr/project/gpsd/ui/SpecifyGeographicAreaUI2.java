@@ -46,7 +46,7 @@ public class SpecifyGeographicAreaUI2 implements Initializable {
 
     public void showGeographicArea() {
         GeographicArea geoA = this.specifyGeographicAreaUI.getController().getGeoA();
-        newGeoAreaTextArea.setText(geoA.toString());
+        newGeoAreaTextArea.setText(geoA.display());
     }
 
     @FXML
@@ -58,16 +58,14 @@ public class SpecifyGeographicAreaUI2 implements Initializable {
     private void handleConfirmBut(ActionEvent event) {
         try {
             if (this.specifyGeographicAreaUI.getController().registerGeographicArea()) {
-            specifyGeographicAreaUI.getMainMenu().backToMainMenu();
-        } else {
-            UIUtils.createAlert("Error creating Geographic Area", "", Alert.AlertType.ERROR);
-            
-        }
+                specifyGeographicAreaUI.getMainMenu().backToMainMenu();
+            } else {
+                UIUtils.createAlert("Error creating Geographic Area", "", Alert.AlertType.ERROR);
+
+            }
         } catch (Exception e) {
             UIUtils.createAlert("GeographicArea already exists!", "", Alert.AlertType.ERROR);
         }
-        
-
     }
 
 }
