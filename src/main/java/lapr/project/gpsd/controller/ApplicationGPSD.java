@@ -88,6 +88,9 @@ public class ApplicationGPSD {
         this.authentication.registerUserRole(Constants.ROLE_CLIENT);
         this.authentication.registerUserRole(Constants.ROLE_HRO);
         this.authentication.registerUserRole(Constants.ROLE_SERVICE_PROVIDER);
+        
+        this.authentication.registerUserWithRole("adm1", "adm1@isep.ipp.pt", "123", Constants.ROLE_ADMINISTRATIVE);
+        this.authentication.registerUserWithRole("hro1", "hro1@isep.ipp.pt", "123", Constants.ROLE_HRO);
 
         //Clients
         ClientRegistry rc = this.company.getClientRegistry();
