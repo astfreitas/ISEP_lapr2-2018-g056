@@ -63,14 +63,12 @@ public class AddDailyAvailabilityController {
     public ArrayList<Availability> newAvailability(LocalDate date, LocalTime sTime, LocalTime eTime, LocalDate eDate, String repPattern) {
         spal = sp.getSpAvailabilityList();
         Availability aval;
-        DayOfWeek weekday = date.getDayOfWeek();
         LocalDate dateAval = date;
         if(date.isAfter(eDate) || repPattern.equals("")){
             throw new IllegalArgumentException("Invalid frequency.");
         }
-        for (int i = 0; i < Period.between(date, eDate).getDays(); i++) {
-            if (dateAval.getDayOfWeek().equals(weekday)
-                    && (dateAval.isBefore(eDate) || dateAval.equals(eDate))) {
+        for (int i = 0; i < Period.between(date, eDate).getDays()+1; i++) {
+            if (dateAval.isBefore(eDate) || dateAval.equals(eDate)) {
                 aval = new Availability(dateAval, sTime, eTime);
                 avalList.add(aval);
             }
@@ -92,6 +90,15 @@ public class AddDailyAvailabilityController {
             }
         }
         return avalList;
+    }
+    
+    /**
+     * 
+     * Clear the availabilityList
+     * 
+     */
+    public void clearAvalList(){
+        this.avalList.clear();
     }
 
     /**

@@ -58,7 +58,7 @@ public class SPAvailabilityList {
     public boolean addAvailability(ArrayList<Availability> availabilityList) {
         for (Availability availability : availabilityList) {
             if (validatesAvaiDoesNotExist(availability)) {
-                availabilityList.add(availability);
+                this.availabilityList.add(availability);
             } else {
                 return false;
             }

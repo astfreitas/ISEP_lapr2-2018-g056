@@ -42,7 +42,7 @@ public class AddAddressToClientUI2 implements Initializable {
     private void handleConfirmBtn(ActionEvent event) {
         try {
             addAddressToClientUI.getController().registerAddress();
-            UIUtils.createAlert("The new Address was added to your profile!", "Success!", Alert.AlertType.ERROR);
+            UIUtils.createAlert("The new Address was added to your profile!", "Success!", Alert.AlertType.INFORMATION);
         } catch (Exception e) {
             UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
         }
