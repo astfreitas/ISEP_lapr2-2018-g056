@@ -6,17 +6,30 @@ import java.util.List;
 import java.util.Properties;
 
 public class FileTypeRegistry {
-
+    /**
+     * List for the FileType
+     */
     public ArrayList<FileType> fileTypeList;
-
+    
+    /**
+     * Constructor for the FileTypeRegistry by a new ArrayList
+     */
     public FileTypeRegistry() {
         fileTypeList = new ArrayList<>();
     }
 
+    /**
+     * Returns the FileTypeRegistry list
+     * @return FileTypeList
+     */
     public ArrayList<FileType> getFileTypeList() {
         return fileTypeList;
     }
-
+    /**
+     * Returns the FileType
+     * @param fileType
+     * @return 
+     */
     public FileType getExportAdapterByFileType(FileType fileType) {
         Class fileTypeClass;
         try {

@@ -90,7 +90,7 @@ public class ConsultServiceOrderUI2 implements Initializable {
         eDate = endDatePicker.getValue();
         loadListView();
     }
-
+    
     @FXML
     private void handleExportBut(ActionEvent event) {
         List<FileType> choices = consultServOrderUI.getController().getFileTypes();
@@ -104,8 +104,8 @@ public class ConsultServiceOrderUI2 implements Initializable {
             event.consume();
         } else {
             FileType selectedFileType = (FileType) dialog.getResult();
-            if (selectedFileType != null && consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
-                UIUtils.createAlert("Export Service Orders Completed", "Export Confirmation", Alert.AlertType.INFORMATION);
+            if (consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
+                UIUtils.createAlertWait("Export Service Orders Completed", "Export Confirmation", Alert.AlertType.INFORMATION);
                 consultServOrderUI.getMainMenu().backToMainMenu();
             } else {
                 UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
