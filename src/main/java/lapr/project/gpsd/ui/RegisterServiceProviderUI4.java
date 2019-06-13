@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
@@ -10,22 +5,21 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import lapr.project.utils.UIUtils;
 
-/**
- * FXML Controller class
- *
- * @author mdias
- */
 public class RegisterServiceProviderUI4 implements Initializable {
+
+    RegisterServiceProviderUI registerServiceProviderUI;
 
     @FXML
     private Button cancelBtn;
     @FXML
-    private ComboBox<?> categoryComboBox;
+    private Button confirmBtn;
     @FXML
-    private Button addCatBtn;
+    private TextArea confirmTxt;
 
     /**
      * Initializes the controller class.
@@ -33,18 +27,30 @@ public class RegisterServiceProviderUI4 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
-    @FXML
-    private void handleCancelButton(ActionEvent event) {
+    public void setRegisterServiceProviderUI(RegisterServiceProviderUI registerServiceProviderUI) {
+        this.registerServiceProviderUI = registerServiceProviderUI;
     }
 
     @FXML
-    private void handleCategoryComboBox(ActionEvent event) {
+    private void handleCancelBtn(ActionEvent event) {
+        registerServiceProviderUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
-    private void handleAddCatBtn(ActionEvent event) {
+    private void handleConfirmBtn(ActionEvent event) {
+        try {
+            // validate + register
+        } catch (Exception e) {
+            UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
+        }
+        registerServiceProviderUI.getMainMenu().backToMainMenu();
     }
-    
+
+    void displayText() {
+        String text = registerServiceProviderUI.getController().getServiceProvider().toString();
+        confirmTxt.setText(text);
+    }
+
 }

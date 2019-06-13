@@ -20,7 +20,7 @@ public class ServiceProviderRegistry {
     public ServiceProviderRegistry() {
         this.spList = new ArrayList<>();
     }
-    
+
     /**
      * Creates new Address instance
      *
@@ -141,7 +141,7 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
-    
+
     /**
      * Searches the Service Provider registry for a SP with a determined number
      * and returns it.
@@ -149,7 +149,7 @@ public class ServiceProviderRegistry {
      * @param number Number for the preferred SP
      * @return Service provider who has the number
      */
-    public ServiceProvider getServiceProviderByNumber(int number){
+    public ServiceProvider getServiceProviderByNumber(int number) {
         for (ServiceProvider sp : spList) {
             if (sp.getNumber() == number) {
                 return sp;
@@ -175,10 +175,7 @@ public class ServiceProviderRegistry {
     public List<Double> getAverageRatings() {
         List<Double> averageRatings = new ArrayList<>();
         for (ServiceProvider sp : spList) {
-            double avgRating = sp.getAverageRating();
-            if (avgRating > -1) {
-                averageRatings.add(avgRating);
-            }
+            averageRatings.add(sp.getAverageRating());
         }
         return averageRatings;
     }

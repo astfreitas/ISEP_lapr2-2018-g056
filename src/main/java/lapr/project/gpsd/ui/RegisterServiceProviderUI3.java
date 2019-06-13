@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
@@ -11,25 +6,22 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 
-/**
- * FXML Controller class
- *
- * @author mdias
- */
 public class RegisterServiceProviderUI3 implements Initializable {
 
-    private RegisterServiceProviderUI registerServiceProviderUI;
-    
+    RegisterServiceProviderUI registerServiceProviderUI;
+
     @FXML
     private Button cancelBtn;
     @FXML
-    private Button completeBtn;
+    private Button continueBtn;
     @FXML
-    private ComboBox<?> categoryComboBox;
+    private Button addBtn;
     @FXML
-    private Button addCatBtn;
+    private Button removeBtn;
+    @FXML
+    private ListView<?> areasList;
 
     /**
      * Initializes the controller class.
@@ -37,26 +29,36 @@ public class RegisterServiceProviderUI3 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     public void setRegisterServiceProviderUI(RegisterServiceProviderUI registerServiceProviderUI) {
         this.registerServiceProviderUI = registerServiceProviderUI;
     }
-    
+
     @FXML
     private void handleCancelButton(ActionEvent event) {
+        registerServiceProviderUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
-    private void handleCompleteBtn(ActionEvent event) {
+    private void handleContinueBtn(ActionEvent event) {
+
     }
 
     @FXML
-    private void handleCategoryComboBox(ActionEvent event) {
+    private void handleAddBtn(ActionEvent event) {
+        // add area pop up
+        // update list
     }
 
     @FXML
-    private void handleAddCatBtn(ActionEvent event) {
+    private void handleRemoveBtn(ActionEvent event) {
+        // checks if anything is selected
+        // removes area and update list
     }
-    
+
+    void populateAreasList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

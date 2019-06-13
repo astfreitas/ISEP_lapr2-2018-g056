@@ -10,7 +10,6 @@ import lapr.project.gpsd.model.GeographicAreaRegistry;
 import lapr.project.gpsd.model.SPApplication;
 import lapr.project.gpsd.model.ServiceProvider;
 import lapr.project.gpsd.model.ServiceProviderRegistry;
-import static lapr.project.gpsd.utils.Constants.*;
 
 public class RegisterServiceProviderController {
 
@@ -23,7 +22,6 @@ public class RegisterServiceProviderController {
     private ServiceProvider sp;
     private String pwd;
     private SPApplication spApp;
-    private Address address;
 
     /**
      * Creates an instance of RegisterServiceProviderController
@@ -47,13 +45,17 @@ public class RegisterServiceProviderController {
     /**
      * Sets the sequence of methods necessary to create a valid SP
      *
+     * Throws exception if address is not valid
      * @param name SP's name
+     * @param local
+     * @param postalCode
      * @param address SP's address
      * @return True/false if the operation succeeds or doesn't
      */
-    public boolean newServiceProvider(String name, Address address) {
+    public boolean newServiceProvider(String name, String local, String postalCode, String address) {
+        Address newAddress = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
         spRegistry = company.getServiceProviderRegistry();
-        this.sp = spRegistry.newServiceProvider(name, address);
+        this.sp = spRegistry.newServiceProvider(name, newAddress);
         return this.spRegistry.validateServiceProvider(this.sp);
     }
 
@@ -143,10 +145,24 @@ public class RegisterServiceProviderController {
         return spApp.getAddress();
     }
 
-    public void newAddress(String local, String postalCode, String address) {
-        
-        this.address = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
-        
+    public List<String> getApplications() {
+        return company.getSPApplicationRegistry().getApplicationsNifs();
+    }
+
+    public String getSPName() {
+        return spApp.getName();
+    }
+
+    public String getSPAddress() {
+        return spApp.getAddress().getAddress();
+    }
+
+    public String getSPPostalCode() {
+        return spApp.getAddress().getPostalCode().getPostalCode();
+    }
+
+    public String getSPLocal() {
+        return spApp.getAddress().getLocal();
     }
 
 }
