@@ -80,7 +80,7 @@ public class ConsultServiceOrderUI2 implements Initializable {
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        consultServOrderUI.getMainApp().toMainScene();
+        consultServOrderUI.getMainMenu().backToMainMenu();
     }
 
     @FXML
