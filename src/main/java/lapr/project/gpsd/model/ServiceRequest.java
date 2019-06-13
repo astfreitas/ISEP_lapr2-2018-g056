@@ -196,6 +196,16 @@ public class ServiceRequest {
         GeographicArea ag = rag.getNearestGeographicArea(pc);
         return ag.getTravelCost() * serviceRequestDescriptions.size();
     }
+    /**
+     * Returns a String description for the Service Request - mostly used for 
+     * Consult Service Orders
+     * @return String description for the Service Request
+     */
+    @Override
+    public String toString() {
+        return "\nService Request " + number + " in the Client: " 
+                + client.getName() + " at address " + address;
+    }
     
     
 }

@@ -308,11 +308,14 @@ public class ServiceProvider {
      *
      */
     public void recalculateAverage() {
+        double average;
+
         double sum = 0;
         for (Evaluation eval : evalList) {
             sum += eval.getRating();
         }
-        double average = sum / evalList.size();
+        sum += 3;
+        average = sum / (evalList.size() + 1);
         this.averageRating = average;
     }
 

@@ -116,13 +116,13 @@ public class SchedulePreference {
 
     /**
      * 
-     * Gives the description
+     * Gives the description for the Schedule Preference object
      * 
      * @return String with the SchedulePreference
      */
     @Override
     public String toString() {
-        return order + " : " + date + " às " + hour;
+        return order + " : " + date + " to " + hour;
     }
     
 }

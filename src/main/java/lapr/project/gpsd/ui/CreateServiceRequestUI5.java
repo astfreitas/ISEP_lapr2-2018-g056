@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
@@ -22,11 +17,6 @@ import lapr.project.gpsd.model.ServiceRequest;
 import lapr.project.gpsd.model.ServiceRequestDescription;
 import lapr.project.utils.UIUtils;
 
-/**
- * FXML Controller class
- *
- * @author Josué Mota
- */
 public class CreateServiceRequestUI5 implements Initializable {
 
     private CreateServiceRequestUI createServiceRequestUI;
@@ -62,7 +52,7 @@ public class CreateServiceRequestUI5 implements Initializable {
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        this.createServiceRequestUI.getMainApp().toMainScene();
+        this.createServiceRequestUI.getMainMenu().backToMainMenu();
     }
 
     @FXML

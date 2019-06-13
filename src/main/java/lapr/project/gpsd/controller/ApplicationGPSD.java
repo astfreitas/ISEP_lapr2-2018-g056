@@ -20,7 +20,6 @@ import lapr.project.gpsd.model.Client;
 import lapr.project.gpsd.model.ClientRegistry;
 import lapr.project.gpsd.utils.Constants;
 import lapr.project.gpsd.model.Company;
-import lapr.project.gpsd.model.Evaluation;
 import lapr.project.gpsd.model.ExtendableService;
 import lapr.project.gpsd.model.FixedService;
 import lapr.project.gpsd.model.LimitedService;
@@ -28,6 +27,7 @@ import lapr.project.gpsd.model.PostalCode;
 import lapr.project.gpsd.model.ProfessionalCompetence;
 import lapr.project.gpsd.model.SPApplication;
 import lapr.project.gpsd.model.SchedulePreference;
+import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.model.ServiceAssignment;
 import lapr.project.gpsd.model.ServiceOrder;
 import lapr.project.gpsd.model.ServiceProvider;
@@ -347,7 +347,8 @@ public class ApplicationGPSD {
         Client cli1 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp1 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
         ServiceRequest sq1 = this.company.getServiceRequestRegistry().newServiceRequest(cli1, cli1.getAddress("Gondomar", cp1, "Rua D. João de França"));
-        sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close tap", 0);
+        FixedService fservice1 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
+        sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close tap", (int) fservice1.getPredeterminedDuration());
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 3), LocalTime.of(9, 0));
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 5), LocalTime.of(22, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq1);
@@ -355,7 +356,7 @@ public class ApplicationGPSD {
         Client cli2 = this.company.getClientRegistry().getClientByNIF("100542369");
         PostalCode cp2 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4420-001");
         ServiceRequest sq2 = this.company.getServiceRequestRegistry().newServiceRequest(cli2, cli2.getAddress("Gondomar", cp2, "Rua D. João de França"));
-        sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Repair ducts", 60);
+        sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("2"), "Repair ducts", 60);
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 23), LocalTime.of(9, 0));
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(22, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq2);
@@ -378,7 +379,8 @@ public class ApplicationGPSD {
         Client cli5 = this.company.getClientRegistry().getClientByNIF("210975020");
         PostalCode cp5 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4470-528");
         ServiceRequest sq5 = this.company.getServiceRequestRegistry().newServiceRequest(cli5, cli5.getAddress("Maia", cp5, "R. Cegonheira, nº 3"));
-        sq5.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Repair tap", 60);
+        FixedService fservice2 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
+        sq5.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Repair tap", (int) fservice2.getPredeterminedDuration());
         sq5.addSchedulePreference(LocalDate.of(2019, 6, 7), LocalTime.of(19, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq5);
 
@@ -392,7 +394,8 @@ public class ApplicationGPSD {
         Client cli7 = this.company.getClientRegistry().getClientByNIF("210975020");
         PostalCode cp7 = this.company.getPostalCodeRegistry().getMatchingPostalCode("4470-528");
         ServiceRequest sq7 = this.company.getServiceRequestRegistry().newServiceRequest(cli7, cli7.getAddress("Maia", cp7, "R. Cegonheira, nº 3"));
-        sq7.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("6"), "Paint gate", 60);
+        FixedService fservice3 = (FixedService) this.company.getServiceRegistry().getServiceById("6");
+        sq7.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("6"), "Paint gate", (int) fservice3.getPredeterminedDuration());
         sq7.addSchedulePreference(LocalDate.of(2019, 6, 29), LocalTime.of(20, 0));
         this.company.getServiceRequestRegistry().registerServiceRequest(sq7);
 

@@ -5,13 +5,22 @@ import lapr.project.gpsd.utils.Constants;
 
 
 public class ServiceRequestDescription {
-    
+    //atributes of the decription of service request
     /**
-     * atributes of the decription of service request
+     * Instance Service for the ServiceRequestDescription
      */
     private Service service;
+    /**
+     * String description for the Service Request Descriptio
+     */
     private String description;
+    /**
+     * Duration of the service
+     */
     private int duration;
+    /**
+     * Assigned value
+     */
     private String assigned;
     /**
      * cosntructor with 3 parameters
@@ -33,12 +42,19 @@ public class ServiceRequestDescription {
     public double getCost() {
         return this.service.getDurationCost(duration);
     }
-
+    /**
+     * Returns a description to the Service Request using the Service BriefDescription
+     * and the duration. - used for Consult Service Orders
+     * @return string with service brief description and duration
+     */
     @Override
     public String toString() {
-        return "ServiceRequestDescription{" + "service=" + service + ", description=" + description + ", duration=" + duration + '}';
+        return "\nService: " + service.getBriefDescription() + " with Duration: " + duration;
     }
-
+    /**
+     * Sets the value for the atribute assigned
+     * @param assigned string value to set to assigned
+     */
     public void setAssigned(String assigned) {
         this.assigned = assigned;
     }
@@ -56,15 +72,24 @@ public class ServiceRequestDescription {
     public boolean isAccepted() {
         return assigned.equals(Constants.SERVICE_ACCEPTED);
     }
-
+    /**
+     * Returns the reference for the Service instance
+     * @return Service instance
+     */
     public Service getService() {
         return service;
     }
-
+    /**
+     * Returns the Description for the Service Request Descrption
+     * @return description string
+     */
     public String getDescription() {
         return description;
     }
-
+    /**
+     * Returns the Duration of the Service Request Descrption
+     * @return 
+     */
     public int getDuration() {
         return duration;
     }

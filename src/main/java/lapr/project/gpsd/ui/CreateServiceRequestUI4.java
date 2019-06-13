@@ -45,7 +45,7 @@ public class CreateServiceRequestUI4 implements Initializable {
 
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        this.createServiceRequestUI.getMainApp().toMainScene();
+        this.createServiceRequestUI.getMainMenu().backToMainMenu();
     }
 
     @FXML

@@ -56,4 +56,9 @@ public class ServiceOrderStatus {
         this.servOrderStatus = servOrderStatus;
     }
 
+    @Override
+    public String toString() {
+        return " Status is " + servOrderStatus + " (details: " + servOrderDetail + ") ";
+    }
+    
 }
