@@ -11,12 +11,14 @@ public class ExportCSVTest {
     /**
      * Test of export method, of class ExportCSV.
      */
-    @Disabled
+    @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "";
-        String[] line = null;
+        String filename = "src/main/resources/exportedFiles/test.csv";
+        String[] line = {"cliName", "cliEmail", "Day", "Time", "Category", "Serv"};
         ExportCSV.export(filename, line);
+        String[] line1 = {"cliName1", "cliEmail1", "Day1", "Time1", "Category1", "Serv1"};
+        ExportCSV.export(filename, line1);
     }
     
 }
