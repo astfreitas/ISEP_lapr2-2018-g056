@@ -203,9 +203,8 @@ public class ServiceRequest {
      */
     @Override
     public String toString() {
-        return "\nService Request " + number + " date: " + date + 
-                " in the Client: " + client.getName() + " at address " + 
-                address;
+        return "\nService Request " + number + " in the Client: " 
+                + client.getName() + " at address " + address;
     }
     
     
