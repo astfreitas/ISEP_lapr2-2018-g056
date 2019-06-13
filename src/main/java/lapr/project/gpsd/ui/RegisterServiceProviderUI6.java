@@ -8,26 +8,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.GeographicArea;
 import lapr.project.utils.UIUtils;
 
-public class RegisterServiceProviderUI3 implements Initializable {
+public class RegisterServiceProviderUI6 implements Initializable {
 
     RegisterServiceProviderUI registerServiceProviderUI;
+    RegisterServiceProviderUI3 parentUI;
 
     @FXML
     private Button cancelBtn;
     @FXML
-    private Button continueBtn;
+    private Button confirmBtn;
     @FXML
-    private Button addBtn;
-    @FXML
-    private Button removeBtn;
-    @FXML
-    private ListView<GeographicArea> areasList;
+    private ComboBox<GeographicArea> areaComboBox;
 
     /**
      * Initializes the controller class.
@@ -41,35 +37,34 @@ public class RegisterServiceProviderUI3 implements Initializable {
         this.registerServiceProviderUI = registerServiceProviderUI;
     }
 
+    public void setParentUI(RegisterServiceProviderUI3 parentUI) {
+        this.parentUI = parentUI;
+    }
+
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        registerServiceProviderUI.getMainMenu().backToMainMenu();
+        ((Stage) cancelBtn.getScene().getWindow()).close();
     }
 
     @FXML
-    private void handleContinueBtn(ActionEvent event) {
-        registerServiceProviderUI.toRegisterServiceProviderScene4();
+    private void handleConfirmBtn(ActionEvent event) {
+        String areaId = areaComboBox.getValue().getGeoId();
+        if (registerServiceProviderUI.getController().addGeographicArea(areaId)) {
+            ((Stage) cancelBtn.getScene().getWindow()).close();
+            parentUI.updateList();
+        } else {
+            UIUtils.createAlert("Selected Area was not found in registry.", "Error:", Alert.AlertType.ERROR);
+        }
     }
 
-    @FXML
-    private void handleAddBtn(ActionEvent event) {
-        registerServiceProviderUI.toRegisterServiceProviderScene6(this);
-    }
-
-    @FXML
-    private void handleRemoveBtn(ActionEvent event) {
-        // checks if anything is selected
-        // removes area and update list
-    }
-
-    void updateList() {
+    void populateComboBox() {
         List<GeographicArea> areas = registerServiceProviderUI.getController().getGeographicAreas();
-        areasList.getItems().addAll(areas);
+        areaComboBox.getItems().addAll(areas);
         if (areas.isEmpty()) {
             UIUtils.createAlert("Unable to register Service Provider.", "No geographic areas found.", Alert.AlertType.ERROR);
             ((Stage) cancelBtn.getScene().getWindow()).close();
             registerServiceProviderUI.getMainMenu().backToMainMenu();
         }
     }
-}
 
+}

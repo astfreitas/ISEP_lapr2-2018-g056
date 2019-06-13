@@ -46,6 +46,7 @@ public class RegisterServiceProviderController {
      * Sets the sequence of methods necessary to create a valid SP
      *
      * Throws exception if address is not valid
+     *
      * @param name SP's name
      * @param local
      * @param postalCode
@@ -75,13 +76,12 @@ public class RegisterServiceProviderController {
      * @param catId SP's category ID
      * @return True/false if the operation succeeds or doesn't
      */
-    public Category addCategory(String catId) {
-        if (this.sp != null) {
-            Category oCategory = this.company.getCategoryRegistry().getCatById(catId);
-            this.sp.addCategory(oCategory);
-            return oCategory;
+    public boolean addCategory(String catId) {
+        Category oCategory = this.company.getCategoryRegistry().getCatById(catId);
+        if(oCategory == null) {
+            return false;
         }
-        return null;
+        return this.sp.addCategory(oCategory);
     }
 
     /**
@@ -100,13 +100,12 @@ public class RegisterServiceProviderController {
      * @param geoId SP's geographic area ID
      * @return True/false if the operation succeeds or doesn't
      */
-    public GeographicArea addGeographicArea(String geoId) {
-        if (this.sp != null) {
-            GeographicArea oGeographicArea = this.company.getGeographicAreaRegistry().getGeoAreaById(geoId);
-            this.sp.addGeoArea(oGeographicArea);
-            return oGeographicArea;
+    public boolean addGeographicArea(String geoId) {
+        GeographicArea area = this.company.getGeographicAreaRegistry().getGeoAreaById(geoId);
+        if(area == null) {
+            return false;
         }
-        return null;
+        return this.sp.addGeoArea(area);
     }
 
     /**
