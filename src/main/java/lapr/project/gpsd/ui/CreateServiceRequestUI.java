@@ -37,7 +37,8 @@ public class CreateServiceRequestUI {
     public void toCreateServiceRequestControllerScene1() {
         try {
             CreateServiceRequestUI1 createServiceRequestScene1UI 
-                    = (CreateServiceRequestUI1)this.mainApp.replaceSceneContent("/fxml/CreateServiceRequest1.fxml");
+                    = (CreateServiceRequestUI1)this.mainApp.
+                            replaceSceneContent("/fxml/CreateServiceRequest1.fxml");
             createServiceRequestScene1UI.setCreateServiceRequestSceneUI (this);
             createServiceRequestScene1UI.showClientAddresses();
         } catch (Exception ex) {
@@ -47,7 +48,8 @@ public class CreateServiceRequestUI {
     public void toCreateServiceRequestControllerScene2() {
         try {
             CreateServiceRequestUI2 createServiceRequestScene2UI
-                    = (CreateServiceRequestUI2) this.mainApp.replaceSceneContent("/fxml/CreateServiceRequest2.fxml");
+                    = (CreateServiceRequestUI2) this.mainApp.
+                            replaceSceneContent("/fxml/CreateServiceRequest2.fxml");
             createServiceRequestScene2UI.setCreateServiceRequestSceneUI (this);
             createServiceRequestScene2UI.setupServiceRequestDescriptionTable();
         } catch (Exception ex) {
@@ -57,7 +59,8 @@ public class CreateServiceRequestUI {
     public void toCreateServiceRequestControllerScene3() {
         try {
             CreateServiceRequestUI3 createServiceRequestScene3UI
-                    = (CreateServiceRequestUI3) this.mainApp.replaceSceneContent("/fxml/CreateServiceRequest3.fxml");
+                    = (CreateServiceRequestUI3) this.mainApp.
+                            replaceSceneContent("/fxml/CreateServiceRequest3.fxml");
             createServiceRequestScene3UI.setCreateServiceRequestSceneUI (this);
             createServiceRequestScene3UI.setupServiceDescriptionScene();
         } catch (Exception ex) {

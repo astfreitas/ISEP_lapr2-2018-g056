@@ -50,6 +50,7 @@ public class CreateServiceRequestUI1 implements Initializable {
         addressComboBox.getItems().clear();
         addressComboBox.getItems().addAll(clientAddresses);
         addressComboBox.getSelectionModel().selectFirst();
+        
     }
 
     private boolean setAddress() {
@@ -60,5 +61,8 @@ public class CreateServiceRequestUI1 implements Initializable {
         }
         return false;
     }
-
+    
+    
+    
+    
 }

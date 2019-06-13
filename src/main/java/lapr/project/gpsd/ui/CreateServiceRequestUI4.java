@@ -50,9 +50,11 @@ public class CreateServiceRequestUI4 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        if(validate()) {
+        if(!this.createServiceRequestUI.getController().validate()) {
+            UIUtils.createAlert("You must have atleast 1 Schedule Preference", "SchedulePreference Error", Alert.AlertType.ERROR);
+        } else {
             this.createServiceRequestUI.toCreateServiceRequestControllerScene5();
-        }
+        }        
     }
     
     @FXML
@@ -61,7 +63,11 @@ public class CreateServiceRequestUI4 implements Initializable {
         int hour = Integer.parseInt(hourComboBox.getSelectionModel().getSelectedItem());
         int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());
         LocalTime scheduleTime = LocalTime.of(hour, min, 0);
-        this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
+        boolean schedulePreferenceAdded = this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
+        
+        if(!schedulePreferenceAdded) {
+            UIUtils.createAlert("A schedule preference with the same attributes already exist.", "Duplicated Preference.", Alert.AlertType.ERROR);
+        }
         updateScheduleList();
     }
     
@@ -79,7 +85,7 @@ public class CreateServiceRequestUI4 implements Initializable {
             hourComboBox.getItems().add(hour + i);
         }
         hourComboBox.getSelectionModel().selectFirst();
-        for (int i = 0; i < 60; i += 30) {
+        for (int i = 0; i < 60; i += 5) {
             String min = "";
             if (i < 10) {
                 min = "0";
@@ -95,16 +101,6 @@ public class CreateServiceRequestUI4 implements Initializable {
         scheduleLst.getItems().addAll(schedulePreferences);
     }
     
-    
-    private boolean validate() {
-        if(scheduleLst.getItems().isEmpty()) {
-            UIUtils.createAlert("You must have atleast 1 Schedule Preference", "SchedulePreference Error", Alert.AlertType.ERROR);
-            return false;
-        }
-        
-        return true;
-    }
-
     
     
 }
