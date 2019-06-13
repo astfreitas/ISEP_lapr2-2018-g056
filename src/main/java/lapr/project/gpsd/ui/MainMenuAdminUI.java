@@ -6,10 +6,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 import lapr.project.utils.UIUtils;
 
 public class MainMenuAdminUI implements Initializable {
-    
+
     private Main mainApp;
     private MainMenuUI mainMenuUI;
     @FXML
@@ -20,6 +21,8 @@ public class MainMenuAdminUI implements Initializable {
     private MenuItem specGABtn;
     @FXML
     private MenuItem aboutBtn;
+    @FXML
+    private MenuItem logoutBtn;
 
     /**
      * Initializes the controller class.
@@ -27,9 +30,9 @@ public class MainMenuAdminUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    public void setMainApp(Main mainApp){
+    }
+
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -37,7 +40,7 @@ public class MainMenuAdminUI implements Initializable {
         this.mainMenuUI = mainMenuUI;
     }
 
-    public void backToMainMenu(){
+    public void backToMainMenu() {
         this.mainMenuUI.toMainMenuAdmin();
     }
 
@@ -61,6 +64,12 @@ public class MainMenuAdminUI implements Initializable {
 
     @FXML
     private void handleAboutBtn(ActionEvent event) {
-         UIUtils.about();
+        UIUtils.about();
+    }
+
+    @FXML
+    private void handleLogoutBtn(ActionEvent event) {
+        ApplicationGPSD.getInstance().doLogout();
+        mainApp.toMainScene();
     }
 }

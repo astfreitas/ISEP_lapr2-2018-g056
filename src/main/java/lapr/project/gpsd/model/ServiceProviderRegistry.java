@@ -92,7 +92,7 @@ public class ServiceProviderRegistry {
         int number = sp.getNumber();
         String companyName = ApplicationGPSD.getInstance().getCompany().getDesignation();
         String emailCompanyName = companyName.trim().toLowerCase().replace(" ", "");
-        String spEmail = number + "@" + emailCompanyName + ".com";
+        String spEmail = number + "@" + emailCompanyName + "com";
         return spEmail;
     }
 
