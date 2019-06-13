@@ -25,7 +25,7 @@ public class AdapterCSVTest {
     public void testExport() {
         System.out.println("export");
         String filename = "";
-        String[] line = null;
+        String[] line = {"teste1", "teste2", "teste3"};
         AdapterCSV instance = new AdapterCSV();
         instance.export(filename, line);
     }

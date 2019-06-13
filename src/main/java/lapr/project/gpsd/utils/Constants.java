@@ -14,7 +14,7 @@ public class Constants {
     public static final String PARAMS_FILE_POSTAL_CODES = "Company.FilePostalCodes";
     public static final String PARAMS_ASSIGNMENT_ALGORITM = "Company.AssignmentAlgoritm";
     public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.ServiceSortingBehavior";
-    public static final String PARAMS_NUMBER_SERVICE_TYPES = "Company.NumberServiceTypes";
+    public static final String PARAMS_NUMBER_SERVICE_TYPES = "Company.NumberOfServiceTypes";
     public static final String PARAMS_SERVICE_TYPE_SIGNATURE = "Company.ServiceType";
     public static final String PARAMS_MODEL_PATH = "lapr.project.gpsd.model";
 
