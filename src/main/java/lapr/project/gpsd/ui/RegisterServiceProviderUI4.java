@@ -44,12 +44,13 @@ public class RegisterServiceProviderUI4 implements Initializable {
             String message = registerServiceProviderUI.getController().getSuccessMessage();
             UIUtils.createAlert(message, "Registration successful.", Alert.AlertType.INFORMATION);
         } else {
-            registerServiceProviderUI.getMainMenu().backToMainMenu();
+            UIUtils.createAlert("you dun goofed", "Goddamnit", Alert.AlertType.ERROR);
         }
+        registerServiceProviderUI.getMainMenu().backToMainMenu();       
     }
 
     void displayText() {
-        String text = registerServiceProviderUI.getController().getServiceProvider().toString();
+        String text = registerServiceProviderUI.getController().getServiceProvider().display();
         confirmTxt.setText(text);
     }
 

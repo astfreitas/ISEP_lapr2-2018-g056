@@ -53,4 +53,13 @@ public class SPCategoryList {
         categorylist.remove(cat);
     }
 
+    @Override
+    public String toString() {
+        String text = "";
+        for (Category cat : categorylist) {
+            text += cat.toString() + "\n";
+        }
+        return text;
+    }
+
 }

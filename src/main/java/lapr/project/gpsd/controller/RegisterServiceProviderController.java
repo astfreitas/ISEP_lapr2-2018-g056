@@ -56,10 +56,11 @@ public class RegisterServiceProviderController {
     public boolean newServiceProvider(String name, String local, String postalCode, String address) {
         Address newAddress = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
         spRegistry = company.getServiceProviderRegistry();
-        sp = spRegistry.newServiceProvider(name, newAddress);
+        sp = spRegistry.newServiceProvider(name,  newAddress);
         spApp.getCategories().forEach((cat) -> {
             sp.addCategory(cat);
         });
+        sp.setNif(spApp.getNIF());
         return this.spRegistry.validateServiceProvider(this.sp);
     }
 
