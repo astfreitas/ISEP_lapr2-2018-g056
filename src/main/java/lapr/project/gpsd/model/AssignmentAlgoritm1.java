@@ -285,7 +285,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, selectedSchedule);
 
         // removes the service duration interval from the SP's availability
-//        selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
+        selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
         // returns the newly created assignment
         System.out.println("\tAssignment successfuly created :" + assignment);
         return assignment;
