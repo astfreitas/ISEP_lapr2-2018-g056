@@ -124,6 +124,16 @@ public class GeographicArea {
     }
 
     /**
+     * Checks if the Geographic area has a determined designation
+     *
+     * @param desig Designation to check
+     * @return True/false if the Geographic area has/hasn't the Designation
+     */
+    public boolean hasDesignation(String desig){
+        return this.designation.equalsIgnoreCase(desig);
+    }
+    
+    /**
      * Returns the designation atribute of Geographic Area
      *
      * @return designation string

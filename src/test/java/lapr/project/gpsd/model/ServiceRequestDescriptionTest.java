@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import lapr.project.gpsd.utils.Constants;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -35,11 +36,13 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of setAssigned method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testSetAssigned() {
         System.out.println("setAssigned");
-        String assigned = "";
-        ServiceRequestDescription instance = null;
+        String assigned = Constants.SERVICE_ASSIGNED;
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = new ServiceRequestDescription(serv, "testDesc", 30);
         instance.setAssigned(assigned);
     }
 
@@ -49,7 +52,10 @@ public class ServiceRequestDescriptionTest {
     @Disabled
     public void testIsAssigned() {
         System.out.println("isAssigned");
-        ServiceRequestDescription instance = null;
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = new ServiceRequestDescription(serv, "testDesc", 30);
+        instance.setAssigned(Constants.SERVICE_ASSIGNED);
         boolean expResult = false;
         boolean result = instance.isAssigned();
         assertEquals(expResult, result);
