@@ -25,7 +25,6 @@ public class EvaluateSPController {
             throw new IllegalStateException("Unautorized user!");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
-        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

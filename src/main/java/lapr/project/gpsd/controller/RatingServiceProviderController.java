@@ -23,7 +23,6 @@ public class RatingServiceProviderController {
             throw new IllegalStateException("Non authorized user.");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
-        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

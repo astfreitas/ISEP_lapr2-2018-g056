@@ -29,7 +29,6 @@ public class CompleteServiceController {
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.servOrders = new ArrayList<>();
-        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

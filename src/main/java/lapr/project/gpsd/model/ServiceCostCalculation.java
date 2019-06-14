@@ -28,6 +28,14 @@ public interface ServiceCostCalculation {
      */
     public boolean hasOtherAttributes();
 
+    
+    /**
+     * verifies if a service has attribute
+     *
+     * @return true or false
+     */
+    public boolean hasAttribute(String attribute);
+    
     /**
      * modifies additional data if a service has other attributes
      *
