@@ -2,6 +2,8 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr.project.gpsd.controller.ApplicationGPSD;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -16,12 +18,14 @@ public class SPApplicationRegistryTest {
     @Disabled
     public void testGetApplications() {
         System.out.println("getApplications");
-        SPApplicationRegistry instance = new SPApplicationRegistry();
-        List<SPApplication> expResult = null;
-        List<SPApplication> result = instance.getApplications();
+        ApplicationGPSD testApp = ApplicationGPSD.getInstance();
+        SPApplicationRegistry instance = testApp.getCompany().getSPApplicationRegistry();
+        testApp.bootstrap();
+        int expResult = 2;
+        List<SPApplication> spaList = instance.getApplications();
+        int result = spaList.size();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -30,11 +34,14 @@ public class SPApplicationRegistryTest {
     @Test
     public void testGetApplicationByNIF() {
         System.out.println("getApplicationByNIF");
-        String NIF = "";
-        SPApplicationRegistry instance = new SPApplicationRegistry();
-        SPApplication expResult = null;
+        ApplicationGPSD testApp = ApplicationGPSD.getInstance();
+        SPApplicationRegistry instance = testApp.getCompany().getSPApplicationRegistry();
+        
+        String NIF = "510324896";
+        SPApplication expResult = new SPApplication("TestNot", "503080230", "919997458", "test@testAt.com");
         SPApplication result = instance.getApplicationByNIF(NIF);
-        assertEquals(expResult, result);
+        Assertions.assertNotEquals(expResult, result);
+//        assertEquals(expResult, result);
     }
 
     /**
