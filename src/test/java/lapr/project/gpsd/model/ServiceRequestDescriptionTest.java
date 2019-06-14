@@ -1,6 +1,7 @@
 package lapr.project.gpsd.model;
 
 import lapr.project.gpsd.utils.Constants;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -49,14 +50,14 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of isAssigned method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testIsAssigned() {
         System.out.println("isAssigned");
         Category cat = new Category("codeTest", "descTest");
         Service serv = new FixedService("idTest", "testDesc", "testDesc", 100, cat);
         ServiceRequestDescription instance = new ServiceRequestDescription(serv, "testDesc", 30);
         instance.setAssigned(Constants.SERVICE_ASSIGNED);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.isAssigned();
         assertEquals(expResult, result);
     }
@@ -64,11 +65,16 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of isAccepted method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testIsAccepted() {
         System.out.println("isAccepted");
-        ServiceRequestDescription instance = null;
-        boolean expResult = false;
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        instance.setAssigned(Constants.SERVICE_ACCEPTED);
+        boolean expResult = true;
         boolean result = instance.isAccepted();
         assertEquals(expResult, result);
     }
@@ -88,23 +94,48 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of getDescription method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetDescription() {
         System.out.println("getDescription");
-        ServiceRequestDescription instance = null;
-        String expResult = "";
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        String expResult = "testDesc";
         String result = instance.getDescription();
         assertEquals(expResult, result);
     }
+    /**
+     * Test of getDescription method, of class ServiceRequestDescription.
+     */
+    @Test
+    public void testGetDescription2() {
+        System.out.println("getDescription - 2 false exp");
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        String expResult = "te";
+        String result = instance.getDescription();
+        Assertions.assertNotEquals(expResult, result);
+    }
+    
 
     /**
      * Test of getDuration method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetDuration() {
         System.out.println("getDuration");
-        ServiceRequestDescription instance = null;
-        int expResult = 0;
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        
+        int expResult = 30;
         int result = instance.getDuration();
         assertEquals(expResult, result);
     }
@@ -112,11 +143,15 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of getPropertyCategory method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetPropertyCategory() {
         System.out.println("getPropertyCategory");
-        ServiceRequestDescription instance = null;
-        String expResult = "";
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        String expResult = "descTest";
         String result = instance.getPropertyCategory();
         assertEquals(expResult, result);
     }
@@ -124,11 +159,15 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of getPropertyService method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetPropertyService() {
         System.out.println("getPropertyService");
-        ServiceRequestDescription instance = null;
-        String expResult = "";
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        String expResult = "testDesc";
         String result = instance.getPropertyService();
         assertEquals(expResult, result);
     }
@@ -136,11 +175,15 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of getPropertyDuration method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetPropertyDuration() {
         System.out.println("getPropertyDuration");
-        ServiceRequestDescription instance = null;
-        String expResult = "";
+        Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        String expResult = "30";
         String result = instance.getPropertyDuration();
         assertEquals(expResult, result);
     }
@@ -148,13 +191,16 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of getPropertyCost method, of class ServiceRequestDescription.
      */
-    @Disabled
+    @Test
     public void testGetPropertyCost() {
-        System.out.println("getPropertyCost");
-        ServiceRequestDescription instance = null;
-        String expResult = "";
-        String result = instance.getPropertyCost();
-        assertEquals(expResult, result);
+        System.out.println("getPropertyCost");Category cat = new Category("codeTest", "descTest");
+        Service serv = 
+                new FixedService("idTest", "testDesc", "testDesc", 100, cat);
+        ServiceRequestDescription instance = 
+                new ServiceRequestDescription(serv, "testDesc", 30);
+        double expResult = 100;
+        double result = Double.parseDouble(instance.getPropertyCost());
+        assertEquals(expResult, result, 0.01);
     }
     
 }
