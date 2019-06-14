@@ -3,6 +3,7 @@ package lapr.project.gpsd.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 
 /**
  *
@@ -96,7 +97,7 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-        this.averageRating = 3;
+        this.averageRating = 3;;
     }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
