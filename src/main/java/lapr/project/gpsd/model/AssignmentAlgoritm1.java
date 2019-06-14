@@ -32,7 +32,8 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         sortingBehavior.sortServiceList(services);
 
         System.out.println("\n\n\nNEW ASSIGNMENT RUN");
-        System.out.println("\tSERVICES: " + services);
+        System.out.println("\tSERVICES: ");
+        services.forEach(s -> System.out.println(s.getDescription() + " by " + requestRegistry.getRequestFromDescription(s).getClient().getName()));
         // assign each service from the list of services, create and add assignment
         for (ServiceRequestDescription service : services) {
             System.out.println("\nTrying to assign service: " + service.getDescription() + " | From: " + requestRegistry.getRequestFromDescription(service).getClient().getName());
