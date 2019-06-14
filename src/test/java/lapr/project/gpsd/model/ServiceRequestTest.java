@@ -211,11 +211,10 @@ public class ServiceRequestTest {
         ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));;
         ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
         PostalCodeRegistry pcReg = new PostalCodeRegistry();
-        ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry().getGeographicAreas().add(new GeographicArea("GeoArea1", 40, 2500, "4000-008", exService, pcReg));
         Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
         ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
         instance.getServiceRequestDescriptions().add(servDesc);
-        double expResult = 40;
+        double expResult = 25;
         double result = instance.getTravelExpenses();
         assertEquals(expResult, result, 0.1);
     }
