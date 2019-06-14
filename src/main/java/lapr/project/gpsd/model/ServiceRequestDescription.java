@@ -147,42 +147,4 @@ public class ServiceRequestDescription {
         return String.valueOf(this.getCost());
     }
 
-    /**
-     *
-     * Compares two instances of ServiceRequestDescription and returns
-     * true/false if they are equals or possess the same atributes
-     *
-     * @param otherServiceReqDesc ServiceRequestDescription to compare
-     * @return True/false if they are equals or possess the same atributes
-     */
-    @Override
-    public boolean equals(Object otherServiceReqDesc) {
-        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
-
-        // self check
-        if (this == otherServiceReqDesc) {
-            return true;
-        }
-        // null check
-        if (otherServiceReqDesc == null) {
-            return false;
-        }
-        // type check and cast
-        if (getClass() != otherServiceReqDesc.getClass()) {
-            return false;
-        }
-        // field comparison
-        ServiceRequestDescription obj = (ServiceRequestDescription) otherServiceReqDesc;
-        return (Objects.equals(service, obj.service) || Objects.equals(description, obj.description)
-                || Objects.equals(duration, obj.duration));
-    }
-//    /**
-//     * Returns a copy of the ServiceRequest Description
-//     * @param newServ Objecto of ServRequestDescr to copy
-//     * @return new Instance for ServiceRequestDescription
-//     */
-//    public ServiceRequestDescription newServRequestDescriCopy(ServiceRequestDescription newServ){
-//        return new ServiceRequestDescription(newServ.getService(), newServ.getDescription(), newServ.duration);
-//    }
-
 }
