@@ -306,6 +306,7 @@ public class ServiceProvider {
      */
     public void registerEvaluation(int rating, ServiceOrder servOrder) {
         Evaluation eval = new Evaluation(rating, servOrder);
+        servOrder.setServiceRated(true);
         evalList.add(eval);
         recalculateAverage();
     }

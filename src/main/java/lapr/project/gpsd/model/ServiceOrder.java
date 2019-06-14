@@ -14,6 +14,7 @@ public class ServiceOrder {
     private SchedulePreference schedPreference;
     private int orderNumber;
     private ServiceOrderStatus status;
+    private boolean serviceRated;
 
     /**
      * Constructor instantiates a service order with a service assignment
@@ -30,6 +31,7 @@ public class ServiceOrder {
         this.schedPreference = serviceAssignment.getSchedulePreference();
         this.servRequestDesc.setAssigned(Constants.SERVICE_ACCEPTED);
         this.status = new ServiceOrderStatus(Constants.PENDING_ORDER);
+        this.serviceRated = false;
     }
 
     /**
@@ -41,6 +43,25 @@ public class ServiceOrder {
         this.orderNumber = orderNumber;
     }
 
+    /**
+     * Method that sets the serviceRated flag
+     *
+     * @param serviceRated service rate status
+     */
+    public void setServiceRated(boolean serviceRated) {
+        this.serviceRated = serviceRated;
+    }
+
+    /**
+     * 
+     * Method that returns the serviceRated flag
+     * 
+     * @return Service rate status
+     */
+    public boolean getServiceRated() {
+        return serviceRated;
+    }
+    
     /**
      *
      * Returns the Service Order number
