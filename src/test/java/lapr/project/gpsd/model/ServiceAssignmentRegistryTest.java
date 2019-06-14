@@ -49,7 +49,7 @@ public class ServiceAssignmentRegistryTest {
      * Test of getServiceAssignmentListByServiceRequest method, of class
      * ServiceAssignmentRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServiceAssignmentListByServiceRequest_ServiceRequest() {
         System.out.println("getServiceAssignmentListByServiceRequest");
         ServiceProvider sp = new ServiceProvider("testName", "testNIF", "testEmail", "testAbrevName");
@@ -101,7 +101,7 @@ public class ServiceAssignmentRegistryTest {
      * Test of getServiceAssignmentListByServiceRequest method, of class
      * ServiceAssignmentRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServiceAssignmentListByServiceRequest_ServiceRequest_List() {
         System.out.println("getServiceAssignmentListByServiceRequest");
 

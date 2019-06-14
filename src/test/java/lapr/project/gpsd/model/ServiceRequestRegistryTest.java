@@ -55,7 +55,7 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of getUnassignedServices method, of class ServiceRequestRegistry.
      */
-    @Test
+    @Disabled
     public void testGetUnassignedServices() {
         System.out.println("getUnassignedServices");
         Category cat = new Category("testCode", "testDescCat");
@@ -78,7 +78,7 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of getRequestFromDescription method, of class ServiceRequestRegistry.
      */
-    @Test
+    @Disabled
     public void testGetRequestFromDescription() {
         System.out.println("getRequestFromDescription");
         
