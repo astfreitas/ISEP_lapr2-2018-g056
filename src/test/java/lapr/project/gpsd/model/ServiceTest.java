@@ -116,29 +116,6 @@ public class ServiceTest {
     }
 
     /**
-     * Test of getServiceType method, of class Service.
-     */
-    @Disabled
-    public void testGetServiceType() {
-        System.out.println("getServiceType");
-        Service instance = null;
-        ServiceType expResult = null;
-        ServiceType result = instance.getServiceType();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setServiceType method, of class Service.
-     */
-    @Disabled
-    public void testSetServiceType() {
-        System.out.println("setServiceType");
-        ServiceType serviceType = null;
-        Service instance = null;
-        instance.setServiceType(serviceType);
-    }
-
-    /**
      * Test of equals method, of class Service.
      */
     @Disabled

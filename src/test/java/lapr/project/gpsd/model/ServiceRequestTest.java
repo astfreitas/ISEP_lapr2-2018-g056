@@ -120,18 +120,6 @@ public class ServiceRequestTest {
     }
 
     /**
-     * Test of getDate method, of class ServiceRequest.
-     */
-    @Disabled
-    public void testGetDate() {
-        System.out.println("getDate");
-        ServiceRequest instance = null;
-        Date expResult = null;
-        Date result = instance.getDate();
-        assertEquals(expResult, result);
-    }
-
-    /**
      * Test of getTotal method, of class ServiceRequest.
      */
     @Disabled

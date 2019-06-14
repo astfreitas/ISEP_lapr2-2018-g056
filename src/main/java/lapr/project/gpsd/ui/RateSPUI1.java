@@ -6,6 +6,8 @@
 package lapr.project.gpsd.ui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import lapr.project.gpsd.controller.RatingServiceProviderController;
 import lapr.project.gpsd.model.ServiceOrder;
 import lapr.project.utils.UIUtils;
 
@@ -57,7 +60,12 @@ public class RateSPUI1 implements Initializable {
     }
 
     public void populateServOrderList() {
-        this.servOrderList.getItems().addAll(this.rateSPUI.getController().getClientServices());
+        RatingServiceProviderController controller = this.rateSPUI.getController();
+        ArrayList<ServiceOrder> servOrders = controller.getClientServices();
+        for(ServiceOrder so : servOrders){
+          this.servOrderList.getItems().add(so);
+        }
+        //this.servOrderList.getItems().addAll(servOrders);
     }
 
     void setRateSPUI(RateSPUI rateSPUI) {
