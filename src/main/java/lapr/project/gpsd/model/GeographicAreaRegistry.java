@@ -14,16 +14,16 @@ public class GeographicAreaRegistry {
      * List of Geographic Areas known by the company
      */
     private List<GeographicArea> geoAreaList;
-    
+
     /**
      * Protected string to use to generate and ID for each Geographic Area
      * Instance.
      */
-    protected String geoIDModel="GeoArea";
-    
+    protected String geoIDModel = "GeoArea";
+
     /**
-     * Construstor for the GeographicAreaRegistry instance.
-     * No parameters needed - just iniciates a new ArrayList for GeoAreaList.
+     * Construstor for the GeographicAreaRegistry instance. No parameters needed
+     * - just iniciates a new ArrayList for GeoAreaList.
      */
     public GeographicAreaRegistry() {
         geoAreaList = new ArrayList<>();
@@ -52,7 +52,7 @@ public class GeographicAreaRegistry {
         }
         return nearestGeoArea;
     }
-    
+
     /**
      * Returns a new instance of Geographic Area.
      *
@@ -86,8 +86,15 @@ public class GeographicAreaRegistry {
         }
 
     }
-    
-    private boolean validateGeoAreaExists(GeographicArea geoA){
+
+    /**
+     * Validates if the given GeographicArea instance exists on the
+     * GeographicAreaList
+     *
+     * @param geoA GeoArea instance to validate
+     * @return false if an equal instance is found in the list or true otherwise
+     */
+    private boolean validateGeoAreaExists(GeographicArea geoA) {
         for (GeographicArea geographicArea : geoAreaList) {
             if (geographicArea.equals(geoA)) {
                 return false;
@@ -95,24 +102,18 @@ public class GeographicAreaRegistry {
         }
         return true;
     }
-    
+
     /**
-     * Validates if the given GeographicArea instance alredy exists in the
-     * geoAreaList.
+     * Validates if the given GeographicArea instance atributes has Designation and 
+     * MainPostalCode are not empty
      *
      * @param geoA GeographicArea instance to validate.
-     * @return true if an equal instance of GeoArea is not found in the list
-     * otherwise returns false
+     * @return true if the fields are not empty, otherwise false
      */
     public boolean validationGeoArea(GeographicArea geoA) {
         if (geoA.getDesignation().isEmpty() && geoA.getMainPostalCode().getPostalCode().isEmpty()) {
             return false;
         }
-//        for (GeographicArea geographicArea : geoAreaList) {
-//            if (geographicArea.equals(geoA)) {
-//                return false;
-//            }
-//        }
         return true;
     }
 
@@ -149,19 +150,16 @@ public class GeographicAreaRegistry {
         }
         return null;
     }
+
     /**
-     * Generates and ID for and give Geographic Area instance bases on a protected
-     * atribute in this class and the number of elemets whitin the GeoAreList List.
-     * 
+     * Generates and ID for and give Geographic Area instance bases on a
+     * protected atribute in this class and the number of elemets whitin the
+     * GeoAreList List.
+     *
      * @param geoA Instance of GeographicAre to set an ID
      */
-    private void setNewGeoAreaID(GeographicArea geoA){
+    private void setNewGeoAreaID(GeographicArea geoA) {
         int numberGeoListEntries = geoAreaList.size();
-        geoA.setGeoId(geoIDModel+numberGeoListEntries);
+        geoA.setGeoId(geoIDModel + numberGeoListEntries);
     }
-
-    List<GeographicArea> getAreasWithLocale(PostalCode postalCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
