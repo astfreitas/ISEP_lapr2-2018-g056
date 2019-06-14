@@ -388,6 +388,14 @@ public class ServiceProvider {
         this.nif = nif;
     }
     
+    /**
+     * returns Service Provider Classification label;
+     */
+    public String getClassification() {
+        return classification;
+    }
+    
+    
      /**
      *
      * Compares two instances of ServiceProvider and returns true/false if they are
