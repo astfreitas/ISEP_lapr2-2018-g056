@@ -46,10 +46,10 @@ public class ServiceRequestTest {
     }
 
     /**
-     * Test of addSchedulePreference method, of class ServiceRequest.
+     * Test of addSchedulePreferenceString method, of class ServiceRequest.
      * //ToDo
      */
-    @Disabled
+    @Test
     public void testAddSchedulePreference() {
         System.out.println("addSchedulePreference");
         LocalDate date = LocalDate.parse("2019-06-20");
@@ -57,7 +57,7 @@ public class ServiceRequestTest {
         ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
         int iSize = instance.getSchedulePreferences().size();
         try {
-            instance.addSchedulePreference(date, time,"D");
+            instance.addSchedulePreference(date, time);
         } catch (Exception e) {
             System.out.println("Error trying to add Schedule Pref");
         }
