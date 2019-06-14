@@ -103,8 +103,8 @@ public class CreateServiceRequestController {
      * @param date represents the date preference
      * @param time represents the time preference
      */
-    public boolean addSchedulePreference(LocalDate date, LocalTime time) {
-        return serviceRequest.addSchedulePreference(date, time);
+    public void addSchedulePreference(LocalDate date, LocalTime time) {
+        serviceRequest.addSchedulePreference(date, time);
     }
 
     /**
