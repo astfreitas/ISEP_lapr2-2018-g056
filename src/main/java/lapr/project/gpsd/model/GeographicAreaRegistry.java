@@ -162,4 +162,20 @@ public class GeographicAreaRegistry {
         int numberGeoListEntries = geoAreaList.size();
         geoA.setGeoId(geoIDModel + numberGeoListEntries);
     }
+    /**
+     * Returns a List of GeographicArea instances that have a matching
+     * PostalCode within the Locations List
+     * @param pc PostalCode object to check for matched areas
+     * @return List GeographicAre with reference to all that have a PostalCode
+     * matching the given reference. If none are found returns null.
+     */
+    public List<GeographicArea> getAreasWithLocale(PostalCode pc){
+        List<GeographicArea> matchedList = new ArrayList<>();
+        for (GeographicArea geoArea : geoAreaList) {
+            if (geoArea.checkLocationsForPC(pc)) {
+                matchedList.add(geoArea);
+            }
+        }
+        return matchedList;
+    }
 }
