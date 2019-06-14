@@ -46,8 +46,7 @@ public class ServiceTypeRegistry {
     /**
      * Add service type  to list
      *
-     * @param idType
-     * @param caminhoClass
+     * @param serviceType ServiceType to be added
      * @return true or false as the operation succeeds to add service to the
      * ArrayList serviceTypes
      */
