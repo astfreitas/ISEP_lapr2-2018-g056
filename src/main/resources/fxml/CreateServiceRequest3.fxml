@@ -18,53 +18,52 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_LEFT">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="190.0" prefWidth="600.0">
+            <HBox alignment="CENTER" prefHeight="95.0" prefWidth="600.0">
+               <children>
+                  <Label text="Add a Service Request Description" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="67.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Specify a category" />
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="403.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="400.0">
                      <children>
-                        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryComBox" prefHeight="25.0" prefWidth="237.0" />
+                        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryComBox" prefHeight="25.0" prefWidth="200.0" />
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="269.0" prefWidth="600.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Specify a Service" />
                      </children>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
                   </HBox>
-                  <HBox prefHeight="162.0" prefWidth="400.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="400.0">
                      <children>
-                        <ListView fx:id="serviceListView" prefHeight="142.0" prefWidth="433.0" />
+                        <ComboBox fx:id="serviceComboBox" onAction="#handleServiceComboBox" prefHeight="25.0" prefWidth="200.0" />
                      </children>
                      <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="222.0" prefWidth="600.0">
+            <HBox prefHeight="177.0" prefWidth="600.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -87,7 +86,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="190.0" prefWidth="600.0">
+            <HBox prefHeight="115.0" prefWidth="600.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                      <children>

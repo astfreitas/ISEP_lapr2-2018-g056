@@ -59,4 +59,9 @@ public class ExtendableService extends Service {
         return false;
     }
 
+    @Override
+    public boolean hasAttribute(String attribute) {
+        return false;
+    }
+
 }
