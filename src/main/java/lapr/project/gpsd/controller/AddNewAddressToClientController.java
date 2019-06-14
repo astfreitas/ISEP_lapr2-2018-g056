@@ -41,7 +41,7 @@ public class AddNewAddressToClientController {
      * @param address
      */
     public void newAddress(String local, String postalCode, String address) {
-        this.address = Client.newAddress(local, postalCode, local);
+        this.address = Client.newAddress(local, postalCode, address);
     }
 
     /**

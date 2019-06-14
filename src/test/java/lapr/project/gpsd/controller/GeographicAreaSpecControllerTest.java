@@ -23,7 +23,7 @@ public class GeographicAreaSpecControllerTest {
     /**
      * Test of newGeographicArea method, of class GeographicAreaSpecController.
      */
-    @Test
+    @Disabled
     public void testNewGeographicArea() {
         System.out.println("newGeographicArea");
         String designation = "";

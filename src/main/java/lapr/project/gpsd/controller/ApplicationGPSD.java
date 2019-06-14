@@ -442,7 +442,7 @@ public class ApplicationGPSD {
 
         //Rate Service Provider
         ServiceProvider rsp1 = cso1.getServiceProvider();
-        //rsp1.registerEvaluation(4, cso1);
+        rsp1.registerEvaluation(4, cso1);
         ServiceProvider rsp2 = cso2.getServiceProvider();
         rsp2.registerEvaluation(5, cso2);
         ServiceProvider rsp3 = cso3.getServiceProvider();

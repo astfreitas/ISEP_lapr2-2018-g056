@@ -76,6 +76,11 @@ public class ServiceCostCalculationTest {
         public boolean setAdditionalData(String data) {
             return false;
         }
+
+        @Override
+        public boolean hasAttribute(String attribute) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
 }
