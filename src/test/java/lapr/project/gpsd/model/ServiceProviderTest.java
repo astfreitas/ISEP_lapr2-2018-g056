@@ -326,13 +326,15 @@ public class ServiceProviderTest {
     /**
      * Test of isAvailable method, of class ServiceProvider.
      */
-    @Disabled
+    @Test
     public void testIsAvailable() {
         System.out.println("isAvailable");
         SchedulePreference schedule = new SchedulePreference(0, LocalDate.of(2019,6,22), LocalTime.NOON);
         int duration = 30;
         ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
-        boolean expResult = false;
+        Availability aval = new Availability(LocalDate.of(2019,6,22), LocalTime.NOON, LocalTime.of(20,0));
+        instance.getSpAvailabilityList().addAvailability(aval);
+        boolean expResult = true;
         boolean result = instance.isAvailable(schedule, duration);
         assertEquals(expResult, result);
     }

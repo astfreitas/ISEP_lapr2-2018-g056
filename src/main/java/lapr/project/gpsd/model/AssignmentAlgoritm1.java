@@ -192,10 +192,16 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
      * @return
      */
     public List<ServiceProvider> filterByAvailability(List<ServiceProvider> spList, List<SchedulePreference> scheduleList, int duration) {
+        System.out.println("Filtering SP's by availability");
+        System.out.println("Request's schedules: " + scheduleList.toString());
         List<ServiceProvider> spFilteredList = new ArrayList<>();
         for (ServiceProvider sp : spList) {
+            System.out.println("SP under inspection: " + sp);
+            System.out.println("SP's availabilities: \n" + sp.getSpAvailabilityList().getAvailabilityList().toString());
             for (SchedulePreference schedule : scheduleList) {
+                System.out.println("Testing for schedule: " + schedule);
                 if (sp.isAvailable(schedule, duration)) {
+                    System.out.println("Schedule match for sp: " + sp);
                     spFilteredList.add(sp);
                     break;
                 }
@@ -214,15 +220,17 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
      * @return
      */
     public List<ServiceProvider> filterByAddress(List<ServiceProvider> spList, Address address) {
+        System.out.println("Filtering SP's geographic area");
         List<GeographicArea> areas = company.getGeographicAreaRegistry().getAreasWithLocale(address.getPostalCode());
         System.out.println("Request's GAs: " + areas.toString());
         List<ServiceProvider> spFilteredList = new ArrayList<>();
         for (ServiceProvider sp : spList) {
             System.out.println("SP under inspection: " + sp);
-            System.out.println("SP's GAs: " + sp.getSpGeoAreaList().toString());
+            System.out.println("SP's GAs: \n" + sp.getSpGeoAreaList().toString());
             for (GeographicArea area : areas) {
                 if (sp.hasGeographicArea(area)) {
                     spFilteredList.add(sp);
+                    System.out.println("SP " + sp + " matched service!");
                     break;
                 }
             }
@@ -242,7 +250,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
         // selects the most suitable
         ServiceProvider selectedSP = selectMostSuitableSP(suitableSPs, service);
-
+        System.out.println("Most suitable sp: " + selectedSP);
         // gets the request that originated the service description
         ServiceRequest request = requestRegistry.getRequestFromDescription(service);
 
@@ -256,8 +264,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         ServiceAssignment assignment = new ServiceAssignment(selectedSP, service, request, selectedSchedule);
 
         // removes the service duration interval from the SP's availability
-        selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
-
+//        selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
         // returns the newly created assignment
         System.out.println("Assignment successfuly created :" + assignment);
         return assignment;

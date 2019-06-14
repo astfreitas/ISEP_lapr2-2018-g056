@@ -295,8 +295,8 @@ public class ServiceRequest {
         }
         // field comparison
         ServiceRequest obj = (ServiceRequest) otherServReq;
-        return (Objects.equals(client, obj.client) || Objects.equals(address, obj.address)
-                || Objects.equals(serviceRequestDescriptions, obj.serviceRequestDescriptions)
-                || Objects.equals(schedulePreferences, obj.schedulePreferences));
+        return (Objects.equals(client, obj.client) && Objects.equals(address, obj.address)
+                && Objects.equals(serviceRequestDescriptions, obj.serviceRequestDescriptions)
+                && Objects.equals(schedulePreferences, obj.schedulePreferences));
     }
 }
