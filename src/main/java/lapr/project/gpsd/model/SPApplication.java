@@ -272,5 +272,29 @@ public class SPApplication {
         }
         return str;
     }
+    
+    /**
+     * Compares the PostalCode instance with an objet received by reference in
+     * the method parameter.
+     *
+     * @param otherObject Objet to compare with the PostalCode instance
+     * @return true if the received object represent and equal object of the
+     * instanced PostalCode. Otherwise returns False.
+     */
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        SPApplication otherSP = (SPApplication) otherObject;
+        return this.NIF.equals(otherSP.NIF)
+                && this.name.equals(otherSP.name)
+                && this.email.equals(otherSP.email)
+                && this.phone.equals(otherSP.phone);
+        //ToDo - finish the equals process for the other atributes if needed
+    }  
 
 }
