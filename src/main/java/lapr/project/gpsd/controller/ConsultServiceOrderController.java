@@ -63,7 +63,6 @@ public class ConsultServiceOrderController {
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.servOrderList = new ArrayList<>();
-        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

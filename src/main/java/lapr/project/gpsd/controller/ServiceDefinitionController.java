@@ -32,7 +32,6 @@ public class ServiceDefinitionController {
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.services = this.company.getServiceRegistry().getServices();
-        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**
