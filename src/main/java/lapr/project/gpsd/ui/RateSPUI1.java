@@ -33,7 +33,7 @@ public class RateSPUI1 implements Initializable {
     @FXML
     private Button continueBtn;
     @FXML
-    private ListView<ServiceOrder> servOrderList;
+    private ListView<ServiceOrder> serviceList;
 
     /**
      * Initializes the controller class.
@@ -50,10 +50,10 @@ public class RateSPUI1 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        if (this.servOrderList.getSelectionModel().getSelectedItem() == null) {
+        if (this.serviceList.getSelectionModel().getSelectedItem() == null) {
             UIUtils.createAlert("Please select one service", "", Alert.AlertType.ERROR);
         } else {
-            this.rateSPUI.getController().setServOrder(this.servOrderList.getSelectionModel().getSelectedItem());
+            this.rateSPUI.getController().setServOrder(this.serviceList.getSelectionModel().getSelectedItem());
             this.rateSPUI.getController().setServiceProvider();
             this.rateSPUI.toSpecifyCategoryScene2();
         }
@@ -62,10 +62,7 @@ public class RateSPUI1 implements Initializable {
     public void populateServOrderList() {
         RatingServiceProviderController controller = this.rateSPUI.getController();
         ArrayList<ServiceOrder> servOrders = controller.getClientServices();
-        for(ServiceOrder so : servOrders){
-          this.servOrderList.getItems().add(so);
-        }
-        //this.servOrderList.getItems().addAll(servOrders);
+        this.serviceList.getItems().addAll(servOrders);
     }
 
     void setRateSPUI(RateSPUI rateSPUI) {

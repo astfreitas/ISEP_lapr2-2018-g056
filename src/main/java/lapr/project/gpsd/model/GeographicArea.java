@@ -233,12 +233,7 @@ public class GeographicArea {
      * @return the distance of the found Postal Code otherwise returns -1
      */
     public double getDistanceToPostalCode(PostalCode pc) {
-        for (Location location : LocationList) {
-            if (location.getPostalCode().equals(pc)) {
-                return location.getDistance();
-            }
-        }
-        return -1;
+        return ApplicationGPSD.getInstance().getCompany().getExternalService().getDistanceBetCP(this.mainPostalCode, pc);
     }
 
     /**

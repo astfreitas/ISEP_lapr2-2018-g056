@@ -59,7 +59,7 @@ public class RateSPUI2 implements Initializable {
             UIUtils.createAlert("Please select a rating", "", Alert.AlertType.ERROR);
         }else{
             this.rateSPUI.getController().setRating(rate);
-            
+            this.rateSPUI.toSpecifyCategoryScene3();
         }
     }
     
