@@ -1,10 +1,13 @@
 package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.util.converter.LocalDateTimeStringConverter;
+import lapr.project.gpsd.controller.ApplicationGPSD;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -28,13 +31,14 @@ public class ServiceRequestTest {
     /**
      * Test of addServiceRequestDescription method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testAddServiceRequestDescription() {
         System.out.println("addServiceRequestDescription");
-        Service service = null;
-        String desc = "";
-        int dur = 0;
-        ServiceRequest instance = null;
+        Service service = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
+        String desc = "ServDescTest";
+        int dur = 2;
+        ApplicationGPSD testApp = new ApplicationGPSD();
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
         boolean expResult = false;
         boolean result = instance.addServiceRequestDescription(service, desc, dur);
         assertEquals(expResult, result);
@@ -43,13 +47,13 @@ public class ServiceRequestTest {
     /**
      * Test of addSchedulePreference method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testAddSchedulePreference() {
         System.out.println("addSchedulePreference");
-        LocalDate date = null;
-        LocalTime time = null;
-        ServiceRequest instance = null;
-        boolean expResult = false;
+        LocalDate date = LocalDate.parse("2019-06-20");
+        LocalTime time = LocalTime.parse("23:30");
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
+        boolean expResult = true;
         boolean result = instance.addSchedulePreference(date, time);
         assertEquals(expResult, result);
     }
@@ -72,7 +76,7 @@ public class ServiceRequestTest {
     @Disabled
     public void testGetOtherCost() {
         System.out.println("getOtherCost");
-        ServiceRequest instance = null;
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
         double expResult = 0.0;
         double result = instance.getOtherCost();
         assertEquals(expResult, result, 0.0);
@@ -81,22 +85,22 @@ public class ServiceRequestTest {
     /**
      * Test of calculateCost method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testCalculateCost() {
         System.out.println("calculateCost");
-        ServiceRequest instance = null;
-        double expResult = 0.0;
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
+        double expResult = 0; //Its the same as the given postal Code
         double result = instance.calculateCost();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.00001);
     }
 
     /**
      * Test of validate method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testValidate() {
         System.out.println("validate");
-        ServiceRequest instance = null;
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
         boolean expResult = false;
         boolean result = instance.validate();
         assertEquals(expResult, result);
@@ -189,11 +193,14 @@ public class ServiceRequestTest {
     /**
      * Test of fullyAssigned method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testFullyAssigned() {
         System.out.println("fullyAssigned");
-        ServiceRequest instance = null;
-        boolean expResult = false;
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
+        Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
+        ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
+        servDesc.setAssigned("Assigned");
+        boolean expResult = true;
         boolean result = instance.fullyAssigned();
         assertEquals(expResult, result);
     }
@@ -201,13 +208,20 @@ public class ServiceRequestTest {
     /**
      * Test of getTravelExpenses method, of class ServiceRequest.
      */
-    @Disabled
+    @Test
     public void testGetTravelExpenses() {
         System.out.println("getTravelExpenses");
-        ServiceRequest instance = null;
-        double expResult = 0.0;
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));;
+        ApplicationGPSD testApp = new ApplicationGPSD();
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry().getGeographicAreas().add(new GeographicArea("GeoArea1", 10, 2500, "4000-008", exService, pcReg));
+        Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
+        ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
+        instance.getServiceRequestDescriptions().add(servDesc);        
+        double expResult = 10;
         double result = instance.getTravelExpenses();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.1);
     }
     
 }
