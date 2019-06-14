@@ -70,7 +70,9 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-        this.averageRating = 3;
+        Evaluation startAverage = new Evaluation(3, null);
+        this.evalList.add(startAverage);
+        recalculateAverage();
     }
 
     /**
@@ -97,7 +99,9 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-        this.averageRating = 3;
+        Evaluation startAverage = new Evaluation(3, null);
+        this.evalList.add(startAverage);
+        recalculateAverage();
     }
 
     //ToDo: do we need a construtor receiving the full name, and the fields for
@@ -316,8 +320,7 @@ public class ServiceProvider {
         for (Evaluation eval : evalList) {
             sum += eval.getRating();
         }
-        sum += 3;
-        average = sum / (evalList.size() + 1);
+        average = sum / (evalList.size());
         this.averageRating = average;
     }
 
@@ -383,24 +386,24 @@ public class ServiceProvider {
 
     /**
      * Sets nif
-     * @param nif 
+     *
+     * @param nif
      */
     public void setNif(String nif) {
         this.nif = nif;
     }
-    
+
     /**
      * returns Service Provider Classification label;
      */
     public String getClassification() {
         return classification;
     }
-    
-    
-     /**
+
+    /**
      *
-     * Compares two instances of ServiceProvider and returns true/false if they are
-     * equals or possess the same atributes
+     * Compares two instances of ServiceProvider and returns true/false if they
+     * are equals or possess the same atributes
      *
      * @param otherSP ServiceProvider to compare
      * @return True/false if they are equals or possess the same atributes
@@ -423,8 +426,8 @@ public class ServiceProvider {
         }
         // field comparison
         ServiceProvider obj = (ServiceProvider) otherSP;
-        return (Objects.equals(email, obj.email) || Objects.equals(nif, obj.nif) || 
-                Objects.equals(spAddress, obj.spAddress));
+        return (Objects.equals(email, obj.email) || Objects.equals(nif, obj.nif)
+                || Objects.equals(spAddress, obj.spAddress));
     }
 
 }
