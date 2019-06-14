@@ -97,12 +97,10 @@ public class ApplicationGPSD {
 
         //Clients
         ClientRegistry rc = this.company.getClientRegistry();
-        //Client regCli1 = rc.newClient("Maria Santos", "100542369", "936565651", "msantos@gmail.com");
-        Client regCli1 = rc.newClient("Maria Santos", "100542369", "936565651", "1");
+        Client regCli1 = rc.newClient("Maria Santos", "100542369", "936565651", "msantos@gmail.com");
         Address ca1 = Client.newAddress("Gondomar", "4420-001", "Rua D. João de França, nº 1");
         regCli1.addAddress(ca1);
-        //rc.registerClient(regCli1, "prosdbsts190");
-        rc.registerClient(regCli1, "1");
+        rc.registerClient(regCli1, "prosdbsts190");
         Client regCli2 = rc.newClient("António Lage", "200542669", "916535661", "aLage@gmail.com");
         Address ca2 = Client.newAddress("Pedroso", "4415-999", "R. Gonçalves de Castro, nº 8");
         regCli2.addAddress(ca2);
