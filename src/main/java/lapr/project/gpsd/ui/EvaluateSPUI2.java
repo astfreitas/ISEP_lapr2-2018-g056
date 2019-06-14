@@ -80,13 +80,13 @@ public class EvaluateSPUI2 implements Initializable {
         XYChart.Series<String, Number> series = new XYChart.Series();
 
         System.out.println(Collections.max(ratings));
-        int[] bins = new int[5];
+        int[] bins = new int[6];
         if (Collections.max(ratings) > 5) {
-            bins = new int[Collections.max(ratings)];
+            bins = new int[Collections.max(ratings)+1];
         }
 
         for (Integer rating : ratings) {
-            bins[rating - 1] += 1;
+            bins[rating] += 1;
         }
 
         for (int i = 0; i < bins.length; i++) {
