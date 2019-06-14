@@ -14,7 +14,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of getPendingServiceOrdersByServiceProvider method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testGetPendingServiceOrdersByServiceProvider() {
         System.out.println("getPendingServiceOrdersByServiceProvider");
         String status = "";
@@ -28,7 +28,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of concludeServiceOrder method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testConcludeServiceOrder() {
         System.out.println("concludeServiceOrder");
         ServiceOrder servOrder = null;
@@ -39,7 +39,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of concludeServiceOrderWithIssue method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testConcludeServiceOrderWithIssue() {
         System.out.println("concludeServiceOrderWithIssue");
         ServiceOrder servOrder = null;
@@ -51,7 +51,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of getCompletedServiceOrdersByClient method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testGetCompletedServiceOrdersByClient() {
         System.out.println("getCompletedServiceOrdersByClient");
         Client cli = null;
@@ -64,7 +64,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of getServiceOrderByDateAndSP method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServiceOrderByDateAndSP() {
         System.out.println("getServiceOrderByDateAndSP");
         LocalDate sDate = null;
@@ -79,7 +79,7 @@ public class ServiceOrderRegistryTest {
     /**
      * Test of registerServiceOrders method, of class ServiceOrderRegistry.
      */
-    @Test
+    @Disabled
     public void testRegisterServiceOrders() {
         System.out.println("registerServiceOrders");
         List<ServiceAssignment> listServiceAssignments = null;

@@ -12,7 +12,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of newAddress method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testNewAddress() {
         System.out.println("newAddress");
         String local = "";
@@ -27,7 +27,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of newServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testNewServiceProvider() {
         System.out.println("newServiceProvider");
         String name = "";
@@ -41,7 +41,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of validateServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testValidateServiceProvider() {
         System.out.println("validateServiceProvider");
         ServiceProvider sp = null;
@@ -54,7 +54,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of addServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testAddServiceProvider() {
         System.out.println("addServiceProvider");
         ServiceProvider sp = null;
@@ -67,7 +67,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of registerServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testRegisterServiceProvider() {
         System.out.println("registerServiceProvider");
         ServiceProvider sp = null;
@@ -80,7 +80,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of getServiceProviderByEmail method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServiceProviderByEmail() {
         System.out.println("getServiceProviderByEmail");
         String email = "";
@@ -105,7 +105,7 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of getAverageRatings method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testGetAverageRatings() {
         System.out.println("getAverageRatings");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();

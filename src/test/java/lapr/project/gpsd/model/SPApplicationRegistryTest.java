@@ -31,7 +31,7 @@ public class SPApplicationRegistryTest {
     /**
      * Test of getApplicationByNIF method, of class SPApplicationRegistry.
      */
-    @Test
+    @Disabled
     public void testGetApplicationByNIF() {
         System.out.println("getApplicationByNIF");
         ApplicationGPSD testApp = ApplicationGPSD.getInstance();
@@ -47,7 +47,7 @@ public class SPApplicationRegistryTest {
     /**
      * Test of getAcceptedApplications method, of class SPApplicationRegistry.
      */
-    @Test
+    @Disabled
     public void testGetAcceptedApplications() {
         System.out.println("getAcceptedApplications");
         String applicationStatus = "";
@@ -60,7 +60,7 @@ public class SPApplicationRegistryTest {
     /**
      * Test of newSPApplication method, of class SPApplicationRegistry.
      */
-    @Test
+    @Disabled
     public void testNewSPApplication() {
         System.out.println("newSPApplication");
         String name = "";
@@ -76,7 +76,7 @@ public class SPApplicationRegistryTest {
     /**
      * Test of validateApplication method, of class SPApplicationRegistry.
      */
-    @Test
+    @Disabled
     public void testValidateApplication() {
         System.out.println("validateApplication");
         SPApplication spa = null;
@@ -87,7 +87,7 @@ public class SPApplicationRegistryTest {
     /**
      * Test of registerApplication method, of class SPApplicationRegistry.
      */
-    @Test
+    @Disabled
     public void testRegisterApplication() {
         System.out.println("registerApplication");
         SPApplication spa = null;

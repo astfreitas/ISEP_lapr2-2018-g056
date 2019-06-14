@@ -35,7 +35,7 @@ public class ServiceTest {
     /**
      * Test of hasId method, of class Service.
      */
-    @Test
+    @Disabled
     public void testHasId() {
         System.out.println("hasId");
         String id = "";
@@ -141,7 +141,7 @@ public class ServiceTest {
     /**
      * Test of equals method, of class Service.
      */
-    @Test
+    @Disabled
     public void testEquals() {
         System.out.println("equals");
         Object o = null;

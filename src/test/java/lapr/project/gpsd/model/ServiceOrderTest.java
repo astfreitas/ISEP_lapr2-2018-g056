@@ -91,7 +91,7 @@ public class ServiceOrderTest {
     /**
      * Test of isPending method, of class ServiceOrder.
      */
-    @Test
+    @Disabled
     public void testIsPending() {
         System.out.println("isPending");
         String status = "";

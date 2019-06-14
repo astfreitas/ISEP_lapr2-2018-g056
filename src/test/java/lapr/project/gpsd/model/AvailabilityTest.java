@@ -106,7 +106,7 @@ public class AvailabilityTest {
         LocalTime time3 = LocalTime.of(10, 0);
         LocalTime time4 = LocalTime.of(13, 0);
         Availability instance = new Availability(date2, time3, time4);
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.equals(otherObject);
         assertEquals(expResult, result);
     }

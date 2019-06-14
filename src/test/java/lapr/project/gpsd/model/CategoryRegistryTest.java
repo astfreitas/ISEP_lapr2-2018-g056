@@ -18,7 +18,7 @@ public class CategoryRegistryTest {
         String catID = "testID";
         String description = "testDescription";
         CategoryRegistry instance = new CategoryRegistry();
-        Category expResult = new Category("testeID", "testDescription");
+        Category expResult = new Category("testID", "testDescription");
         Category result = instance.newCategory(catID, description);
         assertEquals(expResult, result);
     }
@@ -30,7 +30,7 @@ public class CategoryRegistryTest {
     public void testGetCatById() {
         System.out.println("getCatById");
         String catID = "testID";
-        Category cat = new Category("testeID", "testDescription");
+        Category cat = new Category("testID", "testDescription");
         CategoryRegistry instance = new CategoryRegistry();
         instance.getCategories().add(cat);
         Category expResult = cat;

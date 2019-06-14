@@ -37,7 +37,7 @@ public class ServiceCostCalculationTest {
     /**
      * Test of hasOtherAttributes method, of class ServiceCostCalculation.
      */
-    @Test
+    @Disabled
     public void testHasOtherAttributes() {
         System.out.println("hasOtherAttributes");
         ServiceCostCalculation instance = new ServiceCostCalculationImpl();

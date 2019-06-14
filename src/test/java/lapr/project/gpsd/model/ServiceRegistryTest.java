@@ -17,7 +17,7 @@ public class ServiceRegistryTest {
     /**
      * Test of validateService method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testValidateService() {
         System.out.println("validateService");
         Service serv = null;
@@ -30,7 +30,7 @@ public class ServiceRegistryTest {
     /**
      * Test of addService method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testAddService() {
         System.out.println("addService");
         Service serv = null;
@@ -43,7 +43,7 @@ public class ServiceRegistryTest {
     /**
      * Test of registerService method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testRegisterService() {
         System.out.println("registerService");
         Service serv = null;
@@ -68,7 +68,7 @@ public class ServiceRegistryTest {
     /**
      * Test of getServiceById method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServiceById() {
         System.out.println("getServiceById");
         String idServ = "";
@@ -81,7 +81,7 @@ public class ServiceRegistryTest {
     /**
      * Test of getServicesFromCategory method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testGetServicesFromCategory() {
         System.out.println("getServicesFromCategory");
         String idCat = "";
@@ -94,7 +94,7 @@ public class ServiceRegistryTest {
     /**
      * Test of validateRequest method, of class ServiceRegistry.
      */
-    @Test
+    @Disabled
     public void testValidateRequest() {
         System.out.println("validateRequest");
         ServiceRequest serviceRequest = null;

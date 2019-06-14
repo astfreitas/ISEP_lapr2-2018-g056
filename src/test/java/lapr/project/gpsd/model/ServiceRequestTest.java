@@ -28,7 +28,7 @@ public class ServiceRequestTest {
     /**
      * Test of addServiceRequestDescription method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testAddServiceRequestDescription() {
         System.out.println("addServiceRequestDescription");
         Service service = null;
@@ -43,7 +43,7 @@ public class ServiceRequestTest {
     /**
      * Test of addSchedulePreference method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testAddSchedulePreference() {
         System.out.println("addSchedulePreference");
         LocalDate date = null;
@@ -93,7 +93,7 @@ public class ServiceRequestTest {
     /**
      * Test of validate method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testValidate() {
         System.out.println("validate");
         ServiceRequest instance = null;
@@ -105,7 +105,7 @@ public class ServiceRequestTest {
     /**
      * Test of getNumber method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testGetNumber() {
         System.out.println("getNumber");
         ServiceRequest instance = null;
@@ -189,7 +189,7 @@ public class ServiceRequestTest {
     /**
      * Test of fullyAssigned method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testFullyAssigned() {
         System.out.println("fullyAssigned");
         ServiceRequest instance = null;
@@ -201,7 +201,7 @@ public class ServiceRequestTest {
     /**
      * Test of getTravelExpenses method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testGetTravelExpenses() {
         System.out.println("getTravelExpenses");
         ServiceRequest instance = null;

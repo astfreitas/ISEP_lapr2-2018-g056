@@ -21,7 +21,7 @@ public class SortingFIFOTest {
     /**
      * Test of sortServiceList method, of class SortingFIFO.
      */
-    @Test
+    @Disabled
     public void testSortServiceList() {
         System.out.println("sortServiceList");
         List<ServiceRequestDescription> services = null;

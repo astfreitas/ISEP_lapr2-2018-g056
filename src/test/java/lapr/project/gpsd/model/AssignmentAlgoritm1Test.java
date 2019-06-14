@@ -32,7 +32,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of getSuitableSPList method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testGetSuitableSPList() {
         System.out.println("getSuitableSPList");
         ServiceRequestDescription srd = null;
@@ -45,7 +45,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of selectMostSuitableSP method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testSelectMostSuitableSP() {
         System.out.println("selectMostSuitableSP");
         List<ServiceProvider> suitableSPs = null;
@@ -59,7 +59,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of filterByCategory method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testFilterByCategory() {
         System.out.println("filterByCategory");
         Category cat1 = new Category("code1", "desc1");
@@ -81,7 +81,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of filterByAvailability method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testFilterByAvailability() {
         System.out.println("filterByAvailability");
         
@@ -119,7 +119,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of filterByAddress method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testFilterByAddress() {
         System.out.println("filterByAddress");
         List<ServiceProvider> spList = null;
@@ -133,7 +133,7 @@ public class AssignmentAlgoritm1Test {
     /**
      * Test of createAssignment method, of class AssignmentAlgoritm1.
      */
-    @Test
+    @Disabled
     public void testCreateAssignment() {
         System.out.println("createAssignment");
         ServiceRequestDescription service = null;

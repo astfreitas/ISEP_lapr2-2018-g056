@@ -102,7 +102,7 @@ public class ServiceProviderTest {
     /**
      * Test of getEmail method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testGetEmail() {
         System.out.println("getEmail");
         ServiceProvider instance = null;
@@ -172,7 +172,7 @@ public class ServiceProviderTest {
     /**
      * Test of addCategory method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testAddCategory() {
         System.out.println("addCategory");
         Category cat = null;
@@ -185,7 +185,7 @@ public class ServiceProviderTest {
     /**
      * Test of addGeoArea method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testAddGeoArea() {
         System.out.println("addGeoArea");
         GeographicArea geoArea = null;
@@ -256,7 +256,7 @@ public class ServiceProviderTest {
     /**
      * Test of registerEvaluation method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testRegisterEvaluation() {
         System.out.println("registerEvaluation");
         int rating = 0;
@@ -268,7 +268,7 @@ public class ServiceProviderTest {
     /**
      * Test of recalculateAverage method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testRecalculateAverage() {
         System.out.println("recalculateAverage");
         ServiceProvider instance = null;
@@ -278,7 +278,7 @@ public class ServiceProviderTest {
     /**
      * Test of hasGeographicArea method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testHasGeographicArea() {
         System.out.println("hasGeographicArea");
         GeographicArea area = null;
@@ -291,7 +291,7 @@ public class ServiceProviderTest {
     /**
      * Test of hasCategory method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testHasCategory() {
         System.out.println("hasCategory");
         Category category = null;
@@ -316,7 +316,7 @@ public class ServiceProviderTest {
     /**
      * Test of addEvaluation method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testAddEvaluation() {
         System.out.println("addEvaluation");
         Evaluation eval = null;
@@ -329,7 +329,7 @@ public class ServiceProviderTest {
     /**
      * Test of isAvailable method, of class ServiceProvider.
      */
-    @Test
+    @Disabled
     public void testIsAvailable() {
         System.out.println("isAvailable");
         SchedulePreference schedule = null;

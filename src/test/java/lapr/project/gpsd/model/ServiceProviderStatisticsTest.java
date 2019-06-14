@@ -23,7 +23,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getSPSAverageRatings method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetSPSAverageRatings() {
         System.out.println("getSPSAverageRatings");
         ServiceProviderStatistics instance = null;
@@ -47,7 +47,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getPopulationMeanAverageRating method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetPopulationMeanAverageRating() {
         System.out.println("getPopulationMeanAverageRating");
         ServiceProviderStatistics instance = null;
@@ -59,7 +59,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getPopulationStdDeviation method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetPopulationStdDeviation() {
         System.out.println("getPopulationStdDeviation");
         ServiceProviderStatistics instance = null;
@@ -71,7 +71,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getSpAbsoluteDifference method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetSpAbsoluteDifference() {
         System.out.println("getSpAbsoluteDifference");
         ServiceProviderStatistics instance = null;
@@ -83,7 +83,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getClassification method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetClassification() {
         System.out.println("getClassification");
         ServiceProviderStatistics instance = null;
@@ -95,7 +95,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of setClassification method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testSetClassification() {
         System.out.println("setClassification");
         String classification = "";
@@ -108,7 +108,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getSpRatings method, of class ServiceProviderStatistics.
      */
-    @Test
+    @Disabled
     public void testGetSpRatings() {
         System.out.println("getSpRatings");
         ServiceProviderStatistics instance = null;

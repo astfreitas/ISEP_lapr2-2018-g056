@@ -46,7 +46,7 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of isAssigned method, of class ServiceRequestDescription.
      */
-    @Test
+    @Disabled
     public void testIsAssigned() {
         System.out.println("isAssigned");
         ServiceRequestDescription instance = null;
@@ -58,7 +58,7 @@ public class ServiceRequestDescriptionTest {
     /**
      * Test of isAccepted method, of class ServiceRequestDescription.
      */
-    @Test
+    @Disabled
     public void testIsAccepted() {
         System.out.println("isAccepted");
         ServiceRequestDescription instance = null;
