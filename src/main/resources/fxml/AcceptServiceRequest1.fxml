@@ -60,20 +60,20 @@
                   </HBox>
                   <HBox prefHeight="225.0" prefWidth="599.0">
                      <children>
-                        <HBox alignment="TOP_RIGHT" prefHeight="182.0" prefWidth="200.0">
+                        <HBox prefHeight="202.0" prefWidth="605.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <children>
-                              <Label text="Assignment Details" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="202.0" prefWidth="400.0">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <children>
-                              <ListView fx:id="assignmentDetailsLstView" prefHeight="182.0" prefWidth="394.0" />
+                              <TableView fx:id="serviceAssignmentTbl" prefHeight="182.0" prefWidth="601.0">
+                                <columns>
+                                    <TableColumn fx:id="catCol" editable="false" prefWidth="90.0" sortable="false" text="Category" />
+                                    <TableColumn fx:id="serviceCol" editable="false" prefWidth="133.0" sortable="false" text="Service" />
+                                  <TableColumn fx:id="serviceProviderCol" editable="false" prefWidth="131.0" sortable="false" text="Service Provider" />
+                                  <TableColumn fx:id="meanRatingCol" editable="false" prefWidth="83.0" sortable="false" text="Mean Rating" />
+                                    <TableColumn fx:id="classificationCol" editable="false" prefWidth="141.0" sortable="false" text="Classification Label" />
+                                </columns>
+                              </TableView>
                            </children>
                         </HBox>
                      </children>
