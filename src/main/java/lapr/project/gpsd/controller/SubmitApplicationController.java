@@ -109,11 +109,8 @@ public class SubmitApplicationController {
     }
 
     /**
-     * Validates if all fields required for the SPApplication are filled (i.e.
-     * all SPApplication attributes)
+     * Validates if all fields required for the SPApplication are filled (i.e.all SPApplication attributes)
      *
-     * @return returns true if none of SPApplication's attributes is null or
-     * empty
      */
     public void validateApplication() {
         spar.validateApplication(spa);

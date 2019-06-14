@@ -95,4 +95,46 @@ public class ServiceAssignment {
         return (Objects.equals(serviceProvider, other.serviceProvider)&&Objects.equals(serviceRequest, other.serviceRequest)&&
                 Objects.equals(serviceRequestDescription, other.serviceRequestDescription)&&Objects.equals(schedulePreference, other.schedulePreference));
     }
+    
+    /**
+     * Method returns the Assignment Category.
+     * @return 
+     */
+    public String getPropertyCat() {
+        return serviceRequestDescription.getPropertyCategory();
+    }
+    
+    /**
+     * Method returns the Assignment Service.
+     * @return 
+     */
+    public String getPropertyService() {
+        return serviceRequestDescription.getPropertyService();
+    }
+    
+    /**
+     * Method returns the Service Provider Name.
+     * @return 
+     */
+    public String getPropertyServiceProviderName() {
+        return serviceProvider.getAbbrevName();
+    }
+    
+    /**
+     * Method returns the Avr rating for the service provider.
+     * @return 
+     */
+    public String getPropertyMeanRating() {
+        return String.format("%.1f", serviceProvider.getAverageRating());
+    }
+    
+    /**
+     * Method returns the Avr rating for the service provider.
+     * @return 
+     */
+    public String getPropertyClassification() {
+        return serviceProvider.getClassification();
+    }
+    
+    
 }

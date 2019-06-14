@@ -161,6 +161,22 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
+    
+    /**
+     * Searches the Service Provider registry for a SP with a determined NIF
+     * and returns it.
+     *
+     * @param nif Number for the preferred SP
+     * @return Service provider who has the NIF
+     */
+    public ServiceProvider getServiceProviderByNif(String nif) {
+        for (ServiceProvider sp : spList) {
+            if (sp.getNif().equals(nif)) {
+                return sp;
+            }
+        }
+        return null;
+    }
 
     /**
      * returns a list of service providers

@@ -31,6 +31,7 @@ public class Constants {
 
     public static final String ACCEPTED_APPLICATION = "Accepted";
     public static final String REJECTED_APPLICATION = "Rejected";
+    public static final String ACCEPTED_AND_REGISTERED_APPLICATION = "Accepted&Registered";
     public static final String TEMPORARY_PASSWORD = "password";
     public static final String SERVICE_NOT_ASSIGNED = "Not assigned";
     public static final String SERVICE_ACCEPTED = "Accepted";

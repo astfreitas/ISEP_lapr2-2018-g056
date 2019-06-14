@@ -117,6 +117,16 @@ public class ServiceAssignmentRegistry {
     }
 
     /**
+     * Method removes expired assignment
+     * @param serviceAssignment 
+     */
+    private void removeExpiredAssignment(ServiceAssignment serviceAssignment) {
+        serviceAssignment.getServiceRequestDescription().setAssigned(Constants.SERVICE_NOT_ASSIGNED);
+        serviceAssignments.remove(serviceAssignment);
+    }
+    
+    
+    /**
      * Method checks if the Service Request has expired schedule preferences.
      *
      * @param serviceRequest
@@ -161,7 +171,7 @@ public class ServiceAssignmentRegistry {
             }
         }
         for(ServiceAssignment servAssign : auxList){
-            removeServiceAssignment(servAssign, false);
+            removeExpiredAssignment(servAssign);
         }
     }
 

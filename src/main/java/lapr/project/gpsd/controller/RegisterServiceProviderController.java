@@ -1,5 +1,6 @@
 package lapr.project.gpsd.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import lapr.project.gpsd.model.Address;
 import lapr.project.gpsd.model.Category;
@@ -163,7 +164,14 @@ public class RegisterServiceProviderController {
     }
 
     public List<String> getApplications() {
-        return company.getSPApplicationRegistry().getApplicationsNifs();
+        List<String> allNifs = company.getSPApplicationRegistry().getApplicationsNifs();
+        List<String> acceptedNifs = new ArrayList<>();
+        for(String nif : allNifs){
+            if(this.company.getServiceProviderRegistry().getServiceProviderByNif(nif) == null){
+                acceptedNifs.add(nif);
+            }
+        }
+        return acceptedNifs;
     }
 
     public String getSPName() {

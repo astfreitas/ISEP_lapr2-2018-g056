@@ -40,7 +40,7 @@ public class AcceptServiceRequestController {
      * @return a list of fully assigned ServiceRequet ID's from the user
      */
     public List<Integer> checkAssignedServiceRequests() {
-        List<Integer> serviceIDS = new ArrayList();
+        List<Integer> serviceIDS = servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
         return servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
     }
     
