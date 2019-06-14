@@ -15,7 +15,8 @@ public class ServiceType {
      * constructor with 2 parameters
      *
      * @param id
-     * @param typeName
+     * @param name
+     * @param path
      */
     public ServiceType(String id, String name, String path) {
         try {
