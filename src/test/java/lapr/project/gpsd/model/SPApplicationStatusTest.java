@@ -18,8 +18,6 @@ public class SPApplicationStatusTest {
         String expResult = "";
         String result = instance.getSPApplicationStatus();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -31,8 +29,6 @@ public class SPApplicationStatusTest {
         String spApplicationStatus = "";
         SPApplicationStatus instance = new SPApplicationStatus();
         instance.setSPApplicationStatus(spApplicationStatus);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

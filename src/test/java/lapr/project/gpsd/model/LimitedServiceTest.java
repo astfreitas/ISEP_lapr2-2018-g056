@@ -37,10 +37,11 @@ public class LimitedServiceTest {
     /**
      * Test of hasOtherAttributes method, of class LimitedService.
      */
-    @Disabled
+    @Test
     public void testHasOtherAttributes() {
         System.out.println("hasOtherAttributes");
-        LimitedService instance = null;
+        Category cat = new Category("testCode", "testDesc");
+        LimitedService instance = new LimitedService("testID", "testBriefDesc", "testFullDesc", 100, cat);
         boolean expResult = false;
         boolean result = instance.hasOtherAttributes();
         assertEquals(expResult, result);

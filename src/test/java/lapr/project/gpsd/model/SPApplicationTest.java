@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SPApplicationTest {
-   
+
     /**
      * Test of getName method, of class SPApplication.
      */
@@ -39,9 +39,9 @@ public class SPApplicationTest {
     @Test
     public void testHasNIF() {
         System.out.println("hasNIF");
-        String nif = "";
-        SPApplication instance = null;
-        boolean expResult = false;
+        String nif = "testNIF";
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
+        boolean expResult = true;
         boolean result = instance.hasNIF(nif);
         assertEquals(expResult, result);
     }
@@ -167,9 +167,9 @@ public class SPApplicationTest {
     @Test
     public void testAddProfessionalCompetence() {
         System.out.println("addProfessionalCompetence");
-        ProfessionalCompetence pc = null;
-        SPApplication instance = null;
-        boolean expResult = false;
+        ProfessionalCompetence pc = new ProfessionalCompetence("testDesc");
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
+        boolean expResult = true;
         boolean result = instance.addProfessionalCompetence(pc);
         assertEquals(expResult, result);
     }
@@ -177,7 +177,7 @@ public class SPApplicationTest {
     /**
      * Test of getCategories method, of class SPApplication.
      */
-    @Test
+    @Disabled
     public void testGetCategories() {
         System.out.println("getCategories");
         SPApplication instance = null;
@@ -192,9 +192,9 @@ public class SPApplicationTest {
     @Test
     public void testAddCategory() {
         System.out.println("addCategory");
-        Category cat = null;
-        SPApplication instance = null;
-        boolean expResult = false;
+        Category cat = new Category("testCode", "testDesc");
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
+        boolean expResult = true;
         boolean result = instance.addCategory(cat);
         assertEquals(expResult, result);
     }
@@ -205,9 +205,9 @@ public class SPApplicationTest {
     @Test
     public void testAddAcademicCompetence() {
         System.out.println("addAcademicCompetence");
-        AcademicCompetence ac = null;
-        SPApplication instance = null;
-        boolean expResult = false;
+        AcademicCompetence ac = new AcademicCompetence("testCourse", "testLevel", 20);
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
+        boolean expResult = true;
         boolean result = instance.addAcademicCompetence(ac);
         assertEquals(expResult, result);
     }
@@ -218,11 +218,11 @@ public class SPApplicationTest {
     @Test
     public void testNewAddress() {
         System.out.println("newAddress");
-        String local = "";
-        String postalCode = "";
-        String address = "";
-        SPApplication instance = null;
-        Address expResult = null;
+        String local = "testLocal";
+        String postalCode = "4000-007";
+        String address = "testAddress";
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
+        Address expResult = new Address("testLocal", "4000-007", "testAddress");
         Address result = instance.newAddress(local, postalCode, address);
         assertEquals(expResult, result);
     }
@@ -233,10 +233,10 @@ public class SPApplicationTest {
     @Test
     public void testNewAcademicCompetence() {
         System.out.println("newAcademicCompetence");
-        String course = "";
-        String level = "";
-        double grade = 0.0;
-        AcademicCompetence expResult = null;
+        String course = "testCourse";
+        String level = "testLevel";
+        double grade = 19;
+        AcademicCompetence expResult = new AcademicCompetence(course, level, grade);
         AcademicCompetence result = SPApplication.newAcademicCompetence(course, level, grade);
         assertEquals(expResult, result);
     }
@@ -247,8 +247,8 @@ public class SPApplicationTest {
     @Test
     public void testNewProfessionalCompetence() {
         System.out.println("newProfessionalCompetence");
-        String description = "";
-        ProfessionalCompetence expResult = null;
+        String description = "testDesc";
+        ProfessionalCompetence expResult = new ProfessionalCompetence(description);
         ProfessionalCompetence result = SPApplication.newProfessionalCompetence(description);
         assertEquals(expResult, result);
     }
@@ -271,8 +271,8 @@ public class SPApplicationTest {
     @Test
     public void testIsAccepted() {
         System.out.println("isAccepted");
-        String applicationStatus = "";
-        SPApplication instance = null;
+        String applicationStatus = "Accepted";
+        SPApplication instance = new SPApplication("testName", "testNIF", "testPhone", "testEmail");
         boolean expResult = false;
         boolean result = instance.isAccepted(applicationStatus);
         assertEquals(expResult, result);
@@ -289,5 +289,5 @@ public class SPApplicationTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
-    
+
 }

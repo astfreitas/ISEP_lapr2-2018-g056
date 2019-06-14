@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -63,9 +64,9 @@ public class SchedulePreferenceTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object obj = null;
-        SchedulePreference instance = null;
-        boolean expResult = false;
+        Object obj = new SchedulePreference(0, LocalDate.of(2019,6,22), LocalTime.NOON);
+        SchedulePreference instance = new SchedulePreference(0, LocalDate.of(2019,6,22), LocalTime.NOON);
+        boolean expResult = true;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
     }

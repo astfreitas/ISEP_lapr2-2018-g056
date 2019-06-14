@@ -60,11 +60,12 @@ public class FixedServiceTest {
     /**
      * Test of hasOtherAttributes method, of class FixedService.
      */
-    @Disabled
+    @Test
     public void testHasOtherAttributes() {
         System.out.println("hasOtherAttributes");
-        FixedService instance = null;
-        boolean expResult = false;
+        Category cat = new Category("testCode", "testDesc");
+        FixedService instance = new FixedService("testID", "testBriefDesc", "testFullDesc", 100, cat);
+        boolean expResult = true;
         boolean result = instance.hasOtherAttributes();
         assertEquals(expResult, result);
     }

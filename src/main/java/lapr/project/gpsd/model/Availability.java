@@ -3,6 +3,7 @@ package lapr.project.gpsd.model;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
  * Availability Class is intended to represent the availability of the service
@@ -139,10 +140,9 @@ public class Availability {
         if (otherObject == null || getClass() != otherObject.getClass()) {
             return false;
         }
-        Availability otherAvailability = (Availability) otherObject;
-        return this.date == otherAvailability.date
-                && this.sTime == otherAvailability.sTime
-                && this.eTime == otherAvailability.eTime;
+        Availability obj = (Availability) otherObject;
+        return (Objects.equals(date, obj.date) && Objects.equals(sTime, obj.sTime)
+                && Objects.equals(eTime, obj.eTime));
     }
 
     /**

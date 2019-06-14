@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class SchedulePreference {
 
@@ -115,7 +116,7 @@ public class SchedulePreference {
             return false;
         }
         final SchedulePreference other = (SchedulePreference) obj;
-        return this.date == other.date && this.hour == other.hour;
+        return (Objects.equals(date, other.date)&& Objects.equals(hour, other.hour));
     }
 
     /**

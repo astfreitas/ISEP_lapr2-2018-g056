@@ -14,7 +14,7 @@ public class ExportCSVTest {
     @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "src/main/resources/exportedFiles/test.csv";
+        String filename = "src/main/resources/testFiles/test.csv";
         String[] line = {"cliName", "cliEmail", "Day", "Time", "Category", "Serv"};
         ExportCSV.export(filename, line);
         String[] line1 = {"cliName1", "cliEmail1", "Day1", "Time1", "Category1", "Serv1"};

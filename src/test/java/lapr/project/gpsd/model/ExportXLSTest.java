@@ -14,7 +14,7 @@ public class ExportXLSTest {
     @Test
     public void testExport() {
         System.out.println("export");
-        String filename = "src/main/resources/exportedFiles/test.xls";
+        String filename = "src/main/resources/testFiles/test.xls";
         String[] line = {"cliName", "cliEmail", "Day", "Time", "Category", "Serv"};
         int rowNumber = 0;
         ExportXLS.export(filename, line, rowNumber);

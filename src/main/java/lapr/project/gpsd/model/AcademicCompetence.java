@@ -1,5 +1,7 @@
 package lapr.project.gpsd.model;
 
+import java.util.Objects;
+
 public class AcademicCompetence {
 
     private String course;
@@ -47,4 +49,32 @@ public class AcademicCompetence {
         return "Course: " + course + ", Level: " + level + ", Grade: " + grade ;
     }
 
+     /**
+     *
+     * Compares two instances of AcademicCompetence and returns true/false if
+     * they are equals or possess the same atributes
+     *
+     * @param otherAcademComp AcademicCompetence to compare
+     * @return True/false if they are equals or possess the same atributes
+     */
+    @Override
+    public boolean equals(Object otherAcademComp) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
+        // self check
+        if (this == otherAcademComp) {
+            return true;
+        }
+        // null check
+        if (otherAcademComp == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != otherAcademComp.getClass()) {
+            return false;
+        }
+        // field comparison
+        AcademicCompetence obj = (AcademicCompetence) otherAcademComp;
+        return (Objects.equals(course, obj.course) || Objects.equals(level, obj.level) || Objects.equals(grade, obj.grade));
+    }
 }

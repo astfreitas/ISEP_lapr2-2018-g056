@@ -251,7 +251,7 @@ public class SPApplication {
     /**
      * verifies if a SP application has an accepted state
      *
-     * @param status of the service order
+     * @param applicationStatus Application status
      * @return true or false
      */
     public boolean isAccepted(String applicationStatus) {

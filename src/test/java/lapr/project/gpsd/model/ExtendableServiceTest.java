@@ -40,7 +40,8 @@ public class ExtendableServiceTest {
     @Test
     public void testHasOtherAttributes() {
         System.out.println("hasOtherAttributes");
-        ExtendableService instance = null;
+        Category cat = new Category("testCode", "testDesc");
+        ExtendableService instance = new ExtendableService("testID", "testBriefDesc", "testFullDesc", 10, cat);
         boolean expResult = false;
         boolean result = instance.hasOtherAttributes();
         assertEquals(expResult, result);

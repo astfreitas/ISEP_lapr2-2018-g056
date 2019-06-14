@@ -20,8 +20,6 @@ public class PostalCodeRegistryTest {
         List<PostalCode> expResult = null;
         List<PostalCode> result = instance.getPostalCodeList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -33,8 +31,6 @@ public class PostalCodeRegistryTest {
         ArrayList<PostalCode> postalCodeListReg = null;
         PostalCodeRegistry instance = new PostalCodeRegistry();
         instance.setPostalCodeList(postalCodeListReg);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
