@@ -33,8 +33,11 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
         // assign each service from the list of services, create and add assignment
         for (ServiceRequestDescription service : services) {
+            System.out.println("Trying to assign: " + service);
             ServiceAssignment newAssignment = createAssignment(service);
-            assignments.add(newAssignment);
+            if (newAssignment != null) {
+                assignments.add(newAssignment);
+            }
         }
 
         // returns list of assignments
@@ -147,6 +150,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
         Comparator<ServiceProvider> order = orderRatings.thenComparing(orderDistance).thenComparing(orderName);
         suitableSPs.sort(order);
+        if(suitableSPs.isEmpty()) { return null; }
         return suitableSPs.get(0);
     }
 
@@ -227,6 +231,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         // returns the schedule preference list
         List<SchedulePreference> scheduleList = request.getSchedulePreferences();
 
+        if(selectedSP == null) { return null; }
         // returns the schedule suitable for the assignment
         SchedulePreference selectedSchedule = selectedSP.getSpAvailabilityList().matchSchedule(scheduleList, service.getDuration());
 
@@ -237,6 +242,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         selectedSP.getSpAvailabilityList().splitAvailability(selectedSchedule, service.getDuration());
 
         // returns the newly created assignment
+        System.out.println("Assignment successfuly created :" + assignment);
         return assignment;
     }
 }
