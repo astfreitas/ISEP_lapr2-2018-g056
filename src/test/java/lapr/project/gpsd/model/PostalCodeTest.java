@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -7,19 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PostalCodeTest {
-   
-    /**
-     * Test of validatePostalCode method, of class PostalCode.
-     */
-    @Test
-    public void testValidatePostalCode() {
-        System.out.println("validatePostalCode");
-        String postalCode = "";
-        PostalCode instance = null;
-        boolean expResult = false;
-        boolean result = instance.validatePostalCode(postalCode);
-        assertEquals(expResult, result);
-    }
 
     /**
      * Test of getPostalCode method, of class PostalCode.
@@ -101,5 +89,5 @@ public class PostalCodeTest {
         String result = instance.toString();
         assertEquals(expResult, result);
     }
-    
+
 }

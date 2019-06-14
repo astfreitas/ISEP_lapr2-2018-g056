@@ -33,11 +33,16 @@ public class FileTypeRegistryTest {
     @Test
     public void testGetExportAdapterByFileType() {
         System.out.println("getExportAdapterByFileType");
-        FileType fileType = null;
+        FileType fileType1 = new AdapterCSV();
+        FileType fileType2 = new AdapterXLS();
+        FileType fileType3 = new AdapterXML();
         FileTypeRegistry instance = new FileTypeRegistry();
-        FileType expResult = null;
-        FileType result = instance.getExportAdapterByFileType(fileType);
-        assertEquals(expResult, result);
+        instance.getFileTypeList().add(fileType3);
+        instance.getFileTypeList().add(fileType2);
+        instance.getFileTypeList().add(fileType1);
+        FileType expResult = fileType3;
+        FileType result = instance.getExportAdapterByFileType(fileType3);
+        assertEquals(expResult.getClass(), result.getClass());
     }
 
     /**

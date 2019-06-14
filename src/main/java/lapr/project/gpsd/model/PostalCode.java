@@ -33,17 +33,6 @@ public class PostalCode {
         this.cpLatitude = cpLatitude;
         this.cpLongitude = cpLongitude;
     }
-
-    /**
-     * 
-     * Checks if the postal code is present in the postal code's file
-     * 
-     * @param postalCode
-     * @return 
-     */
-    public boolean validatePostalCode(String postalCode){
-        return true;
-    }
     
     /**
      * 

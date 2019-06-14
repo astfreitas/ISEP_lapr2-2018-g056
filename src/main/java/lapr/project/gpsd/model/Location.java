@@ -45,6 +45,26 @@ class Location {
         return "\n"+postalCode + " -> " + String.format("%.2f", distance);
     }
     
+    /**
+     * Compares the Location instance with an objet received by reference in
+     * the method parameter.
+     *
+     * @param otherObject Objet to compare with the Location instance
+     * @return true if the received object represent and equal object of the
+     * instanced Location. Otherwise returns False.
+     */
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Location otherLocation = (Location) otherObject;
+        return this.postalCode.equals(otherLocation.postalCode)
+                && this.distance == otherLocation.distance;
+    }
     
     
 }

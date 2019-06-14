@@ -37,7 +37,7 @@ public class LimitedServiceTest {
     /**
      * Test of hasOtherAttributes method, of class LimitedService.
      */
-    @Test
+    @Disabled
     public void testHasOtherAttributes() {
         System.out.println("hasOtherAttributes");
         LimitedService instance = null;
