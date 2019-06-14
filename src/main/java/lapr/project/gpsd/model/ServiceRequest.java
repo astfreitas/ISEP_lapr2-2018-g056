@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -269,8 +270,8 @@ public class ServiceRequest {
 
     /**
      *
-     * Compares two instances of ServiceRequest and returns true/false if they are
-     * equals or possess the same atributes
+     * Compares two instances of ServiceRequest and returns true/false if they
+     * are equals or possess the same atributes
      *
      * @param otherServReq ServiceRequest to compare
      * @return True/false if they are equals or possess the same atributes
@@ -296,5 +297,20 @@ public class ServiceRequest {
         return (Objects.equals(client, obj.client) && Objects.equals(address, obj.address)
                 && Objects.equals(serviceRequestDescriptions, obj.serviceRequestDescriptions)
                 && Objects.equals(schedulePreferences, obj.schedulePreferences));
+    }
+
+    /**
+     * Verifies if request has already expired (all schedule preferences have
+     * already passed)
+     *
+     * @return false if any schedule preference has not yet passed
+     */
+    public boolean isExpired() {
+        for (SchedulePreference schedule : schedulePreferences) {
+            if (LocalDateTime.now().isBefore(schedule.getDateTime())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

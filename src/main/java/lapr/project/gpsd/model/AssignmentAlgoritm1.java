@@ -28,6 +28,9 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         // instantiates the assignment list
         List<ServiceAssignment> assignments = new ArrayList<>();
 
+        // removes services from service list that have already expired
+        removeExpiredServices(services);
+        
         // sorts the service list according to the input sorting behavior
         sortingBehavior.sortServiceList(services);
 
@@ -289,5 +292,22 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         // returns the newly created assignment
         System.out.println("\tAssignment successfuly created :" + assignment);
         return assignment;
+    }
+
+    /**
+     * Manipulates list to remove services that are already expired
+     * @param services 
+     */
+    private void removeExpiredServices(List<ServiceRequestDescription> services) {
+        List<ServiceRequestDescription> removeList = new ArrayList<>();
+        for(ServiceRequestDescription service : services) {
+            ServiceRequest request = requestRegistry.getRequestFromDescription(service);
+            if(request.isExpired()) {
+                removeList.add(service);
+            }
+        }
+        for(ServiceRequestDescription service : removeList) {
+            services.remove(service);
+        }
     }
 }
