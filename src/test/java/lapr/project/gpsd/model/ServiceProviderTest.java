@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
@@ -12,12 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- *
- * @author joaoferreira
- */
 public class ServiceProviderTest {
-    
+
     /**
      * Test of getNumber method, of class ServiceProvider.
      */
@@ -172,12 +165,12 @@ public class ServiceProviderTest {
     /**
      * Test of addCategory method, of class ServiceProvider.
      */
-    @Disabled
+    @Test
     public void testAddCategory() {
         System.out.println("addCategory");
-        Category cat = null;
-        ServiceProvider instance = null;
-        boolean expResult = false;
+        Category cat = new Category("testCode", "testDesc");
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
+        boolean expResult = true;
         boolean result = instance.addCategory(cat);
         assertEquals(expResult, result);
     }
@@ -185,12 +178,13 @@ public class ServiceProviderTest {
     /**
      * Test of addGeoArea method, of class ServiceProvider.
      */
-    @Disabled
+    @Test
     public void testAddGeoArea() {
         System.out.println("addGeoArea");
-        GeographicArea geoArea = null;
-        ServiceProvider instance = null;
-        boolean expResult = false;
+        GeographicAreaRegistry gar = new GeographicAreaRegistry();
+        GeographicArea geoArea = gar.newGeographicArea("desigTest", 10, "4000-007", 5000);
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
+        boolean expResult = true;
         boolean result = instance.addGeoArea(geoArea);
         assertEquals(expResult, result);
     }
@@ -278,13 +272,15 @@ public class ServiceProviderTest {
     /**
      * Test of hasGeographicArea method, of class ServiceProvider.
      */
-    @Disabled
+    @Test
     public void testHasGeographicArea() {
         System.out.println("hasGeographicArea");
-        GeographicArea area = null;
-        ServiceProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.hasGeographicArea(area);
+        GeographicAreaRegistry gar = new GeographicAreaRegistry();
+        GeographicArea geoArea = gar.newGeographicArea("desigTest", 10, "4000-007", 5000);
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
+        instance.addGeoArea(geoArea);
+        boolean expResult = true;
+        boolean result = instance.hasGeographicArea(geoArea);
         assertEquals(expResult, result);
     }
 
@@ -294,10 +290,11 @@ public class ServiceProviderTest {
     @Disabled
     public void testHasCategory() {
         System.out.println("hasCategory");
-        Category category = null;
-        ServiceProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.hasCategory(category);
+        Category cat = new Category("testCode", "testDesc");
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
+        instance.addCategory(cat);
+        boolean expResult = true;
+        boolean result = instance.hasCategory(cat);
         assertEquals(expResult, result);
     }
 
@@ -316,12 +313,12 @@ public class ServiceProviderTest {
     /**
      * Test of addEvaluation method, of class ServiceProvider.
      */
-    @Disabled
+    @Test
     public void testAddEvaluation() {
         System.out.println("addEvaluation");
-        Evaluation eval = null;
-        ServiceProvider instance = null;
-        boolean expResult = false;
+        Evaluation eval = new Evaluation(5, null);
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
+        boolean expResult = true;
         boolean result = instance.addEvaluation(eval);
         assertEquals(expResult, result);
     }
@@ -332,12 +329,11 @@ public class ServiceProviderTest {
     @Disabled
     public void testIsAvailable() {
         System.out.println("isAvailable");
-        SchedulePreference schedule = null;
-        int duration = 0;
-        ServiceProvider instance = null;
+        SchedulePreference schedule = new SchedulePreference(0, LocalDate.of(2019,6,22), LocalTime.NOON);
+        int duration = 30;
+        ServiceProvider instance = new ServiceProvider("testName", "testNif", "testEmail", "testAbrevName");
         boolean expResult = false;
         boolean result = instance.isAvailable(schedule, duration);
         assertEquals(expResult, result);
     }
-    
 }

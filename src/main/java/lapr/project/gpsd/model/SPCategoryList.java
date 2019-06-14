@@ -39,7 +39,7 @@ public class SPCategoryList {
 
     public boolean addCategory(Category cat) {
         if (validateCategory(cat)) {
-            categorylist.add(cat);
+            return categorylist.add(cat);
         }
         return false;
     }

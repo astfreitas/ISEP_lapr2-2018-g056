@@ -1,6 +1,8 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import lapr.project.gpsd.utils.Constants;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -24,13 +26,13 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of newServiceRequest method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testNewServiceRequest() {
         System.out.println("newServiceRequest");
-        Client client = null;
-        Address address = null;
+        Client client = new Client("testName", "testNIF", "testTel", "testEmail");
+        Address address = new Address("testLocal", "4000-007", "testAddress");
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        ServiceRequest expResult = null;
+        ServiceRequest expResult = new ServiceRequest(new Client("testName", "testNIF", "testTel", "testEmail"), new Address("testLocal", "4000-007", "testAddress"));
         ServiceRequest result = instance.newServiceRequest(client, address);
         assertEquals(expResult, result);
     }
@@ -38,12 +40,14 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of registerServiceRequest method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testRegisterServiceRequest() {
         System.out.println("registerServiceRequest");
-        ServiceRequest serviceRequest = null;
+        Client client = new Client("testName", "testNIF", "testTel", "testEmail");
+        Address address = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest serviceRequest = new ServiceRequest(client, address);
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.registerServiceRequest(serviceRequest);
         assertEquals(expResult, result);
     }
@@ -51,11 +55,22 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of getUnassignedServices method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testGetUnassignedServices() {
         System.out.println("getUnassignedServices");
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        sr.addServiceRequestDescription(serv, "testDesc", 60);
+        
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        List<ServiceRequestDescription> expResult = null;
+        instance.registerServiceRequest(sr);
+        List<ServiceRequestDescription> expResult = new ArrayList<>();
+        expResult.add(srd);
+        
         List<ServiceRequestDescription> result = instance.getUnassignedServices();
         assertEquals(expResult, result);
     }
@@ -63,12 +78,22 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of getRequestFromDescription method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testGetRequestFromDescription() {
         System.out.println("getRequestFromDescription");
-        ServiceRequestDescription srd = null;
+        
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        sr.addServiceRequestDescription(serv, "testDesc", 60);
+        
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        ServiceRequest expResult = null;
+        instance.registerServiceRequest(sr);
+        ServiceRequest expResult = new ServiceRequest(cli, add);
+        expResult.addServiceRequestDescription(serv, "testDesc", 60);
         ServiceRequest result = instance.getRequestFromDescription(srd);
         assertEquals(expResult, result);
     }
@@ -76,25 +101,46 @@ public class ServiceRequestRegistryTest {
     /**
      * Test of getServiceRequestsFullyAssignedByClient method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testGetServiceRequestsFullyAssignedByClient() {
         System.out.println("getServiceRequestsFullyAssignedByClient");
-        Client client = null;
+        
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        sr.addServiceRequestDescription(serv, "testDesc", 60);
+        sr.getServiceRequestDescriptions().get(0).setAssigned(Constants.SERVICE_ASSIGNED);
+        
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        List<ServiceRequest> expResult = null;
-        List<ServiceRequest> result = instance.getServiceRequestsFullyAssignedByClient(client);
+        instance.registerServiceRequest(sr);
+        List<ServiceRequest> expResult = new ArrayList<>();
+        expResult.add(sr);
+        List<ServiceRequest> result = instance.getServiceRequestsFullyAssignedByClient(cli);
         assertEquals(expResult, result);
     }
 
     /**
      * Test of getServiceRequestByNumber method, of class ServiceRequestRegistry.
      */
-    @Disabled
+    @Test
     public void testGetServiceRequestByNumber() {
         System.out.println("getServiceRequestByNumber");
-        int number = 0;
+        int number = 1;
+        
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        sr.addServiceRequestDescription(serv, "testDesc", 60);
+        
         ServiceRequestRegistry instance = new ServiceRequestRegistry();
-        ServiceRequest expResult = null;
+        instance.registerServiceRequest(sr);
+        ServiceRequest expResult = sr;
         ServiceRequest result = instance.getServiceRequestByNumber(number);
         assertEquals(expResult, result);
     }
