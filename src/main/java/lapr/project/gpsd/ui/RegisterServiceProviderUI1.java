@@ -92,7 +92,7 @@ public class RegisterServiceProviderUI1 implements Initializable {
         List<String> nifs = registerServiceProviderUI.getController().getApplications();
         nifComboBox.getItems().addAll(nifs);
         if (nifs.isEmpty()) {
-            UIUtils.createAlert("Unable to register Service Provider.", "No applications found.", Alert.AlertType.ERROR);
+            UIUtils.createAlertWait("Unable to register Service Provider.", "No applications found.", Alert.AlertType.ERROR);
             registerServiceProviderUI.getMainMenu().backToMainMenu();
         }
     }

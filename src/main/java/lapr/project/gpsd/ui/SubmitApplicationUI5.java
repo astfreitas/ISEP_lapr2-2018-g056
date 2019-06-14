@@ -61,14 +61,14 @@ public class SubmitApplicationUI5 implements Initializable {
                 String catId = cat.getCode();
                 if (submitApplicationUI.getController().validateCategory(catId)) {
                     submitApplicationUI.getController().addCategory(catId);
-                    UIUtils.createAlert("Category added successfuly.", "", Alert.AlertType.INFORMATION);
+                    UIUtils.createAlertWait("Category added successfuly.", "", Alert.AlertType.INFORMATION);
                     submitApplicationUI.toSubmitApplicationScene5();
                 } else {
-                    UIUtils.createAlert("The selected category has already been added.", "Error:", Alert.AlertType.ERROR);
+                    UIUtils.createAlertWait("The selected category has already been added.", "Error:", Alert.AlertType.ERROR);
                     submitApplicationUI.toSubmitApplicationScene5();
                 }
             } catch (Exception e) {
-                UIUtils.createAlert("Category selected is not valid. Go back to menu.", "Fatal error:", Alert.AlertType.ERROR);
+                UIUtils.createAlertWait("Category selected is not valid. Go back to menu.", "Fatal error:", Alert.AlertType.ERROR);
                 submitApplicationUI.getMainApp().toMainScene();
             }
         }

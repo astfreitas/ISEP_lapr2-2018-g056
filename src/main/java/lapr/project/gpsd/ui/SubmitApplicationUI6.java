@@ -45,6 +45,12 @@ public class SubmitApplicationUI6 implements Initializable {
     private void handleConfirmBtn(ActionEvent event) {
         try {
             submitApplicationUI.getController().validateApplication();
+            if (submitApplicationUI.getController().registerApplication()) {
+                UIUtils.createAlertWait("Application successful!", "", Alert.AlertType.INFORMATION);
+                submitApplicationUI.getMainApp().toMainScene();
+            } else {
+                UIUtils.createAlertWait("Problems occurred during submission of your application. Aborting operation", "Error:", Alert.AlertType.ERROR);
+            }
         } catch (Exception e) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirm submit application");
@@ -53,14 +59,14 @@ public class SubmitApplicationUI6 implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 if (submitApplicationUI.getController().registerApplication()) {
-                    UIUtils.createAlert("Application successful!", "", Alert.AlertType.INFORMATION);
+                    UIUtils.createAlertWait("Application successful!", "", Alert.AlertType.INFORMATION);
                     submitApplicationUI.getMainApp().toMainScene();
                 } else {
-                    UIUtils.createAlert("Problems occurred during submission of your application. Aborting operation", "Error:", Alert.AlertType.ERROR);
+                    UIUtils.createAlertWait("Problems occurred during submission of your application. Aborting operation", "Error:", Alert.AlertType.ERROR);
                 }
             } else {
                 submitApplicationUI.toSubmitApplicationScene3();
-                UIUtils.createAlert("Please insert the missing data.", "", Alert.AlertType.INFORMATION);
+                UIUtils.createAlertWait("Please insert the missing data.", "", Alert.AlertType.INFORMATION);
             }
         }
     }

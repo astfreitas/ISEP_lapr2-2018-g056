@@ -42,9 +42,9 @@ public class RegisterServiceProviderUI4 implements Initializable {
     private void handleConfirmBtn(ActionEvent event) {
         if (registerServiceProviderUI.getController().registerServiceProvider()) {
             String message = registerServiceProviderUI.getController().getSuccessMessage();
-            UIUtils.createAlert(message, "Registration successful.", Alert.AlertType.INFORMATION);
+            UIUtils.createAlertWait(message, "Registration successful.", Alert.AlertType.INFORMATION);
         } else {
-            UIUtils.createAlert("you dun goofed", "Goddamnit", Alert.AlertType.ERROR);
+            UIUtils.createAlertWait("you dun goofed", "Goddamnit", Alert.AlertType.ERROR);
         }
         registerServiceProviderUI.getMainMenu().backToMainMenu();       
     }

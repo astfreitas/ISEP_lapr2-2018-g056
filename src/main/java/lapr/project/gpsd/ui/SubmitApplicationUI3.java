@@ -67,7 +67,7 @@ public class SubmitApplicationUI3 implements Initializable {
         }
         try {
             submitApplicationUI.getController().addAcademicCompetence(course, level, grade);
-            UIUtils.createAlert("Academic competence added successfuly.", "", Alert.AlertType.INFORMATION);
+            UIUtils.createAlertWait("Academic competence added successfuly.", "", Alert.AlertType.INFORMATION);
             submitApplicationUI.toSubmitApplicationScene3();
         } catch (Exception e) {
             UIUtils.createAlert(e.getMessage(), "Error:", Alert.AlertType.ERROR);
