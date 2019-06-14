@@ -89,7 +89,7 @@ public class ServiceRequest {
      * @param str str
      * @return Success of the operation
      */
-    public boolean addSchedulePreference(LocalDate date, LocalTime time, String str) {
+    public boolean addSchedulePreferenceString(LocalDate date, LocalTime time, String str) {
         int prefOrder = schedulePreferences.size();
         SchedulePreference sh = new SchedulePreference(prefOrder, date, time, str);
         if (validateSchedulePreference(sh)) {
