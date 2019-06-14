@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
@@ -27,9 +28,11 @@ public class GeographicAreaTest {
     @Test
     public void testHasId() {
         System.out.println("hasId");
-        String id = "";
-        GeographicArea instance = null;
-        boolean expResult = false;
+        String id = "150";
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
+        boolean expResult = true;
         boolean result = instance.hasId(id);
         assertEquals(expResult, result);
     }
@@ -109,8 +112,16 @@ public class GeographicAreaTest {
     @Test
     public void testGetLocationList() {
         System.out.println("getLocationList");
-        GeographicArea instance = null;
-        List<Location> expResult = null;
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        try {
+            List<PostalCode> listPC = exService.loadPostalCodeList();
+        } catch (Exception e) {
+            System.out.println("Failed to Load Postal Code List");
+        }        
+        GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
+        PostalCode pc = new PostalCode("4000-007", 41.1469459, -8.6064074);
+        List<Location> expResult = exService.getActsOnLocationList(pc, 25, pcReg);
         List<Location> result = instance.getLocationList();
         assertEquals(expResult, result);
     }
@@ -155,11 +166,20 @@ public class GeographicAreaTest {
     @Test
     public void testGetDistanceToPostalCode() {
         System.out.println("getDistanceToPostalCode");
-        PostalCode pc = null;
-        GeographicArea instance = null;
-        double expResult = 0.0;
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        try {
+            ArrayList<PostalCode> listPC = exService.loadPostalCodeList();
+            pcReg.setPostalCodeList(listPC);
+        } catch (Exception e) {
+            System.out.println("Failed to Load Postal Code List");
+        }        
+        GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 2500, "4000-007", exService, pcReg);
+        PostalCode pc = new PostalCode("4000-008", 41.1579438,-8.6291053);
+        double expResult = exService.getDistanceBetCP(instance.getMainPostalCode(),pc);
         double result = instance.getDistanceToPostalCode(pc);
-        assertEquals(expResult, result, 0.0);
+        System.out.println();
+        assertEquals(expResult, result, 0.1);
     }
 
     /**
@@ -180,8 +200,16 @@ public class GeographicAreaTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Object otherObject = null;
-        GeographicArea instance = null;
+        
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        try {
+            List<PostalCode> listPC = exService.loadPostalCodeList();
+        } catch (Exception e) {
+            System.out.println("Failed to Load Postal Code List");
+        }        
+        GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
+        Object otherObject = new GeographicArea("160", "GeoArea2", 100, 10, "4000-009", exService, pcReg);
         boolean expResult = false;
         boolean result = instance.equals(otherObject);
         assertEquals(expResult, result);
