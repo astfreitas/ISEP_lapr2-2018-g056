@@ -217,8 +217,8 @@ public class ApplicationGPSD {
         sp1.setSpAddress(add5);
         sp1.addCategory(this.company.getCategoryRegistry().getCatById("3"));
         sp1.addCategory(this.company.getCategoryRegistry().getCatById("1"));
-        sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-1"));
-        sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-2"));
+        sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Gondomar-1"));
+        sp1.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Gondomar-2"));
         this.company.getServiceProviderRegistry().registerServiceProvider(sp1);
 
         Address add6 = new Address("N/A", "4420-002", "N/A");
@@ -228,7 +228,7 @@ public class ApplicationGPSD {
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("2"));
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("4"));
         sp2.addCategory(this.company.getCategoryRegistry().getCatById("5"));
-        sp2.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Porto-1"));
+        sp2.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Porto-1"));
         this.company.getServiceProviderRegistry().registerServiceProvider(sp2);
 
         Address add7 = new Address("N/A", "4470-526", "N/A");
@@ -238,7 +238,7 @@ public class ApplicationGPSD {
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("1"));
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("2"));
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("3"));
-        sp3.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Maia-1"));
+        sp3.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Maia-1"));
         this.company.getServiceProviderRegistry().registerServiceProvider(sp3);
 
         Address add8 = new Address("N/A", "4430-601", "N/A");
@@ -247,8 +247,8 @@ public class ApplicationGPSD {
         sp4.setSpAddress(add8);
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("5"));
         sp3.addCategory(this.company.getCategoryRegistry().getCatById("1"));
-        sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Maia-1"));
-        sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaById("Gondomar-2"));
+        sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Maia-1"));
+        sp4.addGeoArea(this.company.getGeographicAreaRegistry().getGeoAreaByDesignation("Gondomar-2"));
         this.company.getServiceProviderRegistry().registerServiceProvider(sp4);
 
         //Availabilities

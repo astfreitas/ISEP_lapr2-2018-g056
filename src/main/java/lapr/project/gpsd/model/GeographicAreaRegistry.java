@@ -150,6 +150,21 @@ public class GeographicAreaRegistry {
         }
         return null;
     }
+    
+    /**
+     * serches in the registry for a geographic area with a specific ID
+     *
+     * @param desi Designation to look for
+     * @return Category with the ID. Null if none is found.
+     */
+    public GeographicArea getGeoAreaByDesignation(String desi) {
+        for (GeographicArea geo : geoAreaList) {
+            if (geo.hasDesignation(desi)) {
+                return geo;
+            }
+        }
+        return null;
+    }
 
     /**
      * Generates and ID for and give Geographic Area instance bases on a
