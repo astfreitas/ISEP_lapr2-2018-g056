@@ -340,6 +340,7 @@ public class ApplicationGPSD {
         sq1.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Close water tap", (int) fservice1.getPredeterminedDuration());
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 3), LocalTime.of(9, 0), "");
         sq1.addSchedulePreference(LocalDate.of(2019, 6, 5), LocalTime.of(22, 0), "");
+        sq1.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq1);
 
         Client cli2 = this.company.getClientRegistry().getClientByNIF("100542369");
@@ -348,6 +349,7 @@ public class ApplicationGPSD {
         sq2.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("2"), "Pipeline repair", 60);
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 24), LocalTime.of(9, 0), "");
         sq2.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(22, 0), "");
+        sq2.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq2);
 
         Client cli3 = this.company.getClientRegistry().getClientByNIF("110542349");
@@ -356,6 +358,7 @@ public class ApplicationGPSD {
         sq3.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("3"), "Iron gate painting", 120);
         sq3.addSchedulePreference(LocalDate.of(2019, 6, 24), LocalTime.of(10, 0), "");
         sq3.addSchedulePreference(LocalDate.of(2019, 6, 25), LocalTime.of(14, 30), "");
+        sq3.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq3);
 
         Client cli4 = this.company.getClientRegistry().getClientByNIF("110542349");
@@ -363,6 +366,7 @@ public class ApplicationGPSD {
         ServiceRequest sq4 = this.company.getServiceRequestRegistry().newServiceRequest(cli4, cli4.getAddress("Porto", cp4, "R. do Carvalhido, nº 9"));
         sq4.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("4"), "Prepare dinner and clean kitchen", 120);
         sq4.addSchedulePreference(LocalDate.of(2019, 6, 6), LocalTime.of(19, 0), "");
+        sq4.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq4);
 
         Client cli5 = this.company.getClientRegistry().getClientByNIF("210975020");
@@ -371,6 +375,7 @@ public class ApplicationGPSD {
         FixedService fservice2 = (FixedService) this.company.getServiceRegistry().getServiceById("1");
         sq5.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("1"), "Water tap repair", (int) fservice2.getPredeterminedDuration());
         sq5.addSchedulePreference(LocalDate.of(2019, 6, 7), LocalTime.of(19, 0), "");
+        sq5.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq5);
 
         Client cli6 = this.company.getClientRegistry().getClientByNIF("210975020");
@@ -378,6 +383,7 @@ public class ApplicationGPSD {
         ServiceRequest sq6 = this.company.getServiceRequestRegistry().newServiceRequest(cli6, cli6.getAddress("Maia", cp6, "R. Cegonheira, nº 3"));
         sq6.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("5"), "Repair vehicle engine and change oil", 60);
         sq6.addSchedulePreference(LocalDate.of(2019, 6, 8), LocalTime.of(9, 0), "");
+        sq6.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq6);
 
         Client cli7 = this.company.getClientRegistry().getClientByNIF("210975020");
@@ -386,6 +392,7 @@ public class ApplicationGPSD {
         FixedService fservice3 = (FixedService) this.company.getServiceRegistry().getServiceById("6");
         sq7.addServiceRequestDescription(this.company.getServiceRegistry().getServiceById("6"), "Paint gate", (int) fservice3.getPredeterminedDuration());
         sq7.addSchedulePreference(LocalDate.of(2019, 6, 29), LocalTime.of(20, 0), "");
+        sq7.calculateCost();
         this.company.getServiceRequestRegistry().registerServiceRequest(sq7);
 
         //Service Orders
@@ -435,7 +442,7 @@ public class ApplicationGPSD {
 
         //Rate Service Provider
         ServiceProvider rsp1 = cso1.getServiceProvider();
-        rsp1.registerEvaluation(4, cso1);
+        //rsp1.registerEvaluation(4, cso1);
         ServiceProvider rsp2 = cso2.getServiceProvider();
         rsp2.registerEvaluation(5, cso2);
         ServiceProvider rsp3 = cso3.getServiceProvider();

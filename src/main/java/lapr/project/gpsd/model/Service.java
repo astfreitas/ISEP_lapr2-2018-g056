@@ -13,7 +13,6 @@ public abstract class Service implements ServiceCostCalculation {
     private String fullDescription;
     private double hourlyCost;
     private Category category;
-    private ServiceType serviceType;
 
     /**
      * service constructor with 5 parameters
@@ -38,7 +37,6 @@ public abstract class Service implements ServiceCostCalculation {
         this.fullDescription = fullDescription;
         this.hourlyCost = hourlyCost;
         this.category = category;
-        this.serviceType = null;
     }
 
     /**
@@ -112,25 +110,7 @@ public abstract class Service implements ServiceCostCalculation {
      */
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    /**
-     * returns service type
-     *
-     * @return service type
-     */
-    public ServiceType getServiceType() {
-        return serviceType;
-    }
-
-    /**
-     * modifies service type
-     *
-     * @param serviceType
-     */
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
-    }    
+    }   
     
     @Override
     public int hashCode() {

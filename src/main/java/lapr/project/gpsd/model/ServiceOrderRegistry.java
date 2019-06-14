@@ -61,7 +61,9 @@ public class ServiceOrderRegistry {
     public ArrayList<ServiceOrder> getCompletedServiceOrdersByClient(Client cli) {
         ArrayList<ServiceOrder> servOrderByClient = new ArrayList<>();
         for (ServiceOrder servOrder : serviceOrders) {
-            if (servOrder.getServiceRequest().getClient().equals(cli) && servOrder.getStatus().getServOrderStatus().equals(Constants.CONCLUDED_ORDER)) {
+            if (servOrder.getServiceRequest().getClient().equals(cli) 
+                    && servOrder.getStatus().getServOrderStatus().equals(Constants.CONCLUDED_ORDER)
+                    && servOrder.getServiceRated() == false) {
                 servOrderByClient.add(servOrder);
             }
         }

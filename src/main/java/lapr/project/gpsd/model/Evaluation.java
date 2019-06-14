@@ -16,6 +16,16 @@ public class Evaluation {
         this.rating = rating;
         this.servOrder = servOrder;
     }
+    
+    /**
+     * 
+     * Creats an instance of Evaluation
+     * 
+     * @param rating Rating
+     */
+    public Evaluation(int rating) {
+        this.rating = rating;
+    }
 
     /**
      * 

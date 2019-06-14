@@ -32,6 +32,8 @@ public class RateSPUI {
             rateSPUI1.setRateSPUI(this);
             rateSPUI1.populateServOrderList();
         } catch (Exception ex) {
+            ex.getStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 

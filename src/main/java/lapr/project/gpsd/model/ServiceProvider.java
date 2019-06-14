@@ -70,7 +70,8 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-        Evaluation startAverage = new Evaluation(3, null);
+        this.classification = "";
+        Evaluation startAverage = new Evaluation(3);
         this.evalList.add(startAverage);
         recalculateAverage();
     }
@@ -99,7 +100,8 @@ public class ServiceProvider {
         spGeoAreaList = new SPGeographicAreaList();
         spAvailabilityList = new SPAvailabilityList();
         this.evalList = new ArrayList<>();
-        Evaluation startAverage = new Evaluation(3, null);
+        Evaluation startAverage = new Evaluation(3);
+        this.classification = "";
         this.evalList.add(startAverage);
         recalculateAverage();
     }
@@ -304,6 +306,7 @@ public class ServiceProvider {
      */
     public void registerEvaluation(int rating, ServiceOrder servOrder) {
         Evaluation eval = new Evaluation(rating, servOrder);
+        servOrder.setServiceRated(true);
         evalList.add(eval);
         recalculateAverage();
     }

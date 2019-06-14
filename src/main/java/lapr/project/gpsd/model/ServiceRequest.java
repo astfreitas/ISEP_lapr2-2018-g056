@@ -12,7 +12,6 @@ import lapr.project.gpsd.controller.ApplicationGPSD;
 public class ServiceRequest {
 
     private int number;
-    private Date date;
     private double total;
     private Client client;
     private Address address;
@@ -147,6 +146,8 @@ public class ServiceRequest {
         if (ag != null) {
             for (ServiceRequestDescription srd : serviceRequestDescriptions) {
                 c += srd.getCost() + ag.getTravelCost();
+                OtherCost travelCost = new OtherCost("TravelCost", ag.getTravelCost());
+                getOtherCosts().add(travelCost);
             }
             total = c;
         } else {
@@ -186,10 +187,6 @@ public class ServiceRequest {
 
     public int getNumber() {
         return number;
-    }
-
-    public Date getDate() {
-        return date;
     }
 
     public double getTotal() {
