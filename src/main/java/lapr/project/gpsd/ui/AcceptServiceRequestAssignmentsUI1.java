@@ -28,7 +28,6 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
     private Button acceptBtn;
     @FXML
     private ComboBox<Integer> serviceRequestComboBox;
-    private ListView<ServiceAssignment> assignmentDetailsLstView;
     @FXML
     private Button checkAssignmentDetails;
     @FXML
@@ -60,31 +59,46 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
     @FXML
     private void handleRejectBtn(ActionEvent event) {
         if (serviceAssignmentTbl.getItems().size() > 0) {
-            this.acceptServiceRequestAssignmentsUI.getController().rejectServiceAssignment(serviceAssignmentTbl.getItems());
-            UIUtils.createAlert("Service Assignments were successfully rejected", "Reject Service Assignment", Alert.AlertType.INFORMATION);
+            this.acceptServiceRequestAssignmentsUI.getController().rejectServiceAssignment();
+            UIUtils.createAlertWait("Service Assignments were successfully rejected", "Reject Service Assignment", Alert.AlertType.INFORMATION);
         } else {
             UIUtils.createAlert("No Service Assignments Selected", "Reject Service Assignment Error", Alert.AlertType.ERROR);
         }
-        setupAcceptServiceRequestAssignmentScene();
-        updateAssignmentList();
+        if(!updateServiceRequestList()) {
+            this.acceptServiceRequestAssignmentsUI.getMainMenu().backToMainMenu();
+        }
     }
 
     @FXML
     private void handleAcceptBtn(ActionEvent event) {
         if (serviceAssignmentTbl.getItems().size() > 0) {
-            List<Integer> serviceNumbers = this.acceptServiceRequestAssignmentsUI.getController().acceptServiceAssignment(serviceAssignmentTbl.getItems());
+            List<Integer> serviceNumbers = this.acceptServiceRequestAssignmentsUI.getController().acceptServiceAssignment();
             String serviceNumbersTxt = "\n The following Service Order Numbers Were generated\n";
             for(Integer snumber : serviceNumbers) {
                 serviceNumbersTxt += "Order nr : " + snumber + " \n";
             }
-            UIUtils.createAlert("Service Assignments were successfully accepted"+serviceNumbersTxt, "Accept Service Assignment", Alert.AlertType.INFORMATION);
+            if(serviceNumbers.size()>0) {
+                UIUtils.createAlertWait("Service Assignments were successfully accepted"+serviceNumbersTxt, "Accept Service Assignment", Alert.AlertType.CONFIRMATION);
+            } else {
+                UIUtils.createAlert("No Service Orders were generated.", "Accept Service Assignment Error", Alert.AlertType.ERROR);
+            }
         } else {
             UIUtils.createAlert("No Service Assignments Selected", "Accept Service Assignment Error", Alert.AlertType.ERROR);
         }
-        setupAcceptServiceRequestAssignmentScene();
-        updateAssignmentList();
+        if(!updateServiceRequestList()) {
+            this.acceptServiceRequestAssignmentsUI.getMainMenu().backToMainMenu();
+        }
     }
-
+    
+    @FXML
+    private void handlecheckAssignmentDetailsBtn(ActionEvent event) {
+        if (!serviceRequestComboBox.getSelectionModel().isEmpty()) {
+            updateAssignmentList();
+        } else {
+            UIUtils.createAlert("Please select a service number", "List Service Assignment Error", Alert.AlertType.ERROR);
+        }
+    }
+    
     public void setAcceptServiceRequestUI(AcceptServiceRequestAssignmentsUI acceptServiceRequestAssignmentsUI) {
         this.acceptServiceRequestAssignmentsUI = acceptServiceRequestAssignmentsUI;
     }
@@ -95,17 +109,23 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
         serviceProviderCol.setCellValueFactory(new PropertyValueFactory<>("propertyServiceProviderName"));
         meanRatingCol.setCellValueFactory(new PropertyValueFactory<>("propertyMeanRating"));
         classificationCol.setCellValueFactory(new PropertyValueFactory<>("propertyClassification"));
-        
+        updateServiceRequestList();
+    }
+
+    
+    public boolean updateServiceRequestList() {
         List<Integer> servicesFullyAssigned = this.acceptServiceRequestAssignmentsUI.getController().checkAssignedServiceRequests();
         serviceRequestComboBox.getItems().clear();
         serviceRequestComboBox.getItems().addAll(servicesFullyAssigned);
         if (serviceRequestComboBox.getItems().size() > 0) {
             serviceRequestComboBox.getSelectionModel().selectFirst();
-            //check first assignment by default.
             updateAssignmentList();
+            return true;
+        } else {
+            return false;
         }
     }
-
+    
     public void updateAssignmentList() {
         serviceAssignmentTbl.getItems().clear();
         if (!serviceRequestComboBox.getSelectionModel().isEmpty()) {
@@ -113,18 +133,7 @@ public class AcceptServiceRequestAssignmentsUI1 implements Initializable {
             List<ServiceAssignment> serviceAssignmentList = this.acceptServiceRequestAssignmentsUI.getController().checkServiceAssignments(serviceRequestID);
             for(ServiceAssignment serviceAssignment : serviceAssignmentList) {
                 serviceAssignmentTbl.getItems().add(serviceAssignment);
-                //***
             }
         }
     }
-
-    @FXML
-    private void handlecheckAssignmentDetailsBtn(ActionEvent event) {
-        if (!serviceRequestComboBox.getSelectionModel().isEmpty()) {
-            updateAssignmentList();
-        } else {
-            UIUtils.createAlert("Please select a service number", "List Service Assignment Error", Alert.AlertType.ERROR);
-        }
-    }
-
 }
