@@ -58,4 +58,9 @@ public class LimitedService extends Service {
     public boolean setAdditionalData(String data) {
         return false;
     }
+
+    @Override
+    public boolean hasAttribute(String attribute) {
+        return false;
+    }
 }
