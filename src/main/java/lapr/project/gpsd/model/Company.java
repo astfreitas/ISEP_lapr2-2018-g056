@@ -70,6 +70,7 @@ public class Company {
             loadPostalCodeFromExternalService();
             assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
             serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
+            assignServiceTask();
         } catch (Exception ex) {
             ex.getStackTrace();
         }
@@ -194,8 +195,8 @@ public class Company {
         int interval = 0;
         int delay = -1;
         try {
-            delay = Integer.parseInt(props.getProperty("DELAY"));
-            interval = Integer.parseInt(props.getProperty("INTERVAL"));
+            delay = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_DELAY));
+            interval = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_INTERVAL));
         } catch (Exception e) {
             System.out.println("no dice. cannot get DELAY or/and INTERVAL");
             System.out.println(e.getMessage());

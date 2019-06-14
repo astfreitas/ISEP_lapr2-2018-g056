@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Sorting behavior can sort a list of ServiceRequestDescriptions in random order
  */
-public class SortRandom implements ISortingBehavior {
+public class SortingRandom implements ISortingBehavior {
 
     /**
      * Modifies (sorts) the argument list in random order

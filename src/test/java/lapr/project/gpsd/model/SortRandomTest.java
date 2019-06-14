@@ -16,7 +16,7 @@ public class SortRandomTest {
     public void testSortServiceList() {
         System.out.println("sortServiceList");
         List<ServiceRequestDescription> services = null;
-        SortRandom instance = new SortRandom();
+        SortingRandom instance = new SortingRandom();
         instance.sortServiceList(services);
     }
     
