@@ -102,7 +102,6 @@ public class GeographicArea {
         this.radius = radius;
         this.mainPostalCode = ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry().getMatchingPostalCode(mainPostalCode);
         this.LocationList = exService.getActsOnLocationList(this.mainPostalCode, radius, pcReg);
-
     }
 
     /**

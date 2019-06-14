@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import lapr.project.gpsd.controller.ApplicationGPSD;
 
 public class ServiceRequest {
@@ -268,4 +269,34 @@ public class ServiceRequest {
         return false;
     }
 
+    /**
+     *
+     * Compares two instances of ServiceRequest and returns true/false if they are
+     * equals or possess the same atributes
+     *
+     * @param otherServReq ServiceRequest to compare
+     * @return True/false if they are equals or possess the same atributes
+     */
+    @Override
+    public boolean equals(Object otherServReq) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
+        // self check
+        if (this == otherServReq) {
+            return true;
+        }
+        // null check
+        if (otherServReq == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != otherServReq.getClass()) {
+            return false;
+        }
+        // field comparison
+        ServiceRequest obj = (ServiceRequest) otherServReq;
+        return (Objects.equals(client, obj.client) || Objects.equals(address, obj.address)
+                || Objects.equals(serviceRequestDescriptions, obj.serviceRequestDescriptions)
+                || Objects.equals(schedulePreferences, obj.schedulePreferences));
+    }
 }
