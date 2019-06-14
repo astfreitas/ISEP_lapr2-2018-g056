@@ -82,7 +82,7 @@ public class ServiceRequestRegistry {
         for (ServiceRequest request : serviceRequests) {
             List<ServiceRequestDescription> services = request.getServiceRequestDescriptions();
             for (ServiceRequestDescription service : services) {
-                if (!service.isAssigned()) {
+                if (service.isUnassigned()) {
                     unassignedServices.add(service);
                 }
             }
