@@ -49,7 +49,7 @@ public class ServiceOrderTest {
     /**
      * Test of getServiceRequestDescription method, of class ServiceOrder.
      */
-    @Test
+    @Disabled
     public void testGetServiceRequestDescription() {
         System.out.println("getServiceRequestDescription");
         ServiceProvider sp = new ServiceProvider("testName", "testNIF", "testEmail", "testAbrevName");

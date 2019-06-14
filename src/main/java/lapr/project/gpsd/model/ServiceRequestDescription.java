@@ -155,26 +155,26 @@ public class ServiceRequestDescription {
      * @param otherServiceReqDesc ServiceRequestDescription to compare
      * @return True/false if they are equals or possess the same atributes
      */
-    @Override
-    public boolean equals(Object otherServiceReqDesc) {
-        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
-
-        // self check
-        if (this == otherServiceReqDesc) {
-            return true;
-        }
-        // null check
-        if (otherServiceReqDesc == null) {
-            return false;
-        }
-        // type check and cast
-        if (getClass() != otherServiceReqDesc.getClass()) {
-            return false;
-        }
-        // field comparison
-        ServiceRequestDescription obj = (ServiceRequestDescription) otherServiceReqDesc;
-        return (Objects.equals(service, obj.service) || Objects.equals(description, obj.description)
-                || Objects.equals(duration, obj.duration));
-    }
+//    @Override
+//    public boolean equals(Object otherServiceReqDesc) {
+//        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
+//
+//        // self check
+//        if (this == otherServiceReqDesc) {
+//            return true;
+//        }
+//        // null check
+//        if (otherServiceReqDesc == null) {
+//            return false;
+//        }
+//        // type check and cast
+//        if (getClass() != otherServiceReqDesc.getClass()) {
+//            return false;
+//        }
+//        // field comparison
+//        ServiceRequestDescription obj = (ServiceRequestDescription) otherServiceReqDesc;
+//        return (Objects.equals(service, obj.service) || Objects.equals(description, obj.description)
+//                || Objects.equals(duration, obj.duration));
+//    }
 
 }
