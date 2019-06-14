@@ -98,5 +98,26 @@ public class PostalCode {
         return postalCode;
     }
     
+    /**
+     * Compares the PostalCode instance with an objet received by reference in
+     * the method parameter.
+     *
+     * @param otherObject Objet to compare with the PostalCode instance
+     * @return true if the received object represent and equal object of the
+     * instanced PostalCode. Otherwise returns False.
+     */
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || getClass() != otherObject.getClass()) {
+            return false;
+        }
+        PostalCode otherPostalCode = (PostalCode) otherObject;
+        return this.postalCode.equals(otherPostalCode.postalCode)
+                && this.cpLatitude == otherPostalCode.cpLatitude
+                && this.cpLongitude == otherPostalCode.cpLongitude;
+    }     
 
 }
