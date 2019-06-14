@@ -31,6 +31,7 @@ public class AddDailyAvailabilityController {
         String email = session.getUserEmail();
         ServiceProviderRegistry spr = company.getServiceProviderRegistry();
         sp = spr.getServiceProviderByEmail(email);
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

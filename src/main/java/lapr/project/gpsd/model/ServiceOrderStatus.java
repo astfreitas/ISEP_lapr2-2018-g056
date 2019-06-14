@@ -1,5 +1,7 @@
 package lapr.project.gpsd.model;
 
+import java.util.Objects;
+
 public class ServiceOrderStatus {
 
     /**
@@ -61,4 +63,34 @@ public class ServiceOrderStatus {
         return " Status is " + servOrderStatus + " (details: " + servOrderDetail + ") ";
     }
     
+    /**
+     * 
+     * Compares two instances of ServiceOrderStatus and returns true/false if they are
+     * equals or possess the same atributes
+     * 
+     * @param o ServiceOrderStatus to compare
+     * @return True/false if they are
+     * equals or possess the same atributes
+     */
+     @Override
+    public boolean equals(Object o) {
+        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+
+        // self check
+        if (this == o) {
+            return true;
+        }
+        // null check
+        if (o == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        // field comparison
+        ServiceOrderStatus obj = (ServiceOrderStatus) o;
+        return (Objects.equals(servOrderStatus, obj.servOrderStatus) || 
+                Objects.equals(servOrderDetail, obj.servOrderDetail));
+    }
 }

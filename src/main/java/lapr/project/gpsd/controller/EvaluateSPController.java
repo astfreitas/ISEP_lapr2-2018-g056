@@ -22,9 +22,10 @@ public class EvaluateSPController {
      */
     public EvaluateSPController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_HRO)) {
-            throw new IllegalStateException("Utilizador não Autorizado");
+            throw new IllegalStateException("Unautorized user!");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

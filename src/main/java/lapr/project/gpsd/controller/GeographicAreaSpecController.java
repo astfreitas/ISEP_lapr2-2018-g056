@@ -42,6 +42,7 @@ public class GeographicAreaSpecController {
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
         this.pCodeReg = company.getPostalCodeRegistry();
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

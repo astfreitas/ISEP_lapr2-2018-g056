@@ -42,11 +42,13 @@ public class ApplicationGPSD {
 
     private final Company company;
     private final AuthenticationFacade authentication;
+    private boolean flagBootstrap;
 
     public ApplicationGPSD() {
         Properties props = getProperties();
         this.company = new Company(props);
         this.authentication = this.company.getAuthenticationFacade();
+        this.flagBootstrap = true;
     }
 
     public Company getCompany() {
@@ -84,6 +86,7 @@ public class ApplicationGPSD {
     }
 
     public void bootstrap() {
+        if(flagBootstrap){
         this.authentication.registerUserRole(Constants.ROLE_ADMINISTRATIVE);
         this.authentication.registerUserRole(Constants.ROLE_CLIENT);
         this.authentication.registerUserRole(Constants.ROLE_HRO);
@@ -439,6 +442,8 @@ public class ApplicationGPSD {
         rsp3.registerEvaluation(2, cso3);
         ServiceProvider rsp4 = cso4.getServiceProvider();
         rsp4.registerEvaluation(2, cso4);
+        this.flagBootstrap = false;
+        }
     }
 
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2

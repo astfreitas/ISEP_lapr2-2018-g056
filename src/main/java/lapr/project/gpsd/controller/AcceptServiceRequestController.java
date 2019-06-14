@@ -32,6 +32,7 @@ public class AcceptServiceRequestController {
         String email = session.getUserEmail();
         client = clientRegistry.getClientByEmail(email);
         clientServiceAssignments = serAssignRegistry.getServiceAssignmentsByCli(client);
+        app.bootstrap();
     }
     
     /**

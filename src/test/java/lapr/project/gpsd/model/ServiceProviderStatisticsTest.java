@@ -23,7 +23,7 @@ public class ServiceProviderStatisticsTest {
     /**
      * Test of getSPSAverageRatings method, of class ServiceProviderStatistics.
      */
-    @Disabled
+    @Test
     public void testGetSPSAverageRatings() {
         System.out.println("getSPSAverageRatings");
         ServiceProviderStatistics instance = null;

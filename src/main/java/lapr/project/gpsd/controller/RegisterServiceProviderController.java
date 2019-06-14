@@ -30,6 +30,7 @@ public class RegisterServiceProviderController {
     public RegisterServiceProviderController() {
         this.app = ApplicationGPSD.getInstance();
         this.company = app.getCompany();
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     public boolean getApplicationData(String nif) {
