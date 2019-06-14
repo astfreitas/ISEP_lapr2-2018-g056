@@ -176,5 +176,13 @@ public class ServiceRequestDescription {
         return (Objects.equals(service, obj.service) || Objects.equals(description, obj.description)
                 || Objects.equals(duration, obj.duration));
     }
+//    /**
+//     * Returns a copy of the ServiceRequest Description
+//     * @param newServ Objecto of ServRequestDescr to copy
+//     * @return new Instance for ServiceRequestDescription
+//     */
+//    public ServiceRequestDescription newServRequestDescriCopy(ServiceRequestDescription newServ){
+//        return new ServiceRequestDescription(newServ.getService(), newServ.getDescription(), newServ.duration);
+//    }
 
 }

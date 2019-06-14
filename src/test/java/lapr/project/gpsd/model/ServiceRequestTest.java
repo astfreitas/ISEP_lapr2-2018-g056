@@ -1,15 +1,11 @@
 package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import javafx.util.converter.LocalDateTimeStringConverter;
 import lapr.project.gpsd.controller.ApplicationGPSD;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
