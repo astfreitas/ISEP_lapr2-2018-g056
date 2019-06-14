@@ -72,13 +72,14 @@ public class ServiceRequest {
      * @param time represents the time preference
      * @return Success of the operation
      */
-    public boolean addSchedulePreference(LocalDate date, LocalTime time) {
+    public void addSchedulePreference(LocalDate date, LocalTime time) {
         int prefOrder = schedulePreferences.size();
         SchedulePreference sh = new SchedulePreference(prefOrder, date, time);
         if (validateSchedulePreference(sh)) {
-            return AddSchedulePreference(sh);
+            AddSchedulePreference(sh);
+        } else {
+            throw new IllegalArgumentException("Duplicated Schedule Preference.");
         }
-        return false;
     }
 
     /**

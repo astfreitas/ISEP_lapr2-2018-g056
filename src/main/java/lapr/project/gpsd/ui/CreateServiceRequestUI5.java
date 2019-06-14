@@ -59,10 +59,10 @@ public class CreateServiceRequestUI5 implements Initializable {
     private void handleConfirmBtn(ActionEvent event) {
         int serviceRequestNumber = this.createServiceRequestUI.getController().registerRequest();
         if(serviceRequestNumber>0) {
-            UIUtils.createAlert("Service Request Created with success", "Service order was successfully created, register number : " + serviceRequestNumber, Alert.AlertType.INFORMATION);
+            UIUtils.createAlertWait("Service Request Created with success", "Service order was successfully created, register number : " + serviceRequestNumber, Alert.AlertType.INFORMATION);
             this.createServiceRequestUI.getMainMenu().backToMainMenu();
         } else {
-            UIUtils.createAlert("Error occured while creating the Service Request", "Create New Service Order Error", Alert.AlertType.ERROR);
+            UIUtils.createAlertWait("Error occured while creating the Service Request", "Create New Service Order Error", Alert.AlertType.ERROR);
             this.createServiceRequestUI.getMainMenu().backToMainMenu();
         }
         

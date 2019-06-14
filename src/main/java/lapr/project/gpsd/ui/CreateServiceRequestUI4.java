@@ -65,10 +65,10 @@ public class CreateServiceRequestUI4 implements Initializable {
         int hour = Integer.parseInt(hourComboBox.getSelectionModel().getSelectedItem());
         int min = Integer.parseInt(minuteComboBox.getSelectionModel().getSelectedItem());
         LocalTime scheduleTime = LocalTime.of(hour, min, 0);
-        boolean schedulePreferenceAdded = this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
-
-        if (!schedulePreferenceAdded) {
-            UIUtils.createAlert("A schedule preference with the same attributes already exist.", "Duplicated Preference.", Alert.AlertType.ERROR);
+        try {
+            this.createServiceRequestUI.getController().addSchedulePreference(scheduleDay, scheduleTime);
+        } catch (Exception e) {
+            UIUtils.createAlert( e.getMessage(), "SchedulePreference Error", Alert.AlertType.ERROR);
         }
         updateScheduleList();
     }
