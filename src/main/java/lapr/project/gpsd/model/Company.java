@@ -59,22 +59,14 @@ public class Company {
         this.geographicAreaRegistry = new GeographicAreaRegistry();
         this.postalCodeRegistry = new PostalCodeRegistry();
         this.fileTypeRegistry = new FileTypeRegistry();
-        this.serviceSortingBehavior = null;
-        this.assignmentAlgoritm = null;
         // creates instances from configuration file
-        try {
-            fileTypeRegistry.createSupportedFileTypes(props);
-            serviceTypeRegistry.createSupportedServiceTypes(props);
-            String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
-            externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
-            loadPostalCodeFromExternalService();
-            assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
-            serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
-            assignServiceTask();
-        } catch (Exception ex) {
-            ex.getStackTrace();
-        }
-        this.timer = null;
+        createFileTypes();
+        createServiceTypes();
+        createExternalService();
+        createPostalCodes();
+        createAssignmentAlgoritm();
+        createSortingBehavior();
+        assignServiceTask();
     }
 
     /**
@@ -187,30 +179,6 @@ public class Company {
     }
 
     /**
-     * Creates and sets the Company's AssignServiceTask instance according to
-     * the configuration file (initial DELAY and regular INTERVAL). If the
-     * variables are not properly set, display message.
-     */
-    public void assignServiceTask() {
-        int interval = 0;
-        int delay = -1;
-        try {
-            delay = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_DELAY));
-            interval = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_INTERVAL));
-        } catch (Exception e) {
-            System.out.println("no dice. cannot get DELAY or/and INTERVAL");
-            System.out.println(e.getMessage());
-        }
-        if (interval > 0 && delay >= 0) {
-            this.task = new AssignServiceTask();
-            this.timer = new Timer();
-            this.timer.scheduleAtFixedRate(task, delay, interval);
-        } else {
-            System.out.println("no dice. INTERVAL or DELAY is wack.");
-        }
-    }
-
-    /**
      *
      * Gets the instance of Service Type Registry
      *
@@ -268,16 +236,6 @@ public class Company {
         return externalService;
     }
 
-    /**
-     * Loads every available Postal Code from an externalFile to the Postal Code
-     * Registry.
-     *
-     * @throws IOException if PostalCode File is not found
-     */
-    private void loadPostalCodeFromExternalService() throws IOException {
-        this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
-    }
-
     public ISortingBehavior getServiceSortingBehavior() {
         return serviceSortingBehavior;
     }
@@ -286,4 +244,87 @@ public class Company {
         return designation;
     }
 
+    private void createFileTypes() {
+        fileTypeRegistry.createSupportedFileTypes(props);
+    }
+
+    private void createServiceTypes() {
+        serviceTypeRegistry.createSupportedServiceTypes(props);
+
+    }
+
+    /**
+     * Loads every available Postal Code from an externalFile to the Postal Code
+     * Registry.
+     *
+     * @throws IOException if PostalCode File is not found
+     */
+    private void createPostalCodes() {
+        try {
+            this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
+        } catch (Exception ex) {
+            System.out.println("Error creating postal codes. Verify ExternalService.");
+        }
+
+    }
+
+    /**
+     * Creates ExternalService according to configuration file (ExternalService)
+     */
+    private void createExternalService() {
+        try {
+            String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
+            externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
+        } catch (Exception ex) {
+            System.out.println("Error creating External Services. See configuration file.");
+
+        }
+    }
+
+    /**
+     * Creates AssignmentAlgoritm according to configuration file
+     * (AssignmentAlgoritm)
+     */
+    private void createAssignmentAlgoritm() {
+        try {
+            assignmentAlgoritm = (IAssignmentAlgoritm) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_ASSIGNMENT_ALGORITM)).getConstructor().newInstance();
+        } catch (Exception ex) {
+            System.out.println("Error creating AssignmentAlgoritm. See configuration file.");
+        }
+    }
+
+    /**
+     * Creates SortingBehavior for AssignmentAlgoritm according to configuration
+     * file (SortingBehavior)
+     */
+    private void createSortingBehavior() {
+        try {
+            serviceSortingBehavior = (ISortingBehavior) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_SERVICE_SORTING_BEHAVIOR)).getConstructor().newInstance();
+        } catch (Exception ex) {
+            System.out.println("Error creating SortingBehavior for AssignmentAlgoritm. See configuration file.");
+        }
+    }
+
+    /**
+     * Creates and sets the Company's AssignServiceTask instance according to
+     * the configuration file (initial DELAY and regular INTERVAL).
+     */
+    public void assignServiceTask() {
+        int interval = 0;
+        int delay = -1;
+        try {
+            delay = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_DELAY));
+            interval = Integer.parseInt(props.getProperty(Constants.COMPANY_ASSIGNMENT_INTERVAL));
+        } catch (Exception e) {
+            System.out.println("Assignments will not run: DELAY or INTERVAL not properly set.");
+        }
+        if (interval > 0 && delay >= 0) {
+            this.task = new AssignServiceTask();
+            this.timer = new Timer();
+            // time and interval are given in seconds but method takes arguments as milliseconds
+            this.timer.scheduleAtFixedRate(task, delay * 1000, interval * 1000);
+        } else {
+            System.out.println("Assignments will not run: DELAY must be greater or equal to zero and and INTERVAL must be greater than zero");
+        }
+    }
 }

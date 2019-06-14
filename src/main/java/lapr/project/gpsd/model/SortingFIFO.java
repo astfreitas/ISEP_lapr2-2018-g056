@@ -1,5 +1,4 @@
 package lapr.project.gpsd.model;
-
 import java.util.List;
 
 /**
@@ -13,15 +12,12 @@ public class SortingFIFO implements ISortingBehavior {
     }
 
     /**
-     * Returns a copy of the argument's list in order of service request
-     * creation date
+     * Does not modify the list
      *
      * @param services
      */
     @Override
     public void sortServiceList(List<ServiceRequestDescription> services) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
     }
 
 }

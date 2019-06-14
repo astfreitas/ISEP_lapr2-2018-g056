@@ -135,6 +135,17 @@ public class ServiceAssignment {
     public String getPropertyClassification() {
         return serviceProvider.getClassification();
     }
+
+    @Override
+    public String toString() {
+        return "Service " + serviceRequestDescription.getDescription() 
+                + " - From request Nº" +  serviceRequest.getNumber() 
+                + " - By " + serviceRequest.getClient().getName() 
+                + " - assigned to " + serviceProvider.getName() 
+                + " - at " + schedulePreference.getDate() + " " + schedulePreference.getTime() 
+                + " (duration: " + serviceRequestDescription.getPropertyDuration() + "min)";
+    }
+    
     
     
 }

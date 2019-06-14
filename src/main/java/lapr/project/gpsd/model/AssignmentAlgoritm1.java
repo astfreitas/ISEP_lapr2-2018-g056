@@ -127,6 +127,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
                 double rating1 = sp1.getAverageRating();
                 double rating2 = sp2.getAverageRating();
                 if (Math.abs(rating1 - rating2) / rating1 < THREASHOLD) {
+                    System.out.println();
                     return 0;
                 } else if (rating1 < rating2) {
                     return -1;
@@ -266,14 +267,11 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         if (suitableSPs.isEmpty()) {
             System.out.println("Unable to find suitable service providers");
             return null;
-        } else {
-            System.out.print("Suitable SPs found: " );
-            suitableSPs.forEach(sp -> System.out.print(sp.getName() + " | "));
-        }
+        } 
 
         // selects the most suitable
         ServiceProvider selectedSP = selectMostSuitableSP(suitableSPs, service);
-        System.out.println("\tMost suitable sp: " + selectedSP.getName());
+        System.out.println("\n\tMost suitable sp: " + selectedSP.getName());
         // gets the request that originated the service description
         ServiceRequest request = requestRegistry.getRequestFromDescription(service);
 
