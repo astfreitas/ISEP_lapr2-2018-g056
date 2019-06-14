@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lapr.project.gpsd.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import lapr.project.gpsd.utils.Constants;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- *
- * @author joaoferreira
- */
 public class ServiceOrderTest {
- 
+
     /**
      * Test of setOrderNumber method, of class ServiceOrder.
      */
@@ -55,11 +49,20 @@ public class ServiceOrderTest {
     /**
      * Test of getServiceRequestDescription method, of class ServiceOrder.
      */
-    @Disabled
+    @Test
     public void testGetServiceRequestDescription() {
         System.out.println("getServiceRequestDescription");
-        ServiceOrder instance = null;
-        ServiceRequestDescription expResult = null;
+        ServiceProvider sp = new ServiceProvider("testName", "testNIF", "testEmail", "testAbrevName");
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        SchedulePreference schedPref = new SchedulePreference(0, LocalDate.of(2019, 6, 22), LocalTime.of(12, 0));
+        ServiceAssignment sa = new ServiceAssignment(sp, srd, sr, schedPref);
+        ServiceOrder instance = new ServiceOrder(sa);
+        ServiceRequestDescription expResult = new ServiceRequestDescription(serv, "testDesc", 60);;
         ServiceRequestDescription result = instance.getServiceRequestDescription();
         assertEquals(expResult, result);
     }
@@ -79,11 +82,20 @@ public class ServiceOrderTest {
     /**
      * Test of getStatus method, of class ServiceOrder.
      */
-    @Disabled
+    @Test
     public void testGetStatus() {
         System.out.println("getStatus");
-        ServiceOrder instance = null;
-        ServiceOrderStatus expResult = null;
+        ServiceProvider sp = new ServiceProvider("testName", "testNIF", "testEmail", "testAbrevName");
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        SchedulePreference schedPref = new SchedulePreference(0, LocalDate.of(2019, 6, 22), LocalTime.of(12, 0));
+        ServiceAssignment sa = new ServiceAssignment(sp, srd, sr, schedPref);
+        ServiceOrder instance = new ServiceOrder(sa);
+        ServiceOrderStatus expResult = new ServiceOrderStatus(Constants.PENDING_ORDER);
         ServiceOrderStatus result = instance.getStatus();
         assertEquals(expResult, result);
     }
@@ -91,13 +103,21 @@ public class ServiceOrderTest {
     /**
      * Test of isPending method, of class ServiceOrder.
      */
-    @Disabled
+    @Test
     public void testIsPending() {
         System.out.println("isPending");
-        String status = "";
-        ServiceOrder instance = null;
-        boolean expResult = false;
-        boolean result = instance.isPending(status);
+        ServiceProvider sp = new ServiceProvider("testName", "testNIF", "testEmail", "testAbrevName");
+        Category cat = new Category("testCode", "testDescCat");
+        Service serv = new FixedService("testServID", "testServDesc", "testServFullDesc", 100, cat);
+        ServiceRequestDescription srd = new ServiceRequestDescription(serv, "testDesc", 60);
+        Client cli = new Client("testCliName", "testCliNif", "testCliTel", "testCliEmail");
+        Address add = new Address("testLocal", "4000-007", "testAddress");
+        ServiceRequest sr = new ServiceRequest(cli, add);
+        SchedulePreference schedPref = new SchedulePreference(0, LocalDate.of(2019, 6, 22), LocalTime.of(12, 0));
+        ServiceAssignment sa = new ServiceAssignment(sp, srd, sr, schedPref);
+        ServiceOrder instance = new ServiceOrder(sa);
+        boolean expResult = true;
+        boolean result = instance.isPending(instance.getStatus().getServOrderStatus());
         assertEquals(expResult, result);
-    }    
+    }
 }

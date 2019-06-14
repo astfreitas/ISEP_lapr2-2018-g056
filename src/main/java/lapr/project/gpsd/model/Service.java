@@ -139,6 +139,15 @@ public abstract class Service implements ServiceCostCalculation {
         return hash;
     }
 
+    /**
+     * 
+     * Compares two instances of Service and returns true/false if they are
+     * equals or possess the same atributes
+     * 
+     * @param o Service to compare
+     * @return True/false if they are
+     * equals or possess the same atributes
+     */
     @Override
     public boolean equals(Object o) {
         // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
@@ -159,6 +168,7 @@ public abstract class Service implements ServiceCostCalculation {
         Service obj = (Service) o;
         return (Objects.equals(id, obj.id));
     }
+    
     /**
      * Returns a description for the Service Object  by string.
      * Mostly used to display information to CreateServiceRequest UC.

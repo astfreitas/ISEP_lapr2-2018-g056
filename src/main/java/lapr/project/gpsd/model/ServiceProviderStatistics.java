@@ -212,7 +212,4 @@ public final class ServiceProviderStatistics {
     public List<Integer> getSpRatings() {
         return spRatings;
     }
-    
-    
-
 }

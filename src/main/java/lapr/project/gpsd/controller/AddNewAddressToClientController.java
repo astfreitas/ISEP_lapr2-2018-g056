@@ -18,6 +18,7 @@ public class AddNewAddressToClientController {
             throw new IllegalStateException("Non authorized user.");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
+        ApplicationGPSD.getInstance().bootstrap();
     }
 
     /**

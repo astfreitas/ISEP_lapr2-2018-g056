@@ -2,6 +2,7 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -387,6 +388,34 @@ public class ServiceProvider {
         this.nif = nif;
     }
     
+     /**
+     *
+     * Compares two instances of ServiceProvider and returns true/false if they are
+     * equals or possess the same atributes
+     *
+     * @param otherSP ServiceProvider to compare
+     * @return True/false if they are equals or possess the same atributes
+     */
+    @Override
+    public boolean equals(Object otherSP) {
+        // Inspired in https://www.sitepoint.com/implement-javas-equals-method-correctly/
 
+        // self check
+        if (this == otherSP) {
+            return true;
+        }
+        // null check
+        if (otherSP == null) {
+            return false;
+        }
+        // type check and cast
+        if (getClass() != otherSP.getClass()) {
+            return false;
+        }
+        // field comparison
+        ServiceProvider obj = (ServiceProvider) otherSP;
+        return (Objects.equals(email, obj.email) || Objects.equals(nif, obj.nif) || 
+                Objects.equals(spAddress, obj.spAddress));
+    }
 
 }

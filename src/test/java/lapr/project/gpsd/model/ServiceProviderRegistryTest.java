@@ -1,5 +1,6 @@
 package lapr.project.gpsd.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
@@ -12,14 +13,14 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of newAddress method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testNewAddress() {
         System.out.println("newAddress");
-        String local = "";
-        String postalCode = "";
-        String address = "";
+        String local = "testLocal";
+        String postalCode = "4000-007";
+        String address = "testAddress";
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        Address expResult = null;
+        Address expResult = new Address("testLocal", "4000-007", "testAddress");
         Address result = instance.newAddress(local, postalCode, address);
         assertEquals(expResult, result);
     }
@@ -27,13 +28,13 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of newServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testNewServiceProvider() {
         System.out.println("newServiceProvider");
-        String name = "";
-        Address address = null;
+        String name = "testName";
+        Address address = new Address("testLocal", "4000-007", "testAddress");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        ServiceProvider expResult = null;
+        ServiceProvider expResult = new ServiceProvider("testName", new Address("testLocal", "4000-007", "testAddress"));
         ServiceProvider result = instance.newServiceProvider(name, address);
         assertEquals(expResult, result);
     }
@@ -41,12 +42,12 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of validateServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testValidateServiceProvider() {
         System.out.println("validateServiceProvider");
-        ServiceProvider sp = null;
+        ServiceProvider sp = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.validateServiceProvider(sp);
         assertEquals(expResult, result);
     }
@@ -54,12 +55,12 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of addServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testAddServiceProvider() {
         System.out.println("addServiceProvider");
-        ServiceProvider sp = null;
+        ServiceProvider sp  = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.addServiceProvider(sp);
         assertEquals(expResult, result);
     }
@@ -67,12 +68,12 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of registerServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testRegisterServiceProvider() {
         System.out.println("registerServiceProvider");
-        ServiceProvider sp = null;
+        ServiceProvider sp = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.registerServiceProvider(sp);
         assertEquals(expResult, result);
     }
@@ -83,9 +84,11 @@ public class ServiceProviderRegistryTest {
     @Disabled
     public void testGetServiceProviderByEmail() {
         System.out.println("getServiceProviderByEmail");
-        String email = "";
+        String email = "testEmail";
+        ServiceProvider sp = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        ServiceProvider expResult = null;
+        instance.addServiceProvider(sp);
+        ServiceProvider expResult = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProvider result = instance.getServiceProviderByEmail(email);
         assertEquals(expResult, result);
     }
@@ -105,13 +108,18 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of getAverageRatings method, of class ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testGetAverageRatings() {
         System.out.println("getAverageRatings");
+        ServiceProvider sp = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
+        Evaluation eval = new Evaluation(5, null);
+        sp.addEvaluation(eval);
+        sp.recalculateAverage();
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
-        List<Double> expResult = null;
+        instance.addServiceProvider(sp);
+        List<Double> expResult = new ArrayList<>();
+        expResult.add((double) 4);
         List<Double> result = instance.getAverageRatings();
         assertEquals(expResult, result);
     }
-    
 }
