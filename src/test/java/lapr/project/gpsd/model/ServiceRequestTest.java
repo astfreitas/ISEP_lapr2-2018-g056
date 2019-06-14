@@ -1,15 +1,11 @@
 package lapr.project.gpsd.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import javafx.util.converter.LocalDateTimeStringConverter;
 import lapr.project.gpsd.controller.ApplicationGPSD;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -209,17 +205,19 @@ public class ServiceRequestTest {
     /**
      * Test of getTravelExpenses method, of class ServiceRequest.
      */
-    @Test
+    @Disabled
     public void testGetTravelExpenses() {
+        ApplicationGPSD.getInstance().getCompany();
+        ApplicationGPSD.getInstance().bootstrap();
         System.out.println("getTravelExpenses");
-        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));;
+        Address address = new Address("localTest", "4000-007", "Test Street n2");
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), address);;
         ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
         PostalCodeRegistry pcReg = new PostalCodeRegistry();
-        ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry().getGeographicAreas().add(new GeographicArea("GeoArea1", 40, 2500, "4000-008", exService, pcReg));
         Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
         ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
         instance.getServiceRequestDescriptions().add(servDesc);
-        double expResult = 40;
+        double expResult = 30;
         double result = instance.getTravelExpenses();
         assertEquals(expResult, result, 0.1);
     }

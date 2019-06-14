@@ -2,12 +2,13 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import lapr.project.gpsd.utils.Constants;
 
 public class FixedService extends Service {
 
     private double predeterminedDuration;
     private final static double WITHOUT_PREDETERMINE_DURATION = 60;//60 minutes | hourlyCost = total cost;
-
+    private List<String> otherAttributes = new ArrayList();
     /**
      * Fixed service constructor with 5 parameters
      *
@@ -20,6 +21,7 @@ public class FixedService extends Service {
     public FixedService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
         super(id, briefDescription, fullDescription, hourlyCost, category);
         this.predeterminedDuration = WITHOUT_PREDETERMINE_DURATION;
+        otherAttributes.add(Constants.OTHER_SERV_ATRIB_PREDETERMINED_DURATION);
     }
 
     /**
@@ -57,11 +59,20 @@ public class FixedService extends Service {
      * @return list of other attributes
      */
     public List<String> getOtherAtributes() {
-        List<String> otherAttributes = new ArrayList();
-        otherAttributes.add("Predetermined duration");
         return otherAttributes;
     }
 
+    
+    @Override
+    public boolean hasAttribute(String attribute) {
+        for(String attrib : otherAttributes) {
+            if(attrib.equals(attribute)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * verifies if the service has other attributes and returns true or false
      *

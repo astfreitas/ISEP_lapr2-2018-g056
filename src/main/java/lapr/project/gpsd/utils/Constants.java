@@ -36,5 +36,7 @@ public class Constants {
     public static final String SERVICE_NOT_ASSIGNED = "Not assigned";
     public static final String SERVICE_ACCEPTED = "Accepted";
     public static final String SERVICE_ASSIGNED = "Assigned";
+    
+    public static final String OTHER_SERV_ATRIB_PREDETERMINED_DURATION = "Predetermined duration";
 
 }

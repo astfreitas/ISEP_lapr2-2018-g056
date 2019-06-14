@@ -3,16 +3,25 @@ package lapr.project.gpsd.ui;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.Service;
+import lapr.project.gpsd.utils.Constants;
 import lapr.project.utils.UIUtils;
 
 public class CreateServiceRequestUI3 implements Initializable {
@@ -25,15 +34,17 @@ public class CreateServiceRequestUI3 implements Initializable {
     private Button addServiceBtn;
     @FXML
     private ComboBox<Category> categoryComboBox;
-    @FXML
-    private ListView<Service> serviceListView;
+    
+    //private ListView<Service> serviceListView;
     @FXML
     private TextArea descriptionTextArea;
     @FXML
     private ComboBox<String> hourComboBox;
     @FXML
     private ComboBox<String> minuteComboBox;
-
+    @FXML
+    private ComboBox<Service> serviceComboBox;
+    
     /**
      * Initializes the controller class.
      */
@@ -58,9 +69,78 @@ public class CreateServiceRequestUI3 implements Initializable {
     public void setCreateServiceRequestSceneUI(CreateServiceRequestUI createServiceRequestUI) {
         this.createServiceRequestUI = createServiceRequestUI;
     }
-
+    
+    
     public void setupServiceDescriptionScene() {
         List<Category> categories = this.createServiceRequestUI.getController().getCategories();
+        categoryComboBox.setCellFactory(new Callback<ListView<Category>,ListCell<Category>>(){
+            @Override
+            public ListCell<Category> call(ListView<Category> l){
+                return new ListCell<Category>(){
+                    @Override
+                    protected void updateItem(Category cat, boolean empty) {
+                        super.updateItem(cat, empty);
+                        if (cat == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            setText(cat.getDescription());
+                        }
+                    }
+                } ;
+            }
+        });
+        //selected value showed in combo box
+        categoryComboBox.setConverter(new StringConverter<Category>() {
+              @Override
+              public String toString(Category cat) {
+                if (cat == null){
+                  return null;
+                } else {
+                  return cat.getDescription();
+                }
+              }
+            @Override
+            public Category fromString(String userId) {
+                return null;
+            }
+        });
+        
+        serviceComboBox.setCellFactory(new Callback<ListView<Service>,ListCell<Service>>(){
+            @Override
+            public ListCell<Service> call(ListView<Service> l){
+                return new ListCell<Service>(){
+                    @Override
+                    protected void updateItem(Service serv, boolean empty) {
+                        super.updateItem(serv, empty);
+                        if (serv == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            setText(serv.getBriefDescription());
+                        }
+                    }
+                } ;
+            }
+        });
+        //selected value showed in combo box
+        serviceComboBox.setConverter(new StringConverter<Service>() {
+              @Override
+              public String toString(Service service) {
+                if (service == null){
+                  return null;
+                } else {
+                  return service.getBriefDescription();
+                }
+              }
+            @Override
+            public Service fromString(String string) {
+                return null;
+            }
+        });
+        
+        
+        
+        
+
         categoryComboBox.getItems().clear();
         categoryComboBox.getItems().addAll(categories);
         categoryComboBox.getSelectionModel().selectFirst();
@@ -88,17 +168,17 @@ public class CreateServiceRequestUI3 implements Initializable {
      * the combo box and getting the service list from Controller
      */
     private void refreshServiceList() {
-        serviceListView.getItems().clear();
+        serviceComboBox.getItems().clear();
         Category cat = categoryComboBox.getSelectionModel().getSelectedItem();
         if (cat != null) {
             List<Service> services = this.createServiceRequestUI.getController().getServicesFromCategory(cat.getCode());
-            serviceListView.getItems().addAll(services);
+            serviceComboBox.getItems().addAll(services);
         }
     }
 
     private void addServiceRequestDescription() {
         if (validate()) {
-            Service selectedService = serviceListView.getSelectionModel().getSelectedItem();
+            Service selectedService = serviceComboBox.getSelectionModel().getSelectedItem();
             this.createServiceRequestUI.getController().addServiceRequestDescription(selectedService.getId(), descriptionTextArea.getText(), getSelectedDuration());
         }
     }
@@ -110,10 +190,10 @@ public class CreateServiceRequestUI3 implements Initializable {
     }
 
     private boolean validate() {
-        if (serviceListView.getSelectionModel().isEmpty()) {
+        if (serviceComboBox.getSelectionModel().isEmpty()) {
             UIUtils.createAlert("You need to select a service from the list", "Add Service Error", Alert.AlertType.ERROR);
             return false;
-        } else if (getSelectedDuration() <= 0) {
+        } else if (getSelectedDuration() <= 0 && !serviceHasDeterminedDuration()) {
             UIUtils.createAlert("Duration of the service must be more then 0 minutes", "Add Service Error", Alert.AlertType.ERROR);
             return false;
         }
@@ -130,6 +210,26 @@ public class CreateServiceRequestUI3 implements Initializable {
     private void handleCategoryComBox(ActionEvent event) {
         refreshServiceList();
 
+    }
+
+    @FXML
+    private void handleServiceComboBox(ActionEvent event) {
+        if(serviceHasDeterminedDuration()) {
+            hourComboBox.setDisable(true);
+            minuteComboBox.setDisable(true);
+        } else {
+            hourComboBox.setDisable(false);
+            minuteComboBox.setDisable(false);
+        }
+        
+    }
+    
+    private boolean serviceHasDeterminedDuration() {
+        if(!serviceComboBox.getSelectionModel().isEmpty()) {
+            Service s = serviceComboBox.getSelectionModel().getSelectedItem();
+            return s.hasAttribute(Constants.OTHER_SERV_ATRIB_PREDETERMINED_DURATION);
+        }
+        return false;
     }
 
 }

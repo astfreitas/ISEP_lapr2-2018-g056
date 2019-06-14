@@ -165,6 +165,11 @@ public class ServiceTest {
         public boolean setAdditionalData(String data) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
+
+        @Override
+        public boolean hasAttribute(String attribute) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
 }
