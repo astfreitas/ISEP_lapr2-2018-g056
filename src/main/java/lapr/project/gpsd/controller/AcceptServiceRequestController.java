@@ -16,6 +16,7 @@ public class AcceptServiceRequestController {
     private ServiceRequestRegistry servReqRegistry;
     private ServiceOrderRegistry servOrderRegistry;
     private List<ServiceAssignment> clientServiceAssignments;
+    private List<ServiceAssignment> sRequestAssignments;
     private Client client;
     public AcceptServiceRequestController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
@@ -32,7 +33,6 @@ public class AcceptServiceRequestController {
         String email = session.getUserEmail();
         client = clientRegistry.getClientByEmail(email);
         clientServiceAssignments = serAssignRegistry.getServiceAssignmentsByCli(client);
-        app.bootstrap();
     }
     
     /**
@@ -50,18 +50,18 @@ public class AcceptServiceRequestController {
      * @return a list of service assignments for a given ServiceRequest
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
-        List<ServiceAssignment> result = new ArrayList();
-        //**
         ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);        
-        return serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
+        sRequestAssignments = serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
+        return sRequestAssignments;
     }
     
     /**
      * Method removes list of service assignments
      * @param listServiceAssignments 
      */
-    public void rejectServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
-        serAssignRegistry.removeServiceAssignment(listServiceAssignments, false);
+    public void rejectServiceAssignment() {
+        serAssignRegistry.removeServiceAssignment(sRequestAssignments, false);
+        sRequestAssignments.clear();
     }
     
     /**
@@ -69,9 +69,11 @@ public class AcceptServiceRequestController {
      * @param listServiceAssignments 
      * @return  list of ServiceOrder numbers
      */
-    public List<Integer> acceptServiceAssignment(List<ServiceAssignment> listServiceAssignments) {
-        serAssignRegistry.removeServiceAssignment(listServiceAssignments, true);
-        return servOrderRegistry.registerServiceOrders(listServiceAssignments);
+    public List<Integer> acceptServiceAssignment() {
+        List<Integer> serviceOrders = servOrderRegistry.registerServiceOrders(sRequestAssignments);
+        serAssignRegistry.removeServiceAssignment(sRequestAssignments, true);
+        sRequestAssignments.clear();
+        return serviceOrders;
     }
     
     
