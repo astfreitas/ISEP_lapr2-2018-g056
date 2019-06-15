@@ -207,3 +207,7 @@ src/main/resources/testFiles/testExportXML.xml
 src/main/resources/testFiles/testSO.csv
 src/main/resources/testFiles/test.xls
 src/main/resources/testFiles/test.xml
+src/main/resources/exportedFiles/10001_2019-05-01_2019-05-30.csv
+src/main/resources/exportedFiles/10001_2019-06-01_2019-06-30.csv
+src/main/resources/exportedFiles/10001_2019-06-01_2019-06-30.xls
+src/main/resources/exportedFiles/10001_2019-06-01_2019-06-30.xml
