@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import lapr.project.utils.UIUtils;
 
 public class CompleteServiceUI2 implements Initializable {
-    
+
     private CompleteServiceUI completeServiceUI;
 
     @FXML
@@ -40,8 +40,8 @@ public class CompleteServiceUI2 implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        issueTxt.setDisable(true);
+    }
 
     @FXML
     private void handleCancelBtn(ActionEvent event) {
@@ -50,31 +50,33 @@ public class CompleteServiceUI2 implements Initializable {
 
     @FXML
     private void handleContinueBtn(ActionEvent event) {
-        if(issueToggle.isSelected()){
-            this.completeServiceUI.getController().concludeServiceOrder();
-        }else{
-            if(issueTxt.getText().equals("")){
+        if (issueToggle.isSelected()) {
+            if (issueTxt.getText().equals("")) {
                 UIUtils.createAlert("Please insert the issue description", "", Alert.AlertType.ERROR);
-            }else{
+            } else {
                 this.completeServiceUI.getController().concludeServiceOrderWithIssue(issueTxt.getText());
+                this.completeServiceUI.getMainMenu().backToMainMenu();
             }
+        } else {
+            this.completeServiceUI.getController().concludeServiceOrder();
+            this.completeServiceUI.getMainMenu().backToMainMenu();
         }
     }
 
     @FXML
     private void handleIssueToggle(ActionEvent event) {
-        if(issueToggle.isSelected()){
-            issueTxt.setDisable(true);
-        }else{
+        if (issueToggle.isSelected()) {
             issueTxt.setDisable(false);
+        } else {
+            issueTxt.setDisable(true);
         }
     }
-    
+
     public void setCompleteServiceUI(CompleteServiceUI completeServiceUI) {
-       this.completeServiceUI = completeServiceUI;
+        this.completeServiceUI = completeServiceUI;
     }
-    
-    public void showServiceInfo(){
+
+    public void showServiceInfo() {
         this.servDateTxt.setText(this.completeServiceUI.getController().getServOrder().getSchePref().getDate().toString());
         this.servTimeTxt.setText(this.completeServiceUI.getController().getServOrder().getSchePref().getTime().toString());
         this.serviceTxt.setText(this.completeServiceUI.getController().getServOrder().getServiceRequestDescription().getService().getBriefDescription());
