@@ -262,13 +262,13 @@ public class RegisterServiceProviderControllerTest {
      */
     @Disabled
     public void testGetName() {
-        System.out.println("getName");
-        RegisterServiceProviderController instance = new RegisterServiceProviderController();
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("getName");
+//        RegisterServiceProviderController instance = new RegisterServiceProviderController();
+//        String expResult = "";
+//        String result = instance.getName();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -276,13 +276,13 @@ public class RegisterServiceProviderControllerTest {
      */
     @Disabled
     public void testGetAddress() {
-        System.out.println("getAddress");
-        RegisterServiceProviderController instance = new RegisterServiceProviderController();
-        Address expResult = null;
-        Address result = instance.getAddress();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        System.out.println("getAddress");
+//        RegisterServiceProviderController instance = new RegisterServiceProviderController();
+//        Address expResult = null;
+//        Address result = instance.getAddress();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**

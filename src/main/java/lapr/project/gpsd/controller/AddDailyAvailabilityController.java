@@ -1,7 +1,6 @@
 package lapr.project.gpsd.controller;
 
 import lapr.project.gpsd.utils.Constants;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
@@ -111,6 +110,12 @@ public class AddDailyAvailabilityController {
         return spal.addAvailability(avalList);
     }
     
+    /**
+     * 
+     * Returns the list os availabilities
+     * 
+     * @return List os availabilities
+     */
     public ArrayList<Availability> getAvalList(){
         return this.avalList;
     }

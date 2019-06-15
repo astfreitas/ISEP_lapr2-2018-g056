@@ -14,6 +14,8 @@ AcceptServiceRequestAssignmentsUI	src/main/java/lapr/project/gpsd/ui/AcceptServi
 AcceptServiceRequestAssignmentsUI1	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^public class AcceptServiceRequestAssignmentsUI1 implements Initializable {$/;"	c
 AcceptServiceRequestController	src/main/java/lapr/project/gpsd/controller/AcceptServiceRequestController.java	/^    public AcceptServiceRequestController() {$/;"	m	class:AcceptServiceRequestController
 AcceptServiceRequestController	src/main/java/lapr/project/gpsd/controller/AcceptServiceRequestController.java	/^public class AcceptServiceRequestController {$/;"	c
+AcceptServiceRequestControllerTest	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public AcceptServiceRequestControllerTest() {$/;"	m	class:AcceptServiceRequestControllerTest
+AcceptServiceRequestControllerTest	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^public class AcceptServiceRequestControllerTest {$/;"	c
 AdapterCSV	src/main/java/lapr/project/gpsd/model/AdapterCSV.java	/^    public AdapterCSV() {$/;"	m	class:AdapterCSV
 AdapterCSV	src/main/java/lapr/project/gpsd/model/AdapterCSV.java	/^public class AdapterCSV implements FileType {$/;"	c
 AdapterCSVTest	src/test/java/lapr/project/gpsd/model/AdapterCSVTest.java	/^public class AdapterCSVTest {$/;"	c
@@ -35,6 +37,7 @@ AddDailyAvailabilityUI1	src/main/java/lapr/project/gpsd/ui/AddDailyAvailabilityU
 AddDailyAvailabilityUI2	src/main/java/lapr/project/gpsd/ui/AddDailyAvailabilityUI2.java	/^public class AddDailyAvailabilityUI2 implements Initializable {$/;"	c
 AddNewAddressToClientController	src/main/java/lapr/project/gpsd/controller/AddNewAddressToClientController.java	/^    public AddNewAddressToClientController() {$/;"	m	class:AddNewAddressToClientController
 AddNewAddressToClientController	src/main/java/lapr/project/gpsd/controller/AddNewAddressToClientController.java	/^public class AddNewAddressToClientController {$/;"	c
+AddNewAddressToClientControllerTest	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^public class AddNewAddressToClientControllerTest {$/;"	c
 AddSchedulePreference	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    private boolean AddSchedulePreference(SchedulePreference sh) {$/;"	m	class:ServiceRequest	file:
 Address	src/main/java/lapr/project/gpsd/model/Address.java	/^    public Address(String local, String postalCode, String address) {$/;"	m	class:Address
 Address	src/main/java/lapr/project/gpsd/model/Address.java	/^public class Address{$/;"	c
@@ -46,6 +49,7 @@ AssignServiceTask	src/main/java/lapr/project/gpsd/model/AssignServiceTask.java	/
 AssignServiceTaskTest	src/test/java/lapr/project/gpsd/model/AssignServiceTaskTest.java	/^public class AssignServiceTaskTest {$/;"	c
 AssignmentAlgoritm1	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    public AssignmentAlgoritm1() {$/;"	m	class:AssignmentAlgoritm1
 AssignmentAlgoritm1	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {$/;"	c
+AssignmentAlgoritm1Test	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    public AssignmentAlgoritm1Test() {$/;"	m	class:AssignmentAlgoritm1Test
 AssignmentAlgoritm1Test	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^public class AssignmentAlgoritm1Test {$/;"	c
 AuthenticationController	src/main/java/lapr/project/gpsd/controller/AuthenticationController.java	/^    public AuthenticationController()$/;"	m	class:AuthenticationController
 AuthenticationController	src/main/java/lapr/project/gpsd/controller/AuthenticationController.java	/^public class AuthenticationController$/;"	c
@@ -55,14 +59,10 @@ Availability	src/main/java/lapr/project/gpsd/model/Availability.java	/^    publi
 Availability	src/main/java/lapr/project/gpsd/model/Availability.java	/^    public Availability(LocalDate sDate, LocalTime bTime, LocalTime eTime, String str) {$/;"	m	class:Availability
 Availability	src/main/java/lapr/project/gpsd/model/Availability.java	/^public class Availability {$/;"	c
 AvailabilityTest	src/test/java/lapr/project/gpsd/model/AvailabilityTest.java	/^public class AvailabilityTest {$/;"	c
-COMMON_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var COMMON_KEYWORDS = C_KEYWORDS + "catch class delete false import " +$/;"	v
 COMPANY_ASSIGNMENT_DELAY	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String COMPANY_ASSIGNMENT_DELAY = "Company.AssignmentDelay";$/;"	f	class:Constants
 COMPANY_ASSIGNMENT_INTERVAL	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String COMPANY_ASSIGNMENT_INTERVAL = "Company.AssignmentInterval";$/;"	f	class:Constants
 CONCLUDED_ORDER	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String CONCLUDED_ORDER = "Completed";$/;"	f	class:Constants
 CONCLUDED_ORDER_WITH_ISSUE	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String CONCLUDED_ORDER_WITH_ISSUE = "Completed with issue";$/;"	f	class:Constants
-CPP_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var CPP_KEYWORDS = COMMON_KEYWORDS + "alignof align_union asm axiom bool " +$/;"	v
-CSHARP_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var CSHARP_KEYWORDS = JAVA_KEYWORDS +$/;"	v
-C_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var C_KEYWORDS = FLOW_CONTROL_KEYWORDS + "auto case char const default " +$/;"	v
 Category	src/main/java/lapr/project/gpsd/model/Category.java	/^    public Category(String code, String description){$/;"	m	class:Category
 Category	src/main/java/lapr/project/gpsd/model/Category.java	/^public class Category$/;"	c
 CategoryRegistry	src/main/java/lapr/project/gpsd/model/CategoryRegistry.java	/^    public CategoryRegistry() {$/;"	m	class:CategoryRegistry
@@ -140,6 +140,8 @@ GeographicAreaRegistry	src/main/java/lapr/project/gpsd/model/GeographicAreaRegis
 GeographicAreaRegistryTest	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^public class GeographicAreaRegistryTest {$/;"	c
 GeographicAreaSpecController	src/main/java/lapr/project/gpsd/controller/GeographicAreaSpecController.java	/^    public GeographicAreaSpecController() {$/;"	m	class:GeographicAreaSpecController
 GeographicAreaSpecController	src/main/java/lapr/project/gpsd/controller/GeographicAreaSpecController.java	/^public class GeographicAreaSpecController {$/;"	c
+GeographicAreaSpecControllerTest	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public GeographicAreaSpecControllerTest() {$/;"	m	class:GeographicAreaSpecControllerTest
+GeographicAreaSpecControllerTest	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^public class GeographicAreaSpecControllerTest {$/;"	c
 GeographicAreaTest	src/test/java/lapr/project/gpsd/model/GeographicAreaTest.java	/^public class GeographicAreaTest {$/;"	c
 IAssignmentAlgoritm	src/main/java/lapr/project/gpsd/model/IAssignmentAlgoritm.java	/^public interface IAssignmentAlgoritm {$/;"	i
 IAssignmentAlgoritmImpl	src/test/java/lapr/project/gpsd/model/IAssignmentAlgoritmTest.java	/^    public class IAssignmentAlgoritmImpl implements IAssignmentAlgoritm {$/;"	c	class:IAssignmentAlgoritmTest
@@ -150,8 +152,6 @@ IExternalServiceTest	src/test/java/lapr/project/gpsd/model/IExternalServiceTest.
 ISortingBehavior	src/main/java/lapr/project/gpsd/model/ISortingBehavior.java	/^public interface ISortingBehavior {$/;"	i
 ISortingBehaviorImpl	src/test/java/lapr/project/gpsd/model/ISortingBehaviorTest.java	/^    public class ISortingBehaviorImpl implements ISortingBehavior {$/;"	c	class:ISortingBehaviorTest
 ISortingBehaviorTest	src/test/java/lapr/project/gpsd/model/ISortingBehaviorTest.java	/^public class ISortingBehaviorTest {$/;"	c
-JAVA_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var JAVA_KEYWORDS = COMMON_KEYWORDS +$/;"	v
-JSCRIPT_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var JSCRIPT_KEYWORDS = COMMON_KEYWORDS +$/;"	v
 LABEL_OUTSTANDING	src/main/java/lapr/project/gpsd/model/ServiceProviderStatistics.java	/^    static final String LABEL_OUTSTANDING = "Outstanding Provider";$/;"	f	class:ServiceProviderStatistics
 LABEL_REGULAR	src/main/java/lapr/project/gpsd/model/ServiceProviderStatistics.java	/^    static final String LABEL_REGULAR = "Regular Provider";$/;"	f	class:ServiceProviderStatistics
 LABEL_WORST	src/main/java/lapr/project/gpsd/model/ServiceProviderStatistics.java	/^    static final String LABEL_WORST = "Worst Provider";$/;"	f	class:ServiceProviderStatistics
@@ -176,6 +176,7 @@ MainMenuUI	src/main/java/lapr/project/gpsd/ui/MainMenuUI.java	/^public class Mai
 NIF	src/main/java/lapr/project/gpsd/model/Client.java	/^    private String NIF;$/;"	f	class:Client	file:
 NIF	src/main/java/lapr/project/gpsd/model/Company.java	/^    private String NIF;$/;"	f	class:Company	file:
 NIF	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private String NIF;$/;"	f	class:SPApplication	file:
+OTHER_SERV_ATRIB_PREDETERMINED_DURATION	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String OTHER_SERV_ATRIB_PREDETERMINED_DURATION = "Predetermined duration";$/;"	f	class:Constants
 OtherCost	src/main/java/lapr/project/gpsd/model/OtherCost.java	/^    public OtherCost(String description, double value) {$/;"	m	class:OtherCost
 OtherCost	src/main/java/lapr/project/gpsd/model/OtherCost.java	/^class OtherCost {$/;"	c
 OtherCostTest	src/test/java/lapr/project/gpsd/model/OtherCostTest.java	/^public class OtherCostTest {$/;"	c
@@ -190,22 +191,6 @@ PARAMS_NUMBER_SERVICE_TYPES	src/main/java/lapr/project/gpsd/utils/Constants.java
 PARAMS_SERVICE_SORTING_BEHAVIOR	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String PARAMS_SERVICE_SORTING_BEHAVIOR = "Company.ServiceSortingBehavior";$/;"	f	class:Constants
 PARAMS_SERVICE_TYPE_SIGNATURE	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String PARAMS_SERVICE_TYPE_SIGNATURE = "Company.ServiceType";$/;"	f	class:Constants
 PENDING_ORDER	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String PENDING_ORDER = "Pending";$/;"	f	class:Constants
-PERL_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var PERL_KEYWORDS = "caller delete die do dump elsif eval exit foreach for " +$/;"	v
-PR_ATTRIB_NAME	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_ATTRIB_NAME = 'atn';$/;"	v
-PR_ATTRIB_VALUE	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_ATTRIB_VALUE = 'atv';$/;"	v
-PR_COMMENT	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_COMMENT = 'com';$/;"	v
-PR_DECLARATION	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_DECLARATION = 'dec';$/;"	v
-PR_KEYWORD	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_KEYWORD = 'kwd';$/;"	v
-PR_LITERAL	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_LITERAL = 'lit';$/;"	v
-PR_NOCODE	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_NOCODE = 'nocode';$/;"	v
-PR_PLAIN	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_PLAIN = 'pln';$/;"	v
-PR_PUNCTUATION	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_PUNCTUATION = 'pun';$/;"	v
-PR_SOURCE	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_SOURCE = 'src';$/;"	v
-PR_STRING	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_STRING = 'str';$/;"	v
-PR_TAG	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_TAG = 'tag';$/;"	v
-PR_TYPE	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_TYPE = 'typ';$/;"	v
-PR_innerHtmlWorks	target/site/jacoco/jacoco-resources/prettify.js	/^  var PR_innerHtmlWorks = null;$/;"	v
-PYTHON_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var PYTHON_KEYWORDS = FLOW_CONTROL_KEYWORDS + "and as assert class def del " +$/;"	v
 PostalCode	src/main/java/lapr/project/gpsd/model/PostalCode.java	/^    public PostalCode(String postalCode, double cpLatitude, double cpLongitude) {$/;"	m	class:PostalCode
 PostalCode	src/main/java/lapr/project/gpsd/model/PostalCode.java	/^public class PostalCode {$/;"	c
 PostalCodeRegistry	src/main/java/lapr/project/gpsd/model/PostalCodeRegistry.java	/^    public PostalCodeRegistry() {$/;"	m	class:PostalCodeRegistry
@@ -215,7 +200,6 @@ PostalCodeTest	src/test/java/lapr/project/gpsd/model/PostalCodeTest.java	/^publi
 ProfessionalCompetence	src/main/java/lapr/project/gpsd/model/ProfessionalCompetence.java	/^    public ProfessionalCompetence(String description) {$/;"	m	class:ProfessionalCompetence
 ProfessionalCompetence	src/main/java/lapr/project/gpsd/model/ProfessionalCompetence.java	/^public class ProfessionalCompetence {$/;"	c
 ProfessionalCompetenceTest	src/test/java/lapr/project/gpsd/model/ProfessionalCompetenceTest.java	/^public class ProfessionalCompetenceTest {$/;"	c
-REGEXP_PRECEDER_PATTERN	target/site/jacoco/jacoco-resources/prettify.js	/^  var REGEXP_PRECEDER_PATTERN = function () {$/;"	f
 REJECTED_APPLICATION	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String REJECTED_APPLICATION = "Rejected";$/;"	f	class:Constants
 REPETITION_PATTERN_DAILY	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String REPETITION_PATTERN_DAILY = "DAILY";$/;"	f	class:Constants
 REPETITION_PATTERN_FORTNIGHTLY	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String REPETITION_PATTERN_FORTNIGHTLY = "FORTNIGHTLY";$/;"	f	class:Constants
@@ -225,7 +209,6 @@ ROLE_ADMINISTRATIVE	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    p
 ROLE_CLIENT	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String ROLE_CLIENT = "CLIENT";$/;"	f	class:Constants
 ROLE_HRO	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String ROLE_HRO = "HRO";$/;"	f	class:Constants
 ROLE_SERVICE_PROVIDER	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String ROLE_SERVICE_PROVIDER = "SERVICE PROVIDER";$/;"	f	class:Constants
-RUBY_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var RUBY_KEYWORDS = FLOW_CONTROL_KEYWORDS + "alias and begin case class def" +$/;"	v
 RateSPUI	src/main/java/lapr/project/gpsd/ui/RateSPUI.java	/^    public RateSPUI(MainMenuClientUI mainMenu, Main mainApp) {$/;"	m	class:RateSPUI
 RateSPUI	src/main/java/lapr/project/gpsd/ui/RateSPUI.java	/^public class RateSPUI {$/;"	c
 RateSPUI1	src/main/java/lapr/project/gpsd/ui/RateSPUI1.java	/^public class RateSPUI1 implements Initializable {$/;"	c
@@ -257,7 +240,6 @@ SCENE_WIDTH	src/main/java/lapr/project/gpsd/ui/Main.java	/^    private final dou
 SERVICE_ACCEPTED	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String SERVICE_ACCEPTED = "Accepted";$/;"	f	class:Constants
 SERVICE_ASSIGNED	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String SERVICE_ASSIGNED = "Assigned";$/;"	f	class:Constants
 SERVICE_NOT_ASSIGNED	src/main/java/lapr/project/gpsd/utils/Constants.java	/^    public static final String SERVICE_NOT_ASSIGNED = "Not assigned";$/;"	f	class:Constants
-SH_KEYWORDS	target/site/jacoco/jacoco-resources/prettify.js	/^  var SH_KEYWORDS = FLOW_CONTROL_KEYWORDS + "case done elif esac eval fi " +$/;"	v
 SPApplication	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    public SPApplication(String name, String NIF, String phone, String email) {$/;"	m	class:SPApplication
 SPApplication	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^public class SPApplication {$/;"	c
 SPApplicationRegistry	src/main/java/lapr/project/gpsd/model/SPApplicationRegistry.java	/^    public SPApplicationRegistry() {$/;"	m	class:SPApplicationRegistry
@@ -295,6 +277,8 @@ ServiceCostCalculationImpl	src/test/java/lapr/project/gpsd/model/ServiceCostCalc
 ServiceCostCalculationTest	src/test/java/lapr/project/gpsd/model/ServiceCostCalculationTest.java	/^public class ServiceCostCalculationTest {$/;"	c
 ServiceDefinitionController	src/main/java/lapr/project/gpsd/controller/ServiceDefinitionController.java	/^    public ServiceDefinitionController() {$/;"	m	class:ServiceDefinitionController
 ServiceDefinitionController	src/main/java/lapr/project/gpsd/controller/ServiceDefinitionController.java	/^public class ServiceDefinitionController {$/;"	c
+ServiceDefinitionControllerTest	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public ServiceDefinitionControllerTest() {$/;"	m	class:ServiceDefinitionControllerTest
+ServiceDefinitionControllerTest	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^public class ServiceDefinitionControllerTest {$/;"	c
 ServiceDefinitionUI	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI.java	/^    public ServiceDefinitionUI(MainMenuAdminUI mainMenu, Main mainApp) {$/;"	m	class:ServiceDefinitionUI
 ServiceDefinitionUI	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI.java	/^public class ServiceDefinitionUI {$/;"	c
 ServiceDefinitionUI1	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^public class ServiceDefinitionUI1 implements Initializable {$/;"	c
@@ -348,6 +332,8 @@ SortingFIFOTest	src/test/java/lapr/project/gpsd/model/SortingFIFOTest.java	/^pub
 SortingRandom	src/main/java/lapr/project/gpsd/model/SortingRandom.java	/^public class SortingRandom implements ISortingBehavior {$/;"	c
 SpecifyCategoryController	src/main/java/lapr/project/gpsd/controller/SpecifyCategoryController.java	/^    public SpecifyCategoryController() {$/;"	m	class:SpecifyCategoryController
 SpecifyCategoryController	src/main/java/lapr/project/gpsd/controller/SpecifyCategoryController.java	/^public class SpecifyCategoryController {$/;"	c
+SpecifyCategoryControllerTest	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^    public SpecifyCategoryControllerTest() {$/;"	m	class:SpecifyCategoryControllerTest
+SpecifyCategoryControllerTest	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^public class SpecifyCategoryControllerTest {$/;"	c
 SpecifyCategoryUI	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI.java	/^    public SpecifyCategoryUI(MainMenuAdminUI mainMenu, Main mainApp) {$/;"	m	class:SpecifyCategoryUI
 SpecifyCategoryUI	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI.java	/^public class SpecifyCategoryUI {$/;"	c
 SpecifyCategoryUI1	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI1.java	/^public class SpecifyCategoryUI1 implements Initializable {$/;"	c
@@ -460,11 +446,12 @@ addressTxt	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI1.java	/^
 addressTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI2.java	/^    private TextField addressTxt;$/;"	f	class:SubmitApplicationUI2	file:
 addresses	src/main/java/lapr/project/gpsd/model/Client.java	/^    private ArrayList<Address> addresses = new ArrayList<Address>();$/;"	f	class:Client	file:
 aditionalInformationLabel	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI2.java	/^    private Text aditionalInformationLabel;$/;"	f	class:ServiceDefinitionUI2	file:
-allowAnywhereFoldCaseAndRenumberGroups	target/site/jacoco/jacoco-resources/prettify.js	/^    function allowAnywhereFoldCaseAndRenumberGroups(regex) {$/;"	f	function:combinePrefixPatterns
 app	src/main/java/lapr/project/gpsd/controller/AcceptServiceRequestController.java	/^    private ApplicationGPSD app;$/;"	f	class:AcceptServiceRequestController	file:
 app	src/main/java/lapr/project/gpsd/controller/RegisterClientController.java	/^    private ApplicationGPSD app;$/;"	f	class:RegisterClientController	file:
 app	src/main/java/lapr/project/gpsd/controller/RegisterServiceProviderController.java	/^    private ApplicationGPSD app;$/;"	f	class:RegisterServiceProviderController	file:
-appendDecorations	target/site/jacoco/jacoco-resources/prettify.js	/^  function appendDecorations(basePos, sourceCode, langHandler, out) {$/;"	f
+app	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    private ApplicationGPSD app;$/;"	f	class:GeographicAreaSpecControllerTest	file:
+app	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    private ApplicationGPSD app;$/;"	f	class:ServiceDefinitionControllerTest	file:
+app	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^    private ApplicationGPSD app;$/;"	f	class:SpecifyCategoryControllerTest	file:
 applicationStatus	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private SPApplicationStatus applicationStatus;$/;"	f	class:SPApplication	file:
 applications	src/main/java/lapr/project/gpsd/model/SPApplicationRegistry.java	/^    private List<SPApplication> applications;$/;"	f	class:SPApplicationRegistry	file:
 ar	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    private double ar;$/;"	f	class:EvaluateSPController	file:
@@ -477,7 +464,6 @@ assignServices	src/main/java/lapr/project/gpsd/model/IAssignmentAlgoritm.java	/^
 assignServices	src/test/java/lapr/project/gpsd/model/IAssignmentAlgoritmTest.java	/^        public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services, ISortingBehavior sortingBehavior) {$/;"	m	class:IAssignmentAlgoritmTest.IAssignmentAlgoritmImpl
 assigned	src/main/java/lapr/project/gpsd/model/ServiceRequestDescription.java	/^    private String assigned;$/;"	f	class:ServiceRequestDescription	file:
 assignmentAlgoritm	src/main/java/lapr/project/gpsd/model/Company.java	/^    private IAssignmentAlgoritm assignmentAlgoritm;$/;"	f	class:Company	file:
-attribToHtml	target/site/jacoco/jacoco-resources/prettify.js	/^  function attribToHtml(str) {$/;"	f
 authentication	src/main/java/lapr/project/gpsd/controller/ApplicationGPSD.java	/^    private final AuthenticationFacade authentication;$/;"	f	class:ApplicationGPSD	file:
 authentication	src/main/java/lapr/project/gpsd/model/Company.java	/^    private final AuthenticationFacade authentication;$/;"	f	class:Company	file:
 availabilityList	src/main/java/lapr/project/gpsd/model/SPAvailabilityList.java	/^    private List<Availability> availabilityList;$/;"	f	class:SPAvailabilityList	file:
@@ -490,7 +476,6 @@ backToMainMenu	src/main/java/lapr/project/gpsd/ui/MainMenuAdminUI.java	/^    pub
 backToMainMenu	src/main/java/lapr/project/gpsd/ui/MainMenuClientUI.java	/^    public void backToMainMenu() {$/;"	m	class:MainMenuClientUI
 backToMainMenu	src/main/java/lapr/project/gpsd/ui/MainMenuHROUI.java	/^    public void backToMainMenu() {$/;"	m	class:MainMenuHROUI
 backToMainMenu	src/main/java/lapr/project/gpsd/ui/MainMenuSPUI.java	/^    public void backToMainMenu() {$/;"	m	class:MainMenuSPUI
-basePos	target/site/jacoco/jacoco-resources/prettify.js	/^      basePos: basePos$/;"	p	class:appendDecorations.job
 bootstrap	src/main/java/lapr/project/gpsd/controller/ApplicationGPSD.java	/^    public void bootstrap() {$/;"	m	class:ApplicationGPSD
 briefDescTxt	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private TextField briefDescTxt;$/;"	f	class:ServiceDefinitionUI1	file:
 briefDescription	src/main/java/lapr/project/gpsd/model/Service.java	/^    private String briefDescription;$/;"	f	class:Service	file:
@@ -540,7 +525,6 @@ cancelButton	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI1.java	/^  
 cancelButton	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI2.java	/^    private Button cancelButton;$/;"	f	class:ConsultServiceOrderUI2	file:
 cancelButton	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI1.java	/^    private Button cancelButton;$/;"	f	class:SpecifyGeographicAreaUI1	file:
 cancelButton	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI2.java	/^    private Button cancelButton;$/;"	f	class:SpecifyGeographicAreaUI2	file:
-caseFoldCharset	target/site/jacoco/jacoco-resources/prettify.js	/^    function caseFoldCharset(charSet) {$/;"	f	function:combinePrefixPatterns
 catCodeTxt	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI1.java	/^    private TextField catCodeTxt;$/;"	f	class:SpecifyCategoryUI1	file:
 catCol	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^    private TableColumn<ServiceAssignment, String> catCol;$/;"	f	class:AcceptServiceRequestAssignmentsUI1	file:
 catDescTxt	src/main/java/lapr/project/gpsd/ui/SpecifyCategoryUI1.java	/^    private TextArea catDescTxt;$/;"	f	class:SpecifyCategoryUI1	file:
@@ -585,7 +569,6 @@ clientServiceAssignments	src/main/java/lapr/project/gpsd/controller/AcceptServic
 clients	src/main/java/lapr/project/gpsd/model/ClientRegistry.java	/^    private List<Client> clients;$/;"	f	class:ClientRegistry	file:
 closeBtn	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    private Button closeBtn;$/;"	f	class:EvaluateSPUI2	file:
 code	src/main/java/lapr/project/gpsd/model/Category.java	/^    private String code;$/;"	f	class:Category	file:
-combinePrefixPatterns	target/site/jacoco/jacoco-resources/prettify.js	/^  function combinePrefixPatterns(regexs) {$/;"	f
 company	src/main/java/lapr/project/gpsd/controller/AcceptServiceRequestController.java	/^    private Company company;$/;"	f	class:AcceptServiceRequestController	file:
 company	src/main/java/lapr/project/gpsd/controller/AddDailyAvailabilityController.java	/^    private Company company;$/;"	f	class:AddDailyAvailabilityController	file:
 company	src/main/java/lapr/project/gpsd/controller/AddNewAddressToClientController.java	/^    private Company company;$/;"	f	class:AddNewAddressToClientController	file:
@@ -602,6 +585,7 @@ company	src/main/java/lapr/project/gpsd/controller/ServiceDefinitionController.j
 company	src/main/java/lapr/project/gpsd/controller/SpecifyCategoryController.java	/^    private Company company;$/;"	f	class:SpecifyCategoryController	file:
 company	src/main/java/lapr/project/gpsd/controller/SubmitApplicationController.java	/^    private Company company;$/;"	f	class:SubmitApplicationController	file:
 company	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    Company company;$/;"	f	class:AssignmentAlgoritm1
+company	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    private Company company;$/;"	f	class:AssignmentAlgoritm1Test	file:
 completeAnotherBtn	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    private Button completeAnotherBtn;$/;"	f	class:CompleteServiceUI2	file:
 completeBtn	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI5.java	/^    private Button completeBtn;$/;"	f	class:SubmitApplicationUI5	file:
 completeDescTxt	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private TextArea completeDescTxt;$/;"	f	class:ServiceDefinitionUI1	file:
@@ -694,7 +678,6 @@ createServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI
 createServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI4.java	/^    private CreateServiceRequestUI createServiceRequestUI;$/;"	f	class:CreateServiceRequestUI4	file:
 createServiceRequestUI	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI5.java	/^    private CreateServiceRequestUI createServiceRequestUI;$/;"	f	class:CreateServiceRequestUI5	file:
 createServiceTypes	src/main/java/lapr/project/gpsd/model/Company.java	/^    private void createServiceTypes() {$/;"	m	class:Company	file:
-createSimpleLexer	target/site/jacoco/jacoco-resources/prettify.js	/^  function createSimpleLexer(shortcutStylePatterns, fallthroughStylePatterns) {$/;"	f
 createSortingBehavior	src/main/java/lapr/project/gpsd/model/Company.java	/^    private void createSortingBehavior() {$/;"	m	class:Company	file:
 createSupportedFileTypes	src/main/java/lapr/project/gpsd/model/FileTypeRegistry.java	/^    public void createSupportedFileTypes(Properties props) {$/;"	m	class:FileTypeRegistry
 createSupportedServiceTypes	src/main/java/lapr/project/gpsd/model/ServiceTypeRegistry.java	/^    public void createSupportedServiceTypes(Properties props) {$/;"	m	class:ServiceTypeRegistry
@@ -702,8 +685,6 @@ date	src/main/java/lapr/project/gpsd/model/Availability.java	/^    private Local
 date	src/main/java/lapr/project/gpsd/model/SPApplicationStatus.java	/^    private LocalDate date;$/;"	f	class:SPApplicationStatus	file:
 date	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    private LocalDate date;$/;"	f	class:SchedulePreference	file:
 datePicker	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI4.java	/^    private DatePicker datePicker;$/;"	f	class:CreateServiceRequestUI4	file:
-decodeEscape	target/site/jacoco/jacoco-resources/prettify.js	/^    function decodeEscape(charsetPart) {$/;"	f	function:combinePrefixPatterns
-decorate	target/site/jacoco/jacoco-resources/prettify.js	/^    var decorate = function (job) {$/;"	f
 description	src/main/java/lapr/project/authentication/model/UserRole.java	/^    private String description;$/;"	f	class:UserRole	file:
 description	src/main/java/lapr/project/gpsd/model/Category.java	/^    private String description;$/;"	f	class:Category	file:
 description	src/main/java/lapr/project/gpsd/model/OtherCost.java	/^    private String description;$/;"	f	class:OtherCost	file:
@@ -742,7 +723,6 @@ email	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    private S
 emailTxt	src/main/java/lapr/project/gpsd/ui/LoginScreenUI.java	/^    private TextField emailTxt;$/;"	f	class:LoginScreenUI	file:
 emailTxt	src/main/java/lapr/project/gpsd/ui/RegisterClientUI1.java	/^    private TextField emailTxt;$/;"	f	class:RegisterClientUI1	file:
 emailTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI1.java	/^    private TextField emailTxt;$/;"	f	class:SubmitApplicationUI1	file:
-encodeEscape	target/site/jacoco/jacoco-resources/prettify.js	/^    function encodeEscape(charCode) {$/;"	f	function:combinePrefixPatterns
 endDate	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI1.java	/^    private DatePicker endDate;$/;"	f	class:ConsultServiceOrderUI1	file:
 endDatePicker	src/main/java/lapr/project/gpsd/ui/AddDailyAvailabilityUI1.java	/^    private DatePicker endDatePicker;$/;"	f	class:AddDailyAvailabilityUI1	file:
 endDatePicker	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI2.java	/^    private DatePicker endDatePicker;$/;"	f	class:ConsultServiceOrderUI2	file:
@@ -782,7 +762,6 @@ exportData	src/main/java/lapr/project/gpsd/model/ServiceOrderRegistry.java	/^   
 exportServiceOrdersByFileType	src/main/java/lapr/project/gpsd/controller/ConsultServiceOrderController.java	/^    public boolean exportServiceOrdersByFileType(FileType fileType) {$/;"	m	class:ConsultServiceOrderController
 externalService	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    IExternalService externalService;$/;"	f	class:AssignmentAlgoritm1
 externalService	src/main/java/lapr/project/gpsd/model/Company.java	/^    private IExternalService externalService;$/;"	f	class:Company	file:
-extractTags	target/site/jacoco/jacoco-resources/prettify.js	/^  function extractTags(s) {$/;"	f
 filePath	src/main/java/lapr/project/gpsd/controller/ConsultServiceOrderController.java	/^    private String filePath;$/;"	f	class:ConsultServiceOrderController	file:
 filePath	src/main/java/lapr/project/gpsd/model/ExternalService1.java	/^    private String filePath;$/;"	f	class:ExternalService1	file:
 fileTypeList	src/main/java/lapr/project/gpsd/controller/ConsultServiceOrderController.java	/^    private ArrayList<FileType> fileTypeList;$/;"	f	class:ConsultServiceOrderController	file:
@@ -935,7 +914,6 @@ getHourlyCost	src/main/java/lapr/project/gpsd/model/Service.java	/^    public do
 getId	src/main/java/lapr/project/authentication/model/User.java	/^    public String getId()$/;"	m	class:User
 getId	src/main/java/lapr/project/gpsd/model/Service.java	/^    public String getId() {$/;"	m	class:Service
 getId	src/main/java/lapr/project/gpsd/model/ServiceType.java	/^    public String getId() {$/;"	m	class:ServiceType
-getInnerHtml	target/site/jacoco/jacoco-resources/prettify.js	/^  function getInnerHtml(node) {$/;"	f
 getInstance	src/main/java/lapr/project/gpsd/controller/ApplicationGPSD.java	/^    public static ApplicationGPSD getInstance() {$/;"	m	class:ApplicationGPSD
 getLabel	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    public String getLabel() {$/;"	m	class:EvaluateSPController
 getLabels	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    public List<String> getLabels() {$/;"	m	class:EvaluateSPController
@@ -983,7 +961,6 @@ getNameTxt	src/main/java/lapr/project/gpsd/ui/RegisterClientUI1.java	/^    publi
 getNameTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI1.java	/^    public TextField getNameTxt() {$/;"	m	class:SubmitApplicationUI1
 getNearestGeographicArea	src/main/java/lapr/project/gpsd/model/GeographicAreaRegistry.java	/^    public GeographicArea getNearestGeographicArea(PostalCode postalCode) {$/;"	m	class:GeographicAreaRegistry
 getNif	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public String getNif() {$/;"	m	class:ServiceProvider
-getNodePosition	target/site/jacoco/jacoco-resources/sort.js	/^  function getNodePosition(element) {$/;"	f
 getNumber	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public int getNumber() {$/;"	m	class:ServiceProvider
 getNumber	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    public int getNumber() {$/;"	m	class:ServiceRequest
 getOrder	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    public int getOrder() {$/;"	m	class:SchedulePreference
@@ -1259,6 +1236,7 @@ handleRemoveSelected	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI4.
 handleSPComboBox	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI1.java	/^    private void handleSPComboBox(ActionEvent event) {$/;"	m	class:EvaluateSPUI1	file:
 handleSearchBut	src/main/java/lapr/project/gpsd/ui/ConsultServiceOrderUI1.java	/^    private void handleSearchBut(ActionEvent event) {$/;"	m	class:ConsultServiceOrderUI1	file:
 handleSearchButton	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI1.java	/^    private void handleSearchButton(ActionEvent event) {$/;"	m	class:SpecifyGeographicAreaUI1	file:
+handleServiceComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private void handleServiceComboBox(ActionEvent event) {$/;"	m	class:CreateServiceRequestUI3	file:
 handleServiceRequestBtn	src/main/java/lapr/project/gpsd/ui/MainMenuClientUI.java	/^    private void handleServiceRequestBtn(ActionEvent event) {$/;"	m	class:MainMenuClientUI	file:
 handleServiceTypeComboBox	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private void handleServiceTypeComboBox(ActionEvent event) {$/;"	m	class:ServiceDefinitionUI1	file:
 handleSpecCatBtn	src/main/java/lapr/project/gpsd/ui/MainMenuAdminUI.java	/^    private void handleSpecCatBtn(ActionEvent event) {$/;"	m	class:MainMenuAdminUI	file:
@@ -1266,6 +1244,12 @@ handleSpecGABtn	src/main/java/lapr/project/gpsd/ui/MainMenuAdminUI.java	/^    pr
 handleSpecServBtn	src/main/java/lapr/project/gpsd/ui/MainMenuAdminUI.java	/^    private void handleSpecServBtn(ActionEvent event) {$/;"	m	class:MainMenuAdminUI	file:
 handleViewStatisticsBtn	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI1.java	/^    private void handleViewStatisticsBtn(ActionEvent event) {$/;"	m	class:EvaluateSPUI1	file:
 handlecheckAssignmentDetailsBtn	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^    private void handlecheckAssignmentDetailsBtn(ActionEvent event) {$/;"	m	class:AcceptServiceRequestAssignmentsUI1	file:
+hasAttribute	src/main/java/lapr/project/gpsd/model/ExtendableService.java	/^    public boolean hasAttribute(String attribute) {$/;"	m	class:ExtendableService
+hasAttribute	src/main/java/lapr/project/gpsd/model/FixedService.java	/^    public boolean hasAttribute(String attribute) {$/;"	m	class:FixedService
+hasAttribute	src/main/java/lapr/project/gpsd/model/LimitedService.java	/^    public boolean hasAttribute(String attribute) {$/;"	m	class:LimitedService
+hasAttribute	src/main/java/lapr/project/gpsd/model/ServiceCostCalculation.java	/^    public boolean hasAttribute(String attribute);$/;"	m	interface:ServiceCostCalculation
+hasAttribute	src/test/java/lapr/project/gpsd/model/ServiceCostCalculationTest.java	/^        public boolean hasAttribute(String attribute) {$/;"	m	class:ServiceCostCalculationTest.ServiceCostCalculationImpl
+hasAttribute	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^        public boolean hasAttribute(String attribute) {$/;"	m	class:ServiceTest.ServiceImpl
 hasAvailability	src/main/java/lapr/project/gpsd/model/SPAvailabilityList.java	/^    public boolean hasAvailability(SchedulePreference schedule, int duration) {$/;"	m	class:SPAvailabilityList
 hasCategory	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public boolean hasCategory(Category category) {$/;"	m	class:ServiceProvider
 hasDesignation	src/main/java/lapr/project/gpsd/model/GeographicArea.java	/^    public boolean hasDesignation(String desig){$/;"	m	class:GeographicArea
@@ -1291,7 +1275,6 @@ hasRole	src/main/java/lapr/project/authentication/model/User.java	/^    public b
 hasRole	src/main/java/lapr/project/authentication/model/User.java	/^    public boolean hasRole(UserRole role)$/;"	m	class:User
 hasUser	src/main/java/lapr/project/authentication/model/UserRegistry.java	/^    public boolean hasUser(String id)$/;"	m	class:UserRegistry
 hasUser	src/main/java/lapr/project/authentication/model/UserRegistry.java	/^    public boolean hasUser(User user)$/;"	m	class:UserRegistry
-hash	target/site/jacoco/jacoco-resources/sort.js	/^    var hash = window.location.hash;$/;"	v
 hashCode	src/main/java/lapr/project/authentication/model/User.java	/^    public int hashCode()$/;"	m	class:User
 hashCode	src/main/java/lapr/project/authentication/model/UserRole.java	/^    public int hashCode()$/;"	m	class:UserRole
 hashCode	src/main/java/lapr/project/gpsd/model/Service.java	/^    public int hashCode() {$/;"	m	class:Service
@@ -1299,7 +1282,6 @@ hour	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    private
 hourComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private ComboBox<String> hourComboBox;$/;"	f	class:CreateServiceRequestUI3	file:
 hourComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI4.java	/^    private ComboBox<String> hourComboBox;$/;"	f	class:CreateServiceRequestUI4	file:
 hourlyCost	src/main/java/lapr/project/gpsd/model/Service.java	/^    private double hourlyCost;$/;"	f	class:Service	file:
-htmlToText	target/site/jacoco/jacoco-resources/prettify.js	/^  function htmlToText(html) {$/;"	f
 id	src/main/java/lapr/project/gpsd/model/Service.java	/^    private String id;$/;"	f	class:Service	file:
 id	src/main/java/lapr/project/gpsd/model/ServiceType.java	/^    String id;$/;"	f	class:ServiceType
 idTxt	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private TextField idTxt;$/;"	f	class:ServiceDefinitionUI1	file:
@@ -1357,12 +1339,10 @@ isAccepted	src/main/java/lapr/project/gpsd/model/ServiceRequestDescription.java	
 isAssigned	src/main/java/lapr/project/gpsd/model/ServiceRequestDescription.java	/^    public boolean isAssigned() {$/;"	m	class:ServiceRequestDescription
 isAvailable	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public boolean isAvailable(SchedulePreference schedule, int duration) {$/;"	m	class:ServiceProvider
 isExpired	src/main/java/lapr/project/gpsd/model/ServiceAssignment.java	/^    public boolean isExpired() {$/;"	m	class:ServiceAssignment
+isExpired	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    public boolean isExpired() {$/;"	m	class:ServiceRequest
 isLoggedIn	src/main/java/lapr/project/authentication/model/UserSession.java	/^    public boolean isLoggedIn() {$/;"	m	class:UserSession
 isLoggedInWithRole	src/main/java/lapr/project/authentication/model/UserSession.java	/^    public boolean isLoggedInWithRole(String role) {$/;"	m	class:UserSession
-isNoCodeTag	target/site/jacoco/jacoco-resources/prettify.js	/^  function isNoCodeTag(tag) {$/;"	f
 isPending	src/main/java/lapr/project/gpsd/model/ServiceOrder.java	/^    public boolean isPending(String status) {$/;"	m	class:ServiceOrder
-isPreformatted	target/site/jacoco/jacoco-resources/prettify.js	/^  function isPreformatted(node, content) {$/;"	f
-isRawContent	target/site/jacoco/jacoco-resources/prettify.js	/^  function isRawContent(node) {$/;"	f
 isUnassigned	src/main/java/lapr/project/gpsd/model/ServiceRequestDescription.java	/^    boolean isUnassigned() {$/;"	m	class:ServiceRequestDescription
 issueToggle	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    private CheckBox issueToggle;$/;"	f	class:CompleteServiceUI2	file:
 issueTxt	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    private TextField issueTxt;$/;"	f	class:CompleteServiceUI2	file:
@@ -1390,6 +1370,11 @@ lapr.project.gpsd.controller	src/main/java/lapr/project/gpsd/controller/Register
 lapr.project.gpsd.controller	src/main/java/lapr/project/gpsd/controller/ServiceDefinitionController.java	/^package lapr.project.gpsd.controller;$/;"	p
 lapr.project.gpsd.controller	src/main/java/lapr/project/gpsd/controller/SpecifyCategoryController.java	/^package lapr.project.gpsd.controller;$/;"	p
 lapr.project.gpsd.controller	src/main/java/lapr/project/gpsd/controller/SubmitApplicationController.java	/^package lapr.project.gpsd.controller;$/;"	p
+lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
+lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
+lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
+lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
+lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
 lapr.project.gpsd.controller	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^package lapr.project.gpsd.controller;$/;"	p
 lapr.project.gpsd.model	src/main/java/lapr/project/gpsd/model/AcademicCompetence.java	/^package lapr.project.gpsd.model;$/;"	p
 lapr.project.gpsd.model	src/main/java/lapr/project/gpsd/model/AdapterCSV.java	/^package lapr.project.gpsd.model;$/;"	p
@@ -1629,14 +1614,12 @@ mainMenuUI	src/main/java/lapr/project/gpsd/ui/MainMenuClientUI.java	/^    privat
 mainMenuUI	src/main/java/lapr/project/gpsd/ui/MainMenuHROUI.java	/^    private MainMenuUI mainMenuUI;$/;"	f	class:MainMenuHROUI	file:
 mainMenuUI	src/main/java/lapr/project/gpsd/ui/MainMenuSPUI.java	/^    private MainMenuUI mainMenuUI;$/;"	f	class:MainMenuSPUI	file:
 mainPostalCode	src/main/java/lapr/project/gpsd/model/GeographicArea.java	/^    private PostalCode mainPostalCode;$/;"	f	class:GeographicArea	file:
-makeTabExpander	target/site/jacoco/jacoco-resources/prettify.js	/^  function makeTabExpander(tabWidth) {$/;"	f
 matchAvailability	src/main/java/lapr/project/gpsd/model/SPAvailabilityList.java	/^    private Availability matchAvailability(SchedulePreference schedule, int duration) {$/;"	m	class:SPAvailabilityList	file:
 matchSchedule	src/main/java/lapr/project/gpsd/model/SPAvailabilityList.java	/^    public SchedulePreference matchSchedule(List<SchedulePreference> scheduleList, int duration) {$/;"	m	class:SPAvailabilityList
 meanRatingCol	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^    private TableColumn<ServiceAssignment, String> meanRatingCol;$/;"	f	class:AcceptServiceRequestAssignmentsUI1	file:
 mergeAvailabilities	src/main/java/lapr/project/gpsd/model/SPAvailabilityList.java	/^    public void mergeAvailabilities() {$/;"	m	class:SPAvailabilityList
 minuteComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private ComboBox<String> minuteComboBox;$/;"	f	class:CreateServiceRequestUI3	file:
 minuteComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI4.java	/^    private ComboBox<String> minuteComboBox;$/;"	f	class:CreateServiceRequestUI4	file:
-nPatterns	target/site/jacoco/jacoco-resources/prettify.js	/^    var nPatterns = fallthroughStylePatterns.length;$/;"	v
 name	src/main/java/lapr/project/authentication/model/User.java	/^    private String name;$/;"	f	class:User	file:
 name	src/main/java/lapr/project/gpsd/model/Client.java	/^    private String name;$/;"	f	class:Client	file:
 name	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private String name;$/;"	f	class:SPApplication	file:
@@ -1676,19 +1659,17 @@ newServiceRequest	src/main/java/lapr/project/gpsd/model/ServiceRequestRegistry.j
 newUser	src/main/java/lapr/project/authentication/model/UserRegistry.java	/^    public User newUser(String name, String email, String password)$/;"	m	class:UserRegistry
 newUserRole	src/main/java/lapr/project/authentication/model/RegisterUserRoles.java	/^    public UserRole newUserRole(String role)$/;"	m	class:RegisterUserRoles
 newUserRole	src/main/java/lapr/project/authentication/model/RegisterUserRoles.java	/^    public UserRole newUserRole(String role, String description)$/;"	m	class:RegisterUserRoles
-newlineRe	target/site/jacoco/jacoco-resources/prettify.js	/^  var newlineRe = \/[\\r\\n]\/g;$/;"	v
 nif	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    private String nif;$/;"	f	class:ServiceProvider	file:
 nifComboBox	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI1.java	/^    private ComboBox<String> nifComboBox;$/;"	f	class:RegisterServiceProviderUI1	file:
 nifTxt	src/main/java/lapr/project/gpsd/ui/RegisterClientUI1.java	/^    private TextField nifTxt;$/;"	f	class:RegisterClientUI1	file:
 nifTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI1.java	/^    private TextField nifTxt;$/;"	f	class:SubmitApplicationUI1	file:
-normalizedHtml	target/site/jacoco/jacoco-resources/prettify.js	/^  function normalizedHtml(node, out, opt_sortAttrs) {$/;"	f
-notWs	target/site/jacoco/jacoco-resources/prettify.js	/^    var notWs = \/\\S\/;$/;"	v
 number	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    private int number;$/;"	f	class:ServiceProvider	file:
 number	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    private int number;$/;"	f	class:ServiceRequest	file:
 onEnter	src/main/java/lapr/project/gpsd/ui/LoginScreenUI.java	/^    private void onEnter(ActionEvent event) {$/;"	m	class:LoginScreenUI	file:
 openAbout	src/main/java/lapr/project/gpsd/ui/LoginScreenUI.java	/^    private void openAbout(MouseEvent event) {$/;"	m	class:LoginScreenUI	file:
 order	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    private int order;$/;"	f	class:SchedulePreference	file:
 orderNumber	src/main/java/lapr/project/gpsd/model/ServiceOrder.java	/^    private int orderNumber;$/;"	f	class:ServiceOrder	file:
+otherAttributes	src/main/java/lapr/project/gpsd/model/FixedService.java	/^    private List<String> otherAttributes = new ArrayList();$/;"	f	class:FixedService	file:
 otherCosts	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    private ArrayList<OtherCost> otherCosts;$/;"	f	class:ServiceRequest	file:
 pCodeReg	src/main/java/lapr/project/gpsd/controller/GeographicAreaSpecController.java	/^    private PostalCodeRegistry pCodeReg;$/;"	f	class:GeographicAreaSpecController	file:
 parentUI	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI3.java	/^    private EvaluateSPUI1 parentUI;$/;"	f	class:EvaluateSPUI3	file:
@@ -1727,20 +1708,6 @@ postalCodeText	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI1.java	
 postalCodeTxt	src/main/java/lapr/project/gpsd/ui/AddAddressToClientUI1.java	/^    private TextField postalCodeTxt;$/;"	f	class:AddAddressToClientUI1	file:
 postalCodeTxt	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI1.java	/^    private TextField postalCodeTxt;$/;"	f	class:RegisterServiceProviderUI1	file:
 postalCodeTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI2.java	/^    private TextField postalCodeTxt;$/;"	f	class:SubmitApplicationUI2	file:
-pr_amp	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_amp = \/&\/g;$/;"	v
-pr_ampEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_ampEnt = \/&amp;\/g;$/;"	v
-pr_aposEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_aposEnt = \/&apos;\/g;$/;"	v
-pr_brPrefix	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_brPrefix = \/^<br\\b\/i;$/;"	v
-pr_cdataPrefix	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_cdataPrefix = \/^<!\\[CDATA\\[\/;$/;"	v
-pr_commentPrefix	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_commentPrefix = \/^<\\!--\/;$/;"	v
-pr_gt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_gt = \/>\/g;$/;"	v
-pr_gtEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_gtEnt = \/&gt;\/g;$/;"	v
-pr_lt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_lt = \/<\/g;$/;"	v
-pr_ltEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_ltEnt = \/&lt;\/g;$/;"	v
-pr_nbspEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_nbspEnt = \/&nbsp;\/g;$/;"	v
-pr_quot	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_quot = \/\\"\/g;$/;"	v
-pr_quotEnt	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_quotEnt = \/&quot;\/g;$/;"	v
-pr_tagNameRe	target/site/jacoco/jacoco-resources/prettify.js	/^  var pr_tagNameRe = \/^<(\\\/?)([a-zA-Z][a-zA-Z0-9]*)\/;$/;"	v
 predeterminedDuration	src/main/java/lapr/project/gpsd/model/FixedService.java	/^    private double predeterminedDuration;$/;"	f	class:FixedService	file:
 professionalCompetences	src/main/java/lapr/project/gpsd/model/SPApplication.java	/^    private List<ProfessionalCompetence> professionalCompetences;$/;"	f	class:SPApplication	file:
 props	src/main/java/lapr/project/gpsd/model/Company.java	/^    private Properties props;$/;"	f	class:Company	file:
@@ -1814,6 +1781,7 @@ removeBtn	src/main/java/lapr/project/gpsd/ui/RegisterServiceProviderUI3.java	/^ 
 removeCategory	src/main/java/lapr/project/gpsd/model/SPCategoryList.java	/^    public void removeCategory(Category cat) {$/;"	m	class:SPCategoryList
 removeExpiredAssignment	src/main/java/lapr/project/gpsd/model/ServiceAssignmentRegistry.java	/^    private void removeExpiredAssignment(ServiceAssignment serviceAssignment) {$/;"	m	class:ServiceAssignmentRegistry	file:
 removeExpiredAssignments	src/main/java/lapr/project/gpsd/model/ServiceAssignmentRegistry.java	/^    public void removeExpiredAssignments() {$/;"	m	class:ServiceAssignmentRegistry
+removeExpiredServices	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    private void removeExpiredServices(List<ServiceRequestDescription> services) {$/;"	m	class:AssignmentAlgoritm1	file:
 removeGeographicArea	src/main/java/lapr/project/gpsd/model/SPGeographicAreaList.java	/^    public boolean removeGeographicArea(GeographicArea area) {$/;"	m	class:SPGeographicAreaList
 removeRole	src/main/java/lapr/project/authentication/model/RegisterUserRoles.java	/^    public boolean removeRole(UserRole role)$/;"	m	class:RegisterUserRoles
 removeRole	src/main/java/lapr/project/authentication/model/User.java	/^    public boolean removeRole(UserRole role)$/;"	m	class:User
@@ -1828,7 +1796,6 @@ removeServiceRequestDescription	src/main/java/lapr/project/gpsd/model/ServiceReq
 removeUser	src/main/java/lapr/project/authentication/model/UserRegistry.java	/^    public boolean removeUser(User user)$/;"	m	class:UserRegistry
 replaceSceneContent	src/main/java/lapr/project/gpsd/ui/Main.java	/^    public Initializable replaceSceneContent(String fxml) throws Exception {$/;"	m	class:Main
 requestRegistry	src/main/java/lapr/project/gpsd/model/AssignmentAlgoritm1.java	/^    ServiceRequestRegistry requestRegistry;$/;"	f	class:AssignmentAlgoritm1
-resetSortedStyle	target/site/jacoco/jacoco-resources/sort.js	/^  function resetSortedStyle(table) {$/;"	f
 role	src/main/java/lapr/project/authentication/model/UserRole.java	/^    private String role;$/;"	f	class:UserRole	file:
 roles	src/main/java/lapr/project/authentication/AuthenticationFacade.java	/^    private final RegisterUserRoles roles = new RegisterUserRoles();$/;"	f	class:AuthenticationFacade	file:
 roles	src/main/java/lapr/project/authentication/model/RegisterUserRoles.java	/^    private Set<UserRole> roles = new HashSet<>();$/;"	f	class:RegisterUserRoles	file:
@@ -1878,12 +1845,14 @@ serviceCliTxt	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    p
 serviceCol	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^    private TableColumn<ServiceAssignment, String> serviceCol;$/;"	f	class:AcceptServiceRequestAssignmentsUI1	file:
 serviceCol	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI2.java	/^    private TableColumn<ServiceRequestDescription, String> serviceCol;$/;"	f	class:CreateServiceRequestUI2	file:
 serviceCol	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI5.java	/^    private TableColumn<ServiceRequestDescription, String> serviceCol;$/;"	f	class:CreateServiceRequestUI5	file:
+serviceComboBox	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private ComboBox<Service> serviceComboBox;$/;"	f	class:CreateServiceRequestUI3	file:
 serviceDefinitionUI	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI1.java	/^    private ServiceDefinitionUI serviceDefinitionUI;$/;"	f	class:ServiceDefinitionUI1	file:
 serviceDefinitionUI	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI2.java	/^    private ServiceDefinitionUI serviceDefinitionUI;$/;"	f	class:ServiceDefinitionUI2	file:
 serviceDefinitionUI	src/main/java/lapr/project/gpsd/ui/ServiceDefinitionUI3.java	/^    private ServiceDefinitionUI serviceDefinitionUI;$/;"	f	class:ServiceDefinitionUI3	file:
+serviceDescription	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    private ServiceRequestDescription serviceDescription;$/;"	f	class:AssignmentAlgoritm1Test	file:
+serviceHasDeterminedDuration	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private boolean serviceHasDeterminedDuration() {$/;"	m	class:CreateServiceRequestUI3	file:
 serviceList	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI1.java	/^    private ListView<ServiceOrder> serviceList;$/;"	f	class:CompleteServiceUI1	file:
 serviceList	src/main/java/lapr/project/gpsd/ui/RateSPUI1.java	/^    private ListView<ServiceOrder> serviceList;$/;"	f	class:RateSPUI1	file:
-serviceListView	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI3.java	/^    private ListView<Service> serviceListView;$/;"	f	class:CreateServiceRequestUI3	file:
 serviceOrderRegistry	src/main/java/lapr/project/gpsd/model/Company.java	/^    private ServiceOrderRegistry serviceOrderRegistry;$/;"	f	class:Company	file:
 serviceOrders	src/main/java/lapr/project/gpsd/model/ServiceOrderRegistry.java	/^    private List<ServiceOrder> serviceOrders;$/;"	f	class:ServiceOrderRegistry	file:
 serviceProvider	src/main/java/lapr/project/gpsd/model/ServiceAssignment.java	/^    private ServiceProvider serviceProvider;$/;"	f	class:ServiceAssignment	file:
@@ -1961,8 +1930,6 @@ setEvaluateSPUI	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI1.java	/^    publ
 setEvaluateSPUI	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    public void setEvaluateSPUI(EvaluateSPUI evaluateSPUI) {$/;"	m	class:EvaluateSPUI2
 setEvaluateSPUI	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI3.java	/^    public void setEvaluateSPUI(EvaluateSPUI evaluateSPUI) {$/;"	m	class:EvaluateSPUI3
 setGeoId	src/main/java/lapr/project/gpsd/model/GeographicArea.java	/^    public void setGeoId(String geoId) {$/;"	m	class:GeographicArea
-setHash	target/site/jacoco/jacoco-resources/sort.js	/^  function setHash(hash) {$/;"	f
-setHashOnAllLinks	target/site/jacoco/jacoco-resources/sort.js	/^  function setHashOnAllLinks(tag, hash) {$/;"	f
 setLabel	src/main/java/lapr/project/gpsd/controller/EvaluateSPController.java	/^    public void setLabel(String label) {$/;"	m	class:EvaluateSPController
 setLevel	src/main/java/lapr/project/gpsd/model/AcademicCompetence.java	/^    public void setLevel(String level) {$/;"	m	class:AcademicCompetence
 setLocal	src/main/java/lapr/project/gpsd/model/Address.java	/^    public void setLocal(String local) {$/;"	m	class:Address
@@ -2036,6 +2003,7 @@ setSubmitApplicationUI	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI4.j
 setSubmitApplicationUI	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI5.java	/^    public void setSubmitApplicationUI(SubmitApplicationUI submitApplicationUI) {$/;"	m	class:SubmitApplicationUI5
 setSubmitApplicationUI	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI6.java	/^    public void setSubmitApplicationUI(SubmitApplicationUI submitApplicationUI) {$/;"	m	class:SubmitApplicationUI6
 setTravelCost	src/main/java/lapr/project/gpsd/model/GeographicArea.java	/^    public void setTravelCost(double travelCost) {$/;"	m	class:GeographicArea
+setUp	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public void setUp() {$/;"	m	class:AcceptServiceRequestControllerTest
 setfullDescription	src/main/java/lapr/project/gpsd/model/Service.java	/^    public void setfullDescription(String fullDescription) {$/;"	m	class:Service
 setupAcceptServiceRequestAssignmentScene	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI1.java	/^    public void setupAcceptServiceRequestAssignmentScene() {        $/;"	m	class:AcceptServiceRequestAssignmentsUI1
 setupConfirmationScene	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI5.java	/^    public void setupConfirmationScene() {$/;"	m	class:CreateServiceRequestUI5
@@ -2050,16 +2018,14 @@ showClientAddresses	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI1.j
 showConfirmTxt	src/main/java/lapr/project/gpsd/ui/AddDailyAvailabilityUI2.java	/^    public void showConfirmTxt(){$/;"	m	class:AddDailyAvailabilityUI2
 showGeographicArea	src/main/java/lapr/project/gpsd/ui/SpecifyGeographicAreaUI2.java	/^    public void showGeographicArea() {$/;"	m	class:SpecifyGeographicAreaUI2
 showInvoice	src/main/java/lapr/project/gpsd/ui/RateSPUI3.java	/^    public void showInvoice() {$/;"	m	class:RateSPUI3
-showServiceInfo	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    public void showServiceInfo(){$/;"	m	class:CompleteServiceUI2
+showServiceInfo	src/main/java/lapr/project/gpsd/ui/CompleteServiceUI2.java	/^    public void showServiceInfo() {$/;"	m	class:CompleteServiceUI2
 singleton	src/main/java/lapr/project/gpsd/controller/ApplicationGPSD.java	/^    private static ApplicationGPSD singleton = null;$/;"	f	class:ApplicationGPSD	file:
 sor	src/main/java/lapr/project/gpsd/controller/CompleteServiceController.java	/^    private ServiceOrderRegistry sor;$/;"	f	class:CompleteServiceController	file:
 sor	src/main/java/lapr/project/gpsd/controller/ConsultServiceOrderController.java	/^    private ServiceOrderRegistry sor;$/;"	f	class:ConsultServiceOrderController	file:
-sortColumn	target/site/jacoco/jacoco-resources/sort.js	/^  function sortColumn(header, sortup) {$/;"	f
 sortServiceList	src/main/java/lapr/project/gpsd/model/ISortingBehavior.java	/^    public void sortServiceList(List<ServiceRequestDescription> services);$/;"	m	interface:ISortingBehavior
 sortServiceList	src/main/java/lapr/project/gpsd/model/SortingFIFO.java	/^    public void sortServiceList(List<ServiceRequestDescription> services) {$/;"	m	class:SortingFIFO
 sortServiceList	src/main/java/lapr/project/gpsd/model/SortingRandom.java	/^    public void sortServiceList(List<ServiceRequestDescription> services) {$/;"	m	class:SortingRandom
 sortServiceList	src/test/java/lapr/project/gpsd/model/ISortingBehaviorTest.java	/^        public void sortServiceList(List<ServiceRequestDescription> services) {$/;"	m	class:ISortingBehaviorTest.ISortingBehaviorImpl
-source	target/site/jacoco/jacoco-resources/prettify.js	/^      source: sourceCode,$/;"	p	class:appendDecorations.job
 sp	src/main/java/lapr/project/gpsd/controller/AddDailyAvailabilityController.java	/^    private ServiceProvider sp;$/;"	f	class:AddDailyAvailabilityController	file:
 sp	src/main/java/lapr/project/gpsd/controller/CompleteServiceController.java	/^    private ServiceProvider sp;$/;"	f	class:CompleteServiceController	file:
 sp	src/main/java/lapr/project/gpsd/controller/ConsultServiceOrderController.java	/^    private ServiceProvider sp;$/;"	f	class:ConsultServiceOrderController	file:
@@ -2112,6 +2078,7 @@ task	src/main/java/lapr/project/gpsd/model/Company.java	/^    private AssignServ
 telephone	src/main/java/lapr/project/gpsd/model/Client.java	/^    private String telephone;$/;"	f	class:Client	file:
 telephoneTxt	src/main/java/lapr/project/gpsd/ui/RegisterClientUI1.java	/^    private TextField telephoneTxt;$/;"	f	class:RegisterClientUI1	file:
 telephoneTxt	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI1.java	/^    private TextField telephoneTxt;$/;"	f	class:SubmitApplicationUI1	file:
+testAcceptServiceAssignment	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public void testAcceptServiceAssignment() {$/;"	m	class:AcceptServiceRequestControllerTest
 testAddAcademicCompetence	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testAddAcademicCompetence() {$/;"	m	class:SubmitApplicationControllerTest
 testAddAcademicCompetence	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testAddAcademicCompetence() {$/;"	m	class:SPApplicationTest
 testAddAddress	src/test/java/lapr/project/gpsd/model/ClientTest.java	/^    public void testAddAddress() {$/;"	m	class:ClientTest
@@ -2137,6 +2104,8 @@ testAssignServiceTask	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^ 
 testAssignServices	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    public void testAssignServices() {$/;"	m	class:AssignmentAlgoritm1Test
 testAssignServices	src/test/java/lapr/project/gpsd/model/IAssignmentAlgoritmTest.java	/^    public void testAssignServices() {$/;"	m	class:IAssignmentAlgoritmTest
 testCalculateCost	src/test/java/lapr/project/gpsd/model/ServiceRequestTest.java	/^    public void testCalculateCost() {$/;"	m	class:ServiceRequestTest
+testCheckAssignedServiceRequests	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public void testCheckAssignedServiceRequests() {$/;"	m	class:AcceptServiceRequestControllerTest
+testCheckServiceAssignments	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public void testCheckServiceAssignments() {$/;"	m	class:AcceptServiceRequestControllerTest
 testConcludeServiceOrder	src/test/java/lapr/project/gpsd/model/ServiceOrderRegistryTest.java	/^    public void testConcludeServiceOrder() {$/;"	m	class:ServiceOrderRegistryTest
 testConcludeServiceOrderWithIssue	src/test/java/lapr/project/gpsd/model/ServiceOrderRegistryTest.java	/^    public void testConcludeServiceOrderWithIssue() {$/;"	m	class:ServiceOrderRegistryTest
 testContainsSchedulePref	src/test/java/lapr/project/gpsd/model/AvailabilityTest.java	/^    public void testContainsSchedulePref() {$/;"	m	class:AvailabilityTest
@@ -2168,6 +2137,7 @@ testGetAcademicCompetences	src/test/java/lapr/project/gpsd/model/SPApplicationTe
 testGetAcceptedApplications	src/test/java/lapr/project/gpsd/model/SPApplicationRegistryTest.java	/^    public void testGetAcceptedApplications() {$/;"	m	class:SPApplicationRegistryTest
 testGetActsOnLocationList	src/test/java/lapr/project/gpsd/model/ExternalService1Test.java	/^    public void testGetActsOnLocationList() {$/;"	m	class:ExternalService1Test
 testGetActsOnLocationList	src/test/java/lapr/project/gpsd/model/IExternalServiceTest.java	/^    public void testGetActsOnLocationList() {$/;"	m	class:IExternalServiceTest
+testGetAddress	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^    public void testGetAddress() {$/;"	m	class:AddNewAddressToClientControllerTest
 testGetAddress	src/test/java/lapr/project/gpsd/model/AddressTest.java	/^    public void testGetAddress() {$/;"	m	class:AddressTest
 testGetAddress	src/test/java/lapr/project/gpsd/model/ClientTest.java	/^    public void testGetAddress() {$/;"	m	class:ClientTest
 testGetAddress	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testGetAddress() {$/;"	m	class:SPApplicationTest
@@ -2184,9 +2154,11 @@ testGetAverageRating	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.j
 testGetAverageRatings	src/test/java/lapr/project/gpsd/model/ServiceProviderRegistryTest.java	/^    public void testGetAverageRatings() {$/;"	m	class:ServiceProviderRegistryTest
 testGetBriefDescription	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^    public void testGetBriefDescription() {$/;"	m	class:ServiceTest
 testGetCatById	src/test/java/lapr/project/gpsd/model/CategoryRegistryTest.java	/^    public void testGetCatById() {$/;"	m	class:CategoryRegistryTest
+testGetCategories	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testGetCategories() {$/;"	m	class:ServiceDefinitionControllerTest
 testGetCategories	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testGetCategories() {$/;"	m	class:SubmitApplicationControllerTest
 testGetCategories	src/test/java/lapr/project/gpsd/model/CategoryRegistryTest.java	/^    public void testGetCategories() {$/;"	m	class:CategoryRegistryTest
 testGetCategories	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testGetCategories() {$/;"	m	class:SPApplicationTest
+testGetCategory	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^    public void testGetCategory() {$/;"	m	class:SpecifyCategoryControllerTest
 testGetCategory	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^    public void testGetCategory() {$/;"	m	class:ServiceTest
 testGetCategoryRegistry	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^    public void testGetCategoryRegistry() {$/;"	m	class:CompanyTest
 testGetCategorylist	src/test/java/lapr/project/gpsd/model/SPCategoryListTest.java	/^    public void testGetCategorylist() {$/;"	m	class:SPCategoryListTest
@@ -2227,6 +2199,7 @@ testGetExternalService	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^
 testGetFileTypeList	src/test/java/lapr/project/gpsd/model/FileTypeRegistryTest.java	/^    public void testGetFileTypeList() {$/;"	m	class:FileTypeRegistryTest
 testGetFileTypeRegistry	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^    public void testGetFileTypeRegistry() {$/;"	m	class:CompanyTest
 testGetFullDescription	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^    public void testGetFullDescription() {$/;"	m	class:ServiceTest
+testGetGeoA	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public void testGetGeoA() {$/;"	m	class:GeographicAreaSpecControllerTest
 testGetGeoAreaById	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^    public void testGetGeoAreaById() {$/;"	m	class:GeographicAreaRegistryTest
 testGetGeoAreaById2	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^    public void testGetGeoAreaById2() {$/;"	m	class:GeographicAreaRegistryTest
 testGetGeoAreaList	src/test/java/lapr/project/gpsd/model/SPGeographicAreaListTest.java	/^    public void testGetGeoAreaList() {$/;"	m	class:SPGeographicAreaListTest
@@ -2257,6 +2230,7 @@ testGetOtherAtributes	src/test/java/lapr/project/gpsd/model/ExtendableServiceTes
 testGetOtherAtributes	src/test/java/lapr/project/gpsd/model/FixedServiceTest.java	/^    public void testGetOtherAtributes() {$/;"	m	class:FixedServiceTest
 testGetOtherAtributes	src/test/java/lapr/project/gpsd/model/LimitedServiceTest.java	/^    public void testGetOtherAtributes() {$/;"	m	class:LimitedServiceTest
 testGetOtherAtributes	src/test/java/lapr/project/gpsd/model/ServiceCostCalculationTest.java	/^    public void testGetOtherAtributes() {$/;"	m	class:ServiceCostCalculationTest
+testGetOtherAttributes	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testGetOtherAttributes() {$/;"	m	class:ServiceDefinitionControllerTest
 testGetOtherCost	src/test/java/lapr/project/gpsd/model/ServiceRequestTest.java	/^    public void testGetOtherCost() {$/;"	m	class:ServiceRequestTest
 testGetOtherCosts	src/test/java/lapr/project/gpsd/model/ServiceRequestTest.java	/^    public void testGetOtherCosts() {$/;"	m	class:ServiceRequestTest
 testGetPendingServiceOrdersByServiceProvider	src/test/java/lapr/project/gpsd/model/ServiceOrderRegistryTest.java	/^    public void testGetPendingServiceOrdersByServiceProvider() {$/;"	m	class:ServiceOrderRegistryTest
@@ -2294,6 +2268,7 @@ testGetSchedulePreferences	src/test/java/lapr/project/gpsd/model/ServiceRequestT
 testGetScore	src/test/java/lapr/project/gpsd/model/AcademicCompetenceTest.java	/^    public void testGetScore() {$/;"	m	class:AcademicCompetenceTest
 testGetServOrder	src/test/java/lapr/project/gpsd/model/EvaluationTest.java	/^    public void testGetServOrder() {$/;"	m	class:EvaluationTest
 testGetServOrderStatus	src/test/java/lapr/project/gpsd/model/ServiceOrderStatusTest.java	/^    public void testGetServOrderStatus() {$/;"	m	class:ServiceOrderStatusTest
+testGetService	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testGetService() {$/;"	m	class:ServiceDefinitionControllerTest
 testGetService	src/test/java/lapr/project/gpsd/model/ServiceRequestDescriptionTest.java	/^    public void testGetService() {$/;"	m	class:ServiceRequestDescriptionTest
 testGetServiceAssignementRegistry	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^    public void testGetServiceAssignementRegistry() {$/;"	m	class:CompanyTest
 testGetServiceAssignmentListByServiceRequest_ServiceRequest	src/test/java/lapr/project/gpsd/model/ServiceAssignmentRegistryTest.java	/^    public void testGetServiceAssignmentListByServiceRequest_ServiceRequest() {$/;"	m	class:ServiceAssignmentRegistryTest
@@ -2319,8 +2294,10 @@ testGetServiceRequestRegistry	src/test/java/lapr/project/gpsd/model/CompanyTest.
 testGetServiceRequests	src/test/java/lapr/project/gpsd/model/ServiceRequestRegistryTest.java	/^    public void testGetServiceRequests() {$/;"	m	class:ServiceRequestRegistryTest
 testGetServiceRequestsFullyAssignedByClient	src/test/java/lapr/project/gpsd/model/ServiceRequestRegistryTest.java	/^    public void testGetServiceRequestsFullyAssignedByClient() {$/;"	m	class:ServiceRequestRegistryTest
 testGetServiceSortingBehavior	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^    public void testGetServiceSortingBehavior() {$/;"	m	class:CompanyTest
+testGetServiceTypeByID	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testGetServiceTypeByID() {$/;"	m	class:ServiceDefinitionControllerTest
 testGetServiceTypeByID	src/test/java/lapr/project/gpsd/model/ServiceTypeRegistryTest.java	/^    public void testGetServiceTypeByID() {$/;"	m	class:ServiceTypeRegistryTest
 testGetServiceTypeRegistry	src/test/java/lapr/project/gpsd/model/CompanyTest.java	/^    public void testGetServiceTypeRegistry() {$/;"	m	class:CompanyTest
+testGetServiceTypes	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testGetServiceTypes() {$/;"	m	class:ServiceDefinitionControllerTest
 testGetServiceTypes	src/test/java/lapr/project/gpsd/model/ServiceTypeRegistryTest.java	/^    public void testGetServiceTypes() {$/;"	m	class:ServiceTypeRegistryTest
 testGetServices	src/test/java/lapr/project/gpsd/model/ServiceRegistryTest.java	/^    public void testGetServices() {$/;"	m	class:ServiceRegistryTest
 testGetServicesFromCategory	src/test/java/lapr/project/gpsd/model/ServiceRegistryTest.java	/^    public void testGetServicesFromCategory() {$/;"	m	class:ServiceRegistryTest
@@ -2364,39 +2341,53 @@ testLoadPostalCodeList	src/test/java/lapr/project/gpsd/model/IExternalServiceTes
 testMatchSchedule	src/test/java/lapr/project/gpsd/model/SPAvailabilityListTest.java	/^    public void testMatchSchedule() {$/;"	m	class:SPAvailabilityListTest
 testMergeAvailabilities	src/test/java/lapr/project/gpsd/model/SPAvailabilityListTest.java	/^    public void testMergeAvailabilities() {$/;"	m	class:SPAvailabilityListTest
 testNewAcademicCompetence	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testNewAcademicCompetence() {$/;"	m	class:SPApplicationTest
+testNewAddress	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^    public void testNewAddress() {$/;"	m	class:AddNewAddressToClientControllerTest
 testNewAddress	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testNewAddress() {$/;"	m	class:SubmitApplicationControllerTest
 testNewAddress	src/test/java/lapr/project/gpsd/model/ClientTest.java	/^    public void testNewAddress() {$/;"	m	class:ClientTest
 testNewAddress	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testNewAddress() {$/;"	m	class:SPApplicationTest
 testNewAddress	src/test/java/lapr/project/gpsd/model/ServiceProviderRegistryTest.java	/^    public void testNewAddress() {$/;"	m	class:ServiceProviderRegistryTest
+testNewAddressRequest	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^    public void testNewAddressRequest() {$/;"	m	class:AddNewAddressToClientControllerTest
 testNewAvailability	src/test/java/lapr/project/gpsd/model/SPAvailabilityListTest.java	/^    public void testNewAvailability() {$/;"	m	class:SPAvailabilityListTest
+testNewCategory	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^    public void testNewCategory() {$/;"	m	class:SpecifyCategoryControllerTest
 testNewCategory	src/test/java/lapr/project/gpsd/model/CategoryRegistryTest.java	/^    public void testNewCategory() {$/;"	m	class:CategoryRegistryTest
 testNewClient	src/test/java/lapr/project/gpsd/model/ClientRegistryTest.java	/^    public void testNewClient() {$/;"	m	class:ClientRegistryTest
+testNewGeographicArea	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public void testNewGeographicArea() {$/;"	m	class:GeographicAreaSpecControllerTest
 testNewGeographicArea	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^    public void testNewGeographicArea() {$/;"	m	class:GeographicAreaRegistryTest
 testNewProfessionalCompetence	src/test/java/lapr/project/gpsd/model/SPApplicationTest.java	/^    public void testNewProfessionalCompetence() {$/;"	m	class:SPApplicationTest
 testNewSPApplication	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testNewSPApplication() {$/;"	m	class:SubmitApplicationControllerTest
 testNewSPApplication	src/test/java/lapr/project/gpsd/model/SPApplicationRegistryTest.java	/^    public void testNewSPApplication() {$/;"	m	class:SPApplicationRegistryTest
+testNewService	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testNewService() {$/;"	m	class:ServiceDefinitionControllerTest
 testNewService	src/test/java/lapr/project/gpsd/model/ServiceTypeTest.java	/^    public void testNewService() {$/;"	m	class:ServiceTypeTest
 testNewServiceProvider	src/test/java/lapr/project/gpsd/model/ServiceProviderRegistryTest.java	/^    public void testNewServiceProvider() {$/;"	m	class:ServiceProviderRegistryTest
 testNewServiceRequest	src/test/java/lapr/project/gpsd/model/ServiceRequestRegistryTest.java	/^    public void testNewServiceRequest() {$/;"	m	class:ServiceRequestRegistryTest
 testRecalculateAverage	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.java	/^    public void testRecalculateAverage() {$/;"	m	class:ServiceProviderTest
+testRegisterAddress	src/test/java/lapr/project/gpsd/controller/AddNewAddressToClientControllerTest.java	/^    public void testRegisterAddress() {$/;"	m	class:AddNewAddressToClientControllerTest
 testRegisterApplication	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testRegisterApplication() {$/;"	m	class:SubmitApplicationControllerTest
 testRegisterApplication	src/test/java/lapr/project/gpsd/model/SPApplicationRegistryTest.java	/^    public void testRegisterApplication() {$/;"	m	class:SPApplicationRegistryTest
+testRegisterCategory	src/test/java/lapr/project/gpsd/controller/SpecifyCategoryControllerTest.java	/^    public void testRegisterCategory() {$/;"	m	class:SpecifyCategoryControllerTest
 testRegisterCategory	src/test/java/lapr/project/gpsd/model/CategoryRegistryTest.java	/^    public void testRegisterCategory() {$/;"	m	class:CategoryRegistryTest
 testRegisterClient	src/test/java/lapr/project/gpsd/model/ClientRegistryTest.java	/^    public void testRegisterClient() {$/;"	m	class:ClientRegistryTest
 testRegisterEvaluation	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.java	/^    public void testRegisterEvaluation() {$/;"	m	class:ServiceProviderTest
+testRegisterGeographicArea	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public void testRegisterGeographicArea() {$/;"	m	class:GeographicAreaSpecControllerTest
 testRegisterGeographicArea	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^    public void testRegisterGeographicArea() {$/;"	m	class:GeographicAreaRegistryTest
+testRegisterService	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testRegisterService() {$/;"	m	class:ServiceDefinitionControllerTest
 testRegisterService	src/test/java/lapr/project/gpsd/model/ServiceRegistryTest.java	/^    public void testRegisterService() {$/;"	m	class:ServiceRegistryTest
 testRegisterServiceOrders	src/test/java/lapr/project/gpsd/model/ServiceOrderRegistryTest.java	/^    public void testRegisterServiceOrders() {$/;"	m	class:ServiceOrderRegistryTest
 testRegisterServiceProvider	src/test/java/lapr/project/gpsd/model/ServiceProviderRegistryTest.java	/^    public void testRegisterServiceProvider() {$/;"	m	class:ServiceProviderRegistryTest
 testRegisterServiceRequest	src/test/java/lapr/project/gpsd/model/ServiceRequestRegistryTest.java	/^    public void testRegisterServiceRequest() {$/;"	m	class:ServiceRequestRegistryTest
+testRejectServiceAssignment	src/test/java/lapr/project/gpsd/controller/AcceptServiceRequestControllerTest.java	/^    public void testRejectServiceAssignment() {$/;"	m	class:AcceptServiceRequestControllerTest
 testRemoveAddress	src/test/java/lapr/project/gpsd/model/ClientTest.java	/^    public void testRemoveAddress() {$/;"	m	class:ClientTest
 testRemoveExpiredAssignments	src/test/java/lapr/project/gpsd/model/ServiceAssignmentRegistryTest.java	/^    public void testRemoveExpiredAssignments() {$/;"	m	class:ServiceAssignmentRegistryTest
+testRemoveExpiredServices	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    public void testRemoveExpiredServices() {$/;"	m	class:AssignmentAlgoritm1Test
 testRemoveServiceAssignment	src/test/java/lapr/project/gpsd/model/ServiceAssignmentRegistryTest.java	/^    public void testRemoveServiceAssignment() {$/;"	m	class:ServiceAssignmentRegistryTest
 testRun	src/test/java/lapr/project/gpsd/model/AssignServiceTaskTest.java	/^    public void testRun() {$/;"	m	class:AssignServiceTaskTest
+testSearchMatchPostalCode	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public void testSearchMatchPostalCode() {$/;"	m	class:GeographicAreaSpecControllerTest
 testSearchMatchPostalCode	src/test/java/lapr/project/gpsd/model/PostalCodeRegistryTest.java	/^    public void testSearchMatchPostalCode() {$/;"	m	class:PostalCodeRegistryTest
+testSearchMatchPostalCode2	src/test/java/lapr/project/gpsd/controller/GeographicAreaSpecControllerTest.java	/^    public void testSearchMatchPostalCode2() {$/;"	m	class:GeographicAreaSpecControllerTest
 testSelectMostSuitableSP	src/test/java/lapr/project/gpsd/model/AssignmentAlgoritm1Test.java	/^    public void testSelectMostSuitableSP() {$/;"	m	class:AssignmentAlgoritm1Test
 testServiceRequestHasExpiredAssignment	src/test/java/lapr/project/gpsd/model/ServiceAssignmentRegistryTest.java	/^    public void testServiceRequestHasExpiredAssignment() {$/;"	m	class:ServiceAssignmentRegistryTest
 testSetAbbrevName	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.java	/^    public void testSetAbbrevName() {$/;"	m	class:ServiceProviderTest
+testSetAdditionalData	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testSetAdditionalData() {$/;"	m	class:ServiceDefinitionControllerTest
 testSetAdditionalData	src/test/java/lapr/project/gpsd/model/ExtendableServiceTest.java	/^    public void testSetAdditionalData() {$/;"	m	class:ExtendableServiceTest
 testSetAdditionalData	src/test/java/lapr/project/gpsd/model/FixedServiceTest.java	/^    public void testSetAdditionalData() {$/;"	m	class:FixedServiceTest
 testSetAdditionalData	src/test/java/lapr/project/gpsd/model/LimitedServiceTest.java	/^    public void testSetAdditionalData() {$/;"	m	class:LimitedServiceTest
@@ -2442,6 +2433,8 @@ testSetSTime	src/test/java/lapr/project/gpsd/model/AvailabilityTest.java	/^    p
 testSetScore	src/test/java/lapr/project/gpsd/model/AcademicCompetenceTest.java	/^    public void testSetScore() {$/;"	m	class:AcademicCompetenceTest
 testSetServOrderDetail	src/test/java/lapr/project/gpsd/model/ServiceOrderStatusTest.java	/^    public void testSetServOrderDetail() {$/;"	m	class:ServiceOrderStatusTest
 testSetServOrderStatus	src/test/java/lapr/project/gpsd/model/ServiceOrderStatusTest.java	/^    public void testSetServOrderStatus() {$/;"	m	class:ServiceOrderStatusTest
+testSetServiceType	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testSetServiceType() {$/;"	m	class:ServiceDefinitionControllerTest
+testSetServiceType2	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testSetServiceType2() {$/;"	m	class:ServiceDefinitionControllerTest
 testSetSpAddress	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.java	/^    public void testSetSpAddress() {$/;"	m	class:ServiceProviderTest
 testSetTravelCost	src/test/java/lapr/project/gpsd/model/GeographicAreaTest.java	/^    public void testSetTravelCost() {$/;"	m	class:GeographicAreaTest
 testSetfullDescription	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^    public void testSetfullDescription() {$/;"	m	class:ServiceTest
@@ -2468,6 +2461,7 @@ testToString	src/test/java/lapr/project/gpsd/model/ServiceProviderTest.java	/^  
 testToString	src/test/java/lapr/project/gpsd/model/ServiceRequestDescriptionTest.java	/^    public void testToString() {$/;"	m	class:ServiceRequestDescriptionTest
 testToString	src/test/java/lapr/project/gpsd/model/ServiceTest.java	/^    public void testToString() {$/;"	m	class:ServiceTest
 testToString	src/test/java/lapr/project/gpsd/model/ServiceTypeTest.java	/^    public void testToString() {$/;"	m	class:ServiceTypeTest
+testValidate	src/test/java/lapr/project/gpsd/controller/ServiceDefinitionControllerTest.java	/^    public void testValidate() {$/;"	m	class:ServiceDefinitionControllerTest
 testValidate	src/test/java/lapr/project/gpsd/model/ServiceRequestTest.java	/^    public void testValidate() {$/;"	m	class:ServiceRequestTest
 testValidateAddress	src/test/java/lapr/project/gpsd/model/ClientTest.java	/^    public void testValidateAddress() {$/;"	m	class:ClientTest
 testValidateApplication	src/test/java/lapr/project/gpsd/controller/SubmitApplicationControllerTest.java	/^    public void testValidateApplication() {$/;"	m	class:SubmitApplicationControllerTest
@@ -2479,7 +2473,6 @@ testValidateRequest	src/test/java/lapr/project/gpsd/model/ServiceRegistryTest.ja
 testValidateService	src/test/java/lapr/project/gpsd/model/ServiceRegistryTest.java	/^    public void testValidateService() {$/;"	m	class:ServiceRegistryTest
 testValidateServiceProvider	src/test/java/lapr/project/gpsd/model/ServiceProviderRegistryTest.java	/^    public void testValidateServiceProvider() {$/;"	m	class:ServiceProviderRegistryTest
 testValidationGeoArea	src/test/java/lapr/project/gpsd/model/GeographicAreaRegistryTest.java	/^    public void testValidationGeoArea() {$/;"	m	class:GeographicAreaRegistryTest
-textToHtml	target/site/jacoco/jacoco-resources/prettify.js	/^  function textToHtml(str) {$/;"	f
 timer	src/main/java/lapr/project/gpsd/model/Company.java	/^    private Timer timer;$/;"	f	class:Company	file:
 toAcceptServiceRequestScene1	src/main/java/lapr/project/gpsd/ui/AcceptServiceRequestAssignmentsUI.java	/^    public void toAcceptServiceRequestScene1() {$/;"	m	class:AcceptServiceRequestAssignmentsUI
 toAddAddressToClientScene1	src/main/java/lapr/project/gpsd/ui/AddAddressToClientUI.java	/^    public void toAddAddressToClientScene1() {$/;"	m	class:AddAddressToClientUI
@@ -2542,6 +2535,7 @@ toString	src/main/java/lapr/project/gpsd/model/SPCategoryList.java	/^    public 
 toString	src/main/java/lapr/project/gpsd/model/SPGeographicAreaList.java	/^    public String toString() {$/;"	m	class:SPGeographicAreaList
 toString	src/main/java/lapr/project/gpsd/model/SchedulePreference.java	/^    public String toString() {$/;"	m	class:SchedulePreference
 toString	src/main/java/lapr/project/gpsd/model/Service.java	/^    public String toString() {$/;"	m	class:Service
+toString	src/main/java/lapr/project/gpsd/model/ServiceAssignment.java	/^    public String toString() {$/;"	m	class:ServiceAssignment
 toString	src/main/java/lapr/project/gpsd/model/ServiceOrder.java	/^    public String toString() {$/;"	m	class:ServiceOrder
 toString	src/main/java/lapr/project/gpsd/model/ServiceOrderStatus.java	/^    public String toString() {$/;"	m	class:ServiceOrderStatus
 toString	src/main/java/lapr/project/gpsd/model/ServiceProvider.java	/^    public String toString() {$/;"	m	class:ServiceProvider
@@ -2557,7 +2551,6 @@ toSubmitApplicationScene3	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI
 toSubmitApplicationScene4	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI.java	/^    public void toSubmitApplicationScene4() {$/;"	m	class:SubmitApplicationUI
 toSubmitApplicationScene5	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI.java	/^    public void toSubmitApplicationScene5() {$/;"	m	class:SubmitApplicationUI
 toSubmitApplicationScene6	src/main/java/lapr/project/gpsd/ui/SubmitApplicationUI.java	/^    public void toSubmitApplicationScene6() {$/;"	m	class:SubmitApplicationUI
-toggleSort	target/site/jacoco/jacoco-resources/sort.js	/^  function toggleSort(header) {$/;"	f
 total	src/main/java/lapr/project/gpsd/model/ServiceRequest.java	/^    private double total;$/;"	f	class:ServiceRequest	file:
 totalCostLbl	src/main/java/lapr/project/gpsd/ui/CreateServiceRequestUI5.java	/^    private Label totalCostLbl;$/;"	f	class:CreateServiceRequestUI5	file:
 travelCost	src/main/java/lapr/project/gpsd/model/GeographicArea.java	/^    private double travelCost;$/;"	f	class:GeographicArea	file:
@@ -2598,7 +2591,6 @@ validationGeoArea	src/main/java/lapr/project/gpsd/model/GeographicAreaRegistry.j
 value	src/main/java/lapr/project/gpsd/model/OtherCost.java	/^    private double value;$/;"	f	class:OtherCost	file:
 verifyRequest	src/main/java/lapr/project/gpsd/model/ServiceRegistry.java	/^    private boolean verifyRequest(ServiceRequest serviceRequest) {        $/;"	m	class:ServiceRegistry	file:
 viewStatisticsBtn	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI1.java	/^    private Button viewStatisticsBtn;$/;"	f	class:EvaluateSPUI1	file:
-window	target/site/jacoco/jacoco-resources/prettify.js	/^  window['_pr_isIE6'] = function () { return ieVersion; };$/;"	f
 workbook	src/main/java/lapr/project/gpsd/model/AdapterXLS.java	/^    private Workbook workbook;$/;"	f	class:AdapterXLS	file:
 xAxis	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    private CategoryAxis xAxis;$/;"	f	class:EvaluateSPUI2	file:
 yAxis	src/main/java/lapr/project/gpsd/ui/EvaluateSPUI2.java	/^    private NumberAxis yAxis;$/;"	f	class:EvaluateSPUI2	file:

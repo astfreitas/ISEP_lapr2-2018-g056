@@ -21,6 +21,7 @@ public class AddNewAddressToClientController {
     }
 
     /**
+     * 
      * Starts the new address request and retrieves the client for the current
      * session
      *
@@ -36,9 +37,9 @@ public class AddNewAddressToClientController {
     /**
      * Creates new Address for Client
      *
-     * @param local
-     * @param postalCode
-     * @param address
+     * @param local Local
+     * @param postalCode Postal Code
+     * @param address Address
      */
     public void newAddress(String local, String postalCode, String address) {
         this.address = Client.newAddress(local, postalCode, address);
@@ -52,7 +53,13 @@ public class AddNewAddressToClientController {
     public boolean registerAddress() {
         return cli.addAddress(address);
     }
-
+    
+    /**
+     * 
+     * Returns the address
+     * 
+     * @return Address
+     */
     public Address getAddress() {
         return address;
     }

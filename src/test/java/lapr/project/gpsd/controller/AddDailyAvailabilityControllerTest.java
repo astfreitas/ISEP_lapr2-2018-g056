@@ -12,7 +12,7 @@ public class AddDailyAvailabilityControllerTest {
     
     public AddDailyAvailabilityControllerTest() {
         ApplicationGPSD.getInstance().bootstrap();
-        ApplicationGPSD.getInstance().doLogin("10001@defaultlda.com", "password");        
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");        
     }
     
     /**

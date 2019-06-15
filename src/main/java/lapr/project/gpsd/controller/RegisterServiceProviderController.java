@@ -34,12 +34,11 @@ public class RegisterServiceProviderController {
     }
 
     /**
-     * Tries to get an application from registry according to a given NIF. If an
-     * SPAppliaction is found, set controller's reference and return true.
-     * Otherwise, returns false.
      *
-     * @param nif
-     * @return
+     * Get the application associated with a certain NIF
+     *
+     * @param nif NIF of the applicant
+     * @return The success of the operation
      */
     public boolean getApplicationData(String nif) {
         SPApplication application = this.company.getSPApplicationRegistry().getApplicationByNIF(nif);
@@ -162,14 +161,12 @@ public class RegisterServiceProviderController {
         return this.sp.toString();
     }
 
-    public String getName() {
-        return spApp.getName();
-    }
-
-    public Address getAddress() {
-        return spApp.getAddress();
-    }
-
+    /**
+     *
+     * Fetches all the not yet registered applicants
+     *
+     * @return Not registered applicants
+     */
     public List<String> getApplications() {
         List<String> allNifs = company.getSPApplicationRegistry().getApplicationsNifs();
         List<String> acceptedNifs = new ArrayList<>();
@@ -181,32 +178,74 @@ public class RegisterServiceProviderController {
         return acceptedNifs;
     }
 
+    /**
+     *
+     * Gets the applicant's name
+     *
+     * @return Applicant's name
+     */
     public String getSPName() {
         return spApp.getName();
     }
 
+    /**
+     *
+     * Gets the applicant's address
+     *
+     * @return Applicant's address
+     */
     public String getSPAddress() {
         return spApp.getAddress().getAddress();
     }
 
+    /**
+     * 
+     * Gets the applicant's postal code
+     * 
+     * @return Postal Code
+     */
     public String getSPPostalCode() {
         return spApp.getAddress().getPostalCode().getPostalCode();
     }
 
+    /**
+     * 
+     * Gets the applicants Local
+     * 
+     * @return Local
+     */
     public String getSPLocal() {
         return spApp.getAddress().getLocal();
     }
 
+    /**
+     * 
+     * Removes a category from the Service Provider
+     * 
+     * @param catId ID of the category being removed
+     */
     public void removeSPCategory(String catId) {
         Category cat = company.getCategoryRegistry().getCatById(catId);
         this.sp.getSpCatList().removeCategory(cat);
     }
 
+    /**
+     * 
+     * Removes a Geographic Area from the Service Provider
+     * 
+     * @param areaId ID of the Geographic Area being removed
+     */
     public void removeSPArea(String areaId) {
         GeographicArea area = company.getGeographicAreaRegistry().getGeoAreaById(areaId);
         this.sp.getSpGeoAreaList().removeGeographicArea(area);
     }
 
+    /**
+     * 
+     * Gets the Success Message
+     * 
+     * @return Success Message
+     */
     public String getSuccessMessage() {
         return "Abreviated name: " + sp.getAbbrevName()
                 + "\nInstitutional email: " + sp.getEmail()

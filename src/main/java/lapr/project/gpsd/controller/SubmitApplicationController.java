@@ -23,9 +23,9 @@ public class SubmitApplicationController {
     /**
      * Adds AcademicQualification instance to new SPApplication
      *
-     * @param course
-     * @param level
-     * @param grade
+     * @param course Course
+     * @param level Level
+     * @param grade Grade
      * @return true if AcademicQualification is successfully instantiated and
      * added to the SPApplication
      */
@@ -37,7 +37,7 @@ public class SubmitApplicationController {
     /**
      * Adds ProfessionalQualification instance to new SPApplication
      *
-     * @param description
+     * @param description Professional Qualification description
      * @return true if ProfessionalQualification is successfully instantiated
      * and added to the SPApplication
      */
@@ -49,10 +49,10 @@ public class SubmitApplicationController {
     /**
      * Creates instance of SPApplication
      *
-     * @param name
-     * @param NIF
-     * @param phone
-     * @param email
+     * @param name Name
+     * @param NIF NIF
+     * @param phone Phone
+     * @param email Email
      * @return true if the SPApplication is successfully instantiated
      */
     public boolean newSPApplication(String name, String NIF, String phone, String email) {
@@ -65,10 +65,10 @@ public class SubmitApplicationController {
     /**
      * Creates new instance of Address and adds to the SPApplication
      *
-     * @param local
-     * @param postalCode
-     * @param address
-     * @return true if Address is successfully instantiated 
+     * @param local Local
+     * @param postalCode Postal Code
+     * @param address Address
+     * @return true if Address is successfully instantiated
      */
     public boolean newAddress(String local, String postalCode, String address) {
         Address a = spa.newAddress(local, postalCode, address);
@@ -79,8 +79,8 @@ public class SubmitApplicationController {
     /**
      * Adds the selected Category (given the Category id) to the SPApplication
      *
-     * @param catId
-     * @return
+     * @param catId Category's id
+     * @return The success of the operation
      */
     public boolean addCategory(String catId) {
         Category cat = cr.getCatById(catId);
@@ -108,7 +108,8 @@ public class SubmitApplicationController {
     }
 
     /**
-     * Validates if all fields required for the SPApplication are filled (i.e.all SPApplication attributes)
+     * Validates if all fields required for the SPApplication are filled
+     * (i.e.all SPApplication attributes)
      *
      */
     public void validateApplication() {
@@ -118,16 +119,19 @@ public class SubmitApplicationController {
     public SPApplication getApplication() {
         return spa;
     }
-    
+
     /**
      * Validates if category is not repeated in SPApplication
+     *
      * @param catId
      * @return true if category has not yet been added do spapplication
      */
     public boolean validateCategory(String catId) {
         Category cat = cr.getCatById(catId);
-        if(cat == null) { return false; }
+        if (cat == null) {
+            return false;
+        }
         return !spa.getCategories().contains(cat);
     }
-    
+
 }

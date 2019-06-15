@@ -6,6 +6,7 @@
 package lapr.project.gpsd.controller;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,7 +28,6 @@ import lapr.project.gpsd.model.PostalCode;
 import lapr.project.gpsd.model.ProfessionalCompetence;
 import lapr.project.gpsd.model.SPApplication;
 import lapr.project.gpsd.model.SchedulePreference;
-import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.model.ServiceAssignment;
 import lapr.project.gpsd.model.ServiceOrder;
 import lapr.project.gpsd.model.ServiceProvider;
@@ -51,40 +51,76 @@ public class ApplicationGPSD {
         this.flagBootstrap = true;
     }
 
+    /**
+     * 
+     * Returns the instance of Company
+     * 
+     * @return Company
+     */
     public Company getCompany() {
         return this.company;
     }
 
+    /**
+     * 
+     * Returns the instance of the current User logged on
+     * 
+     * @return User logged on
+     */
     public UserSession getCurrentSession() {
         return this.authentication.getCurrentSession();
     }
 
+    /**
+     * 
+     * Logs in a User
+     * 
+     * @param id User's email
+     * @param pwd User's password
+     * @return The success of the operation
+     */
     public boolean doLogin(String id, String pwd) {
         return this.authentication.doLogin(id, pwd) != null;
     }
 
+    /**
+     * 
+     * Logs out the currently logged User
+     * 
+     */
     public void doLogout() {
         this.authentication.doLogout();
     }
 
+    /**
+     * 
+     * Fetchs the Properties from the Properties.config file
+     * 
+     * @return The Properties read from the file
+     */
     private Properties getProperties() {
         Properties props = new Properties();
 
-        // Adiciona propriedades e valores por omissão
+        // Default values
         props.setProperty(Constants.PARAMS_COMPANY_DESIGNATION, "Default Lda.");
         props.setProperty(Constants.PARAMS_COMPANY_NIF, "Default NIF");
 
-        // Lê as propriedades e valores definidas 
+        // Read the file
         try {
-            InputStream in = new FileInputStream(Constants.PARAMS_FILE);
-            props.load(in);
-            in.close();
-        } catch (Exception ex) {
+            try (InputStream in = new FileInputStream(Constants.PARAMS_FILE)) {
+                props.load(in);
+            }
+        } catch (IOException ex) {
 
         }
         return props;
     }
 
+    /**
+     * 
+     * Load starting instances to the App
+     * 
+     */
     public void bootstrap() {
         if(flagBootstrap){
         this.authentication.registerUserRole(Constants.ROLE_ADMINISTRATIVE);
@@ -453,9 +489,15 @@ public class ApplicationGPSD {
         }
     }
 
-    // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
+    // Inspired in https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
     private static ApplicationGPSD singleton = null;
 
+    /**
+     * 
+     * Creates a singleton instance of ApplicationGPSD
+     * 
+     * @return Returns the instance created
+     */
     public static ApplicationGPSD getInstance() {
         if (singleton == null) {
             synchronized (ApplicationGPSD.class) {

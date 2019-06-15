@@ -56,6 +56,13 @@ public class ServiceDefinitionController {
         return str.getServiceTypeByID(idType);
     }
 
+    /**
+     * 
+     * Defines the Service's type
+     * 
+     * @param idType ID of the service's type
+     * @return The success of the operation
+     */
     public boolean setServiceType(String idType) {
         serviceType = null;
         ServiceTypeRegistry str = this.company.getServiceTypeRegistry();
