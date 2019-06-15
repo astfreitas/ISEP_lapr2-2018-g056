@@ -2,22 +2,37 @@ package lapr.project.gpsd.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.fail;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GeographicAreaTest {
-    
+
     /**
      * Test of getGeoId method, of class GeographicArea.
      */
-    @Disabled
+    @Test
     public void testGetGeoId() {
         System.out.println("getGeoId");
-        GeographicArea instance = null;
-        String expResult = "";
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("GeoaDes", 50, 2500, "4000-007", exService, pcReg);
+        String expResult = null;
+        String result = instance.getGeoId();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getGeoId method, of class GeographicArea.
+     */
+    @Test
+    public void testGetGeoIdSucess() {
+        System.out.println("getGeoId");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("ID1Test", "GeoaDes", 50, 2500, "4000-007", exService, pcReg);
+        String expResult = "ID1Test";
         String result = instance.getGeoId();
         assertEquals(expResult, result);
     }
@@ -40,13 +55,30 @@ public class GeographicAreaTest {
     /**
      * Test of getDesignation method, of class GeographicArea.
      */
-    @Disabled
+    @Test
     public void testGetDesignation() {
         System.out.println("getDesignation");
-        GeographicArea instance = null;
-        String expResult = "";
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
+        String expResult = "GeoArea1";
         String result = instance.getDesignation();
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getDesignation method, of class GeographicArea.
+     */
+    @Test
+    public void testGeoConstrutorFailed() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+            PostalCodeRegistry pcReg = new PostalCodeRegistry();
+            GeographicArea instance = new GeographicArea("", "", 150, 25, "4000-007", exService, pcReg);
+            String expResult = "GeoArea1";
+            String result = instance.getDesignation();
+            assertEquals(expResult, result);
+        });
     }
 
     /**
@@ -63,13 +95,30 @@ public class GeographicAreaTest {
     /**
      * Test of getTravelCost method, of class GeographicArea.
      */
-    @Disabled
+    @Test
     public void testGetTravelCost() {
         System.out.println("getTravelCost");
-        GeographicArea instance = null;
-        double expResult = 0.0;
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("ID1", "Designationtest", 150, 25, "4000-007", exService, pcReg);
+        double expResult = 150;
         double result = instance.getTravelCost();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.1);
+    }
+    
+    /**
+     * Test of getTravelCost method, of class GeographicArea.
+     */
+    @Test
+    public void testGetTravelCostFailed() {
+        System.out.println("getTravelCost");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("ID1", "Designationtest", 150, 25, "4000-007", exService, pcReg);
+        double expResult = 15;
+        double result = instance.getTravelCost();
+//        assertEquals(expResult, result, 0.1);
+        assertNotEquals(expResult, result);
     }
 
     /**
@@ -118,7 +167,7 @@ public class GeographicAreaTest {
             List<PostalCode> listPC = exService.loadPostalCodeList();
         } catch (Exception e) {
             System.out.println("Failed to Load Postal Code List");
-        }        
+        }
         GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
         PostalCode pc = new PostalCode("4000-007", 41.1469459, -8.6064074);
         List<Location> expResult = exService.getActsOnLocationList(pc, 25, pcReg);
@@ -173,10 +222,10 @@ public class GeographicAreaTest {
             pcReg.setPostalCodeList(listPC);
         } catch (Exception e) {
             System.out.println("Failed to Load Postal Code List");
-        }        
+        }
         GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 2500, "4000-007", exService, pcReg);
-        PostalCode pc = new PostalCode("4000-008", 41.1579438,-8.6291053);
-        double expResult = exService.getDistanceBetCP(instance.getMainPostalCode(),pc);
+        PostalCode pc = new PostalCode("4000-008", 41.1579438, -8.6291053);
+        double expResult = exService.getDistanceBetCP(instance.getMainPostalCode(), pc);
         double result = instance.getDistanceToPostalCode(pc);
         System.out.println();
         assertEquals(expResult, result, 0.1);
@@ -200,14 +249,14 @@ public class GeographicAreaTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        
+
         ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
         PostalCodeRegistry pcReg = new PostalCodeRegistry();
         try {
             List<PostalCode> listPC = exService.loadPostalCodeList();
         } catch (Exception e) {
             System.out.println("Failed to Load Postal Code List");
-        }        
+        }
         GeographicArea instance = new GeographicArea("150", "GeoArea1", 150, 25, "4000-007", exService, pcReg);
         Object otherObject = new GeographicArea("160", "GeoArea2", 100, 10, "4000-009", exService, pcReg);
         boolean expResult = false;
@@ -225,5 +274,49 @@ public class GeographicAreaTest {
         GeographicArea instance = null;
         instance.setGeoId(geoId);
     }
-    
+
+    /**
+     * Test of hasDesignation method, of class GeographicArea.
+     */
+    @Disabled
+    public void testHasDesignation() {
+        System.out.println("hasDesignation");
+        String desig = "";
+        GeographicArea instance = null;
+        boolean expResult = false;
+        boolean result = instance.hasDesignation(desig);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of display method, of class GeographicArea.
+     */
+    @Disabled
+    public void testDisplay() {
+        System.out.println("display");
+        GeographicArea instance = null;
+        String expResult = "";
+        String result = instance.display();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkLocationsForPC method, of class GeographicArea.
+     */
+    @Disabled
+    public void testCheckLocationsForPC() {
+        System.out.println("checkLocationsForPC");
+        PostalCode pc = null;
+        GeographicArea instance = null;
+        boolean expResult = false;
+        boolean result = instance.checkLocationsForPC(pc);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
 }
