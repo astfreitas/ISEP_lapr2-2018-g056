@@ -92,5 +92,4 @@ public class AddDailyAvailabilityControllerTest {
         int result = instance.getAvalList().size();
         assertEquals(expResult, result);
     }
-    
 }
