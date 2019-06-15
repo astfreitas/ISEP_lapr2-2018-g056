@@ -31,6 +31,7 @@ public class AcceptServiceRequestController {
         String email = session.getUserEmail();
         client = clientRegistry.getClientByEmail(email);
         clientServiceAssignments = serAssignRegistry.getServiceAssignmentsByCli(client);
+        sRequestAssignments = new ArrayList();
     }
     
     /**
@@ -41,9 +42,10 @@ public class AcceptServiceRequestController {
         List<Integer> serviceIDS = new ArrayList();
         try {
             serviceIDS = servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
-        } catch(Exception e) {            
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
         }
-        return servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
+        return serviceIDS;
     }
     
     /**
@@ -52,11 +54,11 @@ public class AcceptServiceRequestController {
      * @return a list of service assignments for a given ServiceRequest
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
-        List<ServiceAssignment> result = new ArrayList();
         try {
             ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);
             sRequestAssignments = serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
-        } catch(Exception e) {            
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
         }
         return sRequestAssignments;
     }
