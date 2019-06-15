@@ -25,6 +25,7 @@ public class EvaluateSPController {
             throw new IllegalStateException("Unautorized user!");
         }
         this.company = ApplicationGPSD.getInstance().getCompany();
+        this.spr = company.getServiceProviderRegistry();
     }
 
     /**
@@ -33,7 +34,6 @@ public class EvaluateSPController {
      * @return the List of Service Providers in Registry
      */
     public List<ServiceProvider> getServiceProviders() {
-        this.spr = company.getServiceProviderRegistry();
         this.spl = spr.getServiceProviders();
         if (spl.isEmpty()) {
             throw new RuntimeException("No Service Providers were found in the system.");

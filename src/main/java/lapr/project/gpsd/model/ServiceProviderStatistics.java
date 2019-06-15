@@ -14,9 +14,9 @@ import java.util.List;
 public final class ServiceProviderStatistics {
 
     // Labels available to assign to the Service Provider
-    static final String LABEL_WORST = "Worst Provider";
-    static final String LABEL_REGULAR = "Regular Provider";
-    static final String LABEL_OUTSTANDING = "Outstanding Provider";
+    public static final String LABEL_WORST = "Worst Provider";
+    public static final String LABEL_REGULAR = "Regular Provider";
+    public static final String LABEL_OUTSTANDING = "Outstanding Provider";
 
     // Average rating of each Service Provider in the Registry
     private final List<Double> SPSAverageRatings;
