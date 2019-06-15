@@ -46,7 +46,7 @@ public class EvaluateSPController {
      * the average ratings for all service providers and creates and returns an
      * instance of SPStatistics with all the chosen Service Provider statistics
      *
-     * @param email
+     * @param email ServiceProvider email
      */
     public void newSPStatistics(String email) {
         this.sp = spr.getServiceProviderByEmail(email);
@@ -71,7 +71,7 @@ public class EvaluateSPController {
      * Sets the label to be used to define the Service Provider's classification
      * (local to the Controller)
      *
-     * @param label
+     * @param label Service Provider's evaluation
      */
     public void setLabel(String label) {
         this.sps.setClassification(label);
@@ -80,7 +80,7 @@ public class EvaluateSPController {
     /**
      * returns the label chosen to define the Service Provider's classification
      *
-     * @return
+     * @return Service Provider's evaluation
      */
     public String getLabel() {
         return sps.getClassification();
@@ -93,22 +93,54 @@ public class EvaluateSPController {
         sp.setClassification(sps.getClassification());
     }
 
+    /**
+     *
+     * Gets the Mean Average Rating of all Service Providers
+     *
+     * @return Mean Average Rating of all Service Providers
+     */
     public double getPopulationMeanAverageRating() {
         return sps.getPopulationMeanAverageRating();
     }
 
+    /**
+     *
+     * Gets the Standard Deviation of the ratings of all Service Providers
+     *
+     * @return
+     */
     public double getPopulationStdDeviation() {
         return sps.getPopulationStdDeviation();
     }
 
+    /**
+     *
+     * Gets the SP average rating
+     *
+     * @return SP average rating
+     */
     public double getSpAverageRating() {
         return sps.getSpAverageRating();
     }
 
+    /**
+     *
+     * Gets the SP absolute difference between the SP's average rating and the
+     * population's average
+     *
+     * @return absolute difference between the SP's average rating and the
+     * population's average
+     */
     public double getSpAbsoluteDifference() {
         return sps.getSpAbsoluteDifference();
     }
 
+    /**
+     * 
+     * Gets all the SP's ratings
+     * 
+     * @return All the SP's ratings
+     */
     public List<Integer> getSpRatings() {
         return sps.getSpRatings();
     }

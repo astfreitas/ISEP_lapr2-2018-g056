@@ -35,11 +35,21 @@ public class RatingServiceProviderController {
         this.servOrder = servOrder;
     }
     
-    
+    /**
+     * 
+     * Sets the Service Provider being rated
+     * 
+     */
     public void setServiceProvider(){
         this.servProvider = this.servOrder.getServiceProvider();
     }
     
+    /**
+     * 
+     * Gets all the Client's completed services
+     * 
+     * @return Client's completed services
+     */
     public ArrayList<ServiceOrder> getClientServices() {
         UserSession session = ApplicationGPSD.getInstance().getCurrentSession();
         String email = session.getUserEmail();
@@ -50,34 +60,83 @@ public class RatingServiceProviderController {
         return lse;
     }
     
+    /**
+     * 
+     * Gets the Service Provider being rated
+     * 
+     * @param servOrder Service Order being rated
+     * @return Service Provider being rated
+     */
     public ServiceProvider getServiceProvider(ServiceOrder servOrder){
         return servOrder.getServiceProvider();
     }
 
+    /**
+     * 
+     * Sets the rating
+     * 
+     * @param rating Rating
+     */
     public void setRating(int rating){
         this.servProvider.registerEvaluation(rating,this.servOrder);
     }
     
+    /**
+     * 
+     * Gets the Service Request Description
+     * 
+     * @return Service Request Description
+     */
     public ServiceRequestDescription getServiceDescription(){
         return this.servOrder.getServiceRequestDescription();
     }
     
+    /**
+     * 
+     * Gets the client
+     * 
+     * @return Client
+     */
     public Client getClient(){
         return this.servOrder.getServiceRequest().getClient();
     }
     
+    /**
+     * 
+     * Gets the Service Request
+     * 
+     * @return 
+     */
     public ServiceRequest getServiceRequest(){
         return this.servOrder.getServiceRequest();
     }
 
+    /**
+     * 
+     * Gets the Service Order
+     * 
+     * @return Service Order
+     */
     public ServiceOrder getServOrder() {
         return servOrder;
     }
     
+    /**
+     * 
+     * Gets the Service Cost
+     * 
+     * @return Service Cost
+     */
     public double getServiceCost(){
         return this.servOrder.getServiceRequestDescription().getCost();
     }
     
+    /**
+     * 
+     * Gets the travel expenses
+     * 
+     * @return Travel expenses
+     */
     public double getTravelCost(){
         return this.servOrder.getServiceRequest().getOtherCost();
     }
