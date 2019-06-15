@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
-    private final double THREASHOLD = 0.001;
+    private final double THREASHOLD = 0.0000001;
 
     Company company;
     ServiceProviderRegistry spRegistry;
@@ -30,7 +30,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
         // removes services from service list that have already expired
         removeExpiredServices(services);
-        
+
         // sorts the service list according to the input sorting behavior
         sortingBehavior.sortServiceList(services);
 
@@ -124,46 +124,17 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         ServiceRequest request = requestRegistry.getRequestFromDescription(srd);
         Address address = request.getAddress();
 
-        Comparator<ServiceProvider> orderRatings = new Comparator<ServiceProvider>() {
-            @Override
-            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
-                double rating1 = sp1.getAverageRating();
-                double rating2 = sp2.getAverageRating();
-                if (Math.abs(rating1 - rating2) / rating1 < THREASHOLD) {
-                    System.out.println();
-                    return 0;
-                } else if (rating1 < rating2) {
-                    return -1;
-                }
-                return 1;
-            }
+        Comparator<ServiceProvider> byRating = (p1, p2) -> {
+            return Double.compare(p2.getAverageRating(), p1.getAverageRating());
         };
-
-        Comparator<ServiceProvider> orderDistance = new Comparator<ServiceProvider>() {
-            @Override
-            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
-                double dist1 = externalService.getDistanceBetCP(address.getPostalCode(), sp1.getSpAddress().getPostalCode());
-                double dist2 = externalService.getDistanceBetCP(address.getPostalCode(), sp2.getSpAddress().getPostalCode());
-                if (Math.abs(dist1 - dist2) / dist1 < THREASHOLD) {
-                    return 0;
-                } else if (dist1 < dist2) {
-                    return -1;
-                }
-                return 1;
-            }
+        Comparator<ServiceProvider> byAddress = (p1, p2) -> {
+            return Double.compare(externalService.getDistanceBetCP(address.getPostalCode(), p1.getSpAddress().getPostalCode()), externalService.getDistanceBetCP(address.getPostalCode(), p2.getSpAddress().getPostalCode()));
         };
-
-        Comparator<ServiceProvider> orderName = new Comparator<ServiceProvider>() {
-            @Override
-            public int compare(ServiceProvider sp1, ServiceProvider sp2) {
-                String name1 = sp1.getName();
-                String name2 = sp2.getName();
-                return name1.compareTo(name2);
-            }
+        Comparator<ServiceProvider> byName = (p1, p2) -> {
+            return p1.getName().compareToIgnoreCase(p2.getName());
         };
-
-        Comparator<ServiceProvider> order = orderRatings.thenComparing(orderDistance).thenComparing(orderName);
-        suitableSPs.sort(order);
+        System.out.println(suitableSPs);
+        suitableSPs.sort(byRating.thenComparing(byAddress).thenComparing(byName));
         if (suitableSPs.isEmpty()) {
             return null;
         }
@@ -248,7 +219,7 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         for (ServiceProvider sp : spList) {
             System.out.println("\t\tSP under inspection: " + sp.getName());
             System.out.print("\t\t\tSP's GAs: ");
-            sp.getSpGeoAreaList().getGeoAreaList()  .forEach(a -> System.out.print(a.getDesignation() + " | "));
+            sp.getSpGeoAreaList().getGeoAreaList().forEach(a -> System.out.print(a.getDesignation() + " | "));
             System.out.println("");
             for (GeographicArea area : areas) {
                 System.out.println("\t\t\tTesting for area: " + area.getDesignation());
@@ -264,13 +235,22 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
         return spFilteredList;
     }
 
+    /**
+     * Creates an assignment for a given service request. To do so, finds a list
+     * of suitable service providers and finds which is the most suitable
+     * provider. Creates a new service assignment and returns it. Upon creation
+     * of new assignment, splits SP's availability
+     *
+     * @param service
+     * @return
+     */
     public ServiceAssignment createAssignment(ServiceRequestDescription service) {
         // for every service gets a list of suitable service providers
         List<ServiceProvider> suitableSPs = getSuitableSPList(service);
         if (suitableSPs.isEmpty()) {
             System.out.println("Unable to find suitable service providers");
             return null;
-        } 
+        }
 
         // selects the most suitable
         ServiceProvider selectedSP = selectMostSuitableSP(suitableSPs, service);
@@ -296,17 +276,18 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
 
     /**
      * Manipulates list to remove services that are already expired
-     * @param services 
+     *
+     * @param services
      */
     private void removeExpiredServices(List<ServiceRequestDescription> services) {
         List<ServiceRequestDescription> removeList = new ArrayList<>();
-        for(ServiceRequestDescription service : services) {
+        for (ServiceRequestDescription service : services) {
             ServiceRequest request = requestRegistry.getRequestFromDescription(service);
-            if(request.isExpired()) {
+            if (request.isExpired()) {
                 removeList.add(service);
             }
         }
-        for(ServiceRequestDescription service : removeList) {
+        for (ServiceRequestDescription service : removeList) {
             services.remove(service);
         }
     }

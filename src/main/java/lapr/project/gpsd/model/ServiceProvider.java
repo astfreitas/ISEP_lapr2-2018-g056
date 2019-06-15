@@ -365,7 +365,11 @@ public class ServiceProvider {
      * @return
      */
     public boolean addEvaluation(Evaluation eval) {
-        return evalList.add(eval);
+        if (evalList.add(eval)) {
+            recalculateAverage();
+            return true;
+        }
+        return false;
     }
 
     /**
