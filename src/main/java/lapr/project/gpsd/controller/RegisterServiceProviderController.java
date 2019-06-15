@@ -33,9 +33,16 @@ public class RegisterServiceProviderController {
         this.company = app.getCompany();
     }
 
+    /**
+     * Tries to get an application from registry according to a given NIF. If an
+     * SPAppliaction is found, set controller's reference and return true.
+     * Otherwise, returns false.
+     *
+     * @param nif
+     * @return
+     */
     public boolean getApplicationData(String nif) {
         SPApplication application = this.company.getSPApplicationRegistry().getApplicationByNIF(nif);
-//        if ((application != null) && (application.isAccepted(ACCEPTED_APPLICATION))) {
         if (application != null) {
             spApp = application;
             return true;
@@ -44,7 +51,8 @@ public class RegisterServiceProviderController {
     }
 
     /**
-     * Sets the sequence of methods necessary to create a valid SP
+     * Creates new service providers and add to registry. Returns true if SP is
+     * not duplicate (validation)
      *
      * Throws exception if address is not valid
      *
@@ -57,7 +65,7 @@ public class RegisterServiceProviderController {
     public boolean newServiceProvider(String name, String local, String postalCode, String address) {
         Address newAddress = company.getServiceProviderRegistry().newAddress(local, postalCode, address);
         spRegistry = company.getServiceProviderRegistry();
-        sp = spRegistry.newServiceProvider(name,  newAddress);
+        sp = spRegistry.newServiceProvider(name, newAddress);
         spApp.getCategories().forEach((cat) -> {
             sp.addCategory(cat);
         });
@@ -165,8 +173,8 @@ public class RegisterServiceProviderController {
     public List<String> getApplications() {
         List<String> allNifs = company.getSPApplicationRegistry().getApplicationsNifs();
         List<String> acceptedNifs = new ArrayList<>();
-        for(String nif : allNifs){
-            if(this.company.getServiceProviderRegistry().getServiceProviderByNif(nif) == null){
+        for (String nif : allNifs) {
+            if (this.company.getServiceProviderRegistry().getServiceProviderByNif(nif) == null) {
                 acceptedNifs.add(nif);
             }
         }

@@ -54,8 +54,10 @@ public class ServiceProviderRegistry {
      */
     public boolean validateServiceProvider(ServiceProvider sp) {
         for (ServiceProvider serviceProvider : spList) {
-            if (serviceProvider.equals(sp)) {
-                return false;
+            if (serviceProvider != null) {
+                if (serviceProvider.equals(sp)) {
+                    return false;
+                }
             }
         }
         return true;
@@ -77,7 +79,7 @@ public class ServiceProviderRegistry {
      * @param sp service provider to set his number
      */
     private void generateServiceProviderNumber(ServiceProvider sp) {
-        int number = 10000 + spList.size()+1;
+        int number = 10000 + spList.size() + 1;
         sp.setNumber(number);
     }
 
@@ -126,7 +128,8 @@ public class ServiceProviderRegistry {
             if (ApplicationGPSD.getInstance().getCompany().getAuthenticationFacade().registerUserWithRole(abbrevName, spInstEmail, pwd, Constants.ROLE_SERVICE_PROVIDER)) {
                 return this.addServiceProvider(sp);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         return false;
     }
 
@@ -145,7 +148,6 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
-    
 
     /**
      * Searches the Service Provider registry for a SP with a determined number
@@ -162,10 +164,10 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
-    
+
     /**
-     * Searches the Service Provider registry for a SP with a determined NIF
-     * and returns it.
+     * Searches the Service Provider registry for a SP with a determined NIF and
+     * returns it.
      *
      * @param nif Number for the preferred SP
      * @return Service provider who has the NIF
