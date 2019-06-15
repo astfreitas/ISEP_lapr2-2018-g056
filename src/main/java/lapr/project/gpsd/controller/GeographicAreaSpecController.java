@@ -8,10 +8,6 @@ import lapr.project.gpsd.model.PostalCode;
 import lapr.project.gpsd.model.PostalCodeRegistry;
 import lapr.project.gpsd.utils.Constants;
 
-/**
- *
- * @author astfr
- */
 public class GeographicAreaSpecController {
 
     /**

@@ -16,6 +16,11 @@ public class AcceptServiceRequestController {
     private List<ServiceAssignment> clientServiceAssignments;
     private List<ServiceAssignment> sRequestAssignments;
 
+    /**
+     * 
+     * Creates an instance of AcceptServiceRequestController
+     * 
+     */
     public AcceptServiceRequestController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
             throw new IllegalStateException("Non authorized user.");
@@ -50,7 +55,7 @@ public class AcceptServiceRequestController {
     
     /**
      * Method returns a list of service assignments for a given ServiceRequest
-     * @param serviceNumber
+     * @param serviceNumber Service Number
      * @return a list of service assignments for a given ServiceRequest
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
@@ -80,6 +85,5 @@ public class AcceptServiceRequestController {
         serAssignRegistry.removeServiceAssignment(sRequestAssignments, true);
         sRequestAssignments.clear();
         return serviceOrders;
-    }
-    
+    }  
 }

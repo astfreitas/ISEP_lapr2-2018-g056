@@ -16,6 +16,11 @@ public class CreateServiceRequestController {
     private ServiceRequest serviceRequest;
     private ServiceRegistry serviceRegister;
 
+    /**
+     * 
+     * Creates an instance of CreateServiceRequestController
+     * 
+     */
     public CreateServiceRequestController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
             throw new IllegalStateException("Non authorized user.");
@@ -39,7 +44,7 @@ public class CreateServiceRequestController {
 
     /**
      * Method that defines the address where the service will take place
-     * @param address
+     * @param address Address
      */
     public void setAddress(Address address) {
         serviceRequestRegistry = company.getServiceRequestRegistry();
@@ -50,7 +55,7 @@ public class CreateServiceRequestController {
     /**
      * Method returns the instance of the service requested
      *
-     * @return
+     * @return service requested
      */
     public ServiceRequest getServiceRequest() {
         return serviceRequest;
@@ -115,10 +120,22 @@ public class CreateServiceRequestController {
         return serviceRegister.validateRequest(serviceRequest);
     }
     
+    /**
+     * 
+     * Returns the travel expenses
+     * 
+     * @return Travel expenses
+     */
     public double getTravelExpenses() {
         return serviceRequest.getTravelExpenses();
     }
     
+    /**
+     * 
+     * Returns the total cost of the service
+     * 
+     * @return Total cost of the service
+     */
     public double getTotalCost() {
         return serviceRequest.getTotal();
     }
