@@ -20,6 +20,18 @@ public class ServiceAssignment {
      * @param schedulePreference
      */
     public ServiceAssignment(ServiceProvider serviceProvider, ServiceRequestDescription serviceRequestDescription, ServiceRequest serviceRequest, SchedulePreference schedulePreference) {
+        if(serviceProvider == null) {
+            throw new IllegalArgumentException("ServiceProvider cannot be null.");
+        }
+        if(serviceRequestDescription == null) {
+            throw new IllegalArgumentException("ServiceRequestDescription cannot be null.");
+        }
+        if(serviceRequest == null) {
+            throw new IllegalArgumentException("ServiceRequest cannot be null.");
+        }
+        if(schedulePreference == null) {
+            throw new IllegalArgumentException("SchedulePreference cannot be null.");
+        }        
         this.serviceProvider = serviceProvider;
         this.serviceRequestDescription = serviceRequestDescription;
         this.serviceRequest = serviceRequest;

@@ -28,6 +28,12 @@ public class ServiceRequest {
      * @param address instance of address where the service will be executed
      */
     public ServiceRequest(Client client, Address address) {
+        if(client == null) {
+            throw new IllegalArgumentException("Client cannot be null.");
+        }
+        if(address == null) {
+            throw new IllegalArgumentException("Address cannot be null.");
+        }
         this.client = client;
         this.address = address;
         this.serviceRequestDescriptions = new ArrayList();

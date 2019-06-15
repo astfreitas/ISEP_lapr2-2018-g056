@@ -55,9 +55,8 @@ public class AcceptServiceRequestControllerTest {
         srr.registerServiceRequest(sr);
         sr.getServiceRequestDescriptions().get(0).setAssigned(Constants.SERVICE_ASSIGNED);
         
-        
-        
-        ServiceAssignment servA = new ServiceAssignment(spr.getServiceProviderByEmail("aPadrao@gmail.com"), sr.getServiceRequestDescriptions().get(0), sr, sr.getSchedulePreferences().get(0));
+        ServiceProvider sprov = spr.getServiceProviders().get(0);
+        ServiceAssignment servA = new ServiceAssignment(sprov, sr.getServiceRequestDescriptions().get(0), sr, sr.getSchedulePreferences().get(0));
         sar.addServiceAssignment(servA);
         
         AcceptServiceRequestController instance = new AcceptServiceRequestController();  
