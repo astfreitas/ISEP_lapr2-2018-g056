@@ -17,7 +17,6 @@ public class RegisterServiceProviderControllerTest {
 
     public RegisterServiceProviderControllerTest() {
         this.company = ApplicationGPSD.getInstance().getCompany();
-        System.out.println(company.getServiceProviderRegistry().getServiceProviders());
         ApplicationGPSD.getInstance().bootstrap();
     }
 
@@ -88,6 +87,19 @@ public class RegisterServiceProviderControllerTest {
     }
 
     /**
+     * Test of newServiceProvider method, of class
+     * RegisterServiceProviderController.
+     */
+    @Test
+    public void testNewServiceProvider_Null() {
+        System.out.println("newServiceProvider_Null");
+        assertThrows(NullPointerException.class, () -> {
+            RegisterServiceProviderController instance = new RegisterServiceProviderController();
+            instance.newServiceProvider("a", "b", "4000-007", "c");
+        });
+    }
+
+    /**
      * Test of getCategories method, of class RegisterServiceProviderController.
      */
     @Test
@@ -103,7 +115,7 @@ public class RegisterServiceProviderControllerTest {
      * Test of getSPCategories method, of class
      * RegisterServiceProviderController.
      */
-    @Disabled
+    @Test
     public void testGetSPCategories() {
         System.out.println("getSPCategories");
         RegisterServiceProviderController instance = new RegisterServiceProviderController();
@@ -112,7 +124,7 @@ public class RegisterServiceProviderControllerTest {
         instance.getApplicationData("3A");
         instance.newServiceProvider("3A", "3A", "4000-007", "3A");
         instance.registerServiceProvider();
-        ServiceProvider sp = company.getServiceProviderRegistry().getServiceProviderByEmail("3A");
+        ServiceProvider sp = instance.getServiceProvider();
         Category cat1 = new Category("3A", "3A");
         Category cat2 = new Category("3AA", "3AA");
         sp.addCategory(cat1);
@@ -255,34 +267,6 @@ public class RegisterServiceProviderControllerTest {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getName method, of class RegisterServiceProviderController.
-     */
-    @Disabled
-    public void testGetName() {
-//        System.out.println("getName");
-//        RegisterServiceProviderController instance = new RegisterServiceProviderController();
-//        String expResult = "";
-//        String result = instance.getName();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAddress method, of class RegisterServiceProviderController.
-     */
-    @Disabled
-    public void testGetAddress() {
-//        System.out.println("getAddress");
-//        RegisterServiceProviderController instance = new RegisterServiceProviderController();
-//        Address expResult = null;
-//        Address result = instance.getAddress();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
     }
 
     /**
