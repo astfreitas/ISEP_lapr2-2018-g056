@@ -128,4 +128,16 @@ public class ServiceOrder {
     public boolean isPending(String status) {
         return this.status.getServOrderStatus().equalsIgnoreCase(PENDING_ORDER);
     }
+    
+    /**
+     * Returns full description of the Service Order in string
+     *
+     * @return full description of the Service Order in string
+     */
+    @Override
+    public String toString() {
+        return "Service Order Number: " + orderNumber + " | " + status
+                + "| for: " + servProvider.getAbbrevName() + servRequest
+                + servRequestDesc + " | |SchedulePreference is " + schedPreference;
+    }
 }
