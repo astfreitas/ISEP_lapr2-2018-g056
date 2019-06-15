@@ -43,6 +43,9 @@ public class Main extends Application {
 
                 if (alert.showAndWait().get() == ButtonType.CANCEL) {
                     event.consume();
+                }else{
+                    ApplicationGPSD.getInstance().getCompany().getTimer().cancel();
+                    ApplicationGPSD.getInstance().getCompany().getTimer().purge();
                 }
             }
         });
