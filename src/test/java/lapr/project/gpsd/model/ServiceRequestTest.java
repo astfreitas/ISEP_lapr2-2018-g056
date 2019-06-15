@@ -220,4 +220,37 @@ public class ServiceRequestTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of isExpired method, of class ServiceRequest.
+     */
+    @Test
+    public void testIsExpired_True() {
+        System.out.println("fullyAssigned");
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
+        Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
+        ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
+        LocalDate date = LocalDate.of(2019,6,1);
+        LocalTime time = LocalTime.of(23,30);
+        instance.addSchedulePreferenceString(date, time,"");
+        boolean expResult = true;
+        boolean result = instance.isExpired();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of isExpired method, of class ServiceRequest.
+     */
+    @Test
+    public void testIsExpired_False() {
+        System.out.println("fullyAssigned");
+        ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
+        Service ser1 = new FixedService("Serv1", "DescriptionTeste", "FullDescriptionTeste", 150, new Category("cat1", "categoryTeste"));
+        ServiceRequestDescription servDesc = new ServiceRequestDescription(ser1, "ServiceTesteDes", 2);
+        LocalDate date = LocalDate.MAX;
+        LocalTime time = LocalTime.of(23,30);
+        instance.addSchedulePreferenceString(date, time,"");
+        boolean expResult = false;
+        boolean result = instance.isExpired();
+        assertEquals(expResult, result);
+    }
 }

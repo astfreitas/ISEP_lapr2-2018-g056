@@ -27,7 +27,7 @@ public class SchedulePreference {
         if (date.getDayOfWeek().equals(DayOfWeek.SUNDAY)
                 || hour.getHour() == 0 || hour.getHour() < 6
                 || date.isBefore(today)) {
-            throw new IllegalArgumentException("Invalid availability.");
+            throw new IllegalArgumentException("Invalid schedule preference.");
         }
         this.order = order;
         this.date = date;

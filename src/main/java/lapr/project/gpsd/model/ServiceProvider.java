@@ -434,8 +434,7 @@ public class ServiceProvider {
         }
         // field comparison
         ServiceProvider obj = (ServiceProvider) otherSP;
-        return (Objects.equals(email, obj.email) || Objects.equals(nif, obj.nif)
-                || Objects.equals(spAddress, obj.spAddress));
+        return (Objects.equals(email, obj.email) || Objects.equals(nif, obj.nif));
     }
 
 }

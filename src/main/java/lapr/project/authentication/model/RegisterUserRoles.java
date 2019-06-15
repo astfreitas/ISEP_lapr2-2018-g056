@@ -45,8 +45,8 @@ public class RegisterUserRoles
      * 
      * Adds a User Role to the registry
      * 
-     * @param role
-     * @return 
+     * @param role User role
+     * @return The success of the operation
      */
     public boolean addRole(UserRole role)
     {
@@ -55,6 +55,13 @@ public class RegisterUserRoles
         return false;
     }
     
+    /**
+     * 
+     * Removed a User Role from the registry
+     * 
+     * @param role User role
+     * @return The success of the operation
+     */
     public boolean removeRole(UserRole role)
     {
         if (role != null)
@@ -62,6 +69,13 @@ public class RegisterUserRoles
         return false;
     }
     
+    /**
+     * 
+     * Searchs a Role by its name and returns it
+     * 
+     * @param role Role name
+     * @return User role with the name
+     */
     public UserRole searchRole(String role)
     {
         for(UserRole p: this.roles)
@@ -71,15 +85,14 @@ public class RegisterUserRoles
         }
         return null;
     }
-    
-    public boolean hasRole(String role)
-    {
-        UserRole papel = searchRole(role);
-        if (papel != null)
-            return this.roles.contains(papel);
-        return false;
-    }
-    
+
+    /**
+     * 
+     * Sees if a role is already registered
+     * 
+     * @param role Role being search
+     * @return True if the role exists
+     */
     public boolean hasRole(UserRole role)
     {
         return this.roles.contains(role);

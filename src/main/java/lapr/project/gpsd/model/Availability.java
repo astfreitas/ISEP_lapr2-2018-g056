@@ -38,7 +38,7 @@ public class Availability {
      */
     public Availability(LocalDate sDate, LocalTime bTime, LocalTime eTime, String str) {
         if (sDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)
-                || bTime.getHour() < 6 || eTime.getHour() < 6
+                || bTime.getHour() <= 5 || eTime.getHour() <= 5
                 || eTime.isBefore(bTime) || eTime.equals(bTime)) {
             throw new IllegalArgumentException("Invalid availability.");
         }
@@ -158,11 +158,10 @@ public class Availability {
         LocalDate scheDate = schedulePref.getDate();
         LocalTime scheStartTime = schedulePref.getTime();
         LocalTime scheEndTime = schedulePref.getTime().plusMinutes(duration);
-        if (scheDate.equals(date)) {
-            if ((scheStartTime.isAfter(sTime) || scheStartTime.equals(sTime))
-                    && (scheEndTime.isBefore(eTime) || scheEndTime.equals(eTime))) {
+        if (scheDate.equals(date) 
+                && ((scheStartTime.isAfter(sTime) || scheStartTime.equals(sTime))
+                    && (scheEndTime.isBefore(eTime) || scheEndTime.equals(eTime)))) {          
                 return true;
-            }
         }
         return false;
     }

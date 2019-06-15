@@ -59,7 +59,7 @@ public class ServiceProviderRegistryTest {
     @Test
     public void testAddServiceProvider() {
         System.out.println("addServiceProvider");
-        ServiceProvider sp  = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
+        ServiceProvider sp = new ServiceProvider("testName", "testNif", "testEmail", "testAbreName");
         ServiceProviderRegistry instance = new ServiceProviderRegistry();
         boolean expResult = true;
         boolean result = instance.addServiceProvider(sp);
@@ -69,22 +69,21 @@ public class ServiceProviderRegistryTest {
     /**
      * Test of registerServiceProvider method, of class ServiceProviderRegistry.
      */
-    @Test
+    @Disabled
     public void testRegisterServiceProvider() {
-        ApplicationGPSD.getInstance().getCompany();
-        ApplicationGPSD.getInstance().bootstrap();
         System.out.println("registerServiceProvider");
-        ServiceProvider sp = new ServiceProvider("name", "nif", "email@email.com", "abrevName");
-        ServiceProviderRegistry instance = ApplicationGPSD.getInstance().getCompany().getServiceProviderRegistry();
-        boolean expResult = true;
+        ServiceProviderRegistry instance = new ServiceProviderRegistry();
+        ServiceProvider sp = new ServiceProvider("name", "nif", "spemail@email.com", "abrevName");
+        boolean expResult = false;
         boolean result = instance.registerServiceProvider(sp);
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getServiceProviderByEmail method, of class ServiceProviderRegistry.
+     * Test of getServiceProviderByEmail method, of class
+     * ServiceProviderRegistry.
      */
-    @Disabled
+    @Test
     public void testGetServiceProviderByEmail() {
         System.out.println("getServiceProviderByEmail");
         String email = "testEmail";

@@ -1,11 +1,9 @@
 package lapr.project.gpsd.model;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import lapr.project.gpsd.controller.ApplicationGPSD;
@@ -14,11 +12,11 @@ public class ServiceRequest {
 
     private int number;
     private double total;
-    private Client client;
-    private Address address;
-    private List<ServiceRequestDescription> serviceRequestDescriptions;
-    private ArrayList<SchedulePreference> schedulePreferences;
-    private ArrayList<OtherCost> otherCosts;
+    private final Client client;
+    private final Address address;
+    private final List<ServiceRequestDescription> serviceRequestDescriptions;
+    private final ArrayList<SchedulePreference> schedulePreferences;
+    private final ArrayList<OtherCost> otherCosts;
 
     /**
      * Constructor creates a service request with client and address where the
@@ -76,13 +74,12 @@ public class ServiceRequest {
      *
      * @param date represents the date preference
      * @param time represents the time preference
-     * @return Success of the operation
      */
     public void addSchedulePreference(LocalDate date, LocalTime time) {
         int prefOrder = schedulePreferences.size();
         SchedulePreference sh = new SchedulePreference(prefOrder, date, time);
         if (validateSchedulePreference(sh)) {
-            AddSchedulePreference(sh);
+            addSchedulePreferenceObj(sh);
         } else {
             throw new IllegalArgumentException("Duplicated Schedule Preference.");
         }
@@ -100,7 +97,7 @@ public class ServiceRequest {
         int prefOrder = schedulePreferences.size();
         SchedulePreference sh = new SchedulePreference(prefOrder, date, time, str);
         if (validateSchedulePreference(sh)) {
-            return AddSchedulePreference(sh);
+            return addSchedulePreferenceObj(sh);
         }
         return false;
     }
@@ -115,7 +112,13 @@ public class ServiceRequest {
         return !schedulePreferences.contains(sh);
     }
 
-    private boolean AddSchedulePreference(SchedulePreference sh) {
+     /**
+     * Method appends a schedule preference to the Service Order
+     *
+     * @param sh Schedule Preference
+     * @return Success of the operation
+     */
+    private boolean addSchedulePreferenceObj(SchedulePreference sh) {
         return schedulePreferences.add(sh);
     }
 
@@ -129,6 +132,12 @@ public class ServiceRequest {
         return this.client;
     }
 
+    /**
+     * 
+     * Calculates the sum of the Other Costs and returns it
+     * 
+     * @return Sum of Other Costs
+     */
     public double getOtherCost() {
         double costs = 0;
         for (OtherCost otherCost : otherCosts) {
