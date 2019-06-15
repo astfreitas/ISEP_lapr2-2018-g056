@@ -29,7 +29,7 @@ public class ConsultServiceOrderControllerTest {
 
         this.app = ApplicationGPSD.getInstance();
         app.bootstrap();
-        System.out.println("Login state: " + ApplicationGPSD.getInstance().doLogin("10001@defaultlda.com", "password"));
+        System.out.println("Login state: " + ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password"));
     }
 
     /**
