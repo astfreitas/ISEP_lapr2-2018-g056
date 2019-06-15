@@ -205,7 +205,7 @@ public class ServiceRequestTest {
     /**
      * Test of getTravelExpenses method, of class ServiceRequest.
      */
-    @Disable
+    @Disabled
     public void testGetTravelExpenses() {
         ApplicationGPSD.getInstance().getCompany();
         ApplicationGPSD.getInstance().bootstrap();
