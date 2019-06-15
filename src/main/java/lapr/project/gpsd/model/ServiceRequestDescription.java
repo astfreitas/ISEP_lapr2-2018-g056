@@ -31,6 +31,9 @@ public class ServiceRequestDescription {
      * @param duration
      */
     public ServiceRequestDescription(Service service, String description, int duration) {
+        if(service == null) {
+            throw new IllegalArgumentException("Client cannot be null.");
+        }
         this.service = service;
         this.description = description;
         this.duration = duration;

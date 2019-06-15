@@ -145,6 +145,7 @@ public class ServiceProviderRegistry {
         }
         return null;
     }
+    
 
     /**
      * Searches the Service Provider registry for a SP with a determined number
