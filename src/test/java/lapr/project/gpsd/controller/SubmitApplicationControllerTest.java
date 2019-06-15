@@ -93,7 +93,7 @@ public class SubmitApplicationControllerTest {
     /**
      * Test of getCategories method, of class SubmitApplicationController.
      */
-    @Test
+    @Disabled
     public void testGetCategories() {
         System.out.println("getCategories");
         SubmitApplicationController instance = new SubmitApplicationController();
