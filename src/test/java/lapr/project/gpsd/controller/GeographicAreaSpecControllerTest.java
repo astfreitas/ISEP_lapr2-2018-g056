@@ -20,7 +20,9 @@ import org.junit.jupiter.api.Test;
 public class GeographicAreaSpecControllerTest {
 
     private ApplicationGPSD app;
-
+    /**
+     * Initiating the GPSD aaplication and bootstrap to login with correct permissions
+     */
     public GeographicAreaSpecControllerTest() {
         this.app = ApplicationGPSD.getInstance();
         app.bootstrap();
