@@ -67,7 +67,7 @@ public class ServiceRequestRegistry {
      * @param serviceRequest
      * @return true if the operation is successful
      */
-    private boolean addServiceRequest(ServiceRequest serviceRequest) {
+    public boolean addServiceRequest(ServiceRequest serviceRequest) {
         return serviceRequests.add(serviceRequest);
     }
 

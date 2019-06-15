@@ -1,5 +1,6 @@
 package lapr.project.gpsd.ui;
 
+import java.io.File;
 import java.io.InputStream;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -27,6 +28,7 @@ public class Main extends Application {
 
         ApplicationGPSD.getInstance().getCompany();
         ApplicationGPSD.getInstance().bootstrap();
+        new File("./src/main/resources/exportedFiles/").mkdir();
         this.stage = stage;
         this.stage.setTitle("GPSD Application");
         this.stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
