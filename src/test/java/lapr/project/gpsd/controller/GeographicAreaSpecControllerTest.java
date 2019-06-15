@@ -96,11 +96,19 @@ public class GeographicAreaSpecControllerTest {
     /**
      * Test of getGeoA method, of class GeographicAreaSpecController.
      */
-    @Disabled
+    @Test
     public void testGetGeoA() {
         System.out.println("getGeoA");
+        String designation = "TestGeoArea";
+        double cost = 25.0;
+        String strPC = "4000-008";
+        double radius = 2500;
         GeographicAreaSpecController instance = new GeographicAreaSpecController();
-        GeographicArea expResult = null;
+        GeographicArea expResult = 
+                new GeographicArea(designation, cost, radius, strPC,
+                        ApplicationGPSD.getInstance().getCompany().getExternalService(),
+                        ApplicationGPSD.getInstance().getCompany().getPostalCodeRegistry());
+        instance.newGeographicArea(designation, cost, strPC, radius);
         GeographicArea result = instance.getGeoA();
         assertEquals(expResult, result);
     }
