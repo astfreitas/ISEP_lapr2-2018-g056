@@ -36,7 +36,7 @@ public class ServiceRequestTest {
         int dur = 2;
         ApplicationGPSD testApp = new ApplicationGPSD();
         ServiceRequest instance = new ServiceRequest(new Client("ClientTest", "123456", "123456789", "default@defaultlda.com"), new Address("localTest", "4000-007", "Test Street n2"));
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.addServiceRequestDescription(service, desc, dur);
         assertEquals(expResult, result);
     }
