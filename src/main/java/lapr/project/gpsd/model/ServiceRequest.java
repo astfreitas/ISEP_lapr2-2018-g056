@@ -54,7 +54,7 @@ public class ServiceRequest {
     public boolean addServiceRequestDescription(Service service, String desc, int dur) {
         ServiceRequestDescription srd = new ServiceRequestDescription(service, desc, dur);
         if (validateServiceRequestDescription(srd)) {
-            serviceRequestDescriptions.add(srd);
+            return serviceRequestDescriptions.add(srd);
         }
         return false;
     }
