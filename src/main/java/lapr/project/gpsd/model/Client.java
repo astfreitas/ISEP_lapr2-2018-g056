@@ -5,11 +5,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Client {
-
+    /**
+     * Name
+     */
     private String name;
+    /**
+     * NIF of Client
+     */
     private String NIF;
+    /**
+     * Telephone number
+     */
     private String telephone;
+    /**
+     * Email address of client
+     */
     private String email;
+    /**
+     * Address list of the client.
+     */
     private ArrayList<Address> addresses = new ArrayList<Address>();
 
     public Client(String name, String NIF, String telephone, String email) {
