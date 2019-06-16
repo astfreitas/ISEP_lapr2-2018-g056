@@ -5,6 +5,7 @@
  */
 package lapr.project.gpsd.controller;
 
+import static com.sun.org.apache.bcel.internal.util.SecuritySupport.getResourceAsStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -107,7 +108,7 @@ public class ApplicationGPSD {
 
         // Read the file
         try {
-            try (InputStream in = new FileInputStream(Constants.PARAMS_FILE)) {
+            try (InputStream in = getResourceAsStream(Constants.PARAMS_FILE)) {
                 props.load(in);
             }
         } catch (IOException ex) {
