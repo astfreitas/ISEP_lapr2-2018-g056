@@ -8,7 +8,7 @@ public class FixedService extends Service {
 
     private double predeterminedDuration;
     private final static double WITHOUT_PREDETERMINE_DURATION = 60;//60 minutes | hourlyCost = total cost;
-    private List<String> otherAttributes = new ArrayList();
+    private List<String> otherAttributes;
     /**
      * Fixed service constructor with 5 parameters
      *
@@ -21,6 +21,7 @@ public class FixedService extends Service {
     public FixedService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
         super(id, briefDescription, fullDescription, hourlyCost, category);
         this.predeterminedDuration = WITHOUT_PREDETERMINE_DURATION;
+        otherAttributes = new ArrayList();
         otherAttributes.add(Constants.OTHER_SERV_ATRIB_PREDETERMINED_DURATION);
     }
 
