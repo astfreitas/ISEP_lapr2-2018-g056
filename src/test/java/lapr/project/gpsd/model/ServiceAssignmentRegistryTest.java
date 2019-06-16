@@ -95,6 +95,19 @@ public class ServiceAssignmentRegistryTest {
         ServiceAssignmentRegistry instance = new ServiceAssignmentRegistry();
         instance.addServiceAssignment(sa);
         instance.removeServiceAssignment(listServiceAssignments, setAssigned);
+        int expectedResult = 0;
+        int result = instance.getServiceAssignments().size();
+        assertEquals(expectedResult, result);
+        sr = new ServiceRequest(cli, add);
+        sr.addSchedulePreference(LocalDate.of(2019, 6, 22), LocalTime.of(12, 0));
+        sr.addServiceRequestDescription(serv, "testDesc", 60);
+        listServiceAssignments.add(sa);
+        setAssigned = false;
+        instance.addServiceAssignment(sa);
+        instance.removeServiceAssignment(listServiceAssignments, setAssigned);
+        int expectedResult2 = 0;
+        int result2 = instance.getServiceAssignments().size();
+        assertEquals(expectedResult2, result2);
     }
 
     /**
