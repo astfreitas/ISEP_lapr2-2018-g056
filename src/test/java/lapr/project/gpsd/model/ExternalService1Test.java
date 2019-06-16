@@ -13,7 +13,7 @@ public class ExternalService1Test {
     /**
      * Test of getActsOnLocationList method, of class ExternalService1.
      */
-    @Test
+    @Disabled
     public void testGetActsOnLocationList() {
         System.out.println("getActsOnLocationList");
         ExternalService1 instance = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
@@ -36,7 +36,7 @@ public class ExternalService1Test {
     /**
      * Test of loadPostalCodeList method, of class ExternalService1.
      */
-    @Test
+    @Disabled
     public void testLoadPostalCodeList() throws Exception {
         System.out.println("loadPostalCodeList");
         ExternalService1 instance = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");

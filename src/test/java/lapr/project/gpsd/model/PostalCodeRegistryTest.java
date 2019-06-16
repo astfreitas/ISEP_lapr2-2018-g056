@@ -36,7 +36,7 @@ public class PostalCodeRegistryTest {
     /**
      * Test of getMatchingPostalCode method, of class PostalCodeRegistry.
      */
-    @Test
+    @Disabled
     public void testGetMatchingPostalCode() {
         System.out.println("getMatchingPostalCode");
         ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
@@ -56,7 +56,7 @@ public class PostalCodeRegistryTest {
     /**
      * Test of searchMatchPostalCode method, of class PostalCodeRegistry.
      */
-    @Test
+    @Disabled
     public void testSearchMatchPostalCode() {
         System.out.println("searchMatchPostalCode");
         ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");

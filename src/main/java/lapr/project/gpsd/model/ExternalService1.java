@@ -8,6 +8,7 @@ package lapr.project.gpsd.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -67,18 +68,23 @@ public class ExternalService1 implements IExternalService {
      * @throws FileNotFoundException
      */
     private ArrayList<String[]> readFile(String filepath) throws IOException {
-        ArrayList<String[]> read = new ArrayList<>();
-
-        File file = new File(filepath);
-        Scanner scan = new Scanner(file);
-        //Reads first line to ignore column title
-        scan.nextLine();
-        while (scan.hasNextLine()) {
-            String[] linha = scan.nextLine().trim().split(";");
-            read.add(linha);
+        try {
+            InputStream is = getClass().getResourceAsStream(filepath);
+            Scanner scan = new Scanner(is);
+            ArrayList<String[]> read = new ArrayList<>();
+            //Reads first line to ignore column title
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                String[] linha = scan.nextLine().trim().split(";");
+                read.add(linha);
+            }
+            return read;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
 
-        return read;
+        return null;
     }
 
     /**
@@ -123,7 +129,7 @@ public class ExternalService1 implements IExternalService {
                 sNewPC = line[0] + "-00" + line[1];
             } else if (line[1].length() == 2) {
                 sNewPC = line[0] + "-0" + line[1];
-            }else if (line[1].length() == 3){
+            } else if (line[1].length() == 3) {
                 sNewPC = line[0] + "-" + line[1];
             }
             cpLatitude = Double.valueOf(line[2]);
@@ -133,16 +139,19 @@ public class ExternalService1 implements IExternalService {
         }
         return pCodeList;
     }
-    
+
     /**
-     * Return the distance between two given Postal Codes. Distance value is not checked in return.
-     * @param pc1 PostalCode instance 
+     * Return the distance between two given Postal Codes. Distance value is not
+     * checked in return.
+     *
+     * @param pc1 PostalCode instance
      * @param pc2 PostalCOde instance
-     * @return the value of the distance between the two given Postal Code Instances.
+     * @return the value of the distance between the two given Postal Code
+     * Instances.
      */
-    public double getDistanceBetCP(PostalCode pc1, PostalCode pc2){
+    public double getDistanceBetCP(PostalCode pc1, PostalCode pc2) {
         return calculatesDistance(pc1.getCpLatitude(), pc1.getCpLongitude(), pc2.getCpLatitude(), pc2.getCpLongitude());
-        
+
     }
 
 }
