@@ -11,8 +11,7 @@ public class SortingRandom implements ISortingBehavior {
 
     /**
      * Modifies (sorts) the argument list in random order
-     * @param services
-     * @return 
+     * @param services 
      */
     @Override
     public void sortServiceList(List<ServiceRequestDescription> services) {

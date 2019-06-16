@@ -8,6 +8,14 @@ import org.apache.poi.ss.usermodel.*;
 
 public class ExportXLS {
 
+    /**
+     * 
+     * Exports data to a XLS file
+     * 
+     * @param filename filename
+     * @param line line to be written
+     * @param rowNumber row number of the sheet
+     */
     public static void export(String filename, String[] line, int rowNumber) {
         File file = new File(filename);
         if (!file.exists()) {

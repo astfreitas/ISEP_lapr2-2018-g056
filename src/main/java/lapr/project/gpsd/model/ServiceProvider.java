@@ -387,6 +387,12 @@ public class ServiceProvider {
         return spAvailabilityList.hasAvailability(schedule, duration);
     }
 
+    /**
+     * 
+     * Displays the SP info
+     * 
+     * @return sp info
+     */
     public String display() {
         return "Name: " + name
                 + "\nNIF: " + nif

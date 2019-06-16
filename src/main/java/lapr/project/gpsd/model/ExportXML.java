@@ -22,6 +22,13 @@ import org.xml.sax.SAXException;
 
 public class ExportXML {
 
+    /**
+     * 
+     * Exports data to a XML file
+     * 
+     * @param filename file name
+     * @param line line to be written on the file
+     */
     public static void export(String filename, String[] line) {
         try {
 

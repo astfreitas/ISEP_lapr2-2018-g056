@@ -4,9 +4,20 @@ public class AdapterCSV implements FileType {
 
     private final String adapterFileType = "csv";
 
+    /**
+     * 
+     * Creates an instance of AdapterCSV
+     * 
+     */
     public AdapterCSV() {
     }
 
+    /**
+     * 
+     * Returns the file type
+     * 
+     * @return File type
+     */
     @Override
     public String toString() {
         return this.adapterFileType;

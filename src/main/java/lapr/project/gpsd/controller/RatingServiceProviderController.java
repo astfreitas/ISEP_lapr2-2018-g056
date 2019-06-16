@@ -105,7 +105,7 @@ public class RatingServiceProviderController {
      * 
      * Gets the Service Request
      * 
-     * @return 
+     * @return Service Request
      */
     public ServiceRequest getServiceRequest(){
         return this.servOrder.getServiceRequest();

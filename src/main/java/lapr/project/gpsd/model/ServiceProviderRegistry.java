@@ -24,10 +24,10 @@ public class ServiceProviderRegistry {
     /**
      * Creates new Address instance
      *
-     * @param local
-     * @param postalCode
-     * @param address
-     * @return Address
+     * @param local local
+     * @param postalCode postal code
+     * @param address address
+     * @return Address address
      */
     public Address newAddress(String local, String postalCode, String address) {
         return new Address(local, postalCode, address);
@@ -49,7 +49,7 @@ public class ServiceProviderRegistry {
      * Checks the registry if the Service Provider is already present in the
      * registry
      *
-     * @param sp
+     * @param sp service provider
      * @return True/false if the Service provider is/isn't validated
      */
     public boolean validateServiceProvider(ServiceProvider sp) {
@@ -193,7 +193,7 @@ public class ServiceProviderRegistry {
     /**
      * Returns a list of the average rating for each service provider
      *
-     * @return
+     * @return the average rating of all SPs
      */
     public List<Double> getAverageRatings() {
         List<Double> averageRatings = new ArrayList<>();
@@ -206,8 +206,8 @@ public class ServiceProviderRegistry {
     /**
      * Generates abreviated name from SP's name
      *
-     * @param spName
-     * @return
+     * @param spName SP name
+     * @return SP abrev name
      */
     public String genAbrevName(String spName) {
         String abrev = "";

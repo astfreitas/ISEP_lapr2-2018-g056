@@ -16,10 +16,17 @@ public class SPCategoryList {
 
     private List<Category> categorylist;
 
+    /**
+     * Creates an instance of SPCategoryList
+     */
     public SPCategoryList() {
         this.categorylist = new ArrayList<>();
     }
 
+    /**
+     * Returns the SPCategoryList
+     * @return SPCategoryList
+     */
     public List<Category> getCategorylist() {
         return categorylist;
     }
@@ -37,6 +44,11 @@ public class SPCategoryList {
         return true;
     }
 
+    /**
+     * Adds a category to the list
+     * @param cat category
+     * @return success of the operation
+     */
     public boolean addCategory(Category cat) {
         if (validateCategory(cat)) {
             return categorylist.add(cat);
@@ -53,6 +65,10 @@ public class SPCategoryList {
         categorylist.remove(cat);
     }
 
+    /**
+     * Gets the SPCategoryList info
+     * @return SPCategoryList info
+     */
     @Override
     public String toString() {
         String text = "";

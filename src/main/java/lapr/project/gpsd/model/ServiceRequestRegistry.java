@@ -15,7 +15,7 @@ public class ServiceRequestRegistry {
     /**
      * Method returns the list of service requests
      *
-     * @return List<ServiceRequest> containing all the service requests in the
+     * @return List containing all the service requests in the
      * company
      */
     public List<ServiceRequest> getServiceRequests() {

@@ -82,6 +82,12 @@ public class PostalCode {
         this.cpLongitude = cpLongitude;
     }
 
+    /**
+     * 
+     * Gets the postal code info
+     * 
+     * @return postal code info
+     */
     @Override
     public String toString() {
         return postalCode;

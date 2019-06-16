@@ -59,6 +59,13 @@ public class ExtendableService extends Service {
         return false;
     }
 
+    /**
+     * 
+     * Checks in ExtendableService has more attributes
+     * 
+     * @param attribute More attributes
+     * @return False
+     */
     @Override
     public boolean hasAttribute(String attribute) {
         return false;

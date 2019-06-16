@@ -258,6 +258,12 @@ public class SPApplication {
         return this.applicationStatus.getSPApplicationStatus().equalsIgnoreCase(ACCEPTED_APPLICATION);
     }
 
+    /**
+     * 
+     * Returns the SPApplication info
+     * 
+     * @return SPApplication info
+     */
     @Override
     public String toString() {
         String str = String.format("Name: %s \nNIF: %s \nTelephone: %s \nEmail: %s \nAddress: %s", name, NIF, phone, email, address);

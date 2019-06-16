@@ -17,12 +17,11 @@ public abstract class Service implements ServiceCostCalculation {
     /**
      * service constructor with 5 parameters
      *
-     * @param id
-     * @param briefDescription
-     * @param fullDescription
-     * @param hourlyCost
-     * @param costHour
-     * @param category
+     * @param id Service id
+     * @param briefDescription brief description
+     * @param fullDescription full description
+     * @param hourlyCost hourly cost
+     * @param category category
      *
      */
     public Service(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {
@@ -112,6 +111,11 @@ public abstract class Service implements ServiceCostCalculation {
         this.category = category;
     }   
     
+    /**
+     * 
+     * Creates an hashcode with the id
+     * @return hashcode
+     */
     @Override
     public int hashCode() {
         int hash = 7;

@@ -99,6 +99,10 @@ public class SPAvailabilityList {
         return addAvailability(availability);
     }
 
+    /**
+     * Returns the Availability List
+     * @return Availability List
+     */
     public List<Availability> getAvailabilityList() {
         return availabilityList;
     }

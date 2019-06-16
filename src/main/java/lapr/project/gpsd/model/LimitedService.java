@@ -59,6 +59,13 @@ public class LimitedService extends Service {
         return false;
     }
 
+    /**
+     * 
+     * Checks if the LimitedService has a certain attribute
+     * 
+     * @param attribute Attribute
+     * @return False
+     */
     @Override
     public boolean hasAttribute(String attribute) {
         return false;

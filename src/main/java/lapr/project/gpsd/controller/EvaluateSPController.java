@@ -107,7 +107,7 @@ public class EvaluateSPController {
      *
      * Gets the Standard Deviation of the ratings of all Service Providers
      *
-     * @return
+     * @return Standard Deviation of the ratings of all Service Providers
      */
     public double getPopulationStdDeviation() {
         return sps.getPopulationStdDeviation();

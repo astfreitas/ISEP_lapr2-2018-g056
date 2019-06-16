@@ -148,6 +148,12 @@ public class ServiceAssignment {
         return serviceProvider.getClassification();
     }
 
+    /**
+     * 
+     * Returns the Service Assignment info
+     * 
+     * @return Service Assignment info
+     */
     @Override
     public String toString() {
         return "Service " + serviceRequestDescription.getDescription() 

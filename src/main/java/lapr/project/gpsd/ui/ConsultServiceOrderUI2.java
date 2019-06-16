@@ -92,7 +92,7 @@ public class ConsultServiceOrderUI2 implements Initializable {
     /**
      * Sets the local ConsultServiceOrderUI with the instance to the main UI.
      *
-     * @param consultServOrderUI
+     * @param consultServOrderUI consultServOrderUI
      */
     public void setConsultServOrderUI(ConsultServiceOrderUI consultServOrderUI) {
         this.consultServOrderUI = consultServOrderUI;

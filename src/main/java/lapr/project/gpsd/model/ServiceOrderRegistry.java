@@ -70,6 +70,13 @@ public class ServiceOrderRegistry {
         return servOrderByClient;
     }
 
+    /**
+     * Gets Service Orders given to a certain SP and at a given date
+     * @param sDate Start date
+     * @param eDate Ending date
+     * @param sp Service Provider
+     * @return List of Service Orders
+     */
     public ArrayList<ServiceOrder> getServiceOrderByDateAndSP(LocalDate sDate, LocalDate eDate, ServiceProvider sp) {
         ArrayList<ServiceOrder> servOrderByDate = new ArrayList<>();
         for (ServiceOrder servOrder : serviceOrders) {
@@ -150,6 +157,14 @@ public class ServiceOrderRegistry {
         return !serviceOrders.contains(serviceOrder);
     }
 
+    /**
+     * 
+     * Exports the Service Orders to a file
+     * 
+     * @param servOrdList Service Orders to export
+     * @param filename file name
+     * @param adapter file type adapter
+     */
     public void exportData(List<ServiceOrder> servOrdList, String filename, FileType adapter) {
         // write header
         String[] header = {"ClientName", "ClientEmail", "SchedPrefDay", "SchePrefTime", "Category", "Service"};

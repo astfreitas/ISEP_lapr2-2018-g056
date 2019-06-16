@@ -6,6 +6,12 @@ public class ProfessionalCompetence {
 
     private String description;
 
+    /**
+     * 
+     * Creates and instance of ProfessionalCompetence
+     * 
+     * @param description Description of the ProfessionalCompetence
+     */
     public ProfessionalCompetence(String description) {
         if ((description == null) || (description.isEmpty())){
             throw new IllegalArgumentException("None of the arguments can be null or empty.");
@@ -13,14 +19,32 @@ public class ProfessionalCompetence {
         this.description = description;
     }
 
+    /**
+     * 
+     * Gets the ProfessionalCompetence description
+     * 
+     * @return 
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * 
+     * Sets the ProfessionalCompetence description
+     * 
+     * @param description ProfessionalCompetence description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * 
+     * Gets the ProfessionalCompetence info
+     * 
+     * @return ProfessionalCompetence info
+     */
     @Override
     public String toString() {
         return "Description: " + description;

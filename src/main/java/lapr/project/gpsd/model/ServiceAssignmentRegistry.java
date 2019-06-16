@@ -9,14 +9,27 @@ public class ServiceAssignmentRegistry {
 
     List<ServiceAssignment> serviceAssignments;
 
+    /**
+     * 
+     * Creates an instance of ServiceAssignmentRegistry
+     */
     public ServiceAssignmentRegistry() {
         this.serviceAssignments = new ArrayList<>();
     }
 
+    /**
+     * Returns the Service Assignments
+     * @return 
+     */
     public List<ServiceAssignment> getServiceAssignments() {
         return this.serviceAssignments;
     }
 
+    /**
+     * Adds a Service Assignment to the registry
+     * @param sa Service Assignment
+     * @return the success of the operation
+     */
     public boolean addServiceAssignment(ServiceAssignment sa) {
         return this.serviceAssignments.add(sa);
     }

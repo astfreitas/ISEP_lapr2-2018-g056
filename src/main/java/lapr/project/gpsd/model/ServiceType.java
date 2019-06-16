@@ -14,9 +14,9 @@ public class ServiceType {
     /**
      * constructor with 2 parameters
      *
-     * @param id
-     * @param name
-     * @param path
+     * @param id id 
+     * @param name name
+     * @param path path
      */
     public ServiceType(String id, String name, String path) {
         try {
@@ -41,7 +41,7 @@ public class ServiceType {
     /**
      * checks if the type name has idType, returning a boolean
      *
-     * @param typeName
+     * @param typeName type name
      * @return true or false
      */
     public boolean hasId(String typeName) {
@@ -51,11 +51,11 @@ public class ServiceType {
     /**
      * method to create new service with 5 parameters
      *
-     * @param id
-     * @param briefDescription
-     * @param fullDescription
-     * @param hourlyCost
-     * @param category
+     * @param id id 
+     * @param briefDescription brief Description
+     * @param fullDescription full Description
+     * @param hourlyCost hourly Cost
+     * @param category category
      * @return service instance
      */
     public Service newService(String id, String briefDescription, String fullDescription, double hourlyCost, Category category) {

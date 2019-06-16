@@ -201,30 +201,61 @@ public class ServiceRequest {
         return true;
     }
 
+    
+    /**
+     * Gets the service request number
+     * 
+     * @return service request number
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Gets the service total cost
+     * @return service total cost
+     */
     public double getTotal() {
         return total;
     }
 
+    /**
+     * 
+     * Gets the service request address
+     * @return service request address
+     */
     public Address getAddress() {
         return address;
     }
 
+    /**
+     * Gets all the service descriptions
+     * @return all the service descriptions
+     */
     public List<ServiceRequestDescription> getServiceRequestDescriptions() {
         return serviceRequestDescriptions;
     }
 
+    /**
+     * Gets all the schedule preferences
+     * @return all the schedule preferences
+     */
     public ArrayList<SchedulePreference> getSchedulePreferences() {
         return schedulePreferences;
     }
 
+    /**
+     * Gets all the other costs
+     * @return other costs
+     */
     public ArrayList<OtherCost> getOtherCosts() {
         return otherCosts;
     }
 
+    /**
+     * Checks if a service is fully assigned
+     * @return true if the service is fully assigned
+     */
     public boolean fullyAssigned() {
         for (ServiceRequestDescription srd : serviceRequestDescriptions) {
             if (!srd.isAssigned()) {
@@ -234,6 +265,10 @@ public class ServiceRequest {
         return true;
     }
 
+    /**
+     * Gets the travel expenses
+     * @return travel expenses
+     */
     public double getTravelExpenses() {
         GeographicAreaRegistry rag = ApplicationGPSD.getInstance().getCompany().getGeographicAreaRegistry();
         PostalCode pc = address.getPostalCode();

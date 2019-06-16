@@ -209,6 +209,10 @@ public final class ServiceProviderStatistics {
         return getAverage(vals);
     }
 
+    /**
+     * Gets the SP ratings
+     * @return SP ratings
+     */
     public List<Integer> getSpRatings() {
         return spRatings;
     }
