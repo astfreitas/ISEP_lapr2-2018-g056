@@ -165,7 +165,10 @@ public class Availability {
         }
         return false;
     }
-
+    /**
+     * Returns a description of Availability by string
+     * @return availability description by string with date and start/end Time
+     */
     @Override
     public String toString() {
         return "Date: " + date + "\n" + "Start time: " + sTime + "\n" + "End time: " + eTime + "\n";
