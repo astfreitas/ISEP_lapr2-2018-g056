@@ -7,19 +7,11 @@ package lapr.project.gpsd.controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 import lapr.project.gpsd.model.*;
 import lapr.project.gpsd.utils.Constants;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertArrayEquals;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class AcceptServiceRequestControllerTest {
@@ -111,7 +103,6 @@ public class AcceptServiceRequestControllerTest {
         System.out.println("rejectServiceAssignment");
         ApplicationGPSD.getInstance().doLogin("msantos@gmail.com", "prosdbsts190");
         AcceptServiceRequestController instance = new AcceptServiceRequestController();
-        System.out.println("YOU MUST BE KIDDING2 " + instance.checkAssignedServiceRequests().size());
         int expResult = instance.checkAssignedServiceRequests().size() - 1;
         int serviceNumber = instance.checkAssignedServiceRequests().get(0);
         instance.checkServiceAssignments(serviceNumber);

@@ -3,22 +3,18 @@ package lapr.project.gpsd.ui;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import lapr.project.gpsd.model.Category;
 import lapr.project.gpsd.model.Service;
 import lapr.project.gpsd.utils.Constants;
@@ -34,8 +30,6 @@ public class CreateServiceRequestUI3 implements Initializable {
     private Button addServiceBtn;
     @FXML
     private ComboBox<Category> categoryComboBox;
-    
-    //private ListView<Service> serviceListView;
     @FXML
     private TextArea descriptionTextArea;
     @FXML
@@ -44,6 +38,8 @@ public class CreateServiceRequestUI3 implements Initializable {
     private ComboBox<String> minuteComboBox;
     @FXML
     private ComboBox<Service> serviceComboBox;
+    @FXML
+    private Label servDescLbl;
     
     /**
      * Initializes the controller class.
@@ -137,10 +133,6 @@ public class CreateServiceRequestUI3 implements Initializable {
             }
         });
         
-        
-        
-        
-
         categoryComboBox.getItems().clear();
         categoryComboBox.getItems().addAll(categories);
         categoryComboBox.getSelectionModel().selectFirst();
@@ -209,7 +201,7 @@ public class CreateServiceRequestUI3 implements Initializable {
     @FXML
     private void handleCategoryComBox(ActionEvent event) {
         refreshServiceList();
-
+        servDescLbl.setText("");
     }
 
     @FXML
@@ -221,7 +213,10 @@ public class CreateServiceRequestUI3 implements Initializable {
             hourComboBox.setDisable(false);
             minuteComboBox.setDisable(false);
         }
-        
+        if(!serviceComboBox.getSelectionModel().isEmpty()) {
+            Service service = serviceComboBox.getSelectionModel().getSelectedItem();
+            servDescLbl.setText(service.getFullDescription());
+        }
     }
     
     private boolean serviceHasDeterminedDuration() {
