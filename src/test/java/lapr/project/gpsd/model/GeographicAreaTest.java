@@ -22,6 +22,64 @@ public class GeographicAreaTest {
         String result = instance.getGeoId();
         assertEquals(expResult, result);
     }
+    
+     /**
+     * Test of equals method, of class GeographicArea.
+     */
+    @Test
+    public void testEquals_False() {
+        System.out.println("getGeoId");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("GeoaDes", 50, 2500, "4000-007", exService, pcReg);
+        Client cli = new Client("name", "nif", "tel", "mail");
+        boolean result = instance.equals(cli);
+        
+        assertFalse(result);
+    }
+    
+     /**
+     * Test of equals method, of class GeographicArea.
+     */
+    @Test
+    public void testCheckLocationsForPC_False() {
+        System.out.println("getGeoId");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        GeographicArea instance = new GeographicArea("GeoaDes", 50, 2500, "4000-007", exService, pcReg);
+        PostalCode pc = new PostalCode("3800-000", 20.001, 10.222);
+        boolean result = instance.checkLocationsForPC(pc);
+
+        assertFalse(result);
+    }
+       
+    /**
+     * Test of GeographicArea constructor, of class GeographicArea.
+     */
+    @Test
+    public void testGeoAreaConstructor_Negativ1() {
+        System.out.println("testGeoAreaConstructor_Null");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        
+        assertThrows(IllegalArgumentException.class, () -> {
+            GeographicArea instance = new GeographicArea("dadads","daa", -10, 2500, "4000-007", exService, pcReg);
+        });
+    }
+    
+    /**
+     * Test of GeographicArea constructor, of class GeographicArea.
+     */
+    @Test
+    public void testGeoAreaConstructor_Negative() {
+        System.out.println("testGeoAreaConstructor_Null");
+        ExternalService1 exService = new ExternalService1("src/main/resources/testFiles/codigos_postaisTest.csv");
+        PostalCodeRegistry pcReg = new PostalCodeRegistry();
+        
+        assertThrows(IllegalArgumentException.class, () -> {
+            GeographicArea instance = new GeographicArea("GeoaDes", -10, -10, "4000-007", exService, pcReg);
+        });
+    }
 
     /**
      * Test of getGeoId method, of class GeographicArea.
