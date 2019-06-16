@@ -105,19 +105,8 @@ public class ServiceRegistry {
      * @param serviceRequest the instance of the service reqeusted by the client.
      * @return true of the service request
      */
-    public boolean validateRequest(ServiceRequest serviceRequest) {
-        
+    public boolean validateRequest(ServiceRequest serviceRequest) {        
         serviceRequest.calculateCost();
-        
-        return verifyRequest(serviceRequest);
-    }
-    
-    /**
-     * Checks if the service request has all the necessary data
-     * @param serviceRequest
-     * @return true if the service is valid
-     */
-    private boolean verifyRequest(ServiceRequest serviceRequest) {        
         return serviceRequest.validate();
     }
 }
