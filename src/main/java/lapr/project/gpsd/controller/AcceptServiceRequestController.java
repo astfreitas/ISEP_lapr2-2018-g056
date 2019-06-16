@@ -45,11 +45,7 @@ public class AcceptServiceRequestController {
      */
     public List<Integer> checkAssignedServiceRequests() {
         List<Integer> serviceIDS = new ArrayList();
-        try {
-            serviceIDS = servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        serviceIDS = servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
         return serviceIDS;
     }
 
@@ -60,14 +56,9 @@ public class AcceptServiceRequestController {
      * @return a list of service assignments for a given ServiceRequest
      */
     public List<ServiceAssignment> checkServiceAssignments(int serviceNumber) {
-        try {
-            ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);
-            sRequestAssignments = serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
-            return sRequestAssignments;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
+        ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);
+        sRequestAssignments = serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
+        return sRequestAssignments;
     }
 
     /**
