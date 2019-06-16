@@ -236,18 +236,40 @@ public class Company {
         return externalService;
     }
 
+    /**
+     * 
+     * Returns the sorting behaviour
+     * 
+     * @return Sorting behaviour
+     */
     public ISortingBehavior getServiceSortingBehavior() {
         return serviceSortingBehavior;
     }
 
+    /**
+     * 
+     * Gets the company's designation
+     * 
+     * @return company's designation
+     */
     public String getDesignation() {
         return designation;
     }
 
+    /**
+     * 
+     * Creates the instances of the supportes file types
+     * 
+     */
     private void createFileTypes() {
         fileTypeRegistry.createSupportedFileTypes(props);
     }
 
+    /**
+     * 
+     * Creates the instances of the supportes service types
+     * 
+     */
     private void createServiceTypes() {
         serviceTypeRegistry.createSupportedServiceTypes(props);
 

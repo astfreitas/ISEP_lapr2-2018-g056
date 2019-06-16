@@ -48,7 +48,7 @@ public class AddNewAddressToClientController {
     /**
      * Register address to Client's Address list
      *
-     * @return
+     * @return The success of the operation
      */
     public boolean registerAddress() {
         return cli.addAddress(address);

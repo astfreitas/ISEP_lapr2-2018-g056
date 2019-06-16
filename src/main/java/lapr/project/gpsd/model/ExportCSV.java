@@ -6,6 +6,13 @@ import java.io.IOException;
 
 public class ExportCSV {
 
+    /**
+     * 
+     * Exports data to a csv file
+     * 
+     * @param filename file name and path
+     * @param line data to be written
+     */
     public static void export(String filename, String[] line) {
         CSVWriter csvWriter = null;
         FileWriter writer = null;
