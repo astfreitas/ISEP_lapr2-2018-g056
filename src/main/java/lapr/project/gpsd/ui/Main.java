@@ -27,7 +27,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         ApplicationGPSD.getInstance().getCompany();
-        ApplicationGPSD.getInstance().bootstrap();
+        //ApplicationGPSD.getInstance().bootstrap();
         new File("./src/main/resources/exportedFiles/").mkdir();
         this.stage = stage;
         this.stage.setTitle("GPSD Application");
