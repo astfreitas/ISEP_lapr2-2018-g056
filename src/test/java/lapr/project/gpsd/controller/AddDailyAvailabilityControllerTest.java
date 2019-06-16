@@ -9,17 +9,18 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class AddDailyAvailabilityControllerTest {
-    
+
     public AddDailyAvailabilityControllerTest() {
-        ApplicationGPSD.getInstance().bootstrap();
-        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");        
+
     }
-    
+
     /**
      * Test of newAvailability method, of class AddDailyAvailabilityController.
      */
     @Test
     public void testNewAvailability_3args() {
+        ApplicationGPSD.getInstance().bootstrap();
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");
         System.out.println("newAvailability");
         LocalDate date = LocalDate.of(2020, 6, 5);
         LocalTime sTime = LocalTime.of(11, 0);
@@ -35,6 +36,8 @@ public class AddDailyAvailabilityControllerTest {
      */
     @Test
     public void testNewAvailability_5args() {
+        ApplicationGPSD.getInstance().bootstrap();
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");
         System.out.println("newAvailability");
         LocalDate date = LocalDate.of(2020, 6, 5);
         LocalTime sTime = LocalTime.of(11, 0);
@@ -52,6 +55,8 @@ public class AddDailyAvailabilityControllerTest {
      */
     @Test
     public void testClearAvalList() {
+        ApplicationGPSD.getInstance().bootstrap();
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");
         System.out.println("clearAvalList");
         LocalDate date = LocalDate.of(2020, 6, 5);
         LocalTime sTime = LocalTime.of(11, 0);
@@ -65,10 +70,13 @@ public class AddDailyAvailabilityControllerTest {
     }
 
     /**
-     * Test of registerAvailability method, of class AddDailyAvailabilityController.
+     * Test of registerAvailability method, of class
+     * AddDailyAvailabilityController.
      */
     @Test
     public void testRegisterAvailability() {
+        ApplicationGPSD.getInstance().bootstrap();
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");
         System.out.println("registerAvailability");
         LocalDate date = LocalDate.of(2020, 6, 5);
         LocalTime sTime = LocalTime.of(11, 0);
@@ -86,6 +94,8 @@ public class AddDailyAvailabilityControllerTest {
      */
     @Test
     public void testGetAvalList() {
+        ApplicationGPSD.getInstance().bootstrap();
+        ApplicationGPSD.getInstance().doLogin("10001@companylda.com", "password");
         System.out.println("testGetAvalList");
         AddDailyAvailabilityController instance = new AddDailyAvailabilityController();
         int expResult = 0;
