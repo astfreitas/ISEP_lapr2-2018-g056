@@ -14,10 +14,23 @@ public class AssignmentAlgoritm1 implements IAssignmentAlgoritm {
     ServiceRequestRegistry requestRegistry;
     IExternalService externalService;
 
+    /**
+     * 
+     * Creates an instance of AssignmentAlgoritm1
+     * 
+     */
     public AssignmentAlgoritm1() {
 
     }
 
+    /**
+     * 
+     * Assigns Services to Service Providers
+     * 
+     * @param services
+     * @param sortingBehavior
+     * @return 
+     */
     @Override
     public List<ServiceAssignment> assignServices(List<ServiceRequestDescription> services, ISortingBehavior sortingBehavior) {
         this.company = ApplicationGPSD.getInstance().getCompany();
