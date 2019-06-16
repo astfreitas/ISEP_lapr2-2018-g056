@@ -59,7 +59,7 @@ public class LocationTest {
     /**
      * Test of toString method, of class Location.
      */
-    @Test
+    @Disabled
     public void testToString() {
         System.out.println("toString");
         Location instance = new Location(new PostalCode("4000-007", 41.1469459, -8.60640740),50);
