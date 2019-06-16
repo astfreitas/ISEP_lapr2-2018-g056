@@ -42,9 +42,9 @@ public class ConsultServiceOrderControllerTest {
         LocalDate sDate = LocalDate.parse("2019-06-01");
         LocalDate eDate = LocalDate.parse("2019-06-30");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
-        int expResult = 1;
-        ArrayList<ServiceOrder> resultList = instance.getServiceOrderByDateAndSP(sDate, eDate);
-        int result = resultList.size();
+        String expResult = "10001@companylda.com";
+        ServiceOrder so = instance.getServiceOrderByDateAndSP(sDate, eDate).get(0);
+        String result = so.getServiceProvider().getEmail();
         assertEquals(expResult, result);
     }
 

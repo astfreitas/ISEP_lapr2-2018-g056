@@ -27,19 +27,19 @@
                   <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" />
-                        <TextField fx:id="designationText" />
+                        <TextField fx:id="designationText" onKeyPressed="#handleKeyNewGeo" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="60.0" prefWidth="200.0" spacing="5.0">
+                  <HBox prefHeight="60.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Area of action (radius)" />
-                        <TextField fx:id="radiusText" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Area of action (radius in meters)" wrappingWidth="100.0" />
+                        <TextField fx:id="radiusText" onKeyPressed="#handleKeyNewGeo" />
                      </children>
                   </HBox>
                   <HBox prefHeight="60.0" prefWidth="200.0" spacing="60.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Cost" />
-                        <TextField fx:id="costText" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Cost (€)" />
+                        <TextField fx:id="costText" onKeyPressed="#handleKeyNewGeo" />
                      </children>
                   </HBox>
                   <HBox prefHeight="90.0" prefWidth="200.0" />
@@ -53,14 +53,14 @@
                   <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Postal Code" />
-                        <TextField fx:id="postalCodeText" prefWidth="120.0" />
+                        <TextField fx:id="postalCodeText" onKeyPressed="#handleEnterKey" prefWidth="120.0" />
                         <Button fx:id="searchPostalCodeButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Search" />
                      </children>
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </HBox>
-                  <ListView fx:id="listViewCP" prefHeight="200.0" prefWidth="200.0">
+                  <ListView fx:id="listViewCP" onKeyPressed="#handleKeyNewGeo" prefHeight="200.0" prefWidth="200.0">
                      <padding>
                         <Insets right="10.0" />
                      </padding></ListView>
