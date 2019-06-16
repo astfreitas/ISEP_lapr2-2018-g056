@@ -58,6 +58,7 @@ public class SpecifyGeographicAreaUI2 implements Initializable {
     private void handleConfirmBut(ActionEvent event) {
         try {
             if (this.specifyGeographicAreaUI.getController().registerGeographicArea()) {
+                UIUtils.createAlertWait("The new Geographic Area was registed with sucess.\n", "Success", Alert.AlertType.INFORMATION);
                 specifyGeographicAreaUI.getMainMenu().backToMainMenu();
             } else {
                 UIUtils.createAlert("Error creating Geographic Area", "", Alert.AlertType.ERROR);
