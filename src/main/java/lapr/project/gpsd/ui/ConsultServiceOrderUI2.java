@@ -140,7 +140,8 @@ public class ConsultServiceOrderUI2 implements Initializable {
                 FileType selectedFileType = (FileType) dialog.getResult();
                 if (consultServOrderUI.getController().exportServiceOrdersByFileType(selectedFileType)) {
                     String filePath = consultServOrderUI.getController().getFilePath();
-                    UIUtils.createAlertWait("Export Service Orders Completed.\nFile exported to: "+ filePath, "Export Confirmation", Alert.AlertType.INFORMATION);
+//                    UIUtils.createAlertWait("Export Service Orders Completed.\nFile exported to: " + filePath, "Export Confirmation", Alert.AlertType.INFORMATION);
+                    UIUtils.createAlertWait("Export Service Orders Completed.\nFile exported to:\n" + filePath, "Export Confirmation", Alert.AlertType.INFORMATION);
                     consultServOrderUI.getMainMenu().backToMainMenu();
                 } else {
                     UIUtils.createAlert("Error occured during the export of Service Orders", "Export Error", Alert.AlertType.ERROR);
