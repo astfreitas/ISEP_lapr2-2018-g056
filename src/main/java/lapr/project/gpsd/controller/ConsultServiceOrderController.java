@@ -109,7 +109,7 @@ public class ConsultServiceOrderController {
      */
     public boolean exportServiceOrdersByFileType(FileType fileType) {
         FileType adapter = this.fileTypeRegistry.getExportAdapterByFileType(fileType);
-        this.filePath= "./src/main/resources/exportedFiles/" + sp.getNumber() + "_" + sDate.toString() + "_" + eDate.toString() + "." + fileType.toString();
+        this.filePath= "./exportedFiles/" + sp.getNumber() + "_" + sDate.toString() + "_" + eDate.toString() + "." + fileType.toString();
 
         sor.exportData(servOrderList, this.filePath, adapter);
 
