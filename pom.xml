@@ -191,6 +191,7 @@
                 <configuration>
                     <archive>
                         <manifest>
+                            <mainClass>lapr.project.gpsd.ui.Main</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
