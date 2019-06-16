@@ -120,7 +120,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Test
+    @Disabled
     public void testExportServiceOrdersByFileType_CSV() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
@@ -138,7 +138,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Test
+    @Disabled
     public void testExportServiceOrdersByFileType_XML() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
@@ -156,7 +156,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Test
+    @Disabled
     public void testExportServiceOrdersByFileType_XLS() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
