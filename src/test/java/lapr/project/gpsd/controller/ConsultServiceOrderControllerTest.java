@@ -120,7 +120,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Disabled
+    @Test
     public void testExportServiceOrdersByFileType_CSV() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
@@ -138,7 +138,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Disabled
+    @Test
     public void testExportServiceOrdersByFileType_XML() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
@@ -156,7 +156,7 @@ public class ConsultServiceOrderControllerTest {
      * Test of exportServiceOrdersByFileType method, of class
      * ConsultServiceOrderController.
      */
-    @Disabled
+    @Test
     public void testExportServiceOrdersByFileType_XLS() {
         System.out.println("exportServiceOrdersByFileType - CSV");
         ConsultServiceOrderController instance = new ConsultServiceOrderController();
@@ -183,7 +183,7 @@ public class ConsultServiceOrderControllerTest {
         LocalDate eDate = LocalDate.parse("2019-05-30");
         FileType fileType = fileList.get(0);
         ArrayList<ServiceOrder> servOrderList = instance.getServiceOrderByDateAndSP(sDate, eDate);
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = instance.exportServiceOrdersByFileType(fileType);
         assertEquals(expResult, result);
     }

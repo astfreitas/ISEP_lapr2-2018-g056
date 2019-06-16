@@ -114,7 +114,7 @@ public class ConsultServiceOrderController {
         sor.exportData(servOrderList, this.filePath, adapter);
 
         File file = new File(this.filePath);
-        return file.exists();
+        return file.getAbsoluteFile().exists();
     }
 
     /**
