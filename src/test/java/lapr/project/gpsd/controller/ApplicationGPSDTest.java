@@ -83,7 +83,7 @@ public class ApplicationGPSDTest {
     /**
      * Test of bootstrap method, of class ApplicationGPSD.
      */
-    @Test
+    @Disabled
     public void testBootstrap() {
         System.out.println("bootstrap");
         ApplicationGPSD instance = new ApplicationGPSD();
