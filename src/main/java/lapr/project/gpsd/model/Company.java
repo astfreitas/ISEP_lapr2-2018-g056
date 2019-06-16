@@ -264,6 +264,8 @@ public class Company {
             this.postalCodeRegistry.setPostalCodeList(this.externalService.loadPostalCodeList());
         } catch (Exception ex) {
             System.out.println("Error creating postal codes. Verify ExternalService.");
+            System.out.println("Fatal error. Exiting program.");
+            System.exit(1);
         }
 
     }
@@ -276,8 +278,9 @@ public class Company {
             String filepathPostalCodes = props.getProperty(Constants.PARAMS_FILE_POSTAL_CODES);
             externalService = (IExternalService) Class.forName("lapr.project.gpsd.model." + props.getProperty(Constants.PARAMS_EXTERNAL_SERVICE)).getConstructor(String.class).newInstance(filepathPostalCodes);
         } catch (Exception ex) {
-            System.out.println("Error creating External Services. See configuration file.");
-
+            System.out.println("Error creating External Service. See configuration file.");
+            System.out.println("Fatal error. Exiting program.");
+            System.exit(1);
         }
     }
 

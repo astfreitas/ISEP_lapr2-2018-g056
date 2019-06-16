@@ -14,4 +14,13 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-build fat jar</actionName>
+            <displayName>build fat jar</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>build</goal>
+                <goal>assembly:single</goal>
+            </goals>
+        </action>
     </actions>
