@@ -142,7 +142,7 @@ public class RegisterServiceProviderControllerTest {
     /**
      * Test of addCategory method, of class RegisterServiceProviderController.
      */
-    @Disabled
+    @Test
     public void testAddCategory_False() {
         System.out.println("addCategory_False");
         String catId = "4A";
@@ -151,11 +151,13 @@ public class RegisterServiceProviderControllerTest {
         company.getSPApplicationRegistry().registerApplication(app);
         instance.getApplicationData("4A");
         instance.newServiceProvider("4A", "4A", "4000-007", "4A");
-        ServiceProvider sp = company.getServiceProviderRegistry().getServiceProviderByEmail("4A");
+        instance.registerServiceProvider();
+        ServiceProvider sp = company.getServiceProviderRegistry().getServiceProviderByNif("4A");
         Category cat1 = new Category("4A", "4A");
+        company.getCategoryRegistry().addCategory(cat1);
         sp.addCategory(cat1);
         boolean expResult = false;
-        boolean result = instance.addCategory(catId);
+        boolean result = instance.addCategory(null);
         assertEquals(expResult, result);
     }
 
@@ -171,6 +173,7 @@ public class RegisterServiceProviderControllerTest {
         company.getSPApplicationRegistry().registerApplication(app);
         instance.getApplicationData("4B");
         instance.newServiceProvider("4B", "4B", "4000-007", "4B");
+        instance.registerServiceProvider();
         Category cat1 = new Category("4B", "4B");
         company.getCategoryRegistry().addCategory(cat1);
         boolean expResult = true;
@@ -182,46 +185,69 @@ public class RegisterServiceProviderControllerTest {
      * Test of getGeographicAreas method, of class
      * RegisterServiceProviderController.
      */
-    @Disabled
+    @Test
     public void testGetGeographicAreas() {
         System.out.println("getGeographicAreas");
         RegisterServiceProviderController instance = new RegisterServiceProviderController();
-        List<GeographicArea> expResult = null;
+        List<GeographicArea> expResult = company.getGeographicAreaRegistry().getGeographicAreas();
         List<GeographicArea> result = instance.getGeographicAreas();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getSPGeographicAreas method, of class
      * RegisterServiceProviderController.
      */
-    @Disabled
+    @Test
     public void testGetSPGeographicAreas() {
         System.out.println("getSPGeographicAreas");
         RegisterServiceProviderController instance = new RegisterServiceProviderController();
-        List<GeographicArea> expResult = null;
+        SPApplication app = new SPApplication("5A", "5A", "5A", "5A");
+        company.getSPApplicationRegistry().registerApplication(app);
+        instance.getApplicationData("5A");
+        instance.newServiceProvider("5A", "5A", "4000-007", "5A");
+        instance.registerServiceProvider();
+        ServiceProvider sp = company.getServiceProviderRegistry().getServiceProviderByNif("5A");
+        List<GeographicArea> expResult = sp.getSpGeoAreaList().getGeoAreaList();
         List<GeographicArea> result = instance.getSPGeographicAreas();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of addGeographicArea method, of class
      * RegisterServiceProviderController.
      */
-    @Disabled
-    public void testAddGeographicArea() {
-        System.out.println("addGeographicArea");
-        String geoId = "";
+    @Test
+    public void testAddGeographicArea_True() {
+        System.out.println("addGeographicArea_True");
+        SPApplication app = new SPApplication("6A", "6A", "6A", "6A");
+        company.getSPApplicationRegistry().registerApplication(app);
         RegisterServiceProviderController instance = new RegisterServiceProviderController();
-        boolean expResult = false;
+        instance.getApplicationData("6A");
+        instance.newServiceProvider("6A", "6A", "4000-007", "6A");
+        List<GeographicArea> areas = company.getGeographicAreaRegistry().getGeographicAreas();
+        String geoId = areas.get(0).getGeoId();
+        boolean expResult = true;
         boolean result = instance.addGeographicArea(geoId);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addGeographicArea method, of class
+     * RegisterServiceProviderController.
+     */
+    @Test
+    public void testAddGeographicArea_False() {
+        System.out.println("addGeographicArea_False");
+        SPApplication app = new SPApplication("6A", "6A", "6A", "6A");
+        company.getSPApplicationRegistry().registerApplication(app);
+        RegisterServiceProviderController instance = new RegisterServiceProviderController();
+        instance.getApplicationData("6A");
+        instance.newServiceProvider("6A", "6A", "4000-007", "6A");
+        String geoId = "ZZZZZ";
+        boolean expResult = true;
+        boolean result = instance.addGeographicArea(geoId);
+        assertEquals(expResult, result);
     }
 
     /**

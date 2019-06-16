@@ -31,7 +31,7 @@ public class SPCategoryList {
      * @return false if category is already in registry. true if it is not
      */
     public boolean validateCategory(Category cat) {
-        if (categorylist.contains(cat)) {
+        if (categorylist.contains(cat) || cat == null) {
             return false;
         }
         return true;

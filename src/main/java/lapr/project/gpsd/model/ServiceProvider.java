@@ -235,7 +235,10 @@ public class ServiceProvider {
      * @return Returns the success of the operation
      */
     public boolean addCategory(Category cat) {
-        return spCatList.addCategory(cat);
+        if (spCatList.validateCategory(cat)) {
+            return spCatList.addCategory(cat);
+        }
+        return false;
     }
 
     /**

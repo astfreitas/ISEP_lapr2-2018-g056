@@ -6,9 +6,8 @@ import lapr.project.authentication.model.UserSession;
 import lapr.project.gpsd.model.*;
 import lapr.project.gpsd.utils.Constants;
 
-
 public class AcceptServiceRequestController {
-    
+
     private final ServiceAssignmentRegistry serAssignRegistry;
     private final ServiceRequestRegistry servReqRegistry;
     private final ServiceOrderRegistry servOrderRegistry;
@@ -17,9 +16,9 @@ public class AcceptServiceRequestController {
     private List<ServiceAssignment> sRequestAssignments;
 
     /**
-     * 
+     *
      * Creates an instance of AcceptServiceRequestController
-     * 
+     *
      */
     public AcceptServiceRequestController() {
         if (!ApplicationGPSD.getInstance().getCurrentSession().isLoggedInWithRole(Constants.ROLE_CLIENT)) {
@@ -38,23 +37,25 @@ public class AcceptServiceRequestController {
         clientServiceAssignments = serAssignRegistry.getServiceAssignmentsByCli(client);
         sRequestAssignments = new ArrayList();
     }
-    
+
     /**
      * Method returns a list of fully assigned ServiceRequests ID's
+     *
      * @return a list of fully assigned ServiceRequet ID's from the user
      */
     public List<Integer> checkAssignedServiceRequests() {
         List<Integer> serviceIDS = new ArrayList();
         try {
             serviceIDS = servReqRegistry.getServiceRequestIdsFullyAssignedByClient(client);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return serviceIDS;
     }
-    
+
     /**
      * Method returns a list of service assignments for a given ServiceRequest
+     *
      * @param serviceNumber Service Number
      * @return a list of service assignments for a given ServiceRequest
      */
@@ -62,28 +63,30 @@ public class AcceptServiceRequestController {
         try {
             ServiceRequest servRequest = servReqRegistry.getServiceRequestByNumber(serviceNumber);
             sRequestAssignments = serAssignRegistry.getServiceAssignmentListByServiceRequest(servRequest, clientServiceAssignments);
-        } catch(Exception e) {
+            return sRequestAssignments;
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return sRequestAssignments;
+        return null;
     }
-    
+
     /**
-     * Method removes list of service assignments 
+     * Method removes list of service assignments
      */
     public void rejectServiceAssignment() {
         serAssignRegistry.removeServiceAssignment(sRequestAssignments, false);
         sRequestAssignments.clear();
     }
-    
+
     /**
-     * Method accepts list of service assignments 
-     * @return  list of ServiceOrder numbers
+     * Method accepts list of service assignments
+     *
+     * @return list of ServiceOrder numbers
      */
     public List<Integer> acceptServiceAssignment() {
         List<Integer> serviceOrders = servOrderRegistry.registerServiceOrders(sRequestAssignments);
         serAssignRegistry.removeServiceAssignment(sRequestAssignments, true);
         sRequestAssignments.clear();
         return serviceOrders;
-    }  
+    }
 }
