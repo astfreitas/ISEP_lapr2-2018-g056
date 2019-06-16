@@ -107,7 +107,7 @@ public class ApplicationGPSD {
 
         // Read the file
         try {
-            try (InputStream in = this.getClass().getResourceAsStream(Constants.PARAMS_FILE)) {
+            try (InputStream in = new FileInputStream(Constants.PARAMS_FILE)) {
                 props.load(in);
             }
         } catch (IOException ex) {
